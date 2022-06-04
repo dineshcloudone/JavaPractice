@@ -1,0 +1,53 @@
+*** Settings ***
+Resource          Environments.txt
+Library           Enrollment
+Library           Collections
+Library           OperatingSystem
+Library           String
+
+*** Keywords ***
+getResource
+    [Documentation]    This keyword is used to import the current sponser level keywords from the resources.
+    Reload Application
+    ${resName} =    Get Value    resourceName
+    Log    ${CURDIR}
+    ${path} =    BuiltIn.Catenate    SEPARATOR=    ${CURDIR}    ${/}    Member    ${/}
+    ...    ${resName}    .txt
+    Run Keyword And Ignore Error    BuiltIn.Import Resource    ${path}
+    BuiltIn.Set Library Search Order    ${resName}
+    ${path} =    BuiltIn.Catenate    SEPARATOR=    ${CURDIR}    ${/}    HRAdmin    ${/}
+    ...    ${resName}    .txt
+    Run Keyword And Ignore Error    BuiltIn.Import Resource    ${path}
+    BuiltIn.Set Library Search Order    ${resName}
+    ${path} =    BuiltIn.Catenate    SEPARATOR=    ${CURDIR}    ${/}    Vista    ${/}
+    ...    ${resName}    .txt
+    Run Keyword And Ignore Error    BuiltIn.Import Resource    ${path}
+    BuiltIn.Set Library Search Order    ${resName}
+
+Login as vista admin with valid credentials
+    [Documentation]    Purpose : Login as Vista administrator and verify
+    ...
+    ...    Usage : User defined keyword to login as Vista administrator for the group "BF QA Test Automation Group"
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+
+Login as HR admin
+    [Documentation]    Author :
+    ...
+    ...    Purpose : Login as HR administrator and verify
+    ...
+    ...    Usage : User defined keyword to login as HR administrator for the group "BF QA Test Automation Group"
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+
+readHashMapDataFromFile
+    [Arguments]    ${path}    ${key}
+    ${value}    Grep File    ${path}    ${key}
+    ${value2}    Get Hash Map Data From File    ${value}
+    [Return]    ${value2}
+
+appendHashMapValue
+    [Arguments]    ${arg1}
+    ${value}=    Get Hash Map Value Using Key    ${arg1}
+    Append To File    ${CURDIR}\\${SUITE NAME}.txt    ${value}    UTF-8

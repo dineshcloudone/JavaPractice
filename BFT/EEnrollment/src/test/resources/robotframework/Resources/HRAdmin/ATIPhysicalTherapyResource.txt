@@ -1,0 +1,30 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll Medical Benefit in ATI group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical
+    Select Tobacco And Health Survey Answer    In the past 12 months, have you used tobacco products?    No    Will you be covering a spouse who is eligible for coverage under his or her current employer?    No
+    select plan    2016 Standard Plan
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    No
+    Agree Terms And Conditions
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Healthcare FSA
+    Set Contribution Amount For Flex Benefit    150
+    Select HSA Participation    HSA Participation    No
+    Enter New Effective Date    d:currentdate    test
+    Comment    Enter Flexible Spending Deduction Periods    1
+    BuiltIn.Sleep    3s    wait time
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+
+Enroll Dental Benefit in ATI group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Dental Benefits
+    Select Tobacco And Health Survey Answer    In the past 12 months, have you used tobacco products?    No    Will you be covering a spouse who is eligible for coverage under his or her current employer?    No
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    No
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

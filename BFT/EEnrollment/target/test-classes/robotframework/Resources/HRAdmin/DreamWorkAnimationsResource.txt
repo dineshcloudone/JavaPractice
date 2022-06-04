@@ -1,0 +1,40 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+Enroll Medical Benefit In DWA Group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2015-2016
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+Enroll Basic Life Benefit of DWA Group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Basic Life & AD&D & Supplemental Life Insurance* 2015-2016
+    BuiltIn.Sleep    3s    wait time
+    Select Coverage Amount    $1,000,000.00
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Comment    Next
+    Enter Effective Date    d:currentdate
+    Enter Effective Date    d:currentdate
+    BuiltIn.Sleep    2s    wait time
+    Select Coverage Amount    $30,000.00
+    Enter Effective Date    d:currentdate
+    Comment    BuiltIn.Sleep    3s    wait time
+    Next
+    Comment    Select Plan    Life Insurance - Spouse 2015-2016
+    BuiltIn.Sleep    3s    wait time
+    Add Dependent To Employee    Spouse    lst2Spouse
+    BuiltIn.Sleep    3s    wait time
+    Next
+    BuiltIn.Sleep    3s    wait time
+    BuiltIn.Sleep    6s    wait time
+    Comment    Enter Effective Date    d:currentdate
+    Select Coverage Amount    $20,000.00
+    Enter Effective Date    d:currentdate
+    Select Coverage Amount    $15,000.00
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page

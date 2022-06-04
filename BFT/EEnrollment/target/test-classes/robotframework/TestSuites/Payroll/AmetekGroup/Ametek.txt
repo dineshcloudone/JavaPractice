@@ -1,0 +1,652 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc1
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc1
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Health Care 2016
+    Enroll In HealthCare Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc1
+
+2.Initial enrollment (afterapproval )
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc2
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc2
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Health Care 2016
+    Enroll In HealthCare Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    3
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc2
+
+3.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc3
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc3
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    AMEFlex Dependent Care FSA 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc3
+
+4.Accept after initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc4
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc4
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    AMEFlex Dependent Care FSA 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    AMEFlex Dependent Care FSA 2016
+    Edit Current Plan    Dependent Day Care FSA
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc4
+
+5.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory2    Ameteklastnametc5
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc5
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    AMEFlex Dependent Care FSA 2016 - Pending Approval
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc5
+
+6.Cancel benefits (after approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory2    Ameteklastnametc6
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc6
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Select Plan    Dependent Day Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Enter Effective Date    d:currentdate:d:-10
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    AMEFlex Dependent Care FSA 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc6
+
+7.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory2    Ameteklastnametc7
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc7
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Select Plan    Dependent Day Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Enter Effective Date    d:currentdate:d:-10
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    AMEFlex Dependent Care FSA 2016
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    AMEFlex Dependent Care FSA 2016
+    Edit Current Plan    Dependent Day Care FSA
+    Select Plan    Dependent Day Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Enter Effective Date    d:currentdate:d:3
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc7
+
+8.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    lastnameAmeteklastnametc8
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc8
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To Employee Home Page
+    Comment    Terminate Employee from HR Admin Role
+    Perform Employee Termination    d:currentdate    Voluntary
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc8
+
+9.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc9
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc9
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Comment    Change the Employee status as Retired
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc9
+
+10.Category Change
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc10
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    Ameteklastnametc10
+
+11.Benefit Plan Change
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc11
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc11
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Tobacco Usage 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Enroll In Tobacco Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc11
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc12
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc12
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc13
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Health Care 2016
+    Enroll In HealthCare Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc14
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Health Care 2016
+    Select Plan    Aetna High Deductible PPO (Consumer Focus) 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Next
+    Select Plan    Aetna Dental Full PPO 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    EyeMed Vision 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    Health Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA participation    HSA Participation    Yes
+    Next
+    Select Plan    Aetna Health Savings Account (HDPPO) 2016
+    Next
+    Sleep    2
+    Next
+    Sleep    5
+    Next
+    Select Coverage Level    LifeStyles
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc14
+
+15.Increase Coverage Amount For Life Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc15
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc15
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Life 2016
+    Enroll In Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc15
+
+16.Decrease Coverage Amount For Life benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Life 2016
+    Enroll In Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc16
+
+17.Increase Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc17
+
+18.Decrease Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc18
+
+19.Add flex when already enrolled in HSA
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc19
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc19
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Health Care 2016
+    Enroll In HealthCare Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc19
+
+20.Cancel flex when already enrolled in flex
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory2    Ameteklastnametc20
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc20
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Select Plan    Dependent Day Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Enter Effective Date    d:currentdate:d:-10
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc20
+
+21.Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc21
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc21
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc21
+
+22.Cancel HDHP/HSA when already enrolled in flex (if group supports HSA)
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory2    Ameteklastnametc22
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc22
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Dependent Care FSA 2016
+    Enroll In FSA
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    AMEFlex Health Care 2016
+    Select Plan    Aetna High Deductible PPO (Consumer Focus) 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate:d:-5
+    Select Plan    Aetna Dental Full PPO 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate:d:-5
+    Select Plan    EyeMed Vision 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate:d:-5
+    Select Plan    Health Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA participation    HSA Participation    Yes
+    Enter Effective Date    d:currentdate:d:-5
+    Select Plan    Aetna Health Savings Account (HDPPO) 2016
+    Enter Effective Date    d:currentdate:d:-5
+    Sleep    2
+    Next
+    Sleep    5
+    Next
+    Select Coverage Level    LifeStyles
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc22
+
+23.Change in EE cost
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc23
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    Ameteklastnametc23
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc24
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    Ameteklastnametc24
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc25
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    Ameteklastnametc25
+
+29.Add Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc29
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Health Care 2016
+    Enroll In HealthCare Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc29
+
+30.Remove Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc30
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Health Care 2016
+    Select Plan    Aetna High Deductible PPO (Consumer Focus) 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Next
+    Select Plan    Aetna Dental Full PPO 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    EyeMed Vision 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    Health Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA participation    HSA Participation    Yes
+    Next
+    Select Plan    Aetna Health Savings Account (HDPPO) 2016
+    Next
+    Sleep    2
+    Next
+    Sleep    5
+    Next
+    Select Coverage Level    LifeStyles
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc30
+
+31.Change dependent personnel information
+    Login as vista admin with valid credentials
+    Perform Group Search    AMETEK
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:ametekmandatory    Ameteklastnametc31
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAmeteklastnametc31
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    AMEFlex Health Care 2016
+    Select Plan    Aetna High Deductible PPO (Consumer Focus) 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Next
+    Select Plan    Aetna Dental Full PPO 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    EyeMed Vision 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    Health Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA participation    HSA Participation    Yes
+    Next
+    Select Plan    Aetna Health Savings Account (HDPPO) 2016
+    Next
+    Sleep    2
+    Next
+    Sleep    5
+    Next
+    Select Coverage Level    LifeStyles
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    Ameteklastnametc31
+
+32.RunJobExtraction
+    Login as vista admin with valid credentials
+    Navigate To    System    Dashboard
+    Perform Job Search    PayrollAutomationHyd    JOBNAME
+    Modify Job Configuration    4700552074    1    Open    Changes Only
+    Navigate To    System    Dashboard
+    Perform Job Search    PayrollAutomationHyd    JOBNAME
+    Run Current Job
+    Navigations In 5X Dashboard    5X PROCESSES    Employer Payroll
+    builtin.Sleep    15
+    Verify Message    Recent Extractions
+    ${status}    Get Job Status
+    Log    ${status}
+    builtin.sleep    19
+    Logout Vista Admin

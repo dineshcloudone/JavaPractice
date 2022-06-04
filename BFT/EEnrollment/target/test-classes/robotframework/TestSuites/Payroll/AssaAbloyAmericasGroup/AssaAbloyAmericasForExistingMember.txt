@@ -1,0 +1,296 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+${existing_members_temp_location}    ../../resources/robotframework/Resources/Robotframework.TestSuites.Payroll.AssaAbloyAmericasGroup.AssaAbloyAmericas.txt
+
+*** Test Cases ***
+10.Category Change
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc10
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    Benefit Plan    CUR
+    Change Employee Cateogry    Full-Part Time Status    P - Part-Time
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+11.Benefit plan change
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc11
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Plan (Ameristar)
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Current Plan    Plan
+    Select Plan    BlueCross BlueShield - Oklahoma Medical & Pharmacy (PLATINUM) 2016
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+12.Effective date change
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc12
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Edit Effective Date
+    Enter Effective Date    d:currentdate:d:8
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+13.Increase coverage level
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc13
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Enter Effective Date    d:currentdate
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+14.Decrease coverage level
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc14
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+17.Increase flex contribution amount
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc17
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Health FSA
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Set Contribution Amount For Flex Benefit    400
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+18.Decrease flex contribution amount
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc18
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Health FSA
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Set Contribution Amount For Flex Benefit    150
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+19.Add flex when already enrolled in HSA
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc19
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending Account (Door Group)
+    Enroll In Flexible Spending Account Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+20.Cancel flex when already enrolled in flex
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc20
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Flexible Spending Account (Door Group)
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+21.Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc21
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Plan (Door Group)
+    Enroll In HSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+22.Cancel HDHP/HSA when already enrolled in flex (if group supports HSA)
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc22
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Medical Plan (Door Group)
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Close HR Admin
+
+23.Change in EE cost/pp
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc23
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    Benefit Plan    CUR
+    Change Employee Cateogry    Full-Part Time Status    P - Part-Time
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+24.Salary Increase
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc24
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    13,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+25.Salary Decrease
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc25
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    9,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+29.Add dependent to benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc29
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Enter Effective Date    d:currentdate
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+30.Remove dependent to dependent
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc30
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+31.Change dependent personal information
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    ASSAlastnametc31
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Comment    CHange Dependent details
+    Navigate To HR Menu    Dependents
+    Edit Dependent Details    Spouse    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin

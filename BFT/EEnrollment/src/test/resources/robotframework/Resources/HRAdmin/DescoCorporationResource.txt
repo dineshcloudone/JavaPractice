@@ -1,0 +1,38 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Pharmacy Benefit
+    [Arguments]    ${coveragelevel}
+    Select Coverage Level    ${coveragelevel}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental Benefit
+    [Arguments]    ${coveragelevel}
+    Select Coverage Level    ${coveragelevel}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Health FSA Benefit
+    [Arguments]    ${plan}    ${coverageamount}
+    Select Plan    ${plan}
+    Set Contribution Amount For Flex Benefit    {coverageamount}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Life Benefit
+    [Arguments]    ${coverageamount}
+    Select Coverage Amount    ${coverageamount}
+    Next
+    Next
+    Select Coverage Amount    ${coverageamount}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In FSA Plan
+    [Arguments]    ${plan}    ${contributionamount}
+    Select Plan    ${plan}
+    Set Contribution Amount For Flex Benefit    ${contributionamount}
+    Next
+    Save And Go To Benefit Enrollment Page

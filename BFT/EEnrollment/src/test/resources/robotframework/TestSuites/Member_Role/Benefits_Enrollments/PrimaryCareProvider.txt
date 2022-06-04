@@ -1,0 +1,358 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Save and Verify PCP Previously Visit Date Details
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Verify Previously Visit PCP Date Exist and Save PCP Details for Member*
+    ...
+    ...    Test Cases Covered from Regression: TC_87,TC_88,TC_91
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to BF QCOE QA Test Automation Group_PCP Member
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3. Navigate to Benefits ,Plans Filter current plan
+    ...
+    ...    4. Show Plan and click edit plan details option
+    ...
+    ...    5. Update PCP configurations
+    ...
+    ...    6. Navigate to Users and Add Memeber
+    ...
+    ...    7. Logout as Vista
+    ...
+    ...    8. Login as Member and change password.
+    ...
+    ...    9. Member Initial login
+    ...
+    ...    10. Perform Begin enrollment
+    ...
+    ...    11. Add dependent to member
+    ...
+    ...    12. select plan
+    ...
+    ...    13. Enter PCP details and verify visited details should display
+    ...
+    ...    14.Enter physician visited details as yes and verify date of last visit filed diaplyed
+    ...
+    ...    15. Logout as member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Plans
+    Filter Plan By Time    Current
+    Show Hide Plan    Medical 2016    Show
+    Edit Plan Options    Edit Plan Details
+    Update Edit Plan Details    Ask For Date of Last Visit?    Capture for all PCP changes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    BuiltIn.Sleep    3s
+    Perform Begin Enrollment in Member Role
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    Medical 2016
+    Enter And Verify PCP Details    td:pcpdetails    Yes    Exist
+    Enter Physician Visited And Date Details    Yes
+    Next
+    BuiltIn.Sleep    10s
+    Logout New Member Role
+
+2.Verify Member and dependent PCP details with same PCP for Member and Dependent
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Verify a Member and dependent PCP details with same PCP for Member and Dependent*
+    ...
+    ...    Test Case Numbers: Member_Reg_083 and Member_Reg_084
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search "BF QCOE QA Test Automation Group PCP"
+    ...
+    ...    3) Navigate to Benefits-> Plans
+    ...
+    ...    4) Edit Plan details for Medical 2016 plan
+    ...
+    ...    5) Update Edit paln details configuration "Enforce validation of PCP fields during loads and reconciliations?" to "Yes"
+    ...
+    ...    6) Update Edit paln details configuration " Ask PCP Question?" to "Ask and Require"
+    ...
+    ...    7) Update Edit paln details configuration "Ask for Date of Last Visit?" to "Do not capture"
+    ...
+    ...    8) Add New member in Vista
+    ...
+    ...    9) Logout Vista Admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (Created from Vista)
+    ...
+    ...    2) Complete Member initiatl login (changing password, updating security questions, accpeting anouncements etc.,)
+    ...
+    ...    3) Click on Get Started button
+    ...
+    ...    4) Skip Adding dependents and click on next button
+    ...
+    ...    5) Click on Perform Begin enrollment
+    ...
+    ...    6) Add depenedent to the member
+    ...
+    ...    7) Select Medical plan for the member
+    ...
+    ...    8) Do not select "Use same provider for the dependent" check box and verify PCP details for Member and Dependents
+    ...
+    ...    9) Logout member
+    [Tags]    QCOE
+    #Pre-requisite:
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Plans
+    Filter Plan By Time    Current
+    Show Hide Plan    Medical 2016    Show
+    Edit Plan Options    Edit Plan Details
+    Update Edit Plan Details    Ask For Date of Last Visit?    Do not capture
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:medicalplan    lastname
+    Logout Vista Admin
+    #Test Steps:
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    Medical 2016
+    Enter And Verify PCP Details    td:pcpdetails    Yes    Not Exist
+    Next
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+3.Verify Member and dependent PCP details with different PCP for Member and Dependent
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Verify a Memberand dependent PCP details with different PCP for Member and Dependent*
+    ...
+    ...    Test Case Numbers : Member_Reg_085 and Member_Reg_086
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search "BF QCOE QA Test Automation Group PCP"
+    ...
+    ...    3) Navigate to Benefits-> Plans
+    ...
+    ...    4) Edit Plan details for Medical 2016 plan
+    ...
+    ...    5) Update Edit paln details configuration "Enforce validation of PCP fields during loads and reconciliations?" to "Yes"
+    ...
+    ...    6) Update Edit paln details configuration " Ask PCP Question?" to "Ask and Require"
+    ...
+    ...    7) Update Edit paln details configuration "Ask for Date of Last Visit?" to "Do not capture"
+    ...
+    ...    8) Add New member in Vista
+    ...
+    ...    9) Logout Vista Admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (Created from Vista)
+    ...
+    ...    2) Complete Member initiatl login (changing password, updating security questions, accpeting anouncements etc.,)
+    ...
+    ...    3) Click on Get Started button
+    ...
+    ...    4) Skip Adding dependents and click on next button
+    ...
+    ...    5) Click on Perform Begin enrollment
+    ...
+    ...    6) Add depenedent to the member
+    ...
+    ...    7) Select Medical plan for the member
+    ...
+    ...    8) Enter PCP details for Member
+    ...
+    ...    9) Do not select "Use same provider for the dependent" check box and verify PCP details for Member and Dependents
+    ...
+    ...    10) Logout member
+    [Tags]    QCOE
+    #Pre-requisite:
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Plans
+    Filter Plan By Time    Current
+    Show Hide Plan    Medical 2016    Show
+    Edit Plan Options    Edit Plan Details
+    Update Edit Plan Details    Ask For Date of Last Visit?    Capture for all PCP changes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:medicalplan    lastname
+    Logout Vista Admin
+    #Test Steps:
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    Medical 2016
+    Enter And Verify PCP Details    td:pcpdetails    No    Exist
+    Next
+    Next
+    Select Premium Deduction    yes
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+4.Verify PCP Details are displayed with blank data
+    [Documentation]    \
+    ...    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Verify PCP Details are displayed with blank data*
+    ...
+    ...    Test Case Numbers : Member_Reg_080
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search "BF QCOE QA Test Automation Group PCP"
+    ...
+    ...    3) Navigate to Benefits-> Plans
+    ...
+    ...    4) Edit Plan details for Medical 2016 plan
+    ...
+    ...    5) Update Edit paln details configuration "Enforce validation of PCP fields during loads and reconciliations?" to "Yes"
+    ...
+    ...    6) Update Edit paln details configuration " Ask PCP Question?" to "Ask and Require"
+    ...
+    ...    7) Update Edit paln details configuration "Ask for Date of Last Visit?" to "Do not capture"
+    ...
+    ...    8) Add New member in Vista
+    ...
+    ...    9) Logout Vista Admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (Created from Vista)
+    ...
+    ...    2) Complete Member initiatl login (changing password, updating security questions, accpeting anouncements etc.,)
+    ...
+    ...    3) Click on Get Started button
+    ...
+    ...    4) Add depenedent to the member
+    ...
+    ...    5) Click on Perform Begin enrollment
+    ...
+    ...    6) Select Medical plan for the member
+    ...
+    ...    7) verify PCP details are blank
+    ...
+    ...    8) Logout member
+    ...
+    [Tags]    QCOE
+    #Pre-requisite:
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Plans
+    Filter Plan By Time    Current
+    Show Hide Plan    Medical 2016    Show
+    Edit Plan Options    Edit Plan Details
+    Update Edit Plan Details    Enforce validation of PCP fields during loads and reconciliations?    Yes
+    Update Edit Plan Details    Ask PCP Question?    Ask and require
+    Update Edit Plan Details    Ask For Date of Last Visit?    Do not capture
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:medicalplan    lastname
+    Logout Vista Admin
+    #Test Steps:
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    Medical 2016
+    Verify PCP Details Are Blank    HMVlastname
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+5.Verify PCP Previously Visit Date Not Exist
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Verify PCP Previously Visit Date Not Exist*
+    ...
+    ...    Test Cases Covered from Regression: TC_90
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to BF QCOE QA Test Automation Group_PCP Member
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3. Navigate to Benefits ,Plans Filter current plan
+    ...
+    ...    4. Show Plan and click edit plan details option
+    ...
+    ...    5. Update PCP configurations
+    ...
+    ...    6. Navigate to Users and Add Memeber
+    ...
+    ...    7. Logout as Vista
+    ...
+    ...    8. Login as Member and change password.
+    ...
+    ...    9. Member Initial login
+    ...
+    ...    10. Perform Begin enrollment
+    ...
+    ...    11. Add dependent to member
+    ...
+    ...    12. select plan
+    ...
+    ...    13. Enter PCP details and verify visited details should display
+    ...
+    ...    14.Enter physician visited details as No and verify date of last visit filed diaplyed
+    ...
+    ...    15. Logout as member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Plans
+    Filter Plan By Time    Current
+    Show Hide Plan    Medical 2016    Show
+    Edit Plan Options    Edit Plan Details
+    Update Edit Plan Details    Ask For Date of Last Visit?    Capture for all PCP changes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    BuiltIn.Sleep    3s
+    Perform Begin Enrollment in Member Role
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    Medical 2016
+    Enter And Verify PCP Details    td:pcpdetails    Yes    Exist
+    Enter Physician Visited And Date Details    No
+    Next
+    BuiltIn.Sleep    10s
+    Logout New Member Role

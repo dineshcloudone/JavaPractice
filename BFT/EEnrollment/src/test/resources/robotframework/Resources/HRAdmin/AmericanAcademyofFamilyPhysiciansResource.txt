@@ -1,0 +1,99 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+EnrollMedicalBenefit
+    [Arguments]    ${coverage level}
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical/HSA/Medical FSA
+    Select Tobacco And Health Survey Answer    Did you complete all 3 requirements (by October 31,2015) to obtain a discount on your health premiums next year?    No    Have you used tobacco products in the past 12 months?    No
+    Select Plan    2016 Traditional Blue PPO
+    Select Coverage Level    ${coverage level}
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Taben Group (Medical Spending Account)
+    Set Contribution Amount For Flex Benefit    200
+    Enter New Effective Date    d:currentdate    test
+    BuiltIn.Sleep    3s    wait time
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+
+EnrollDentalBenefit
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Dental
+    Select Tobacco And Health Survey Answer    Did you complete all 3 requirements    No    Have you used tobacco products in the past 12 months?    No
+    Comment    Navigate To HR Menu    benefitdetails
+    Comment    Start Current Benefit    2016 Dental
+    Comment    Select Radio Button For Tobacco And Health Survey    Did you complete all 3 requirements    Have you used tobacco products in the past 12 months?    No    No
+    Comment    Next
+    Comment    Comment    saving the tobacco survey
+    Comment    BuiltIn.Sleep    3s    wait before Benefit final save page
+    Comment    Save Benefit In Snapshot Page
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+
+ChangeMedicalBenefitPlan
+    [Arguments]    ${plan}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical/HSA/Medical FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Medical    Plan
+    select plan    ${plan}
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 UMB HSA Account
+    BuiltIn.Sleep    3s    wait time
+    Next
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Save Benefit In Snapshot Page
+
+EnrollBasicLifePlanInAAFP
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    2016 Basic Life/AD&D
+    Select Tobacco And Health Survey Answer    Did you complete all 3 requirements    Have you used tobacco products in the past 12 months?    No    No
+    Select Coverage Amount    $120,000.00
+    Add Beneficiary To Member    Spouse    lnSpouse
+    Next
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+
+Cancel Medical FSA Benefit
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical/HSA/Medical FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health FSA    Health FSA
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+
+ADD Medical HSA Benefit
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical/HSA/Medical FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health Savings Account (HSA)    Health Savings Account (HSA)
+    Select Plan    2016 UMB HSA Account
+    Save Benefit In Snapshot Page
+
+ADD Medical FSA Benefit
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical/HSA/Medical FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health Savings Account (HSA)    Health Savings Account (HSA)
+    Select Plan    2016 Taben Group (Medical Spending Account)
+    Set Contribution Amount For Flex Benefit    200
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+Cancel Medical HSA Benefit
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical/HSA/Medical FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health Savings Account (HSA)    Health Savings Account (HSA)
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

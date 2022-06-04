@@ -1,0 +1,38 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Rate Factor functionality
+Test Setup        getResource
+Force Tags        ratefactor
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify the functionality of enabling rate factor survey with Global Survey strategy
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests Case Title: *Verify the functionality of enabling rate factor survey with Global Survey strategy*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User
+    ...
+    ...    2) Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    3) Update the "Rate Factor Survey" in "System Information"
+    ...
+    ...    4) Update the Rate Factor Survey in "Rate Factor Survey" Configuration under "Benefits" Tab
+    ...
+    ...    5) Update the Role in "Rate Factor Survey" Configuration under "Benefits" Tab
+    ...
+    ...    6) Save and verify the changed information in "System Information"
+    ...
+    ...    7) Logout as Vista Admin
+    ...
+    ...    Test case No : 139
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    System
+    Update System Information    Rate Factor Survey    Enabled
+    Navigate To    BENEFITS    Rate Factor Survey
+    Rate Factor Configuration    Rate Factor Survey    Carrier Survey Strategy    no
+    Rate Factor Configuration    Role    Member    yes
+    Logout Vista Admin

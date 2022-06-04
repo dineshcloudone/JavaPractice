@@ -1,0 +1,14 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Group Customization Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    Update Group Customization    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Update Admin Account Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    Edit Administrator Account    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+    Save Configuration

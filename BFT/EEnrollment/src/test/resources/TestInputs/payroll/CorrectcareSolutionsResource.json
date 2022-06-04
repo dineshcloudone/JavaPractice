@@ -1,0 +1,57 @@
+{
+  "addmemberfunctionality": {
+    "correctcaresolutions": {
+      "vista": {
+           "validvistacredentials": {
+      "username": "bftpuchala",
+      "password": "bfEnrol1"
+    },
+        "ccsmandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "maritalstatus": "Single",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "hiredate": "currentdate",
+          "earnings":"5000",
+          "earningsfrequency":"per month",
+          "payfrequency":"Bi-Weekly",
+          "employerid":"RND91741",
+          "categories":"Regular Full Time - All Benefits#Regular Full Time - Regular Full Time#N#HCE - HIGHLY COMPENSATED#Y#17 - MEDICAL#ACT#0007 - Home Office- IT#No#A2C - CCS - Even#2016 No#No#CHICAGO UNION - CHICAGO UNION#CA - California"
+        },
+        "validvistacredentials": {
+          "username": "bftpuchala",
+          "password": "bfEnrol1"
+        },
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+
+        }
+      }
+
+    }
+  }
+}

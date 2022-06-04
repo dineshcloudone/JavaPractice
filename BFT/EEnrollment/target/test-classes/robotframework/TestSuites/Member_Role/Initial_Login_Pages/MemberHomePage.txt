@@ -1,0 +1,223 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Verify Password Lockout
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Verify Password Lockout
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel
+    ...
+    ...    2) Enter valid Login ID and invalid password
+    ...
+    ...    3) Click on Login button
+    ...
+    ...    4) Repeat steps 2 and 3 for 4 times
+    ...
+    ...    5) Verify the error message
+    ...
+    ...    6) Repeat steps 2 and 3 again for the 5th time
+    ...
+    ...    7) Verify the account lock out error message
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Comment    BuiltIn.Sleep    5s
+    Logout Vista Admin
+    Verify Password Lockout Message    HMVmemberloginid    bfEnrol12
+
+2.Change Password
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Change Password
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login to enrollment as vista admin
+    ...
+    ...    2) Perform group search and select group
+    ...
+    ...    3) Add member in vista
+    ...
+    ...    4) logout vista role
+    ...
+    ...    5) Login as member role with new member credentials
+    ...
+    ...    6) Click on Next
+    ...
+    ...    7) Click on Login Information in the Home page
+    ...
+    ...    8) Click on edit button under Password
+    ...
+    ...    9) Enter new password and confirm password
+    ...
+    ...    10) Click on Save and log out
+    ...
+    ...    11) Login to enrollment using the same login id and new password
+    ...
+    ...    12) Verify that you can log in successfully.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    BuiltIn.Sleep    2s
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Builtin.Sleep    2s
+    Navigate To New Member Menu    LoginInformation
+    Change Password In Member Role    td:newpassword    Save
+    Logout New Member Role
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    td:newpassword
+    Verify Message    Sample
+    Logout New Member Role
+
+3.Verify Live Online Assistance
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Verify Live Online Assistance
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group SY'
+    ...
+    ...    3) Navigate to Basics >> System and update 'Live Online Assistance' setting to 'Yes'
+    ...
+    ...    4) Navigate to Users >> Add Member page
+    ...
+    ...    5) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    6) Logout vista
+    ...
+    ...    7) Login to member role using above created member credentials
+    ...
+    ...    8) Navigate through the initial login pages to the home page.
+    ...
+    ...    9) Verify 'Live Online Assistance' button exist on the member home page.
+    ...
+    ...    10) Verify on clicking the 'Live Online Assistance' button a confirmation dialogue box appears.
+    ...
+    ...    11) Verify if 'Cancel' button is clicked on the confirmation box, user is navigated back to home page.
+    ...
+    ...    12) Verify if 'Chat Now' button is clicked, user is navigated to chat with the support representative.
+    ...
+    ...    13) Logout member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Basics    System
+    Update System Information    Live Online Assistance    Yes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    BuiltIn.Sleep    2s
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Builtin.Sleep    2s
+    Verify Live Online Assistance    Cancel
+    Verify Live Online Assistance    Chat Now
+    Logout New Member Role
+
+4.Verify Username updation when user selects CANCEL or SAVE option
+    [Documentation]    Author : Srilatha A
+    ...
+    ...    Test Case Name : Verify Username updation when user selects CANCEL or SAVE option
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group SY'
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    5) Logout vista
+    ...
+    ...    6) Login to member role using above created member credentials
+    ...
+    ...    7) Navigate through the initial login pages to the home page.
+    ...
+    ...    8) Select the 'Login Information' link Under Manage Account Section on the Home page.
+    ...
+    ...    9) Select the 'Edit' button underneath the 'Username' label.
+    ...
+    ...    10) \ Enter 'New username' and 'Confirm New username' fields with valid value
+    ...
+    ...    11) Verify if 'Cancel' button is clicked, username does not get updated.
+    ...
+    ...    12) Verify if 'Save' button is clicked, username gets updated.
+    ...
+    ...    13) Logout member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    BuiltIn.Sleep    2s
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Builtin.Sleep    2s
+    Navigate To New Member Menu    LoginInformation
+    Verify Username In New Member Role    td:newusername    Cancel
+    Builtin.Sleep    2s
+    Verify Username In New Member Role    td:newusername    Save
+    Logout New Member Role
+
+5.Verify PASSWORD not updated when user selects CANCEL option
+    [Documentation]    Author : Srilatha A
+    ...
+    ...    Test Case Name : *Verify PASSWORD not updated when user selects CANCEL option*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login to enrollment as vista admin
+    ...
+    ...    2) Perform group search and select group
+    ...
+    ...    3) Add member in vista
+    ...
+    ...    4) logout vista role
+    ...
+    ...    5) Login as member role with new member credentials
+    ...
+    ...    6) Click on Next
+    ...
+    ...    7) Click on Login Information in the Home page
+    ...
+    ...    8) Click on edit button under Password
+    ...
+    ...    9) Enter new password and confirm password
+    ...
+    ...    10) Click on Cancel button and log out
+    ...
+    ...    11) Try to login to enrollment using the same login id and new password
+    ...
+    ...    12) Verify that Password is not updated and user is unable to login with new password.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    BuiltIn.Sleep    2s
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Builtin.Sleep    2s
+    Navigate To New Member Menu    LoginInformation
+    Change Password In Member Role    td:newpassword    Cancel
+    Logout New Member Role
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    td:newpassword
+    Verify Message    We didn't recognize your username and password. Please double check and try again.

@@ -1,0 +1,42 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Create Global Rate Factor Survey
+    [Arguments]    ${ParticipationPeriod}    ${SurveyName}    @{Roles}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to create Global Rate Factor Survey by taking user inputs.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${ParticipationPeriod} --> Ex:- 01/01/2015 - 12/31/2015 or index=1
+    ...
+    ...    ${SurveyName} -->Survey Question \ Ex:- Tobbaco Survey(Mercer)
+    ...
+    ...    @{Roles}----> Add Roles with comma Ex- Member,Vista,Carrier
+    Navigate To    Benefits    Rate Factor Survey
+    Create Global Rate Factor Survey In Vista    ${ParticipationPeriod}    ${SurveyName}    @{Roles}
+
+Create Carrier Rate Factor Survey
+    [Arguments]    ${SitusStrategy}    @{Roles}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to create Global Rate Factor Survey by taking user inputs.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${SurveyName} -->Survey Question \ Ex:- Tobbaco Survey(Mercer)
+    ...
+    ...    @{Roles}----> Add Roles with comma Ex- Member,Vista,Carrier
+    Navigate To    Benefits    Rate Factor Survey
+    Enrollment.Create Carrier Rate Factor Survey    ${SitusStrategy}    @{Roles}
+
+Disable Rate Factor Survey
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Disable the Rate factor Survey in Vista role.
+    ...
+    ...    Arguments : NA
+    Navigate To    Basics    System
+    Select Rate Factor Survey Setup    Disabled

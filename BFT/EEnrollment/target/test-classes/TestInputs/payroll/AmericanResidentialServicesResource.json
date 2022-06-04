@@ -1,0 +1,60 @@
+{
+  "addmemberfunctionality": {
+    "americanaresidentialservices": {
+      "vista": {
+           "validvistacredentials": {
+      "username": "bftpuchala",
+      "password": "bfEnrol1"
+    },
+        "arsmandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings":"5000",
+          "earningsfrequency":"per month",
+          "payfrequency":"Weekly",
+          "employerid":"RND91741",
+          "categories":"A#FT - All Benefits#2"
+        },
+        "validvistacredentials": {
+          "username": "bftpuchala",
+          "password": "bfEnrol1"
+        },
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+
+        }
+      }
+
+    }
+  }
+}

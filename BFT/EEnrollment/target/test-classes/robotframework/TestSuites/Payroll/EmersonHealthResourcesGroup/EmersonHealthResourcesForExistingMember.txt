@@ -1,0 +1,607 @@
+*** Settings ***
+Suite Setup
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+${existing_members_temp_location}    ../../resources/robotframework/Resources/Robotframework.TestSuites.Payroll.EmersonHealthResourcesGroup.EmersonHealthResources.txt
+
+*** Test Cases ***
+10.Category Change
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Category Change
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Category values
+    ...
+    ...    Change the Category values from HR Admin Role
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc10
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    Work Status    Union 35+
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+11.Benefit Plan Change
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Benefit Plan Change
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their benefit plans
+    ...
+    ...    Change the member benefit from existing benefit to new benefit
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc11
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current benefit    Medical 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Current Plan    Plan
+    Select Plan    PPO Saver Plan 2016
+    Next
+    Select Plan    Health Savings Account 2016
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+12.Effective Date Change
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Effective Date Change
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change the Effective Date for the selected benefit
+    ...
+    ...    Change the effective date for the selected benefit from HR Admin Role
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc12
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current benefit    Medical 2016
+    Edit Effective Date
+    Enter Effective Date    d:currentdate:d:8
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+13.Increase Coverage Level
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Increase Coverage Level
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Level
+    ...
+    ...    Change the Coverage Level for the selected benefit from HR Admin Role [ Need to Increase the Coverage Level]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc13
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Dental 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+14.Decrease Coverage Level
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Decrease Coverage Level
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Level
+    ...
+    ...    Change the Coverage Level for the selected benefit from HR Admin Role [ Need to Decrease the Coverage Level]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc14
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Dental 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+15.Increase Coverage Amount For Life Benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Increase Coverage Amount For Life benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Amount
+    ...
+    ...    Change the Coverage Amount for the selected benefit from HR Admin Role [ Need to Increase the Coverage Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc15
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Voluntary Life and AD&D 2015
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Change the Coverage Amount For Life Amount
+    Select Coverage Amount    $40,000.00
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+16.Decrease Coverage Amount For Life benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Decrease Coverage Amount For Life benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Amount
+    ...
+    ...    Change the Coverage Amount for the selected benefit from HR Admin Role [ Need to Decrease the Coverage Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc16
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Voluntary Life and AD&D 2015
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Change the Coverage Amount For Life Amount
+    Select Coverage Amount    $10,000.00
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+17.Increase Contribution Amount For Flex Benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Increase Contribution Amount For Flex benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Contribution Amount
+    ...
+    ...    Change the Contribution Amount for the selected benefit from HR Admin Role [ Need to Increase the Contribution Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc17
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Flexible Spending Accounts 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Comment    Changes the Contribution amount for flex benefit
+    Set Contribution Amount For Flex Benefit    600
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+18.Decrease Contribution Amount For Flex Benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Decrease Contribution Amount For Flex benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Contribution Amount
+    ...
+    ...    Change the Contribution Amount for the selected benefit from HR Admin Role [ Need to Decrease the Contribution Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc18
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Flexible Spending Accounts 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Comment    Changes the Contribution amount for flex benefit
+    Set Contribution Amount For Flex Benefit    200
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+19.Add flex when already enrolled in HSA
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc19
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in Medical/HSA
+    Start Current Benefit    Flexible Spending Accounts 2016
+    Enroll FSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+20.Cancel flex when already enrolled in flex
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc20
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Flexible Spending Accounts 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+21.Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in FSA
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Enroll member in Medical/HSA if applicable
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc21
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in Medical/HSA
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+22.Cancel HDHP/HSA when already enrolled in flex (if group supports HSA)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in FSA
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Enroll member in Medical/HSA if applicable
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Cancel HSA benefit
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc22
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical 2016 - Pending Approval
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+23.Change in EE Cost
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc23
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    Work Status    Union 35+
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+24.Salary Increase
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Salary Inrease
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Salary
+    ...
+    ...    Change the Salary for the selected member from HR Admin Role [ Need to Increase the Salary]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc24
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    13,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+25.Salary Decrease
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Salary Derease
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Salary
+    ...
+    ...    Change the Salary for the selected member from HR Admin Role [ Need to Decrease the Salary]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc25
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    9,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+29.Add Dependent to benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc29
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Dental 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+30.Remove Dependent to benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc30
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Dental 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+31.Change dependent personnel information
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Change dependant personnel information
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their dependent personnel information
+    ...
+    ...    Change the dependent personnel information
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    EHRlastnametc31
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Comment    CHange Dependent details
+    Navigate To HR Menu    Dependents
+    Edit Dependent Details    Spouse    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin

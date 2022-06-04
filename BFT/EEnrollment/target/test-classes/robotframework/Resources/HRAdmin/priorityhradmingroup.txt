@@ -1,0 +1,58 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Update Admin Account Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    Edit Administrator Account    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Add COBRA Policy
+    Navigate To Manage Employee In HR Role    Manage COBRA
+    Manage Cobra And Add Policy    td:cobrapolicy
+    Select Qualifying Event    new event    Death of employee,d:currentdate
+    Select Plan    td:plan
+    Persons Covered    click on    nex button
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+
+Edit COBRA Policy
+    [Arguments]    ${BenefitName}
+    Navigate To Manage Employee In HR Role    Manage COBRA
+    Manage Cobra And Edit Policy    ${BenefitName}    none
+    performCancelBenefitsForAll
+    Reason For Benefit Change    td:reasonforchange
+    Select Plan    Decline coverage for this person
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+
+Add COBRA Policy for COBRA Exception
+    [Documentation]    Author : \ Dilip K
+    ...
+    ...    Test Case Name : Add COBRA Policy for COBRA Exception
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Click on 'Manage Employee >> Manage Cobra' Link after adding 'COBRA Exception' from COBRA Manger.
+    ...
+    ...    2. Click on 'Add Policy' button against COBRA MEDICAL Offer 2016
+    ...
+    ...    3. \ Select Qualifying Event Type as 'Leave of Absence', and Event date as current date,Click on 'Next' button
+    ...
+    ...    4. Select a Medical 2016 plan,Click on 'Next' button
+    ...
+    ...    5. Click on 'Next' button from 'Persons Covered' page
+    ...
+    ...    6. Enter COBRA Start date as 'current date' and click on 'Next' button.
+    ...
+    ...    7. Enter effective date as 'current date' and click on 'Next' button.
+    ...
+    ...    7. Click on 'Save' button
+    Navigate To Manage Employee In HR Role    Manage COBRA
+    Manage Cobra And Add Policy    td:cobrapolicy
+    Select Qualifying Event    COBRA Exception Event    Leave of Absence,d:currentdate
+    Select Plan    td:plan
+    Persons Covered    click on    next button
+    Enter COBRA Start Date    d:currentdate
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    Save

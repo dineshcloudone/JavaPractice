@@ -1,0 +1,401 @@
+{
+  "1": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "2": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "3": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "4": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "5": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "personalinformation": {
+      "update": "yes",
+      "firstname": "Test",
+      "lastname": "RNDAutomation",
+      "effectivedate": "d:currentdate"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "6": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "personalinformation": {
+      "update": "yes",
+      "firstname": "Test",
+      "lastname": "RNDAutomation",
+      "effectivedate": "d:currentdate"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "7": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "personalinformation": {
+      "update": "yes",
+      "firstname": "Test",
+      "lastname": "RNDAutomation",
+      "effectivedate": "d:currentdate",
+      "communicationopt": "yes"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "8": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "personalinformation": {
+      "update": "yes",
+      "firstname": "Test",
+      "lastname": "RNDAutomation",
+      "effectivedate": "d:currentdate",
+      "emailcomm": ""
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "9": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "personalinformation": {
+      "update": "yes",
+      "firstname": "Test",
+      "lastname": "RNDAutomation",
+      "effectivedate": "d:currentdate",
+      "emailcomm": "Personal Email"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "10": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+   "11": {
+    "resource": "vistronix",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "default": {
+    "resource": "vistronix"
+  }
+}

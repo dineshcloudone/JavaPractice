@@ -1,0 +1,172 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate"
+    },
+    "militaryinformation": {
+      "branchserved": "Marines",
+      "DischargeStatus": "Under Honorable Conditions",
+      "Rank": "Lt",
+      "ServiceStartDate": "currentdate:y:-15",
+      "ServiceEndDate": "currentdate:d:-1"
+    },
+    "directdeposit": {
+      "accounttype": "Savings",
+      "routingnumber": "123456789",
+      "accountnumber": "1234567890",
+      "howmuchdeposit": "Fixed"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate"
+    },
+    "directdeposit": {
+      "accounttype": "Savings",
+      "routingnumber": "123456789",
+      "accountnumber": "1234567890",
+      "howmuchdeposit": "Fixed"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate"
+    },
+    "personalinformation": {
+      "address1": "P.O. Box address",
+      "effectivedate": "currentdate"
+    }
+  },
+  "4": {
+    "resource": "memberhra",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "MemberPositiveTestAutomationGroupForProfile"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Monthly",
+      "hiredate": "currentdate"
+    },
+    "memberprofilepages": {
+      "personalinfomration": "yes",
+      "militaryservices": "yes",
+      "directdeposit": "yes"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA Test Automation Group Member"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "medicalplan": "Medical 2016",
+    "emergencycontact": {
+      "relationship": "child",
+      "fullname": "RNDAutoTest",
+      "email": "testmail@benefitfocus.com",
+      "state": "AA",
+      "country": "USA"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

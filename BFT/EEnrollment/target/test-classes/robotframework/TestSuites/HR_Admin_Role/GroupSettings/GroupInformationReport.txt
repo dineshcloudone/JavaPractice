@@ -1,0 +1,26 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Verify the user is able to download the Group Information Report
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the user is able to download the Group Information Report in HR Role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Nagivigate to Goup Settings page in HR Admin
+    ...
+    ...    3. Navigate to Group Setup under Group Settings page
+    ...
+    ...    4. click on Download Report
+    ...
+    ...    5. Logout
+    [Tags]    positive
+    Login as HR admin
+    Navigate To HR Menu    GROUPINFORMATIONREPORT
+    Download Group Information In Hr Role
+    Logout HR Admin

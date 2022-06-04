@@ -1,0 +1,496 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Store Additional Insurance Information & Verify 'Policy Number' entered is displayed when 'Previous' button is selected
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *1.Store Additional Insurance Information & Verify 'Policy Number' entered is displayed when 'Previous' button is selected*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To BENEFITS and Offers
+    ...
+    ...    4) Edit Offer In Vista Role
+    ...
+    ...    5) Update Edit Offer Details for Gathering Additional Insurance to Ask user for this information (standard) and Save Configuration
+    ...
+    ...    6) Add member
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment As Member
+    ...
+    ...    9) Enroll Member to Benefits
+    ...
+    ...    10) Give 'Yes' to Additional Insurance Information
+    ...
+    ...    11) Click 'yes' I \ have all the above required information
+    ...
+    ...    12) Enter policy number and click on next
+    ...
+    ...    13)Click on 'previous' button and verify policy number and click on 'Next'
+    ...
+    ...    14) Verify it navigated to next page
+    ...
+    ...    15) Enter carrier name, effective date and click on next
+    ...
+    ...    16) Save the benefit.
+    ...
+    ...    17) Logout Member New UI
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Gathering Additional Information
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    None    None
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical 2016
+    Additional Insurance Information In Member Role    yes
+    Add Additional Insurance Details And Verify    td:policydetails
+    Logout New Member Role
+
+2.Enroll in Life
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Enroll in Life*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Add member to the group for Life Offer.
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    5) Login To Enrollment As Member
+    ...
+    ...    6) Enroll Member to Benefits
+    ...
+    ...    7) Add Beneficiary with Type and Allocations
+    ...
+    ...    8) Verify selected Life benefit displays on the Benefits Summary screen and in the Employee Summary and Employee Detail Reports.
+    ...
+    ...    9) Logout from application
+    [Tags]    QCOE
+    Delete Files in Download Folder
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Select Market Plan For New Member Role    Life Plan
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    Life Plan
+    Verify Message    Life Plan
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    BuiltIn.Sleep    5s    #Adding Sleep to wait for File Download
+    Verify Text In Exported Pdf Report    EE_BENEFIT_SUMMARY    Life Plan
+    Verify PDF Content    Life Plan
+    Verify Employee Detail Report In New MemberUI    Personal Information    Life Plan
+    Navigate To New Member Menu    Benefits
+    Verify Message    Life Plan
+    Logout New Member Role
+
+3.Enroll in Supp Life
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Enroll in Supp Life*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Add member to the group for Supplemental Offer.
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    5) Login To Enrollment As Member
+    ...
+    ...    6) Enroll Member to Benefits
+    ...
+    ...    7) Add Beneficiary with Type and Allocations
+    ...
+    ...    8) Verify selected Supplemental Life benefit displays on the Benefits Summary screen and in the Employee Summary and Employee Detail Reports.
+    ...
+    ...    9) Logout from application
+    [Tags]    QCOE
+    Delete Files in Download Folder
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Select Coverage Amount For Member    $20,000.00
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    2016 Employee Term Life
+    Verify Message    2016 Employee Term Life
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    BuiltIn.Sleep    5s    #Adding Sleep to wait for File Download
+    Verify PDF Content    2016 Employee Term Life
+    Verify Employee Detail Report In New MemberUI    Personal Information    2016 Employee Term Life
+    Navigate To New Member Menu    Benefits
+    Verify Message    2016 Employee Term Life
+    Logout New Member Role
+
+4.Enroll in Supp Dep Life
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Enroll in Supp Dep Life*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Add member to the group for Supplemental Dependent Offer.
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    5) Login To Enrollment As Member
+    ...
+    ...    6) Enroll Member to Benefits
+    ...
+    ...    7) Add Beneficiary with Type and Allocations
+    ...
+    ...    8) Verify selected Dependent Supplemental Life benefit displays on the Benefits Summary screen and in the Employee Summary and Employee Detail Reports.
+    ...
+    ...    9) Logout from application
+    [Tags]    QCOE
+    Delete Files in Download Folder
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Select Coverage Amount For Member    $20,000.00
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    2016 Supplemental Spouse Life
+    Verify Message    Enrollment Complete!
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    builtin.sleep    5s    #Adding Sleep to wait for File Download
+    Verify Text In Exported Pdf Report    EE_BENEFIT_SUMMARY    2016 Supplemental Spouse Life
+    Verify Employee Detail Report In New MemberUI    Personal Information    2016 Supplemental Spouse Life
+    Navigate To New Member Menu    Benefits
+    Verify Message    2016 Supplemental Spouse Life
+    Logout New Member Role
+
+5.Enroll in Flex PTO
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Enroll in Flex PTO*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Add member to the group for Flex PTO Offer.
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    5) Login To Enrollment As Member
+    ...
+    ...    6) Enroll Member to Benefits
+    ...
+    ...    7) Add Beneficiary with Type and Allocations
+    ...
+    ...    8) Verify selected Flex PTO benefit displays on the Benefits Summary screen and in the Employee Summary and Employee Detail Reports.
+    ...
+    ...    9) Logout from application
+    [Tags]    QCOE
+    Delete Files in Download Folder
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Select Coverage Amount For Member    10 Hours
+    Save Benefit Enrollment In New Member    Paid Time Off
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    BuiltIn.Sleep    5s    #Adding Sleep to wait for File Download
+    Verify Text In Exported Pdf Report    EE_BENEFIT_SUMMARY    Flexible Paid Time Off Plan
+    Verify Employee Detail Report In New MemberUI    Personal Information    Flexible Paid Time Off Plan
+    Navigate To New Member Menu    Benefits
+    Verify Message    Flexible Paid Time Off Plan
+    Logout New Member Role
+
+6.Dual Enrollment Validation : Enroll A Member Into A Benefit As A Dependent And Then Attempt To Enroll The Same Person As A Member
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Dual Enrollment Validation : Enroll A Member Into A Benefit As A Dependent And Then Attempt To Enroll The Same Person As A Member*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To BASICS and Unique Person Validation
+    ...
+    ...    4) Set Unique Person Validation Rule
+    ...
+    ...    5) Save Configuration
+    ...
+    ...    6) Logout Vista Admin
+    ...
+    ...    7) Login To Enrollment As Member (testqcoe_19/passWord123)
+    ...
+    ...    8) Add Dependent To Member
+    ...
+    ...    9) Perform Begin Enrollment
+    ...
+    ...    10) Select Plan
+    ...
+    ...    11) Verify Error Message and Logout Member New Ui
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Offer    Enable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Life Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Supplemental Life Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Supplemental Spouse Life Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Flex PTO Offer    Disable
+    Navigate To    BASICS    Unique Person Validation
+    Set Unique Person Validation Rule
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Choose Preferred Language    English
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Agreements Page    yes
+    Perform Get Started In New Member Role
+    Add Dependent To Member    td:spouse    lastname
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Select Dependent In Add Dependents Page    Spouse
+    Select Market Plan For New Member Role    2016 Anthem BlueCross $800 Deductible Plan
+    Verify Message    An error has occurred while processing dependents on this plan.
+    Capture Page Screenshot
+    Logout New Member Role
+
+7.Verify That Member Can Modify Their Current Benefits With A Change Reason
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Verify That Member Can Modify Their Current Benefits With A Change Reason*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login To Enrollment As Member
+    ...
+    ...    2) Begin Enrollment
+    ...
+    ...    3) Select Plan and Coverage Amount
+    ...
+    ...    4) Select Beneficiary Type
+    ...
+    ...    5) Add Beneficiary
+    ...
+    ...    6) Save and Complete Enrollment
+    ...
+    ...    7) Navigate to Benefits
+    ...
+    ...    8) Edit Coverage for Plan
+    ...
+    ...    9) Select Coverage Amount
+    ...
+    ...    10) Save and Complete Benefit
+    ...
+    ...    11) Verify Able to Change/Modify Current Benefits and Logout Member New Ui
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment in Member Role
+    Select Coverage Amount For Member    $50,000.00 (1 times salary up to $750,000.00)
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    2016 Group Life and AD&D
+    Verify Message    Enrollment Complete!
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    Benefits
+    Edit Coverage In New Member Role    2016 Group Life and AD&D
+    Select Coverage Amount For Member    $100,000.00 (2.0 times Salary up to $750,000.00)
+    Save Benefit Enrollment In New Member    2016 Group Life and AD&D
+    Verify Message    Enrollment Complete!
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+
+8.Verify Error message when ''No, I do not have all the above required information" option is selected on Additional Insurance
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Verify Error message when ''No, I do not have all the above required information" option is selected on Additional Insurance*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To BENEFITS and Offers
+    ...
+    ...    4) Edit Offer In Vista Role
+    ...
+    ...    5) Update Edit Offer Details for Gathering Additional Insurance to Ask user for this information (standard) and Save Configuration
+    ...
+    ...    6) Add member
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment As Member
+    ...
+    ...    9) Enroll Member to Benefits
+    ...
+    ...    10) Give 'Yes' to Additional Insurance Information
+    ...
+    ...    11) Click 'No, I do not have all the above required information
+    ...
+    ...    12) Verify it navigated to next page
+    ...
+    ...    13) Logout Member New UI
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Gathering Additional Information
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    None    None
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical 2016
+    Additional Insurance Information In Member Role    yes
+    Add Additional Insurance Details And Verify    td:policydetails
+    Logout New Member Role
+
+9.Verify member is able to enroll in a Medical/Dental plan with dependents
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Verify member is able to enroll in a Medical/Dental plan with dependents*
+    ...
+    ...    1) Launch eeshrel (bfautomation/Password1)
+    ...
+    ...    2)Add member
+    ...
+    ...    3)Logout Vista Role
+    ...
+    ...    4)Login as member
+    ...
+    ...    5) Perform begin Enrolment for Medical 2016
+    ...
+    ...    6) Add dependent to Member
+    ...
+    ...    7) Select medical plan and save
+    ...
+    ...    8) Perform begin Enrolment for Dental 2016
+    ...
+    ...    9) Select dental plan and save
+    ...
+    ...    10) Verify for Congrats message after completing enrolment
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    None    None
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    Medical 2016
+    Save Benefit Enrollment In New Member    Medical 2016
+    Perform Begin Enrollment In Member Role
+    Comment    BuiltIn . Sleep    5s
+    Select Dependent In Add Dependents Page    Spouse
+    Select Market Plan For New Member Role    Dental 2016
+    Save Benefit Enrollment In New Member    Dental 2016
+    BuiltIn.Sleep    5s
+    Complete Enrollemnt In New Member Role
+    Verify Message    Congratulations
+    BuiltIn.Sleep    5s
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    Builtin.Sleep    10s
+    Verify PDF Content    Dental 2016
+    BuiltIn.Sleep    5s
+    Verify Employee Detail Report In New Member UI    Personal Information    Dental 2016
+    Logout New Member Role

@@ -1,0 +1,14 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the Auto_Provo City New group
+Resource          ../Common.txt
+
+*** Keywords ***
+member initial login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Choose Preferred Language    td:language
+    Change Initial Member Password    td:memberpassword
+    Select Secret Questions And Save    td:secretquestionscount
+    Announcements Page    td:annoucementpage
+    Agreements Page    td:agreementpage

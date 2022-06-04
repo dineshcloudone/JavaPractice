@@ -1,0 +1,78 @@
+{
+  "ametektestcases": {
+    "Ametek": {
+      "vista": {
+        "ametekmandatory": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"homePhone": "123-456-7890",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Monthly",
+					"calendarset": "Monthly",
+					"categories": "NUL#NUL - Null#A - Active#S#E#F#E - Employee Only#A00115 - Manager#N#CORP - Corporate#T23#R#10000 - Berwyn#NUL - Null#NUL - Null#NON - Non Union#Reporting#PA#Null"
+			},
+			 "ametekmandatory2": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"homePhone": "123-456-7890",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate:d:-20",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Monthly",
+					"calendarset": "Monthly",
+					"categories": "NUL#NUL - Null#A - Active#S#E#F#E - Employee Only#A00115 - Manager#N#CORP - Corporate#T23#R#10000 - Berwyn#NUL - Null#NUL - Null#NON - Non Union#Reporting#PA#Null"
+			},
+        "validvistacredentials": {
+        "username": "bfppasupuleti",
+        "password": "bfEnrol1"
+        },
+        "adddependent": {
+        "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+        
+      }
+    }
+    
+    }
+  }
+}

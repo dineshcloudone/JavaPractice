@@ -1,0 +1,27 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the BF QA Automation Vista Admin group
+Resource          ../Common.txt
+
+*** Keywords ***
+member initial login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Choose Preferred Language    td:language
+    Change Initial Member Password    td:password
+    Select Secret Questions And Save    td:secretquestionscount
+    Announcements Page    td:annoucementpage
+
+Login As Existing Member
+    [Arguments]    ${Username}    ${Password}
+    [Documentation]    Author : \ Arun K .
+    ...
+    ...    Purpose : This Keyword is used to login for an Existed member into the old and New Member roles.
+    ...
+    ...    ${Username} Ex:- bfa1234
+    ...
+    ...    ${Password} Ex:- 123456
+    Login To Enrollment With Valid Credentials    ${Username}    ${Password}
+    ${test}=    Get Value    HMVerrorMsg
+    Set Global Variable    ${test}
+    Run Existed Member

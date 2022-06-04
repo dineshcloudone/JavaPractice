@@ -1,0 +1,25 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefit
+    [Arguments]    ${coveragelevel}
+    Select Coverage Level    ${coveragelevel}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Life Benefit
+    Select Coverage Amount    Greater of $25,000 or 1 times Annual Earnings
+    Add New Beneficiary To Employee    Spouse    Primary    100    lastname
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In FSA Benefit
+    [Arguments]    ${contributionamount}
+    Select Plan    2016 Discovery Benefits Flexible Account
+    Set Contribution Amount For Flex Benefit    ${contributionamount}
+    Next
+    Select Plan    2016 Discovery Benefits Flexible Dependent Care Account
+    Set Contribution Amount For Flex Benefit    ${contributionamount}
+    Next
+    Save And Go To Benefit Enrollment Page

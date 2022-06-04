@@ -1,0 +1,110 @@
+{
+  "1": {
+    "resource": "priorityhradmingroup"
+  },
+  "2": {
+    "resource": "priorityhradmingroup"
+  },
+  "3": {
+    "resource": "priorityhradmingroup"
+  },
+  "4": {
+    "resource": "priorityhradmingroup"
+  },
+  "5": {
+    "resource": "priorityhradmingroup"
+  },
+  "6": {
+    "resource": "priorityhradmingroup"
+  },
+  "7": {
+    "resource": "priorityhradmingroup",
+    "addemployeewithmedicalenrollmentpassed": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "AA",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "d:effectivedate:M:-1",
+      "categories": "Medical"
+    }
+  },
+  "8": {
+    "resource": "priorityhradmingroup"
+  },
+   "9": {
+    "resource": "priorityhradmingroup"
+  },
+  "10": {
+    "resource": "priorityhradmingroup"
+  },
+  "11": {
+    "resource": "priorityhradmingroup",
+    "addemployeewithmedicalfutureenrollment": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "AA",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "d:currentdate:d:10",
+      "categories": "Medical"
+    }
+  },
+   "12": {
+    "resource": "priorityhradmingroup"
+  },
+  "13": {
+    "resource": "priorityhradmingroup"
+  },
+  "14": {
+    "resource": "priorityhradmingroup",
+    "directdeposit": {
+        "bankname": "Bank of America",
+        "bankroutingnumber": "454121441",
+        "bankaccountnumber": "RND42457895625",
+        "accounttype": "Checking",
+        "amount": "999"
+      }
+  },
+  "15": {
+    "resource": "priorityhradmingroup",
+    "militaryinformation": {
+        "militaryservice": "Yes",
+        "branch": "Air Force",
+        "startdate": "d:currentdate:y:-10",
+        "dischargestatus": "Under Honorable Conditions",
+        "enddate": "d:currentdate:y:10",
+        "veteranstatus": "Not Applicable"
+      }
+  },
+  "16": {
+    "resource": "priorityhradmingroup",
+    "workinformation": {
+        "phone": "(454) 555-56",
+        "cellphone": "(454) 5555-545",
+        "pager": "Auto Pager",
+        "email": "abc@test.com"
+      }
+  },
+  "default": {
+    "resource": "priorityhradmingroup"
+  }
+}

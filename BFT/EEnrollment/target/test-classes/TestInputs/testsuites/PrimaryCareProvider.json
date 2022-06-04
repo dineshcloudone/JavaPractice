@@ -1,0 +1,109 @@
+{
+  "1": {
+    "resource": "BFQATestAutomationGroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QCOE QA Member PCP Test Automation Group"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    } ,
+    "pcpdetails": {
+      "pcpcode": "12345",
+      "pcpname": "RNDAutoPCP"
+    }
+  },
+  "2": {
+    "resource": "BFQCOEQATestAutomationGroup_PCP",
+    "groupsearch": {
+      "automationgroup1": "BF QCOE QA Test Automation Group_PCPB"
+    }
+  },
+  "3": {
+    "resource": "BFQCOEQATestAutomationGroup_PCP",
+    "groupsearch": {
+      "automationgroup1": "BF QCOE QA Test Automation Group_PCPB"
+    },
+     "pcpdetails": {
+      "deppcpcode": "RND",
+      "deppcpname": "RNDAutoPCP",
+      "pcpcode": "12345",
+      "pcpname": "RNDAutoPCP"
+    }
+  },
+  "4": {
+    "resource": "BFQCOEQATestAutomationGroup_PCP",
+    "groupsearch": {
+      "automationgroup1": "BF QCOE QA Test Automation Group_PCPB"
+    }
+  },
+  "5": {
+    "resource": "BFQATestAutomationGroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QCOE QA Member PCP Test Automation Group"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    } ,
+    "pcpdetails": {
+      "pcpcode": "12345",
+      "pcpname": "RNDAutoPCP"
+    }
+  },
+  "default": {
+    "resource": "BFQATestAutomationGroup"
+  }
+}

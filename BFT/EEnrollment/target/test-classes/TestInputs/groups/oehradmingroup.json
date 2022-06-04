@@ -1,0 +1,24 @@
+{
+  "validhrcredentialsforgroup": {
+    "username": "oehradmin",
+    "password": "bfEnrol1"
+  },
+  "addemployeewithmedical": {
+    "ssn": "RND4433",
+    "firstname": "Auto",
+    "lastname": "RNDTestMandatory",
+    "birthdate": "currentdate:y:-28",
+    "gender": "Male",
+    "address1": "Test address",
+    "city": "Test City",
+    "state": "SC",
+    "zipcode": "12345",
+    "country": "USA",
+    "createlogin": "Create a login account for this person",
+    "memberid": "RNDBFAuto",
+    "password": "bfEnrol0",
+    "confirmpassword": "bfEnrol0",
+    "hiredate": "currentdate",
+    "categories": "Medical"
+  }
+}

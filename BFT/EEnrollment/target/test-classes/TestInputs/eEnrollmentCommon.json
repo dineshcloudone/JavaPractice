@@ -1,0 +1,386 @@
+{
+  "bfqatestautomationgroup": {
+    "sponsorid": "",
+    "vista": {
+      "validvistacredentials": {
+        "username": "bfautomation",
+        "password": "Password1"
+      },
+      "groupsearch": {
+        "automationgroup1": "BF QA test Automation group",
+        "automationgroup2": "BF QA Automation Vista Admin",
+        "automationgroup3": "BF QA Test Automation OE Group",
+        "automationgroup4": "Prequalifying Survey Automation Group"
+      },
+      "addmemberfunctionality": {
+        "automandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "allfields": {
+          "ssn": "RND4466",
+          "firstname": "Auto",
+          "lastname": "RNDTest",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "50000",
+          "earningsfrequency": "per year",
+          "payfrequency": "Annually",
+          "categories": "A"
+        },
+        "addmemberinfsa": {
+          "ssn": "RND4466",
+          "firstname": "Auto",
+          "lastname": "RNDTest",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "race": "Asian",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "yes",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "50000",
+          "earningsfrequency": "per year",
+          "payfrequency": "Annually",
+          "categories": "FSA"
+        }
+      },
+      "memberinitiallogin": {
+        "language": "English",
+        "password": "Test12345",
+        "confirmpassword": "Test12345",
+        "secretquestionscount": "3",
+        "annoucementpage": "yes",
+        "agreementpage": "no"
+      },
+      "underarmourmemberinitiallogin": {
+        "language": "English",
+        "password": "Test12345",
+        "confirmpassword": "Test12345",
+        "secretquestionscount": "0",
+        "annoucementpage": "yes",
+        "agreementpage": "yes"
+      },
+      "memberprofilepages": {
+        "personalinformation": "yes",
+        "militaryservices": "yes",
+        "directdeposit": "yes",
+        "emergencycontact": "yes"
+      },
+      "personalinformation": {
+        "update": "yes",
+        "firstname": "Test",
+        "lastname": "RNDAutomation",
+        "address1": "321 Main Street",
+        "zipcode": "54321"
+      },
+      "militaryservices": {
+        "update": "yes",
+        "noofcontacts": "2",
+        "fullname": "Test Automation"
+      },
+      "directdeposit": {
+        "accounttype": "Savings",
+        "routingnumber": "123456789",
+        "accountnumber": "1234567890",
+        "howmuchdeposit": "Fixed"
+      },
+      "emergencycontact": {
+        "relationship": "child",
+        "fullname": "RNDAutoTest",
+        "email": "testmail@benefitfocus.com",
+        "state": "AA",
+        "country": "USA"
+      },
+      "adddependent": {
+        "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        },
+        "childexceedingmaximumallowedage": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-28",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+      },
+      "milpmandatory": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "homePhone": "1234567890",
+        "homeEmail": "nobody@benefitfocus.com",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Bi-Weekly",
+        "employerid": "RND",
+        "categories": "FT Exempt and Non-Exempt 40 Hours,Non-Union,Active,B1- Billerica, Ma"
+      },
+      "vistacreatenewadministratoraccountdetails": {
+        "firstname": "Auto",
+        "lastname": "RNDTest",
+        "loginid": "RNDAutomation",
+        "password": "bfEnrol0",
+        "workemail": "AutoTest@bf.com",
+        "passwordconfirmation": "bfEnrol0"
+      },
+      "changeaccountsecuritypasswords": {
+        "securityNewPassword": "bfEnrol1",
+        "securityConfirmPassword": "bfEnrol1"
+      },
+      "vistaeditadministratoraccountdetails": {
+        "loginid1": "Automation",
+        "password1": "bfEnrol1",
+        "passwordconfirmation1": "bfEnrol1",
+        "allowAdministratortoLogin": "js:No",
+        "doesthisuseraccountrequirepermanentaccessrestriction": "js:Yes, user was created in error"
+      },
+      "createnewoffer": {
+        "offerName": "RNDAuto",
+        "startdate": "currentdate:",
+        "enddate": "currentdate:y:+1",
+        "grouptemplate": "Generic Template",
+        "offerType1": "10-Year Term",
+        "offerName1": "10-Year Term"
+      },
+      "copyoffer": {
+        "startdate": "currentdate:y:+1",
+        "enddate": "currentdate:y:+2"
+      },
+      "createparticipationperiod": {
+        "effectivedate": "currentdate",
+        "expirationdate": "currentdate:y:+1"
+      },
+      "createnewvistaplan": {
+        "NewPlanName": "js:Dental",
+        "ProductPlanType": "js:Dental PPO",
+        "EDICarrierKey": "js:ACME",
+        "UnderwritingCarrierKey": "js:ACME",
+        "strPlanName": "RNDAuto",
+        "ContractEffectiveDate": "currentdate",
+        "ContractExpirationDate": "currentdate:y:+1",
+        "ConfigurationEffectivedate": "currentdate",
+        "ConfigurationExpirationDate": "currentdate:y:+1",
+        "CostDisplayPeriod": "js:Annual",
+        "AllowInsuranceCardRequests": "js:Do not allow card requests"
+      },
+      "offersandplans": {
+        "medicaloffersandmedicalplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "Blue Shield CA",
+          "offerType1": "Medical",
+          "offerName1": "Medical - Medical"
+        },
+        "dentaloffersanddentalplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "Blue Shield CA",
+          "offerType1": "Dental",
+          "offerName1": "Medical - Dental"
+        },
+        "visionoffersandvisionplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "Blue Shield CA",
+          "offerType1": "Vision",
+          "offerName1": "Medical - Vision"
+        },
+        "lifeoffersandlifeplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "BCBSLA Life",
+          "offerType1": "Dependent Life",
+          "offerName1": "Basic Life, Voluntary Life, and Voluntary High Limit AD&D - Dependent Life"
+        },
+        "stdoffersandstdplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "BlueCross BlueShield of Kansas City",
+          "offerType1": "Short Term Disability",
+          "offerName1": "Short-Term Disability - Short Term Disability"
+        },
+        "ltdoffersandltdplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "BlueCross BlueShield of Kansas City",
+          "offerType1": "Long-Term Disability",
+          "offerName1": "Long-Term Disability - Long-Term Disability"
+        },
+        "pharmacyoffersandpharmacyplans": {
+          "offerName": "RNDAuto",
+          "startdate": "currentdate:",
+          "enddate": "currentdate:y:+1",
+          "grouptemplate": "BCBSDE Template",
+          "offerType1": "Pharmacy",
+          "offerName1": "Medical, Rx, Vision, Dental Offer   - Pharmacy"
+        }
+      }
+    },
+    "member": {
+      "enrollbenefits": {
+        "defaultmedical": {
+          "benefitname": "Medical 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "yes"
+        },
+        "defaultmedicalwithspouse": {
+          "benefitname": "Medical 2015",
+          "planname": "Medical 2015",
+          "coveragelevel": "Employee and Spouse",
+          "pretaxchoice": "yes"
+        }
+      },
+      "adddependent": {
+        "spouse": {
+          "ssn": "RND7711",
+          "firstname": "AutoDep",
+          "lastname": "RNDTestDep",
+          "birthdate": "currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7722",
+          "firstname": "AutoMandatory",
+          "lastname": "TestMandatory",
+          "birthdate": "currentdate:y:-1",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+      },
+      "hradmin": {
+        "validhrcredentials": {
+          "username": "hradminautomation1",
+          "password": "bfEnrol1"
+        },
+        "hrpredqualifyingsurvycredentials": {
+          "username": "PREQUALHRADMIN",
+          "password": "bfEnrol1"
+        },
+        "validhrcredentialsforgroup": {
+          "username": "hradminautomation",
+          "password": "bfEnrol1"
+        },
+        "addemployee": {
+          "hradminmandatory": {
+            "ssn": "RND4411",
+            "firstname": "Auto",
+            "lastname": "RNDTestallfields",
+            "birthdate": "currentdate:y:-28",
+            "gender": "Male",
+            "address1": "Test address",
+            "city": "Test City",
+            "state": "SC",
+            "zipcode": "12345",
+            "country": "USA",
+            "createlogin": "Create a login account for this person",
+            "memberid": "RNDBFAuto",
+            "password": "bfEnrol0",
+            "confirmpassword": "bfEnrol0",
+            "earnings": "60000",
+            "earningsfrequency": "per year",
+            "payfrequency": "Annually",
+            "hiredate": "currentdate",
+            "categories": "A"
+          },
+          "newaddress": {
+            "address1": "Changed address",
+            "city": "Changed City",
+            "state": "SC",
+            "zipcode": "54321",
+            "country": "USA",
+            "date": "d:currentdate"
+          }
+        }
+      },
+      "vistarole": {
+        "addnewagency": {
+          "newagencyname": "RNDAutomation Test Agency",
+          "newagencystate": "UT",
+          "newagencycoutry": "USA",
+          "newagencyzip": "27016",
+          "newagencycarrier": "BFI",
+          "newagencyprivatelabel": "BFI"
+        }
+      },
+      "addmedicarepolicydetails": {
+        "medicarenumber": "RNDA4466",
+        "eligibilityreason": "Age",
+        "partaeligibilitydate": "d:effectivedate:M:-1",
+        "partaeffectivedate": "d:effectivedate:M:-1",
+        "partaenddate": "d:monthend:M:-1",
+        "partbeligibilitydate": "d:effectivedate",
+        "partbeffectivedate": "d:effectivedate"
+      },
+      "additonalinsuranceinformation": {
+        "policynumber": "RNDA1234",
+        "policyholder": "index=1",
+        "carriername": "BFI",
+        "coverageinformation": "Actively Covered",
+        "coverageeffectivedate": "d:effectivedate"
+      }
+    }
+  }
+}

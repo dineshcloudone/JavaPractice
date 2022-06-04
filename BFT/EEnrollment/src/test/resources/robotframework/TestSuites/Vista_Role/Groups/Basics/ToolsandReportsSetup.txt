@@ -1,0 +1,55 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Tools and Reports Sertup functionality
+Test Setup        getResource
+Force Tags        toolsandreports
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify that when Employee detail report is enabled at the Group level, it is shown to the member in Member role
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify that when Employee detail report is enabled at the Group level, it is shown to the member in Member role*
+    ...
+    ...    1 ) Login to eEnrollment as a Vista User
+    ...
+    ...    2) Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    3) Navigate to *Tools and Reports Setup*
+    ...
+    ...    4) Verify *Race* property as Enable
+    ...
+    ...    5) Navigate to Users, Add new Member
+    ...
+    ...    6) Logout to eEnrollment as a Vista User
+    ...
+    ...    7)Login to eEnrollment as Meber (with Initial Login)
+    ...
+    ...    8) Perform Get Started in New Member role
+    ...
+    ...    9) Update Member Personal Information
+    ...
+    ...    10) Verify The Successull Message in the Member Role Page
+    ...
+    ...    11) Logout as Member Role
+    ...
+    ...    TestCases Coverd : 174,175
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationracegroup
+    Navigate To    BASICS    Tools and Reports Setup
+    Tools and Reports Configurations    Display Employee Detail Report in Member Role    Yes    yes
+    Navigate To    BASICS    Personal Customization
+    Personal Customization Configuration    Employee Race    Required    yes
+    Navigate To    USERS    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In Member Role
+    Logout Member
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationracegroup
+    Navigate To    BASICS    Personal Customization
+    Personal Customization Configuration    Employee Race    Optional    yes
+    Logout Vista Admin

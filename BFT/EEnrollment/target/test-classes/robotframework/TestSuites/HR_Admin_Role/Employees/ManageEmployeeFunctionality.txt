@@ -1,0 +1,967 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Manage Employee functionality
+Test Setup        getResource
+Force Tags        manageemployee
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Change new employee salary information from HR admin
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Title : Change new employee salary information from HR admin
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a Vista User
+    ...
+    ...    2. Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    3. Add New Member
+    ...
+    ...    4. Open the group in HR Role
+    ...
+    ...    5. As a HR Admin search for the member
+    ...
+    ...    6. Update the Salary Information
+    ...
+    ...    7. Verify the Salary Information was updated successfully
+    ...
+    ...    8. Logout
+    [Tags]    smoke
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Update Employee Salary    10,000    per month
+    Verify Employee Salary    10,000
+    Logout HR Admin
+
+2.Terminate Employee
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Case Title: *Terminate a Employee with "Voluntary" from employee overview page in hr admin role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Hr Admin for bf qa test automation group
+    ...
+    ...    2. Add new employee
+    ...
+    ...    3. Terminate the employee with "Voluntary" reason
+    ...
+    ...    4. Logout
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Perform Employee Termination    d:currentdate    Voluntary
+    Logout HR Admin
+
+3.Rehire Employee
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Case Title: *Rehire a Employee from employee overview page in hr admin role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Hr Admin for bf qa test automation group
+    ...
+    ...    2. Add new employee
+    ...
+    ...    3. Terminate the employee with "Voluntary" reason
+    ...
+    ...    4. Rehire the sample employee with the current date
+    ...
+    ...    5. Logout
+    [Tags]    smoke
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Perform Employee Termination    d:currentdate    Voluntary
+    Perform Employee Rehire    currentdate:d:1
+    Logout HR Admin
+
+4.Change employee category
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Title : *Change the employee category "Plan" defined for the group "BF QA Test Automation Group"*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Search for group "BF QA Test Automation Group"
+    ...
+    ...    3. Add new employee with category "Medical"
+    ...
+    ...    3. Open the group in HR Role
+    ...
+    ...    4. Perform the employee search
+    ...
+    ...    5. Change the category "Plan" to "Dental" and Verify the category in changes successfully.
+    ...
+    ...    6. Logout
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Change Employee Cateogry    Plan    Dental
+    Logout HR Admin
+
+5.Update Login Information Of Employee and verify
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Update Login Information Of Employee and verify*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (hradminautomation1/bfEnrol1)
+    ...
+    ...    2) Click on "Employees" link from Home page.
+    ...
+    ...    3) Click on "Add a new employee" button
+    ...
+    ...    4) Enter neccessary information in "contact information" page
+    ...
+    ...    5) Click on Save Button
+    ...
+    ...    6) Now click on "Employees" button
+    ...
+    ...    7) Click 'ok' against alert message
+    ...
+    ...    8) Click on 'Manage Employee' button
+    ...
+    ...    9) Click on "Update Login Information" link.
+    ...
+    ...    10) Enter 'New Login Id' and "Password"
+    ...
+    ...    11) Logout of application.
+    ...
+    ...    12) Verfiy that able to Login in application with new credentials,and complete Initial process.
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Update Login Information Of Employee    RNDnewmemberloginid    bfEnrol2
+    Logout HR Admin
+    Login To Enrollment With Valid Credentials    HMVNewLoginID    bfEnrol2
+    Member Initial Login
+    Logout Member
+
+6.Add Employee and Manage COBRA with Cancel Benefits for All
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Add Employee and Manage COBRA with Cancel Benefits for All*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (hradminautomation1/bfEnrol1)
+    ...
+    ...    2) Click on "Employees" link from Home page.
+    ...
+    ...    3) Click on "Add a new employee" button
+    ...
+    ...    4) Enter neccessary information in "contact information" page
+    ...
+    ...    5) Enter "Hiredate" as previous month effective date.
+    ...
+    ...    6) Click on Save Button
+    ...
+    ...    7) Select 'Other' option,Click on Next Button
+    ...
+    ...    8) Select any Medical plan,Click on Next Button
+    ...
+    ...    9) check 'Employee Only' Radio button,Click on Next Button
+    ...
+    ...    10 ) Save benefits with effective date as previous month effective date.
+    ...
+    ...    11) Click on Manage Employee button, Click on Terminate Employee Button
+    ...
+    ...    12) Enter termination Date as previous month end,Click on Save Button.
+    ...
+    ...    13) Now Click on 'Manage Employee Button, Click on 'Manage Cobra'.
+    ...
+    ...    14) Click on 'Add policy' button.
+    ...
+    ...    15) Select new qualifying event, with reason as 'Death of Employee',effetive date as 'current date',Click on Next Button
+    ...
+    ...    16) Select Medical Plan,Click on Next Button
+    ...
+    ...    17) Enter effective date as 'current date',Click on Next Button
+    ...
+    ...    18) Click on 'Save' Button
+    ...
+    ...    19) Navigate to 'Manage Employee >> \ Manage COBRA'
+    ...
+    ...    20) Click on Edit button, Click on 'Cancel Bnefits For All' button
+    ...
+    ...    21) Click on 'other' button, click on 'next' button
+    ...    '
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedicalforcobra    lastname
+    Reason For Benefit Change    other
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Medicare Information    no    no
+    Enter Effective Date    d:effectivedate:M:-1
+    Save Cobra Policy    save
+    Navigate To HR Menu    Overview
+    Perform Employee Termination    d:monthend:M:-1    Voluntary
+    Add COBRA Policy
+    Edit COBRA Policy    Medical 2016
+    Logout HR Admin
+
+7.Point in Time
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...
+    ...    Test Case Title: *Point in Time*
+    ...
+    ...    1) Login to eEnrollment as HR Admin
+    ...
+    ...    2) Navigate to Employees Page
+    ...
+    ...    3) Add New Employee
+    ...
+    ...    4) Perform Simple Employee Search (Newly added Employee)
+    ...
+    ...    5) Edit the Employeee and Update the salary
+    ...
+    ...    6) Update the future date for Effective date in Employee profile
+    ...
+    ...    7) Save the Employee after updation
+    ...
+    ...    8) Click on Employee History
+    ...
+    ...    9) Select the Point in radio button
+    ...
+    ...    10) Click on Next Button
+    ...
+    ...    11) Verify Employee Last Name and Salary in 'Point In Time' page
+    ...
+    ...    12) Logout HR admin
+    ...
+    ...    RTR34 - Test case No: 72
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Update Employee Salary    10,000    per month
+    Verify Employee Salary    10,000
+    Effective Dateof Change    d:currentdate:d:3    datevalue
+    Select Point In Time    HMVdatevalue
+    Verify Employee Last Name And Salary    HMVlastname    10000
+    Logout HR Admin
+
+8.Point in Time - add another date to compare
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Point in Time-add another date to compare*
+    ...
+    ...
+    ...    1) Login to eEnrollment as HR Admin
+    ...
+    ...    2) Navigate to Employees Page
+    ...
+    ...    3) Add New Employee
+    ...
+    ...    4) Perform Simple Employee Search (Newly added Employee)
+    ...
+    ...    5) Edit the Employeee \ Update the salary and \ Effective date
+    ...
+    ...    6) Save the Employee after updation
+    ...
+    ...    7) Verify the Employee Salary
+    ...
+    ...    8) Click on Employee History
+    ...
+    ...    9) Select the Point in radio button
+    ...
+    ...    10) Click on Next Button
+    ...
+    ...    11) Verify Employee Last Name and Salary in 'Point In Time' page
+    ...
+    ...    12) Logout HR admin
+    ...
+    ...
+    ...    RTR34 - Test Case No : 73
+    [Tags]    donotrun
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Update Employee Effective Date And Salary    40,000    per month    d:currentdate:d:5    datevalue
+    Verify Employee Salary    40,000
+    Select Point In Time    d:currentdate
+    Add Another Date To Compare    d:currentdate:d:5
+    Logout HR Admin
+
+9.Add a new employee with LifeEvent
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Life Event*
+    ...
+    ...
+    ...    1) Login to eEnrollment as HR Admin
+    ...
+    ...    2) Navigate to Employees Page
+    ...
+    ...    3) Add Employee In HR Admin
+    ...
+    ...    4)Select Life Event
+    ...
+    ...    5) Select Plan
+    ...
+    ...    6) Select Coverage Level
+    ...
+    ...    7) Verify Reason For Change ( Select edit due to change reason on the benefit tab to add a life event.)
+    ...
+    ...    8) Select Premium Deduction
+    ...
+    ...    9) Enter Effective Date ( enter a date the life event occurred)
+    ...
+    ...    10) Save Configuration
+    ...
+    ...    11)Logout HR Admin
+    ...
+    ...    Test Case No: 98 (From Regression Suite )
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Select Life Event    td:lifeevent
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Verify Reason For Change    td:lifeevent
+    Select Premium Deduction    Yes
+    Enter Effective Date    td:lifeevent
+    Save Configuration
+    Logout HR Admin
+
+10.Terminate EE with Termination -Involuntary due to gross misconduct
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Terminate EE with Termination -Involuntary due to gross misconduct*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Hr Admin for bf qa test automation group
+    ...
+    ...    2. Add new employee
+    ...
+    ...    3. Terminate the employee with *Involuntary* reason
+    ...
+    ...    4. Logout
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Cobra setup configuration    Termination Reasons    Yes    yes
+    Cobra setup configuration    Retirement Termination Reasons    Yes    yes
+    Cobra setup configuration    Death Termination Reason    Yes    yes
+    Navigate To    BASICS    COBRA Setup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    HMVstrlastname
+    Perform Employee Termination    d:currentdate    Involuntary due to Gross Misconduct
+    Close HR Admin
+    Logout Vista Admin
+
+11.Terminate EE with Termination -Voluntary
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Terminate EE with Termination -Involuntary due to gross misconduct*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Hr Admin for bf qa test automation group
+    ...
+    ...    2. Add new employee
+    ...
+    ...    3. Terminate the employee with *voluntary* reason
+    ...
+    ...    4. Logout
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Cobra setup configuration    Termination Reasons    Yes    yes
+    Cobra setup configuration    Retirement Termination Reasons    Yes    yes
+    Cobra setup configuration    Death Termination Reason    Yes    yes
+    Navigate To    BASICS    COBRA Setup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    HMVstrlastname
+    Perform Employee Termination    d:currentdate    Voluntary
+    Close HR Admin
+    Logout Vista Admin
+
+12.Terminate EE with Termination - retirement (Not COBRA Eligible)
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Terminate EE with Termination -Involuntary due to gross misconduct*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Hr Admin for bf qa test automation group
+    ...
+    ...    2. Add new employee
+    ...
+    ...    3. Terminate the employee with *retirement (Not COBRA Eligible)* reason
+    ...
+    ...    4. Logout
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Cobra setup configuration    Termination Reasons    Yes    yes
+    Cobra setup configuration    Retirement Termination Reasons    Yes    yes
+    Cobra setup configuration    Death Termination Reason    Yes    yes
+    Navigate To    BASICS    COBRA Setup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    HMVstrlastname
+    Perform Employee Termination    d:currentdate    Retirement (Not COBRA Eligible)
+    Close HR Admin
+    Logout Vista Admin
+
+13.Terminate EE with Termination Reason - death of employee
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Terminate EE with Termination Reason - death of employee*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Hr Admin for bf qa test automation group
+    ...
+    ...    2. Add new employee
+    ...
+    ...    3. Terminate the employee with *Death of employee* reason
+    ...
+    ...    4. Logout
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Cobra setup configuration    Termination Reasons    Yes    yes
+    Cobra setup configuration    Retirement Termination Reasons    Yes    yes
+    Cobra setup configuration    Death Termination Reason    Yes    yes
+    Navigate To    BASICS    COBRA Setup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    HMVstrlastname
+    Perform Employee Termination    d:currentdate    Death of employee
+    Close HR Admin
+    Logout Vista Admin
+
+14.EmployeeDetailedReport
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...
+    ...    Test Case Title: *Employee Detailed Report*
+    ...
+    ...    1) Login to eEnrollment as HR Admin
+    ...
+    ...    2) Navigate to Employees Page
+    ...
+    ...    3) Add New Employee
+    ...
+    ...    4) Perform Simple Employee Search (Newly added Employee)
+    ...
+    ...    5) Click on Employee Detailed Report link Employee Overview page
+    ...
+    ...    6) Verify Employee Last Name and Printed on message with date details in the report
+    ...
+    ...    7) Close the Report
+    ...
+    ...    8) Logout HR admin
+    ...
+    ...    Test Case No: 70 (Regression Test Document)
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Employee Detail Report    HMVlastname
+    Logout HR Admin
+
+15.Manage Benefit Severance
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...
+    ...    Test Case Title: *Manage Benefit Severance*
+    ...
+    ...    1) Login to eEnrollment as Vista Role
+    ...
+    ...    2) Perfor group seacrh (BF QA RACE GROUP)
+    ...
+    ...    3) Navigate to Group Customization under BASICS tab
+    ...
+    ...    4) set "Manage Benefit Severance" as "Enabled - View/Edit" in Group Customizationa and Save the Configurations
+    ...
+    ...    5) Logout as Vista Admin
+    ...
+    ...    6) Login to eEnrollment as HR Admin
+    ...
+    ...    7) Navigate to Employees Page
+    ...
+    ...    8) Add New Employee
+    ...
+    ...    9) Perform Simple Employee Search (Newly added Employee)
+    ...
+    ...    10) Click on "Employee Termination" Under "Manage Employee"
+    ...
+    ...    11) Logout HR admin
+    ...
+    ...    Test Case No: 56 (Regression Test Document)
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Group Customization
+    Group Customization Configuration    Manage Benefit Severance    Enabled - View/Edit    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Perform Employee Termination    d:currentdate    Voluntary
+    Logout HR Admin
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Group Customization
+    Group Customization Configuration    Manage Benefit Severance    Disabled    yes
+    Logout Vista Admin
+
+16.Verify Cancellation Date
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...
+    ...    Test Case Title: *Verify cancellation date*
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (BF QA Race Group)
+    ...
+    ...    3) Navigate to "Basics >>*Group Customization.*
+    ...
+    ...    4) *Allow Undo Category Change/Termination* \ select \ *Yes*, *Enhanced Category Change Functionality* select *Disabled* and \ click on save button.
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login to eEnrollment as HR Admin
+    ...
+    ...    7) Navigate to Employees Page
+    ...
+    ...    8) Add New Employee and elect to medical Benefits.
+    ...
+    ...    9) change the effective date prior to the current date.
+    ...
+    ...    10) Click on Save Button in Benefits Page.
+    ...
+    ...    11) click on Category edit button and change the cateogry Medical to Life and click on save button.
+    ...
+    ...    12) verify the Cancellation Date should be the date of the category change, not the original effective date.
+    ...
+    ...    13) Verify the New Category Plan Successfull Page.
+    ...
+    ...    14) Logout as HrAdmin
+    ...
+    ...    15) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    16) Search for group (BF QA Race Group)
+    ...
+    ...    17) Navigate to "Basics >>*Group Customization.*
+    ...
+    ...    18) *Allow Undo Category Change/Termination* \ select \ *No*, *Enhanced Category Change Functionality* select *Enabled* and \ click on save button
+    ...
+    ...    19) Logout from Vista Admin
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Group Customization
+    Group Customization Configuration    Allow Undo Category Change/Termination    Yes    yes
+    Navigate To    BASICS    Group Customization
+    Group Customization Configuration    Enhanced Category Change Functionality    Disabled    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    strlastname
+    Reason For Benefit Change    Other
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate:d:-8
+    Save Benefit Enrollment
+    Change Employee Cateogry    Plan    Life
+    Logout HR Admin
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Group Customization
+    Group Customization Configuration    Allow Undo Category Change/Termination    No    yes
+    Navigate To    BASICS    Group Customization
+    Group Customization Configuration    Enhanced Category Change Functionality    Enabled    yes
+    Logout Vista Admin
+
+17.Terminate EE with Termination Reasons DISABLED - COBRA Ineligible
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *This test verifies The employee is terminated and is not COBRA eligible. The cancellation/termination \ rules are applied when the employee is terminated*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfhoso/bfEnrol1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to "Basics >> COBRA Setup"
+    ...
+    ...    4) Change resons to No for 'Termnation Reasons', Yes for 'Retirement Termination Reasons', 'Death Termination Reason' and \ click on save button
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    7) Now click on "Employees >> Add a new Employee" button
+    ...
+    ...    8) Enter necesary details of employee and click on save button
+    ...
+    ...    9) Perform quick search for the added employee
+    ...
+    ...    10) Now click on 'Manage Employee >> Terminate' button
+    ...
+    ...    11) Select Date and 'Is Termination due to Misconduct' reason to Yes and click on Next button
+    ...
+    ...    12) Click on Save button in the next page
+    ...
+    ...    13) Verify above created Member is Terminated
+    ...
+    ...    14) Logout from application.
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:myvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    TestAutomationGroup1
+    Comment    selectFromBasicsDropDown    COBRA Setup
+    Cobra setup configuration    Termination Reasons    No    yes
+    Cobra setup configuration    Retirement Termination Reasons    Yes    yes
+    Cobra setup configuration    Death Termination Reason    Yes    yes
+    Logout Vista Admin
+    BuiltIn.Sleep    2s
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    BuiltIn.Sleep    1s
+    Perform Simple Employee Search    HMVlastname
+    Perform Employee Termination    d:currentdate    Yes
+    Logout HR Admin
+
+18.Terminate EE with Termination Reasons DISABLED - COBRA Eligible
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *This test verifies The employee is terminated and is COBRA eligible. The cancellation/termination \ rules are applied when the employee is terminated when termination reason is set to No*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfhoso/bfEnrol1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to "Basics >> COBRA Setup"
+    ...
+    ...    4) Change resons to No for 'Termnation Reasons', Yes for 'Retirement Termination Reasons', 'Death Termination Reason' and \ click on save button
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    7) Now click on "Employees >> Add a new Employee" button
+    ...
+    ...    8) Enter necesary details of employee and click on save button
+    ...
+    ...    9) Perform quick search for the added employee
+    ...
+    ...    10) Now click on 'Manage Employee >> Terminate' button
+    ...
+    ...    11) Select Date and 'Is Termination due to Misconduct' reason to No and click on Next button
+    ...
+    ...    12) Click on Save button in the next page
+    ...
+    ...    13) Verify above created Member is Terminated
+    ...
+    ...    14) Logout from application.
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:myvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    TestAutomationGroup1
+    Comment    selectFromBasicsDropDown    COBRA Setup
+    Cobra setup configuration    Termination Reasons    No    yes
+    Cobra setup configuration    Retirement Termination Reasons    Yes    yes
+    Cobra setup configuration    Death Termination Reason    Yes    yes
+    Logout Vista Admin
+    BuiltIn.Sleep    2s
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    BuiltIn.Sleep    2s
+    Perform Simple Employee Search    HMVlastname
+    Perform Employee Termination    d:currentdate    No
+    Logout HR Admin
+
+19.Assign/Edit Carrier Numbers
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Assign/Edit Carrier Numbers*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin (bfAutomation/Password1)
+    ...
+    ...    2) Search for Group
+    ...
+    ...    3) Mouse Over to Carrier Information Tab and Click on Carrier Identifiers Link
+    ...
+    ...    4) Edit Carrier Numbers
+    ...
+    ...    5) Add New Carrier Numbers
+    ...
+    ...    6) Change HR Permissions for New Carrier Numbers
+    ...
+    ...    7) Logout Vista Role
+    ...
+    ...    8) Login as HR Admin Role (testvarunhr09/passWord123)
+    ...
+    ...    9) Add Employee and Enroll to Benefits
+    ...
+    ...    10) Navigate to Manage Employee
+    ...
+    ...    11) Click on Assign/Edit Carrier Numbers
+    ...
+    ...    12) Change Carrier Numbers from DropDown
+    ...
+    ...    13) Verify Carrier Numbers Changed
+    ...
+    ...    14) Logout HR Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    CARRIERINFORMATION    Carrier Identifiers
+    Edit And Add New Carrier Numbers    td:dates    d:currentdate:d:1    d:currentdate:d:2
+    Save Configuration
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Save Configuration
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Health Offer
+    Select Plan    2016 Blue Choice Comprehensive Major Medical
+    Select Coverage Level    Employee Only
+    Medicare Information    no    no
+    Save Benefit Enrollment
+    Change Carrier Numbers For Member In HR Role    09385
+    Logout HR Admin
+
+20.Undo Employee Termination
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Undo Employee Termination*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE Test Automation Group
+    ...
+    ...    2. Perform Group Configurations
+    ...
+    ...    3.Logout as Vista
+    ...
+    ...    4.Login as HR Admin to QCoE Test Automation Group
+    ...
+    ...    5.Add Employee
+    ...
+    ...    6.Terminate Employee with voluntary
+    ...
+    ...    7.Undo Employee Termination
+    ...
+    ...    8.Logout As HR Admin
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Basics    Group Customization
+    Group Customization Configuration    Allow Undo Category Change/Termination    Yes    yes
+    Comment    Dates & Rules    DatesAndRules
+    Navigate To    DatesAndRules    Rehire Rules
+    Update Rehire Rules Configurations    Asiftheemployeewasneverterminated    Always
+    Update Rehire Rules Configurations    Withnolapseincoverage    Always
+    Update Rehire Rules Configurations    Withawaitperiod    Always
+    Update Rehire Rules Configurations    Withoutawaitperiod    Always
+    Update Rehire Rules Configurations    RetroDateRule    Do not restrict
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Perform Employee Termination    d:currentdate    Voluntary
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Undo Employee Termination In HR Role
+    Verify Message    You have successfully undone the termination of this employee.
+    Logout HR Admin
+
+21.Update Termination Details
+    [Documentation]    Author : *Sunitha Yerra*
+    ...
+    ...    Test Case Title: *Update Termination Details*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as BF Admin
+    ...
+    ...    2) Select a group
+    ...
+    ...    2) Set Termination reasons as "Yes" for the group
+    ...
+    ...    3) Open Group in HR Role
+    ...
+    ...    5) Search for Terminated Employees
+    ...
+    ...    6) Select a Terminated employee
+    ...
+    ...    7) Update termination details and save.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Cobra setup configuration    Termination Reasons    Yes    yes
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Navigate to HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Perform Simple Employee Search    HMVlastname
+    Perform Employee Termination    d:currentdate    Voluntary
+    Update Termination Details    Death Of Employee
+    Logout HR Admin
+
+22.Verify the without fill the mandatory fields in Add Employee page
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the without fill the mandatory fields in Add Employee page*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Add New Employee without entering mandatory fields and click on save button
+    ...
+    ...    3. Verify Warning message "Required fields are missing"
+    ...
+    ...    4. Logout
+    [Tags]    donotrun    negative
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Error Message Add Employee With Empty Data    td:addemployeewithoutmandatoryfieldsdata
+    Logout HR Admin
+
+23.Verify the SSN field with alpha numeric and Exceed the size of SSN in the SSN field
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the SSN field with alpha numeric and Exceed the size of SSN in the SSN field*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Add New Employee with alpha numeric string in the SSN field (Ex. Abc1234)
+    ...
+    ...    3. Verify "The SSN entered is not valid. Please enter a valid SSN." Message
+    ...
+    ...    4. Add New Employee with exceed the size of SSN in the SSN field (Ex. Abc1234)
+    ...
+    ...    5. Verify "The SSN entered is not valid. Please enter a valid SSN." Message
+    ...
+    ...    6. Logout
+    [Tags]    negative
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Error Messageadd Employee    td:addemployeewithalphanumericssn    lastname
+    Navigate To HR Menu    Employees
+    Verify Error Messageadd Employee    td:addemployeewithexceedssn    lastname
+    Logout HR Admin
+
+24.Verify the Home Phone and Cell Phone fields
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the Home phone and cell phone fields*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Add New Employee with exceed home phone number
+    ...
+    ...    3. Verify Error warning messsages
+    ...
+    ...    "Please make a valid selection for Home Phone."
+    ...
+    ...    4.Add New Employee with exceed cell phone number
+    ...
+    ...    5. Verify Error warning messsages
+    ...
+    ...    "PleaPlease make a valid selection for Cell Phone."
+    ...
+    ...    6. Logout
+    [Tags]    negative
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Error Messageadd Employee    td:addemployeewithexceedhomephone    lastname
+    Verify Message    Please make a valid selection for Home Phone.
+    Navigate To HR Menu    Employees
+    Verify Error Messageadd Employee    td:addemployeewithexceedcellphone    lastname
+    Verify Message    Please make a valid selection for Cell Phone.
+    Logout HR Admin
+
+25.Verify the ZIP / Postal code field with alphabets instead of Numeric values
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the ZIP / Postal code field with alphabets instead of Numeric values*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Add New Employee with alphabets instead of numbers
+    ...
+    ...    3. Verify Error warning messsages
+    ...
+    ...    Please enter a valid postal code (US Zip Code formats are 00000 or 00000-0000. Canadian Postal Code formats are LNL NLN where L is a letter and N is a number).
+    ...
+    ...    4. Logout
+    [Tags]    negative
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Error Messageadd Employee    td:addemployeewithalphabetszip    lastname
+    Verify Message    Please enter a valid postal code (US Zip Code formats are 00000 or 00000-0000. \ Canadian Postal Code formats are LNL NLN where L is a letter and N is a number).
+    Logout HR Admin
+
+26.Verify the dependency of State / Province field on Country field
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the dependency of State / Province field on Country field*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Add New Employee with 'AS' as State and 'AUS' as the Country
+    ...
+    ...    3. Verify Error warning messsages
+    ...
+    ...    The selected state, AUS, is invalid for the selected country, {1}.
+    ...
+    ...    4. Logout
+    [Tags]    negative
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Error Message Add Employee    td:addemployeewithwrongstate    lastname
+    Verify Message    The selected state, AUS, is invalid for the selected country, {1}.
+    Logout HR Admin

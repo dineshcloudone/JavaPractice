@@ -1,0 +1,46 @@
+{
+ 
+  "1": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+   
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "changeaccountsecuritypasswords": {
+      "securityNewPassword": "bfEnrol1",
+      "securityConfirmPassword": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "changeaccountsecuritypasswords": {
+      "securityNewPassword": "bfEnrol1",
+      "securityConfirmPassword": "bfEnrol1"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

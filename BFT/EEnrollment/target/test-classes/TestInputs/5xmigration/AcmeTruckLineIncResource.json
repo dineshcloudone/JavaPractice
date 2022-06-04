@@ -1,0 +1,93 @@
+{
+  "AcmeTruckLineInctestcases": {
+    "AcmeTruckLineInc": {
+      "vista": {
+        "acme": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per month",
+          "payfrequency": "Weekly",
+          "categories": "CL1 - Class 1#ADMIN1 - Administrative 1 - biweekly#GE 30 - Employees working 30 or more"
+        },
+        "acme2": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per month",
+          "payfrequency": "Weekly",
+          "categories": "CL2 - Class 2#EXEC - Executives#LT 30 - Employees working 1-29 hours weekly"
+        },               
+        
+         "validvistacredentials": {
+          "username": "bfppasupuleti",
+          "password": "bfEnrol1"
+        },
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "chspouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Male",
+            "relationship": "Spouse"
+          },
+          "domesticpartner": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-16",
+            "gender": "Male",
+            "relationship": "Domestic Partner"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+
+        }
+      }
+
+    }
+  }
+}

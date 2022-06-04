@@ -1,0 +1,99 @@
+{
+  "1": {
+    "resource": "QCOE Test Group Automation_9",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_26",
+      "password": "passWord1234"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+	  "calenderset": "Monthly",
+      "payfrequency": "Monthly",
+      "employerid": "12345"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "rfsgroup": "QCOE Common UAB Health Group",
+    "groupsearch": "QCOE Common UAB Health Group",
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "2": {
+    "resource": "QCOE Common UAB Health Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_27",
+      "password": "passWord1234"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+	  "calenderset": "Monthly",
+      "payfrequency": "Monthly",
+      "employerid": "12345"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "rfsgroup": "QCOE Common UAB Health Group",
+    "groupsearch": "QCOE Common UAB Health Group",
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "default": {
+    "resource": "QCOE Common UAB Health Group"
+  }
+}

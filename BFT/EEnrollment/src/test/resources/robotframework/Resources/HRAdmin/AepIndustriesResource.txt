@@ -1,0 +1,114 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Supplemental Medical Insurance Benefit With Employee Only Coverage
+    Select Coverage Level    Employee Only
+    Add Beneficiary Allocations    Spouse    Primary    100%
+    Agree Terms And Conditions
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    2016 Critical Illness -$15,000
+    Select Coverage Level    Employee Only
+    Add Beneficiary Allocations    Spouse    Primary    100%
+    Agree Terms And Conditions
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Coverage Level    Employee Only
+    Agree Terms And Conditions
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Medical Insurance Benefit With Employee Only Coverage
+    [Arguments]    ${MedicalPlanName}    ${HCFSAPlanName}    ${DCFSAPlanName}    ${CoverageLevel}
+    Select Plan    ${MedicalPlanName}
+    Select Coverage Level    ${CoverageLevel}
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    ${HCFSAPlanName}
+    Enter Contribution Amount For FSA Plan    300
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    ${DCFSAPlanName}
+    Enter Contribution Amount For FSA Plan    500
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage
+    [Arguments]    ${DentalPlanName}    ${VisionPlanName}    ${CoverageLevel}
+    Select Plan    ${DentalPlanName}
+    Select Coverage Level    ${CoverageLevel}
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    ${VisionPlanName}
+    Select Coverage Level    ${CoverageLevel}
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Medical Insurance Benefit With Employee + 1 Coverage Level
+    [Arguments]    ${MedicalPlanName}    ${HCFSAPlanName}    ${DCFSAPlanName}    ${DependentType}
+    Select Plan    ${MedicalPlanName}
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    ${DependentType}    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    ${HCFSAPlanName}
+    Enter Contribution Amount For FSA Plan    300
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    ${DCFSAPlanName}
+    Enter Contribution Amount For FSA Plan    500
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Medical Insurance Benefit With Employee + Family Coverage Level
+    [Arguments]    ${MedicalPlanName}    ${HCFSAPlanName}    ${DCFSAPlanName}    ${DependentType}
+    Select Plan    ${MedicalPlanName}
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    ${DependentType}    dependent1
+    Add Another Dependent To Employee    ${DependentType}    dependent2
+    Add Another Dependent To Employee    ${DependentType}    dependent3
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate    Test
+    Select Plan    ${HCFSAPlanName}
+    Enter Contribution Amount For FSA Plan    300
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    ${DCFSAPlanName}
+    Enter Contribution Amount For FSA Plan    500
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Term Life Insurance Benefit
+    Next
+    Next
+    Add New Beneficiary To Employee And Navigate To Next Page    Spouse    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Next
+    Next
+    Add New Beneficiary To Employee And Navigate To Next Page    Spouse    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Next
+    Next
+    Select Plan    2016 Employee Term Life
+    Next
+    Select Coverage Amount    $416,000.00
+    Add New Beneficiary To Employee And Navigate To Next Page    Spouse    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Coverage Amount    $10,000.00
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    2016 Employee AD&D
+    Next
+    Select Coverage Amount    $500,000.00
+    Add New Beneficiary To Employee And Navigate To Next Page    Spouse    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental and Vision Insurance Benefit With Employee + Family Coverage
+    Select Plan    2016 Cigna Enhanced Dental with Orthodontia
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    Child    lastname
+    Add Another Dependent To Employee    Child    lastname
+    Add Another Dependent To Employee    Child    lastname
+    Next
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    2016 EyeMed Enhanced Vision
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page

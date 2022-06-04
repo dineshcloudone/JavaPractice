@@ -1,0 +1,313 @@
+{
+	"41": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"42": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"43": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"44": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"45": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"46": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"47": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"48": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"49": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"50": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"51": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"52": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"53": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"54": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"55": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"56": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"57": {
+		"resource": "AEPIndustriesResource",
+		"aep": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "4000",
+          "earningsfrequency": "per week",
+          "calendarset": "WEEKLY",
+          "payfrequency": "Weekly",
+          "categories": "Part Time#Active - Active employee#AL - Alabama#No#AL1 - Montgomery, AL - Plant 1#Hourly - Hourly Rate#ALUN - AL union"
+        }
+
+	},
+	"58": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"59": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"60": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"61": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"62": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"63": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"64": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"65": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"66": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"67": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"68": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"69": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"70": {
+		"resource": "AEPIndustriesResource"
+
+	},
+	"71": {
+		"resource": "AEPIndustriesResource"
+		
+	},
+	"72": {
+		"resource": "AEPIndustriesResource",
+		"aepupdate": {
+          "firstname": "MyAuto",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"73": {
+		"resource": "AEPIndustriesResource"
+	},
+
+	"74": {
+		"resource": "AEPIndustriesResource"
+	},
+
+
+	"75": {
+		"resource": "AEPIndustriesResource"
+	},
+
+
+	"76": {
+		"resource": "AEPIndustriesResource"
+	},
+	"77": {
+		"resource": "AEPIndustriesResource"
+	},
+	"78": {
+		"resource": "AEPIndustriesResource"
+	},
+	"79": {
+		"resource": "AEPIndustriesResource"
+	},
+	"80": {
+		"resource": "AEPIndustriesResource"
+	},
+	"81": {
+		"resource": "AEPIndustriesResource"
+	},
+	"82": {
+		"resource": "AEPIndustriesResource"
+	},
+	"83": {
+		"resource": "AEPIndustriesResource"
+	},
+	"84": {
+		"resource": "AEPIndustriesResource"
+	},
+	"85": {
+		"resource": "AEPIndustriesResource"
+	},
+	"86": {
+		"resource": "AEPIndustriesResource"
+	},
+	"87": {
+		"resource": "AEPIndustriesResource"
+	},
+	"88": {
+		"resource": "AEPIndustriesResource",
+		"domesticpartner": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Male",
+            "relationship": "Domestic Partner"
+          }
+	},
+	"89": {
+		"resource": "AEPIndustriesResource",
+		
+	},
+	"90": {
+		"resource": "AEPIndustriesResource"
+	},
+	"91": {
+		"resource": "AEPIndustriesResource"
+	},
+	"92": {
+		"resource": "AEPIndustriesResource",
+		"aep": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per week",
+          "calendarset": "WEEKLY",
+          "payfrequency": "Weekly",
+          "benefitsalary" : "80",
+          "benefitsalaryfrequency" : "per month",
+          "categories": "Full Time - = 40 hours#Permanent - Active Permanent#CORP - Corp - New Jersey#No#CORP - AEP Industries Inc.#Salary - Annual Salary#NONUNION - Nonunion"
+        },
+		"advsal": {
+          "benefitsalary" : "100",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"93": {
+		"resource": "AEPIndustriesResource",
+		"aep": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per week",
+          "calendarset": "WEEKLY",
+          "payfrequency": "Weekly",
+          "benefitsalary" : "80",
+          "benefitsalaryfrequency" : "per month",
+          "categories": "Full Time - = 40 hours#Permanent - Active Permanent#CORP - Corp - New Jersey#No#CORP - AEP Industries Inc.#Salary - Annual Salary#NONUNION - Nonunion"
+        },
+		"advsal": {
+          "benefitsalary" : "70",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"94": {
+		"resource": "AEPIndustriesResource"
+	},
+	"95": {
+		"resource": "AEPIndustriesResource"
+	},
+	"96": {
+		"resource": "AEPIndustriesResource"
+	},
+	"97": {
+		"resource": "AEPIndustriesResource"
+	},
+	"98": {
+		"resource": "AEPIndustriesResource"
+	},
+	"99": {
+		"resource": "AEPIndustriesResource"
+	},
+	"100": {
+		"resource": "AEPIndustriesResource"
+	}
+
+}

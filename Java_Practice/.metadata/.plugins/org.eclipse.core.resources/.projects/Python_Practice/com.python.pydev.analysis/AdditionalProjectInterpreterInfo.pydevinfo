@@ -1,0 +1,85 @@
+-- VERSION_5
+-- START DISKCACHE_2
+C:\Dinesh\Java\Eclipse_Projects\Java_Practice\.metadata\.plugins\org.eclipse.core.resources\.projects\Python_Practice\com.python.pydev.analysis\v2_indexcache
+oops.__init__|1520416724007732000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\__init__.py
+oops.Permutations|1538571434368504000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\Permutations.py
+oops.class_practice|1520416993936732000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\class_practice.py
+oops.ListsPractice|1533295572391391000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\ListsPractice.py
+oops.constructor|1533293628869391000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\constructor.py
+oops.pythonmain|1533296819600391000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\pythonmain.py
+oops.FilesPractice|1533293727169391000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\FilesPractice.py
+oops.Student|1524570017246837000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\Student.py
+oops.StringsPractice|1524736547817992000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\StringsPractice.py
+oops.ListsModule|1524920404080535000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\ListsModule.py
+oops.basics_python|1538569980652504000|C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\basics_python.py
+-- END DISKCACHE
+-- START DICTIONARY
+28
+7=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\ListsPractice.py
+2=oops.Permutations
+27=StringsPractice
+28=ListPractice
+21=ComplexNumber
+5=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\class_practice.py
+16=oops.basics_python
+19=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\StringsPractice.py
+23=MyClass
+24=ListEx1
+13=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\pythonmain.py
+6=oops.class_practice
+17=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\Student.py
+25=Student.__init__
+1=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\Permutations.py
+15=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\basics_python.py
+3=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\constructor.py
+4=oops.constructor
+18=oops.Student
+22=Student
+20=oops.StringsPractice
+12=oops.ListsModule
+8=oops.ListsPractice
+9=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\FilesPractice.py
+11=C:\Dinesh\Java\Eclipse_Projects\Java_Practice\Python_Practice\oops\ListsModule.py
+14=oops.pythonmain
+26=ComplexNumber.__init__
+10=oops.FilesPractice
+-- END DICTIONARY
+-- START TREE 1
+15
+a|1|a!1^24#1*19@
+c2|1|c2!3^17#1*35@
+com|1|ComplexNumber!3^6#7*33@
+emp|2|emp2!5^14#1*51@emp1!5^13#1*51@
+le|1|le!7^18#5*67@
+lis|3|ListEx1!7^9#7*65@ListPractice!9^8#7*81@ListPractice!11^8#7*97@
+lp|2|lp!11^16#5*99@lp!9^16#5*83@
+mai|1|main!13^6#5*114@
+myc|1|MyClass!15^7#7*129@
+n|1|n!1^23#1*19@
+ob|3|ob!17^13#1*147@ob!19^32#5*163@ob!15^79#1*131@
+per|1|permute!1^12#5*18@
+str|2|string!1^22#1*19@StringsPractice!19^7#7*161@
+stu|2|Student!17^6#7*145@Student!5^7#7*49@
+tos|1|toString!1^4#5*18@
+-- END TREE
+-- START TREE 2
+18
+__i|3|__init__!21&3^7#9*34@__init__!22&5^8#9*50@__init__!22&17^7#9*146@
+a|1|a!23&15^9#5*131@
+abc|1|abc!24&7^10#9*66@
+b|1|b!23&15^10#5*131@
+dis|2|displayStudent!22&17^10#9*146@displayStudent!22&5^11#9*50@
+eli|1|elIfEx!23&15^26#9*130@
+for|2|forEx2!23&15^41#9*130@forEx1!23&15^37#9*130@
+get|1|getData!21&3^11#9*34@
+id|2|id!25&17^8#9*147@id!25&5^9#9*51@
+ife|2|ifElseEx!23&15^16#9*130@ifEx1!23&15^11#9*130@
+ima|1|image!26&3^9#9*35@
+ite|1|iterateList!23&15^64#9*130@
+len|1|lenEx!27&19^8#9*162@
+nam|2|name!25&17^9#9*147@name!25&5^10#9*51@
+pri|1|printShape!23&15^71#9*130@
+rea|3|readFile!28&11^9#9*98@real!26&3^8#9*35@readFile!28&9^9#9*82@
+str|1|stringEx2!27&19^16#9*162@
+whi|2|whileEx1!23&15^49#9*130@whileEx2!23&15^55#9*130@
+-- END TREE

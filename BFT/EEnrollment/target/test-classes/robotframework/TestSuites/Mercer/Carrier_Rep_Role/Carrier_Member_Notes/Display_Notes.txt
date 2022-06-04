@@ -1,0 +1,502 @@
+*** Settings ***
+Documentation     *Test Suite consists of all the automated test scenarios for Display Member notes*
+Test Setup        getResource
+Force Tags        membernotes
+Resource          ../../../../Resources/common.txt
+
+*** Test Cases ***
+1.Verify the Carrier basic for GetInsured Carrier Level Member Note
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify the Carrier basic for GetInsured Carrier Level Member Note*
+    ...
+    ...    1.Login to Carrier representive role
+    ...
+    ...    2.Navigate to Carrier member notes
+    ...
+    ...    3.open Display/Create notes
+    ...
+    ...    4.select Mercer Carrier
+    ...
+    ...    5.Verify the required plugin is enabled or not
+    ...
+    ...    6.logout from the carrier role.
+    Login To Enrollment As Carrier Representive    td:validcarrierrep
+    Navigate To Carrier Rep Menu    CarrierMembernotes    Display/Create Notes
+    Verify Member Note In Carrier Rep    getinsured
+
+2.Verify the Carrier basic for Audax rally Carrier Level Member Note
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify the Carrier basic for GetInsured Carrier Level Member Note*
+    ...
+    ...    1.Login to Carrier representive role
+    ...
+    ...    2.Navigate to Carrier member notes
+    ...
+    ...    3.open Display/Create notes
+    ...
+    ...    4.select Mercer Carrier
+    ...
+    ...    5.Verify the required plugin is enabled or not
+    ...
+    ...    6.logout from the carrier role.
+    Login To Enrollment As Carrier Representive    td:validcarrierrep
+    Navigate To Carrier Rep Menu    CarrierMembernotes    Display/Create Notes
+    Verify Member Note In Carrier Rep    audax
+
+3.Verify the Additional Carrier Member Note Configurations when user selected GetInsured carrier member note
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify the Additional Carrier Member Note Configurations when user selected GetInsured carrier member note*
+    ...
+    ...    1.Login to Carrier representive role
+    ...
+    ...    2.Navigate to Carrier member notes
+    ...
+    ...    3.open Display/Create notes
+    ...
+    ...    4.select Mercer Carrier
+    ...
+    ...    5.Verify the required plugin is enabled or not
+    ...
+    ...    6.logout from the carrier role.
+    Login To Enrollment As Carrier Representive    td:validcarrierrep
+    Navigate To Carrier Rep Menu    CarrierMembernotes    Display/Create Notes
+    Verify Member Note Configurations In Carreir Rep    audax
+
+4.Verify the Additional Carrier Member Note Configurations when user selected Audax carrier member note
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify the Additional Carrier Member Note Configurations when user selected Audax carrier member note*
+    ...
+    ...    1.Login to Carrier representive role
+    ...
+    ...    2.Navigate to Carrier member notes
+    ...
+    ...    3.open Display/Create notes
+    ...
+    ...    4.select Mercer Carrier
+    ...
+    ...    5.Verify the required plugin is enabled or not
+    ...
+    ...    6..logout from the carrier role.
+    Login To Enrollment As Carrier Representive    td:validcarrierrep
+    Navigate To Carrier Rep Menu    CarrierMembernotes    Display/Create Notes
+    Verify Member Note Configurations In Carreir Rep    getinsured
+
+5.Verify user is able to configure the note successfully-Get Insured
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify user is able to configure the note successfully-Get Insured*
+    ...
+    ...    1.Login to Carrier representive role
+    ...
+    ...    2.Navigate to Carrier member notes
+    ...
+    ...    3.open Display/Create notes
+    ...
+    ...    4.select Mercer Carrier
+    ...
+    ...    5.Verify the required plugin is enabled or not
+    ...
+    ...    6.vrifying tha all configurations and saving it.
+    ...
+    ...    7.logout from the carrier role.
+    Login To Enrollment As Carrier Representive    td:validcarrierrep
+    Navigate To Carrier Rep Menu    CarrierMembernotes    Display/Create Notes
+    Verify Member Note Configurations In Carreir Rep    getinsured
+    Verify Member Note In Carrier Rep    getinsured
+
+6.Verify user is able to configure the note successfully- Audax
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify user is able to configure the note successfully-Audax*
+    ...
+    ...    1.Login to Carrier representive role
+    ...
+    ...    2.Navigate to Carrier member notes
+    ...
+    ...    3.open Display/Create notes
+    ...
+    ...    4.select Mercer Carrier
+    ...
+    ...    5.Verify the required plugin is enabled or not
+    ...
+    ...    6.vrifying tha all configurations and saving it.
+    ...
+    ...    7.logout from the carrier role.
+    Login To Enrollment As Carrier Representive    td:validcarrierrep
+    Navigate To Carrier Rep Menu    CarrierMembernotes    Display/Create Notes
+    Verify Member Note Configurations In Carreir Rep    audax
+    Verify Member Note In Carrier Rep    audax
+
+7.Verify the note \ is available for the sponsor under HR Notes- Get Insured
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify the note \ is available for the sponsor under HR Notes- Get Insured*
+    ...
+    ...    1. Login to eEnrollment as vista admin.
+    ...
+    ...    2.search for the group "Auto_Carousal"
+    ...
+    ...    3.open group in HR Role.
+    ...
+    ...    4.Verifying the carrier note is availabel or not in the HR Note Manager.
+    ...
+    ...    5.close Hr role.
+    ...
+    ...    6.Logout from Vista Admin.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Verify Carrier Member Note In Hr Role    getinsured
+
+8.Verify the note \ is available for the sponsor under HR Notes- Audax
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify the note \ is available for the sponsor under HR Notes- Audax*
+    ...
+    ...    1. Login to eEnrollment as vista admin.
+    ...
+    ...    2.search for the group "Auto_Carousal"
+    ...
+    ...    3.open group in HR Role.
+    ...
+    ...    4.Verifying the carrier note is availabel or not in the HR Note Manager.
+    ...
+    ...    5.close Hr role.
+    ...
+    ...    6.Logout from Vista Admin.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Verify Carrier Member Note In Hr Role    audax
+
+9.Verify GetInsured link for Members not eligible for Medical benefits (confirmation page)
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify GetInsured link for Members not eligible for Medical benefits (confirmation page)*
+    ...
+    ...    1.login into the eEnollment as vista admin.
+    ...
+    ...    2.serach for the group "Auto_Carousal"
+    ...
+    ...    3.Open group in HR Role.
+    ...
+    ...    4.open HR Note manager.
+    ...
+    ...    5.change the specified member note order to 1.
+    ...
+    ...    6.close hr role.
+    ...
+    ...    7. Add a new member into the group
+    ...
+    ...    8.logout from vista admin.
+    ...
+    ...    9.login to member role.
+    ...
+    ...    10.complete dental and vision enrollment.
+    ...
+    ...    11. verify the get insured note in confirmation page.
+    ...
+    ...    12. Logout from member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Change Carrier Member Note Order In Hr Role    getinsured    1
+    Change Carrier Member Note Order In Hr Role    audax    2
+    Close HR Admin
+    Select Latest Window    td:carouselgroup
+    Navigate To    users    Add Member
+    Add Member In Vista    td:withoutmedical    LastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:dentalplan
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:visionplan
+    Save Benefit Enrollment In New Member    td:dentalplan
+    Complete Enrollemnt In New Member Role
+    Verify Get Insured Carousel In New Member Role
+    Logout New Member Role
+
+10.Verify GetInsured link for Members eligible for Medical benefits (confirmation page)
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify GetInsured link for Members not eligible for Medical benefits (confirmation page)*
+    ...
+    ...    1.login into the eEnollment as vista admin.
+    ...
+    ...    2.serach for the group "Auto_Carousal"
+    ...
+    ...    3.Open group in HR Role.
+    ...
+    ...    4.open HR Note manager.
+    ...
+    ...    5.change the specified member note order to 1.
+    ...
+    ...    6.close hr role.
+    ...
+    ...    7. Add a new member into the group
+    ...
+    ...    8.logout from vista admin.
+    ...
+    ...    9.login to member role.
+    ...
+    ...    10.complete Mediacl enrollment.
+    ...
+    ...    11. verify the get insured note in confirmation page.
+    ...
+    ...    12.Logout from the member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Change Carrier Member Note Order In Hr Role    getinsured    1
+    Change Carrier Member Note Order In Hr Role    audax    2
+    Close HR Admin
+    Select Latest Window    td:carouselgroup
+    Navigate To    users    Add Member
+    Add Member In Vista    td:withmedical    LastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Decline Coverage
+    Decline Coverage
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Verify Get Insured Carousel In New Member Role
+    Verify Carousel In New Member Role
+    Logout New Member Role
+
+11.Verify GetInsured info and link in the carousal fashion in the member homepage
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify GetInsured info and link in the carousal fashion in the member homepage*
+    ...
+    ...    1.login into the eEnollment as vista admin.
+    ...
+    ...    2.serach for the group "Auto_Carousal"
+    ...
+    ...    3.Open group in HR Role.
+    ...
+    ...    4.open HR Note manager.
+    ...
+    ...    5.change the specified member note order to 1.
+    ...
+    ...    6.close hr role.
+    ...
+    ...    7. Add a new member into the group
+    ...
+    ...    8.logout from vista admin.
+    ...
+    ...    9.login to member role.
+    ...
+    ...    10.complete Medical enrollment.
+    ...
+    ...    11. verify the get insured note in confirmation page.
+    ...
+    ...    12.verify the get insured and audax notes in carousel banner.
+    ...
+    ...    13.Logout from the member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Change Carrier Member Note Order In Hr Role    getinsured    1
+    Change Carrier Member Note Order In Hr Role    audax    2
+    Close HR Admin
+    Select Latest Window    td:carouselgroup
+    Navigate To    users    Add Member
+    Add Member In Vista    td:withmedical    LastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Decline Coverage
+    Decline Coverage
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Verify Carousel In New Member Role
+    Logout New Member Role
+
+12.Verify Audax link for Members not eligible for Medical benefits (confirmation page)
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify Audax link for Members not eligible for Medical benefits (confirmation page)*
+    ...
+    ...    1.login into the eEnollment as vista admin.
+    ...
+    ...    2.serach for the group "Auto_Carousal"
+    ...
+    ...    3.Open group in HR Role.
+    ...
+    ...    4.open HR Note manager.
+    ...
+    ...    5.change the specified member note order to 1.
+    ...
+    ...    6.close hr role.
+    ...
+    ...    7. Add a new member into the group
+    ...
+    ...    8.logout from vista admin.
+    ...
+    ...    9.login to member role.
+    ...
+    ...    10.complete dental and vision enrollment.
+    ...
+    ...    11. verify the Audax note in confirmation page.
+    ...
+    ...    12. Logout from member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Change Carrier Member Note Order In Hr Role    audax    1
+    Change Carrier Member Note Order In Hr Role    getinsured    2
+    Close HR Admin
+    Select Latest Window    td:carouselgroup
+    Navigate To    users    Add Member
+    Add Member In Vista    td:withoutmedical    LastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:dentalplan
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:visionplan
+    Save Benefit Enrollment In New Member    td:dentalplan
+    Complete Enrollemnt In New Member Role
+    Verify Audax Rally Carousel In New Member Role
+    Logout New Member Role
+
+13.Verify Audax link for Members eligible for Medical benefits (confirmation page)
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify Audax link for Members eligible for Medical benefits (confirmation page)*
+    ...
+    ...    1.login into the eEnollment as vista admin.
+    ...
+    ...    2.serach for the group "Auto_Carousal"
+    ...
+    ...    3.Open group in HR Role.
+    ...
+    ...    4.open HR Note manager.
+    ...
+    ...    5.change the specified member note order to 1.
+    ...
+    ...    6.close hr role.
+    ...
+    ...    7. Add a new member into the group
+    ...
+    ...    8.logout from vista admin.
+    ...
+    ...    9.login to member role.
+    ...
+    ...    10.complete dental and vision enrollment.
+    ...
+    ...    11. verify the Audax note in confirmation page.
+    ...
+    ...    12. Logout from member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Change Carrier Member Note Order In Hr Role    audax    1
+    Change Carrier Member Note Order In Hr Role    getinsured    2
+    Close HR Admin
+    Select Latest Window    td:carouselgroup
+    Navigate To    users    Add Member
+    Add Member In Vista    td:withmedical    LastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Decline Coverage
+    Decline Coverage
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Verify Audax Rally Carousel In New Member Role
+    Logout New Member Role
+
+14.Verify Audax info and link in the carousal fashion in the member homepage
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Caste Title: *Verify Audax info and link in the carousal fashion in the member homepage*
+    ...
+    ...    1.login into the eEnollment as vista admin.
+    ...
+    ...    2.serach for the group "Auto_Carousal"
+    ...
+    ...    3.Open group in HR Role.
+    ...
+    ...    4.open HR Note manager.
+    ...
+    ...    5.change the specified member note order to 1.
+    ...
+    ...    6.close hr role.
+    ...
+    ...    7. Add a new member into the group
+    ...
+    ...    8.logout from vista admin.
+    ...
+    ...    9.login to member role.
+    ...
+    ...    10.complete Medical enrollment.
+    ...
+    ...    11. verify the get insured note in confirmation page.
+    ...
+    ...    12.verify the Audax and GetInsured notes in carousel banner
+    ...
+    ...    12.Logout from the member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:carouselgroup
+    Open Group In HR Role
+    Navigate To HR Menu    contentmanager
+    Change Carrier Member Note Order In Hr Role    audax    1
+    Change Carrier Member Note Order In Hr Role    getinsured    2
+    Close HR Admin
+    Select Latest Window    td:carouselgroup
+    Navigate To    users    Add Member
+    Add Member In Vista    td:withoutmedical    LastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:dentalplan
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:visionplan
+    Save Benefit Enrollment In New Member    td:dentalplan
+    Complete Enrollemnt In New Member Role
+    Verify Carousel In New Member Role
+    Logout New Member Role

@@ -1,0 +1,297 @@
+{
+  "1": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Automation Vista Admin",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    },
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate",
+      "ContractExpirationDate": "currentdate:y:1",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    }
+  },
+  "2": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Automation Vista Admin",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    },
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate",
+      "ContractExpirationDate": "currentdate:y:1",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "race": "Asian",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    }
+  },
+  "3": {
+    "resource": "BFQATestAutomationGroup",
+    "groupsearch": {
+      "automationgroup": "BF QA test Automation group"
+    }
+  },
+  "4": {
+    "resource": "BFQATestAutomationGroup",
+    "groupsearch": {
+      "automationgroup": "BF QA test Automation group"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "createplanrate": {
+      "date": "05/24/2016 - 05/24/2017",
+      "increment": "Annual",
+      "configuration": "One value for all employees",
+      "employeeonly": "Employee Only",
+      "employeeamount1": "500",
+      "employeeamount2": "500",
+      "employeeandspouse": "Employee and Spouse",
+      "employeeandspouseamount1": "500",
+      "employeeandspouseamount2": "500",
+      "employeepluschildren": "Employee + Children",
+      "employeepluschildrenamount1": "600",
+      "employeepluschildrenamount2": "600",
+      "employeeandchildren": "Employee and Children",
+      "employeeandchildrenamount1": "700",
+      "employeeandchildrenamount2": "700",
+      "planratechange": "Change Rate",
+      "effectivedate": "Retain Rate Effective Date"
+    }
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "createplanrate": {
+      "date": "05/24/2016 - 05/24/2017",
+      "increment": "Annual",
+      "configuration": "One value for all employees",
+      "employeeonly": "Employee Only",
+      "employeeamount1": "500",
+      "employeeamount2": "500",
+      "employeeandspouse": "Employee and Spouse",
+      "employeeandspouseamount1": "500",
+      "employeeandspouseamount2": "500",
+      "employeepluschildren": "Employee + Children",
+      "employeepluschildrenamount1": "600",
+      "employeepluschildrenamount2": "600",
+      "employeeandchildren": "Employee and Children",
+      "employeeandchildrenamount1": "700",
+      "employeeandchildrenamount2": "700",
+      "planratechange": "Change Rate",
+      "effectivedate": "Retain Rate Effective Date"
+    }
+  },
+  "7": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QA Test Automation Group Vista"
+    }
+  },
+  "8": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QA Test Automation Group Vista"
+    }
+  },
+  "9": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Life"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "10": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate:y:+1",
+      "ContractExpirationDate": "currentdate:y:+2",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:+1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    },
+    "copyplan": {
+      "strCopyPlanName": "RNDcopyplan",
+      "startdate": "currentdate:y:+1",
+      "enddate": "currentdate:y:+2"
+    }
+  },
+  "11": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate",
+      "ContractExpirationDate": "currentdate:y:+1",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:+1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    },
+    "copyplan": {
+      "strCopyPlanName": "RNDcopyplan",
+      "startdate": "currentdate:y:+1",
+      "enddate": "currentdate:y:+2"
+    }
+  },
+  "12": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate",
+      "ContractExpirationDate": "currentdate:y:+1",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:+1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    },
+    "copyplan": {
+      "strCopyPlanName": "RNDcopyplan",
+      "startdate": "currentdate",
+      "enddate": "currentdate:y:+1"
+    }
+  },
+  "13": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup": "BF QCOE Test Automation Group_V"
+    },
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate:y:+1",
+      "ContractExpirationDate": "currentdate:y:+2",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:+1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    },
+    "copyplan": {
+      "strCopyPlanName": "RNDcopyplan",
+      "startdate": "currentdate:y:+2",
+      "enddate": "currentdate:y:+3"
+    }
+  },
+  "14": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QA test Automation group"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

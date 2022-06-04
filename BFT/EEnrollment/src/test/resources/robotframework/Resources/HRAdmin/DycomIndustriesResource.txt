@@ -1,0 +1,35 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Dental Benefit
+    [Arguments]    ${plan}    ${coveragelevel}
+    Select Plan    ${plan}
+    Select Coverage Level    ${coveragelevel}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Medical Benefit
+    [Arguments]    ${plan}    ${coverageamount}    ${coveragelevel}
+    Select Plan    ${plan}
+    Select Coverage Level    ${coveragelevel}
+    Next
+    Next
+    Select Coverage Amount    ${coverageamount}
+    Next
+    Next
+    Select Coverage Amount    ${coverageamount}
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In FSA Benefit
+    Select Plan    Health FSA 2016
+    Set Contribution Amount For Flex Benefit    2000
+    Next
+    Set Deduction Periods    2
+    Select Plan    Dependent Care FSA 2016
+    Set Contribution Amount For Flex Benefit    2000
+    Next
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page

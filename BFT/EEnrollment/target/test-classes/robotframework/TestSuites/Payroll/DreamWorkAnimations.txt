@@ -1,0 +1,595 @@
+*** Settings ***
+Suite Teardown
+Test Setup        getResource
+Resource          ../../Resources/common.txt
+Resource          ../../Resources/HRAdmin/PayrollResources/DreamWorkAnimationsResource.txt
+
+*** Test Cases ***
+1.Initial Enrollment
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    BuiltIn.Sleep    3s    waittime
+    Close HR Admin
+    Logout Vista Admin
+
+2.Initial Enrollment(After Approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2015-2016
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    BuiltIn.Sleep    3s    waittime
+    Close HR Admin
+    Logout Vista Admin
+
+3.Refuse All Eligible Benefits
+    comment    Coverage Declined message is not found
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    Medical 2015-2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Dental 2015-2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Vision Plan 2015-2016
+    BuiltIn.Sleep    2s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+4.Accept Benefit After Refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    BuiltIn.Sleep    3s    wait time
+    Refuse Current Selected Benefit In HR Role    Medical 2015-2016
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve All Benefits
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Comment    Select Plan    Cigna Dental-Basic (Continental) 2016
+    Edit Current Plan    Medical
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Comment    Approve All Benefits After Employee Edit
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    BuiltIn.Sleep    3s    wait time before closing HR-Admin
+    Close HR Admin
+    Logout Vista Admin
+
+5.Cancel Benefit Before Approval
+    comment    Benefit Enrollment will be by default approved
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+
+6.Cancel Benefit After Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+
+7.Enroll Benefit After Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Comment    Save Button In HR Role
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Edit Current Benefit    Medical 2015-2016
+    Edit Current Plan    Medical
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    BuiltIn.Sleep    3s    wait time
+    Select Coverage Level    Employee Only
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+NA8.Terminate the Employee
+    comment    Terminate Employee link is not displaying
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve All Benefits
+    Verify Message    Medical 2015-2016
+    Perform Employee Termination    d:currentdate    Voluntary
+    Comment    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+9.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve All Benefits
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    overview
+    Perform Employee Retirement
+    Navigate To HR Menu    overview
+    Verify Message    Retired
+    BuiltIn.Sleep    2s    wait time before closing the HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+10.ChangeCategory
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve All Benefits
+    Comment    Verify Message    $2,500 CDHP+ - Not A Tobacco User 2016
+    Comment    Change Employee Cateogry    Company Code    0110
+    Comment    Change Employee Cateogry    First Program Group    3030
+    comment    ---------------------------------
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Change Employee Cateogry    Expat    International
+    Change Employee Cateogry    GRE    Awesomeness Mirror 2
+    Navigate To HR Menu    Overview
+    Comment    Approve All Benefits After Employee Edit
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+NA11.Change Plan
+    comment    only one plan is available as of PPO
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve All Benefits
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    benefitdetails
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Edit Benefit Details    Medical    Effective Date
+    Enter Effective Date    d:currentdate:d:1
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    waittime
+    Close HR Admin
+    Logout Vista Admin
+
+NA13.Increase Coverage Level
+    comment    while applying the coverage the flow is looping    Margaretta TocTest8628
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    spouse
+    Enroll Medical Benefit In DWA Group
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Edit Benefit Details    Medical 2015-2016    Coverage Level
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Other Coverage Survey Drop Down    Yes, I will be covering a Domestic Partner on my medical plan.    Yes
+    Next
+    Select Plan    Anthem Blue Cross PPO* 2015-2016
+    Add Another Dependent To Employee    Child    lstChild
+    Next
+    Apply Coverage To Dependent
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Other Coverage Survey Drop Down    Yes, I will be covering a Domestic Partner on my medical plan.    Yes
+    Next
+    Next
+    Select Plan    Anthem Blue Cross PPO* 2015-2016
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Comment    Navigate To    Users    Add Member
+    Comment    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    Auto TestMandatory25330
+    Navigate To HR Menu    dependents
+    Comment    Add Dependent To Employee    Child    fnChild
+    Comment    Verify Dependent For Benefits    Child
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2015-2016
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    Select Coverage Level    Employee + 1
+    Apply Coverage To Dependent
+    Select Survey Questions Answer    Child Information    I acknowledge that the above requirements are met.
+    Next
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Next
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2015-2016
+    Edit Benefit Details    Medical 2015-2016    Coverage Level
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Verify Message    Employee Only
+    BuiltIn.Sleep    3s    wait time before Closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+15.Increase Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Perform Simple Employee Search    HMVlastname
+    Enroll Basic Life Benefit of DWA Group
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Basic Life & AD&D & Supplemental Life Insurance* 2015-2016
+    Edit Benefit Details    Life    Coverage Amount
+    Select Coverage Amount    $10,000.00
+    Enter Effective Date    d:currentdate
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    wait time before HR-Close
+    Close HR Admin
+    Logout Vista Admin
+
+16.Decrease Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Basic Life Benefit of DWA Group
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Basic Life & AD&D & Supplemental Life Insurance* 2015-2016
+    Edit Benefit Details    Supplemental Life    Coverage Amount
+    Select Coverage Amount    $20,000.00
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    wait time before HR-Close
+    Close HR Admin
+    Logout Vista Admin
+
+NA17.Increase Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical Benefit In DWA Group
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    benefitdetails
+
+NA18.Decrease Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitOfCNAGroup
+    Approve All Benefits
+    Verify Message    $2,500 CDHP+ - Not A Tobacco User 2016
+    ChangeFlexContributionForCNAGroup    159
+    BuiltIn.Sleep    3s    wait time
+    Approve All Benefits After Employee Edit
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+NA19.Add Flex when already enrolled in HSA
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitOfCNAGroup
+    Approve All Benefits
+    Verify Message    $2,500 CDHP+ - Not A Tobacco User 2016
+    cancelFSA
+    Enroll FSA When Already Enrolled in HSA
+
+20.Cancel Flex when already enrolled in Flex
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitOfCNAGroup
+    Approve All Benefits
+    Verify Message    $2,500 CDHP+ - Not A Tobacco User 2016
+    cancelFSA
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+PE21.Add HDHP/HSA when already enrolled in Flex(if Group Supports HSA)
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitInAAGgroup
+    Approve All Benefits
+    CancelHSAForNewMember
+    ADDFSAForNewMember
+    CancelFSAForNewMember
+    ADDFSAForNewMember
+
+PE22.Cancel HDHP/HSA when already enrolled in flex(if Group supports HSA)
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitInAAGgroup
+    Approve All Benefits
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    CancelHSAForNewMember
+
+23.Change in EE cost/pp
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Comment    Change Employee Cateogry    Expat    International
+    Change Employee Cateogry    GRE    Big Idea Entertainment, LLC
+    Enroll Medical Benefit In DWA Group
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Navigate To HR Menu    Overview
+    Comment    Approve All Benefits After Employee Edit
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2015-2016
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Update Employee Salary    53100    per year
+    BuiltIn.Sleep    3s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5019866166
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dwamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2015-2016
+    Select Other Coverage Survey Drop Down    No, I will not be covering a Domestic Partner on my medical plan.    NA
+    Select Plan    Anthem Blue Cross PPO 2015-2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Comment    Approve From HR Admin
+    Verify Message    Anthem Blue Cross PPO 2015-2016
+    Update Employee Salary    49000    per year
+    BuiltIn.Sleep    3s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+NA26.Change in remaining pay period
+
+27.Enroll COBRA
+
+28.Cancel COBRA
+
+29.Add Dependent to Benefit
+
+30.Remove Dependent from Benefit
+
+NA31.Change Dependent Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    THOMASENA AGUNDEZ
+    Navigate To HR Menu    dependents
+    Edit Dependent Details    Spouse    lastname
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    Overview
+    Approve All Benefits
+    Comment    Approve All Benefits After Employee Edit
+    Navigate To HR Menu    dependents
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+32.Test
+    Comment    Login as vista admin with valid credentials
+    Comment    Perform Advanced Group Search    Sponsor OID    3134823298
+    Comment    Open Group In HR Role
+    Comment    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory24256
+    Comment    Navigate To HR Menu    benefitdetails
+    Comment    Edit Current Benefit    Medical 2016
+    Comment    CancelHSAForNewMember
+    Comment    ADDFSAForNewMember
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    printHashMapDatatoFile
+    BuiltIn.Sleep    3s    wait time
+    Logout Vista Admin
+
+Observations
+    Test Case 13: Increase coverage Level    Flow differs from manual execution and automation execution afterat the applying coverage level to the Employee
+
+33.getDataFromFile
+    ${value3}    readHashMapDataFromFile
+    Log    ${value3}
+
+34.TestCase1
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    BuiltIn.Sleep    3s    wait time
+    Logout Vista Admin
+
+35.TestCase2
+    ${value3}    readHashMapDataFromFile    C:\\Software\\TextFiles\\CNA_HashMapValues.txt    lastname
+    Log    ${value3}
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${value3}
+    BuiltIn.Sleep    5s    wait time

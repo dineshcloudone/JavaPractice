@@ -1,0 +1,568 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Verify a member with a disabled account cannot login
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *Verify a member with a disabled account cannot login*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as HR admin
+    ...
+    ...    2) Navigate to "Employees"
+    ...
+    ...    3) Add new employee.
+    ...
+    ...    4) Now Navigate to "Home >> Employee Search"
+    ...
+    ...    5) Search for Employee and \ Navigate to \ Member's Summary page
+    ...
+    ...    6) Open "Manage Employee-->Update Login Information" and Uncheck the checkbox labeled \ 'Allow this member to login' and click Save.
+    ...
+    ...    7) Logout from HR Admin
+    ...
+    ...    8) Login to Enrollment application with new member credentails.
+    ...
+    ...    9) Verify that Member can't login
+    [Tags]    QCOE
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    Home
+    Perform Simple Employee Search    HMVlastname
+    Update Login Information Of Employee    none    none
+    Logout HR Admin
+    Login To Enrollment With ValidCredentials    HMVmemberloginid    bfEnrol0
+    Verify Message    We didn't recognize your username and password. Please double check and try again
+
+2.HRA - Elect in IE
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *HRA - Elect in IE*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Open Enrollment application and login as vista admin
+    ...
+    ...    2) Search for group (TestGroupForHRA2016)
+    ...
+    ...    3) Set Accepting Benefit as 'Accept automatically' for HRA plan.
+    ...
+    ...    4) Navigate to Add member page and Add member
+    ...
+    ...    5) logout from vista admin.
+    ...
+    ...    6) Login as a Member and complete initial process for member login.
+    ...
+    ...    7) Click 'Get Started' from Home Page.
+    ...
+    ...    8) Click 'Begin Enrollment' button on the Medical offer.
+    ...
+    ...    9) Use radio buttons to select Dependents that are covered for Medical and click \ 'Next'
+    ...
+    ...    10) Click the 'Select Plan' button for a Medical plan that has HRA linked to it.
+    ...
+    ...    11) Click 'Save' on the Medical Benefit Summary screen.
+    ...
+    ...    12) Benefit Details> Medical> HRA> Additional Info.
+    ...
+    ...    13) Confirm correct prorated amount using: [(Annual Amount/pay frequency)*remaining pay periods] (i.e If pay frequency is bi-weekly divide by 26);
+    ...
+    ...    14)Confirm benefit effective date is the same for medical and HRA.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    HRA Offer
+    Enable Options From Edit Offer Details In Vista Role    Health Reimbursement Account (HRA)    Accepting Benefit    Accept automatically
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    Benefits
+    Verify HRAcontribution and Effectivedates In Member Summary Page    td:HRAdetails
+    Logout New Member Role
+
+3.HRA - Edit effective date
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *HRA - Edit effective date*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment application and login as vista admin
+    ...
+    ...    2) Search for group (TestGroupForHRA2016)
+    ...
+    ...    3) Set Accepting Benefit as 'Accept automatically' for HRA plan.
+    ...
+    ...    4) Add a new member into the group
+    ...
+    ...    5) logout from vista admin.
+    ...
+    ...    6) Login as a Member and complete initial process for member login.
+    ...
+    ...    7) Click 'Get Started' from Home Page.
+    ...
+    ...    8) Click 'Begin Enrollment' button on the Medical offer.
+    ...
+    ...    9) Use radio buttons to select Dependents that are covered for Medical and click \ 'Next'
+    ...
+    ...    10) Click the 'Select Plan' button for a Medical plan that has HRA linked to it.
+    ...
+    ...    11) Click 'Save' on the Medical Benefit Summary screen.
+    ...
+    ...    12)Login as HR admin and search for enrolled member.
+    ...
+    ...    13)Navigate to Member benefits page and click Edit buttion.
+    ...
+    ...    14) Change the effective date to later date for medical benefit. and click save.
+    ...
+    ...    15) log out HR admin and Login as member.
+    ...
+    ...    16)Confirm benefit effective dates is the same for medical and HRA.
+    ...
+    ...    17) logout member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    HRA Offer
+    Enable Options From Edit Offer Details In Vista Role    Health Reimbursement Account (HRA)    Accepting Benefit    Accept automatically
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Member Search In Vista Role    HMVlastname
+    Open Group In HR Role
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    HRA Offer
+    Edit Effective Date
+    Enter Effective Date    d:currentdate:d:1
+    Save Benefit Enrollment
+    Close HR Admin
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol1
+    Announcements Page    yes
+    Announcements Page    yes
+    Navigate To New Member Menu    Benefits
+    Verify HRAcontribution and Effectivedates In Member Summary Page    td:HRAdetails
+    Logout New Member Role
+
+4.HRA - Elect in Off Cycle
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *HRA - Elect in Off Cycle*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment application and login as vista admin
+    ...
+    ...    2) Search for group (TestGroupForHRA2016) and Set Accepting Benefit as 'Accept automatically' for HRA plan.
+    ...
+    ...    3) Navigate to Add member page and Add member
+    ...
+    ...    4) logout from vista admin.
+    ...
+    ...    5) Login as a Member and complete initial process for member login.
+    ...
+    ...    6) Click 'Get Started' from Home Page.
+    ...
+    ...    7) Click 'Begin Enrollment' button on the Medical offer.
+    ...
+    ...    8) Use radio buttons to select Dependents that are covered for Medical and click \ 'Next'
+    ...
+    ...    9) Click the 'Select Plan' button for a Medical plan that has HRA linked to it.
+    ...
+    ...    10) Click 'Save' on the Medical Benefit Summary screen.
+    ...
+    ...    11) Login as HR admin
+    ...
+    ...    12) Perform search for enrolled employee
+    ...
+    ...    13) Update HireDate for employee and Save.
+    ...
+    ...    14) Logout HR admin.
+    ...
+    ...    15) Login as member
+    ...
+    ...    16) Navigate to Benefits and Click 'Edit Coverage' button on the Medical offer.
+    ...
+    ...    17) If required, select a reason for changing benefit coverage via the radio button(s).
+    ...
+    ...    18) Complete the Change Reason screens (if applicable).
+    ...
+    ...    19) Select any dependents being covered.
+    ...
+    ...    20) Click 'Select Plan' for a Medical plan that has HRA available.
+    ...
+    ...    21) Select Medicare and Click 'Next'
+    ...
+    ...    22) Click 'Save' on the Medical Benefit Summary screen.
+    ...
+    ...    23) Click Next on Document manager page
+    ...
+    ...    24) Navigate to Benefit Details> Medical> HRA> Additional Info.
+    ...
+    ...    25) Confirm correct prorated amount using: [(Annual Amount/pay frequency)*remaining pay periods] (i.e If pay frequency is bi-weekly divide by 26);
+    ...
+    ...    26)Confirm benefit effective date is the same for medical and HRA.
+    ...
+    ...    27)Logout member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    HRA Offer
+    Enable Options From Edit Offer Details In Vista Role    Health Reimbursement Account (HRA)    Accepting Benefit    Accept automatically
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+    Login as HR admin
+    Perform Simple Employee Search    HMVlastname
+    Update Hire Date In Employee Profile    d:currentdate:y:-1
+    Logout HR Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol1
+    Announcements Page    yes
+    Announcements Page    yes
+    Navigate To New Member Menu    Benefits
+    Edit Coverage In New Member Role    Florida Blue $2,500 Deductible Plan
+    Select Change Reason For NewMemberUI    Marriage    d:currentdate:d:-1
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Complete Enrollemnt In New Member Role
+    HSA Complete Contribution
+    Navigate To New Member Menu    Benefits
+    Verify HRAcontribution and Effectivedates In Member Summary Page    td:HRAdetails
+    Logout New Member Role
+
+5.HRA - Decline Benefit
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *HRA - Decline Benefit*
+    ...
+    ...    PreRequisites:
+    ...
+    ...    Offer must be set up to be able to Accept or Refuse HRA
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment application and login as vista admin
+    ...
+    ...    2) Search for group (TestGroupForHRA2016)
+    ...
+    ...    3) Set Accepting Benefit as 'Require user to Accept or Refuse' for HRA plan.
+    ...
+    ...    4) Add a new member into the group
+    ...
+    ...    5) logout from vista admin.
+    ...
+    ...    6) Login as a Member
+    ...
+    ...    7) Click 'Get Started' from Home Page.
+    ...
+    ...    8) Click 'Begin Enrollment' button on the Medical offer.
+    ...
+    ...    9) Use radio buttons to select Dependents that are covered for Medical
+    ...
+    ...    10) Click 'Next'
+    ...
+    ...    11) Select 'No' for Medicare.
+    ...
+    ...    12) Decline coverage for HRA benefit.
+    ...
+    ...    13) Click 'Save' on the Medical Benefit Summary screen and Complete Enrollment.
+    ...
+    ...    14) Verify Benefit Detail, Employee Benefit Summary and Employee Detail Report will reflect coverage was declined.
+    ...
+    ...    15)Logout member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    HRA Offer
+    Enable Options From Edit Offer Details In Vista Role    Health Reimbursement Account (HRA)    Accepting Benefit    Require user to Accept or Refuse
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Decline Coverage    #Decline HRA
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Verify message    Coverage Declined
+    Verify Employee Detail Report In New MemberUI    Personal Information    Declined Coverage
+    Logout New Member Role
+
+6. HRA - Employee Summary Report
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *HRA - Employee Summary Report*
+    ...
+    ...    PreRequisites:
+    ...
+    ...    1) \ Member enrolled in HRA benefit.
+    ...
+    ...    2) \ GROUP>BASIC> TOOLS and Report Setup> \ 'Display Employee Benefit Summary Report in Member Role' = \ 'Yes'
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment application and login as vista admin
+    ...
+    ...    2) Search for group (TestGroupForHRA2016)
+    ...
+    ...    3) Add a new member into the group and Set Accepting Benefit as 'Require user to Accept or Refuse' for HRA plan.
+    ...
+    ...    4) logout from vista admin.
+    ...
+    ...    5) Login as a Member
+    ...
+    ...    6) Click 'Get Started' from Home Page.
+    ...
+    ...    7) Click 'Begin Enrollment' button on the Medical offer.
+    ...
+    ...    8) Use radio buttons to select Dependents that are covered for Medical
+    ...
+    ...    9) Click 'Next'
+    ...
+    ...    10) Select 'No' for Medicare.
+    ...
+    ...    11) Select coverage for HRA benefit.
+    ...
+    ...    12) Click 'Save' on the Medical Benefit Summary screen and Complete Enrollment.
+    ...
+    ...    13) Click on the 'Employee Summary Report' link on the Home page.
+    ...
+    ...    14) The Employee Benefit Summary Report opens. \ Included in the HRA information is the Employer Annual Total. \ This should match what is defined for the Benefit in Vista. \ 15)Logout Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    HRA Offer
+    Enable Options From Edit Offer Details In Vista Role    Health Reimbursement Account (HRA)    Accepting Benefit    Require user to Accept or Refuse
+    Navigate To    Basics    Tools and Reports Setup
+    Update Tools And Reports    Display Employee Benefit Summary Report in Member Role    Yes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Select Market Plan For New Member Role    td:HRAplan
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    EESUMMARYREPORT
+    Verify PDF Content    HRA
+    Logout New Member Role
+
+7.Enroll in FSA account and HSA
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *Enroll in FSA account and HSA.*
+    ...
+    ...    PreRequisites:
+    ...
+    ...    1) \ Offers have to allow enrollment in both benefits by a single member
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment application and Login as member and enroll in BOTH an HSA and FSA account.
+    ...
+    ...    2) Click 'Get Started' from Home Page
+    ...
+    ...    3) Click 'Next' if not adding dependents
+    ...
+    ...    4) Click 'Begin Enrollment' button on the Health FSA Coverage benefit
+    ...
+    ...    5) Click 'Select Plan' button
+    ...
+    ...    6) Enter 'Contribution Amount' and click 'Next'
+    ...
+    ...    7) Select the Health HSA Coverage benefit
+    ...
+    ...    8) Click 'Select Plan' button
+    ...
+    ...    9) Enter 'Contribution Amount' and click 'Next'
+    ...
+    ...    10) Accept HSA agreements
+    ...
+    ...    11) Click 'Save' on the Medical Benefit Summary screen and Complete Enrollment.
+    ...
+    ...    12) Verify Enrollment is accepted. Verify both are shown on the Benefit Detail screen and the Employee Reports
+    ...
+    ...    13)Logout member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    HFSA Offer 2016    Health Care Flexible Spending Account (FSA)    Health Savings Account (HSA)    Always Available
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    HFSA Offer 2016    Health Savings Account (HSA)    Health Care Flexible Spending Account (FSA)    Always Available
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    td:FSAplan
+    Add Contribution Amount For FSA    300
+    Select Market Plan For New Member Role    td:HSAplan
+    HSA Schedule Contribution In New Member Role    200
+    HSA Complete Agreements
+    Save Benefit Enrollment In New Member    td:FSAplan
+    Complete Enrollemnt In New Member Role
+    Verify Message    Health Care FSA | Effective
+    Verify Message    Health Savings Account | Effective
+    Verify Employee Detail Report In New MemberUI    Personal Information    td:reportcontent
+    Logout New Member Role
+
+8. Enroll in HSA only
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *Enroll in HSA only*
+    ...
+    ...    PreRequisites:
+    ...
+    ...    Offers must be configured to only allow one enrollment, not both
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment and Login as a member.
+    ...
+    ...    2) Click 'Get Started' from Home Page
+    ...
+    ...    3) Click 'Next' if not adding dependents
+    ...
+    ...    4) Select the Health HSA Coverage benefit and verify FSA benefit showing as "Not eligible"
+    ...
+    ...    5) Click 'Select Plan' button
+    ...
+    ...    6) Enter 'Contribution Amount' and click 'Next'
+    ...
+    ...    7) Accept HSA agreements
+    ...
+    ...    8) Click 'Save' on the Medical Benefit Summary screen and Complete Enrollment.
+    ...
+    ...    9) Verify Enrollment is accepted. Verify HSA benefits are shown on the Benefit Detail screen and the Employee Reports
+    ...
+    ...    10)Logout Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    HFSA Offer 2016    Health Care Flexible Spending Account (FSA)    Health Savings Account (HSA)    Available if user refuses parent element
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    td:HSAplan
+    HSA Schedule Contribution In New Member Role    200
+    HSA Complete Agreements
+    Verify Message    Not Eligible
+    Save Benefit Enrollment In New Member    td:HSAplan
+    Complete Enrollemnt In New Member Role
+    Verify Message    Health Savings Account | Effective
+    Logout New Member Role
+
+9. Enroll in FSA only
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *Enroll in FSA only*
+    ...
+    ...    PreRequisites:
+    ...
+    ...    Offers must be configured to only allow one enrollment, not both
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Open Enrollment application and Login as a member.
+    ...
+    ...    2) Click 'Get Started' from Home Page
+    ...
+    ...    3) Click 'Next' if not adding dependents
+    ...
+    ...    4) Select the Health FSA Coverage benefit and verify HSA benefit showing as "Not eligible"
+    ...
+    ...    5) Click 'Select Plan' button
+    ...
+    ...    6) Enter 'Contribution Amount' and click 'Next'
+    ...
+    ...    7) Click 'Save' on the Medical Benefit Summary screen and Complete Enrollment.
+    ...
+    ...    8) Verify Enrollment is accepted. Verify FSA benefits are shown on the Benefit Detail screen and the Employee Reports
+    ...
+    ...    9)Logout Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    HFSA Offer 2016    Health Care Flexible Spending Account (FSA)    Health Savings Account (HSA)    Always Available
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    HFSA Offer 2016    Health Savings Account (HSA)    Health Care Flexible Spending Account (FSA)    Available if user refuses parent element
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    td:FSAplan
+    Add Contribution Amount For FSA    300
+    Verify Message    Not Eligible
+    Save Benefit Enrollment In New Member    td:FSAplan
+    Complete Enrollemnt In New Member Role
+    Verify Message    Health Care FSA | Effective
+    Logout New Member Role

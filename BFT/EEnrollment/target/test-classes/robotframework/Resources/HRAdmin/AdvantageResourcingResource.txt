@@ -1,0 +1,59 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll in Medical Benefit
+    [Arguments]    ${effectivedate}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 UnitedHealthCare $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    Decline coverage for this person
+    Comment    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    test
+    Comment    Enter Flexible Spending Deduction Periods    1
+    Comment    Select Plan    2016 Dependent Care FSA
+    Select Plan    Decline coverage for this person
+    Comment    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    test
+    BuiltIn.Sleep    3s
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+
+Enroll In Medical Benefit with effective date
+    [Arguments]    ${effectivedate}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 UnitedHealthCare $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    Decline coverage for this person
+    Comment    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    test
+    Comment    Enter Flexible Spending Deduction Periods    1
+    Comment    Select Plan    2016 Dependent Care FSA
+    Select Plan    Decline coverage for this person
+    Comment    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    test
+    BuiltIn.Sleep    3s
+    Comment    Enter Flexible Spending Deduction Periods    1
+    Save Benefit In Snapshot Page
+
+Enroll In Dental and Vision benefit
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Comment    Select Tobacco Survey Answer    No
+    Select Plan    2016 UnitedHealthCare Basic Dental
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Comment    Select Plan    Decline coverage for this employee
+    Comment    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

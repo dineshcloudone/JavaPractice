@@ -1,0 +1,173 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Rate Factor Survey - Presented
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Rate Factor Survey - Presented*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (Basics/System)
+    ...
+    ...    4) Select Rate Factor Survey Setup Enabled
+    ...
+    ...    5) Navigate To (Benefits/Rate Factor Survey)
+    ...
+    ...    6) Delete Existing Rate Factor Survey
+    ...
+    ...    7) Create Global Rate Factor Survey
+    ...
+    ...    8) Navigate To (Users/Add Member)
+    ...
+    ...    9) Add Member In Vista (td:mandatory/lastname)
+    ...
+    ...    10) Logout Vista Admin
+    ...
+    ...    11) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord1234)
+    ...
+    ...    12) Navigate To Dependents
+    ...
+    ...    13) Add Dependent To Member (td:Spouse/lastname)
+    ...
+    ...    14) Verify Rate Factor Survey
+    ...
+    ...    15) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Basics    System
+    Select Rate Factor Survey Setup    Enabled
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    none
+    Enrollment.Create Global Rate Factor Survey    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical HSA    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical HSA Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Life Offer    Enable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Plans    Disable
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Run Member Profile Pages In New UI
+    Verify Rate Factor Survey    Auto Test
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    none
+    Save Configuration
+    Logout Vista Admin
+
+2.Rate Factor Survey - Not Presented
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Rate Factor Survey - Not Presented*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (Basics/System)
+    ...
+    ...    4) Select Rate Factor Survey Setup Enabled
+    ...
+    ...    5) Navigate To (Benefits/Rate Factor Survey)
+    ...
+    ...    6) Delete Existing Rate Factor Survey
+    ...
+    ...    7) Create Global Rate Factor Survey
+    ...
+    ...    8) Navigate To (Users/Add Member)
+    ...
+    ...    9) Add Member In Vista (td:mandatory/lastname)
+    ...
+    ...    10) Logout Vista Admin
+    ...
+    ...    11) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord1234)
+    ...
+    ...    12) Navigate To Dependents
+    ...
+    ...    13) Add Dependent To Member (td:Spouse/lastname)
+    ...
+    ...    14) Perform Rate Factor Surevy
+    ...
+    ...    15) Perform Begin Enrollment
+    ...
+    ...    16) Add Dependent To Member
+    ...
+    ...    17) Verify Medical Plan
+    ...
+    ...    18) Complete Enrollemnt In New Member Role
+    ...
+    ...    19) Logout New Member Role
+    ...
+    ...    20) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord123)
+    ...
+    ...    21) Verify No Get Started Button
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Basics    System
+    Select Rate Factor Survey Setup    Enabled
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    none
+    Enrollment.Create Global Rate Factor Survey    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical HSA    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical HSA Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Life Offer    Enable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Plans    Disable
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Run Member Profile Pages In New UI
+    Perform Rate Factor Surevy    YES
+    Perform Begin Enrollment in Member Role
+    Select Coverage Amount For Member    $50,000.00 (1 times salary up to $750,000.00)
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    2016 Group Life and AD&D
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord123
+    Verify Message    Personal Information
+    Capture Page Screenshot
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    none
+    Save Configuration
+    Logout Vista Admin

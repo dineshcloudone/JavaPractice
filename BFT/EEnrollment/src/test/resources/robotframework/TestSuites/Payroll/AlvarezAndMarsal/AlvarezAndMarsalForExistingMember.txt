@@ -1,0 +1,237 @@
+*** Settings ***
+Suite Setup
+Suite Teardown
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+Resource          ../../../Resources/HRAdmin/AlvarezAndMarsalResource.txt
+
+*** Variables ***
+${existing_member_temp_location}    ../../resources/robotframework/Resources/Robotframework.TestSuites.Payroll Merge.AlvarezAndMarsal.AlvarezAndMarsal.txt
+
+*** Test Cases ***
+10.ChangeCategory
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc10
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Change Employee Cateogry    Employment Status    6 - Full Cost
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+11.Change Plan
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc11
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Plan
+    Select Plan    Silver 2016
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+12.Effective Date Change
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc12
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    BuiltIn.Sleep    4s
+    Open Group In HR Role
+    BuiltIn.Sleep    4s
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Effective Date
+    Enter Effective Date    d:currentdate:d:1
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+13.Increase Coverage Level
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc13
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+14.Decrease Coverage Level
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc14
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    Employee Only
+    Close HR Admin
+    Logout Vista Admin
+
+17.Increase Flex Contribution
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc17
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Health FSA    Contribution Amount
+    Set Contribution Amount For Flex Benefit    200
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+18.Decrease Flex Contribution
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc18
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Health FSA    Contribution Amount
+    Set Contribution Amount For Flex Benefit    145
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+20.Cancel Flex when already enrolled in Flex
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc20
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Health FSA    Health FSA
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+
+24.Salary Increase
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc4
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc4
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Update Employee Salary    53100    per year
+    Navigate To HR Menu    Overview
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Approve From HR Admin
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+25.Salary Decrease
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc2
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Update Employee Salary    49000    per year
+    Navigate To HR Menu    Overview
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Approve From HR Admin
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+29.Add Dependent to Benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc29
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    Spouse
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    verify message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc13
+
+30.Remove Dependent from Benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc30
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical
+    select plan    Gold 2016
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Healthcare 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Dependent Care 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+31.Change Dependent Personal Information
+    ${lastname}    readHashMapDataFromFile    ${existing_member_temp_location}    lastnameaamtc31
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    dependents
+    Edit Dependent Details    Spouse    lastname
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin

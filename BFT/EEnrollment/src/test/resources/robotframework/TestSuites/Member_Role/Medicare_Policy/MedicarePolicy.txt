@@ -1,0 +1,248 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Add Medicare Policy - Medicare Payer Status - Manual Entry
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Add Medicare Policy - Medicare Payer Status - Manual Entry*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (QCOE Diamond Foods)
+    ...
+    ...    3) Navigate to Basics > Medicare Setup
+    ...
+    ...    4) Update Enable Medicare Manager > Yes
+    ...
+    ...    5) Update Auto-Populate Medicare Info > Auto-Populate Option
+    ...
+    ...    6) Update Medicare Auto_Enrollment > Yes
+    ...
+    ...    7) Logout from Vista Admin
+    ...
+    ...    8) Login as Member (testqcoe_1/passWord123)
+    ...
+    ...    9) Click 'Get Started' from Home Page
+    ...
+    ...    10) ‘Covered by Medicare?’ screen appears
+    ...
+    ...    11) Click ‘Yes’ radio button under ‘Are you or any of your dependents covered by Medicare?’
+    ...
+    ...    12) Check the box for the Subscriber and/or dependent that is covered
+    ...
+    ...    13) Check the ‘Yes, I have all the required details’ radio button under ‘Do you have the required details?’
+    ...
+    ...    14) Click the ‘Next’ button
+    ...
+    ...    15) Populate all the fields on the ‘Add & Save Medicare’ screen
+    ...
+    ...    16) Click ‘Next’ button
+    ...
+    ...    17) Click ‘Save’ button
+    ...
+    ...    18) Verify Medicare policy can be added manually outside of Enrollment
+    ...
+    ...    19) Logout from application
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BASICS    Medicare Setup
+    Update Configuration For    Enable Medicare Manager    Yes
+    Update Configuration For    Auto-populate Medicare Info    Do Not Auto-populate
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Addmedicare Policy In Member Role    td:policynumber    td:effectivedate
+    Logout New Member Role
+
+2.Add Medicare Policy - Medicare Payer Status - Auto Calculated
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Add Medicare Policy - Medicare Payer Status - Auto Calculated*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (QCOE Diamond Foods)
+    ...
+    ...    3) Navigate to Basics > Medicare Setup
+    ...
+    ...    4) Update Enable Medicare Manager > Yes
+    ...
+    ...    5) Update Auto-Populate Medicare Info > Auto-Populate Option
+    ...
+    ...    6) Update Medicare Auto_Enrollment > Yes
+    ...
+    ...    7) Logout from Vista Admin
+    ...
+    ...    8) Login as Member (testqcoe_1/passWord123)
+    ...
+    ...    9) Click Medicare Link on Home page
+    ...
+    ...    10) Select Edit from the Actions dropdown for the policy holder
+    ...
+    ...    11) Verify that information is listed correctly and that the Age box is checked
+    ...
+    ...    12) Verify Medicare policy is added automatically with pre-populated fields
+    ...
+    ...    13) Logout from application
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BASICS    Medicare Setup
+    Update Configuration For    Enable Medicare Manager    Yes
+    Update Configuration For    Auto-populate Medicare Info    Auto-populate part A only
+    Update Configuration For    Medicare Auto-enrollment    Yes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    MEDICARE
+    Addmedicare Policy In Member Role    td:policynumber    td:effectivedate
+    Verify Message    Add Dependent
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    2016 Anthem BlueCross $800 Deductible Plan
+    Save Benefit Enrollment In New Member    2016 Anthem BlueCross $800 Deductible Plan
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    MEDICARE
+    Verify Medicare Information In Member Role
+    Logout New Member Role
+
+3.Member Home Page - Opens To Medicare Policy Page
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Member Home Page - Opens To Medicare Policy Page*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (varunTestGroup_2)
+    ...
+    ...    3) Add HSA and FSA plans
+    ...
+    ...    4) Set Dependency Rule to Plans if Parent Selected
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as Member (testqcoe_1/passWord123)
+    ...
+    ...    7) Click 'Medicare' link on Home page
+    ...
+    ...    8) Select 'Edit' from the 'Actions' dropdown for the policy holder
+    ...
+    ...    9) Make updates as needed
+    ...
+    ...    10) Click 'Next'
+    ...
+    ...    11) Click 'Save' on the 'Review & Save Medicare' screen
+    ...
+    ...    12) Verify Medicare policy is able to be saved outside of enrollment
+    ...
+    ...    13) Logout from application
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BASICS    Medicare Setup
+    Update Configuration For    Enable Medicare Manager    Yes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    MEDICARE
+    Addmedicare Policy In Member Role    td:policynumber    td:effectivedate
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    2016 Anthem BlueCross $800 Deductible Plan
+    Save Benefit Enrollment In New Member    2016 Anthem BlueCross $800 Deductible Plan
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    MEDICARE
+    Edit Medicare Policy In Member Role    A987654321
+    Logout New Member Role
+
+4.Verify Remove Medicare functionality
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Verify Remove Medicare Functionality*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3. Navigate to Basics and set configurations of Medicare through medicare setup
+    ...
+    ...    4. Navigate to Users and Add Memeber
+    ...
+    ...    5. Logout as Vista
+    ...
+    ...    6. Login as Member and change password.
+    ...
+    ...    7. Navigate to Medicare
+    ...
+    ...    8. Click remove but in actions dropdown
+    ...
+    ...    9. Verify Delete Confirmation popup
+    ...
+    ...    10. Click cancel and verify navigated to review and save page
+    ...
+    ...    11. Click remove button from actions drop down
+    ...
+    ...    12.Click on remove medicare info button on delete Confrimation dialog
+    ...
+    ...    13. verify medicare info is deleted
+    ...
+    ...    14. Logout as member
+    ...
+    ...    15. Login as Vista admin
+    ...
+    ...    16. Set configurations of medicare to default settings
+    ...
+    ...    17.Logout as vista
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Medicare Setup
+    Update Configuration For    Gathering Medicare Info    Ask user for parts A and B
+    Update Configuration For    Enable Medicare Manager    Yes
+    Update Configuration For    Auto-populate Medicare Info    Auto-populate part A only
+    Update Configuration For    Medicare Auto-enrollment    Yes
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    Medicare
+    Remove Medicare For Member In Member Role    Cancel
+    Remove Medicare For Member In Member Role    Remove
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Medicare Setup
+    Update Configuration For    Gathering Medicare Info    Do not ask user for this information
+    Update Configuration For    Enable Medicare Manager    No
+    Save Configuration
+    Logout Vista Admin

@@ -1,0 +1,26 @@
+*** Settings ***
+Suite Setup       TestSetUp
+Suite Teardown    Close Browser
+Test Setup        BuiltIn.Sleep    1s
+Resource          Resources/Environments.txt
+Resource          Resources/common.txt
+
+*** Keywords ***
+TestSetUp
+    Set Global Variable    ${testdatasource}    ${EMPTY}
+    ${browser}    BuiltIn.Get Variable Value    ${browserclient}
+    Run Keyword If    '${browser}' == 'None'    Set Global Variable    ${browser}    FF
+    ...    ELSE    Set Global Variable    ${browser}
+    ${env}    BuiltIn.Get Variable Value    ${environment}
+    ${env}    Set Variable    EESHREL
+    ${build}    BuiltIn.Get Variable Value    ${buildnumber}
+    BuiltIn.Log    ${build}
+    Run Keyword If    '${build}' == 'None'    Set Global Variable    ${build}    nobuild
+    ...    ELSE    Set Global Variable    ${build}
+    Run Keyword If    '${env}' == 'None'    Set Global Variable    @{AppDetails}    @{EESHDEV}
+    ...    ELSE IF    '${env}' == 'EESHREL'    Set Global Variable    @{AppDetails}    @{EESHREL}
+    ...    ELSE IF    '${env}' == 'EESHPATCH'    Set Global Variable    @{AppDetails}    @{EESHPATCH}
+    ...    ELSE IF    '${env}' == 'EESHDEV'    Set Global Variable    @{AppDetails}    @{EESHDEV}
+    ...    ELSE    '${env}' == 'EESHDEV'    Set Global Variable    @{AppDetails}    @{EESHDEV}
+    Launch Browser    @{AppDetails}    ${browser}
+    Read JSON

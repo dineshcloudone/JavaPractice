@@ -1,0 +1,51 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Verify direct deposit limits are enforced.
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Verify direct deposit limits are enforced*
+    ...
+    ...    Pre Condition:
+    ...    1.Login as vista and search for group
+    ...
+    ...    2.Group Customization-->Direct Deposit-Enabled--->set Maximum Number of Accounts
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Users and Add Memeber
+    ...
+    ...    4.Logout as Vista
+    ...
+    ...    5.Login as Member and Run profile pages
+    ...
+    ...    6.Navigate to profile in member menu
+    ...
+    ...    7.Add direct deposit to member
+    ...
+    ...    8.Navigate to new member and add direct deposits until maximum no of accounts reached
+    ...
+    ...    9.Logout as Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    BuiltIn.Sleep    2s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    BuiltIn.Sleep    2s
+    Navigate To New Member Menu    Profile
+    Add Direct Deposit In Member Role    td:directdeposit
+    Navigate To New Member Menu    Profile
+    Maximum Number Of Accounts In Direct Deposit    td:maximumnumberofaccounts    td:directdeposit
+    BuiltIn.Sleep    3s
+    Logout New Member Role

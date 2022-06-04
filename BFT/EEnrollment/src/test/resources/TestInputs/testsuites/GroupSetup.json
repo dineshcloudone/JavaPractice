@@ -1,0 +1,45 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "groupsetupinfo": {
+      "identification": "Identification",
+      "groupcustomization": "Group Customization",
+      "categories": "Categories",
+      "cobrasetup": "COBRA Setup",
+      "personalcustomization": "Personal Customization",
+      "workcustomization": "Work Customization"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "admindetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "workemail": "test@benefitfocus.com",
+      "loginid": "RNDAutoTest",
+      "password": "bfEnrol0",
+      "passwordconfirmation": "bfEnrol0"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "category": {}
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "category": {
+      "categorytype": "RNDTestCategory",
+      "active": "Yes",
+      "selectionrequired": "Yes"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

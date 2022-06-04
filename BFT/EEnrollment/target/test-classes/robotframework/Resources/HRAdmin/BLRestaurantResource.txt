@@ -1,0 +1,27 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+Enroll in Medical Benefit
+    [Arguments]    ${currentdate}
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    ${currentdate}    test
+    Save Benefit In Snapshot Page
+
+Enroll In Life Insurance benefit
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Voluntary Life
+    Select Coverage Amount    $70,000.00
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Select Coverage Amount    $4,000.00
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

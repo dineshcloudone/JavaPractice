@@ -1,0 +1,54 @@
+{
+  "chickfilatestcases": {
+    "ChickfilA": {
+      "vista": {
+        "chickfilamandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate:d:-5",
+          "earnings": "5000",
+          "earningsfrequency": "per month",
+          "payfrequency": "Monthly",
+          "categories": "1625#No Waiting Period#Not Offering#Chick-fil-A, Inc.#58-0941582#Fulltime-Regular - yes#CFA Corporate Staff#00000 - Corporate#In Measurement#Not Offering#100%_100%#Atlantic#No Waiting Period"
+        },
+        "validvistacredentials": {
+          "username": "bftpuchala",
+          "password": "bfEnrol1"
+        },
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+
+        }
+      }
+
+    }
+  }
+}

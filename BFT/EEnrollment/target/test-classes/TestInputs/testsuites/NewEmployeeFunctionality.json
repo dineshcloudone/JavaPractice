@@ -1,0 +1,218 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "childexceedingmaximumallowedage": {
+      "ssn": "RND7744",
+      "firstname": "AutoMandatory",
+      "lastname": "RNDDepChild",
+      "birthdate": "d:currentdate:y:-28",
+      "gender": "Male",
+      "relationship": "Child"
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "7": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup": "QCOE Test Automation Group Mani"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminautomation",
+      "password": "Password1"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate:d:-120",
+      "categories": "Medical"
+    }
+  },
+  "8": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminautomation",
+      "password": "Password1"
+    },
+     "groupsearch": {
+     "automationgroup": "QCOE Test Automation Group Mani"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

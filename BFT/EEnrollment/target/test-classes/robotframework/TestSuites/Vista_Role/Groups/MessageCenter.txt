@@ -1,0 +1,35 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1. Send Secured Message from Message Center
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Send Secure Message from Message Center*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search existing group (QCoE Test Automation Group-B)
+    ...
+    ...    3) Navigate to Basics > System
+    ...
+    ...    4) Update System Configuration "Benefitfocus/HR Secure Message > Enabled " and save
+    ...
+    ...    5) Open Message Center
+    ...
+    ...    6) Compose and send a secure message from vista
+    ...
+    ...    7) Verify that message is sent to receipent
+    ...
+    ...    8) Logout vista
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Basics    System
+    Update System Information    Benefitfocus/HR Secure Messaging    Enabled
+    Open Message Centre
+    Compose And Send Secure Message In Vista    Test Subject    Test Email body
+    Logout Vista Admin

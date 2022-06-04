@@ -1,0 +1,15 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll medical benefit
+    Select Market Plan For New Member Role    2015 ARS Medical Plan With Healthiest You
+    Save Benefit Enrollment In New Member    2015 ARS Medical Plan With Healthiest You
+    Complete Enrollemnt In New Member Role
+
+Member Initial Login
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    yes

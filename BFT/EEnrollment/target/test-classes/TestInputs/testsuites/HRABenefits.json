@@ -1,0 +1,478 @@
+{
+  "1": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate",
+	  "categories": "MedicalHRA"
+    }
+  },
+  "2": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Monthly",
+      "hiredate": "currentdate",
+      "categories": "MedicalHRA"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HRAplan": "HRA"
+    },
+
+    "HRAdetails": {
+      "InitialContribution": "1500",
+      "OngoingContribution": "2000",
+      "InitialProrate": "Yes",
+      "OngoingProrate": "Yes",
+	  "payfrequency": "Monthly"
+    },
+
+    "employeeprofile": {
+      "date": "currentdate:d:1"
+    }
+  },
+
+  "3": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4455",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Monthly",
+      "hiredate": "currentdate",
+      "categories": "MedicalHRA"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HRAplan": "HRA"
+    },
+
+    "HRAdetails": {
+      "InitialContribution": "1500",
+      "OngoingContribution": "2000",
+      "InitialProrate": "Yes",
+      "OngoingProrate": "Yes",
+	  "payfrequency": "Monthly"
+    },
+
+    "employeeprofile": {
+      "date": "currentdate:d:1"
+    }
+  },
+
+  "4": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Monthly",
+      "hiredate": "currentdate",
+      "categories": "MedicalHRA"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HRAplan": "HRA"
+    },
+
+    "employeeprofile": {
+      "hiredate": "currentdate:y:-1"
+    },
+
+    "personalinformation": {
+      "personalEmailchkbox": "yes",
+      "personalEmail": "test@test.com"
+    },
+
+    "spouse": {
+      "relationship": "Spouse",
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female"
+    },
+
+    "HRAdetails": {
+      "InitialContribution": "1500",
+      "OngoingContribution": "2000",
+      "InitialProrate": "Yes",
+      "OngoingProrate": "Yes",
+	  "payfrequency": "Monthly"
+    }
+  },
+
+  "5": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "hiredate": "currentdate",
+      "categories": "MedicalHRA"
+    },
+
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HRAplan": "HRA"
+    }
+  },
+
+  "6": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "hiredate": "currentdate",
+      "categories": "MedicalHRA"
+    },
+
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HRAplan": "HRA"
+    }
+  },
+  "7": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "hiredate": "currentdate",
+      "categories": "HSAFSA"
+    },
+
+    "reportcontent": {
+      "message1": "Health Care Flexible Spending Account (FSA)",
+      "message2": "Health Savings Account (HSA)"
+    },
+
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HSAplan": "Health Savings Account",
+      "FSAplan": "Health Care FSA"
+    }
+  },
+  "8": {
+    "resource": "memberHRA",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "hiredate": "currentdate",
+      "categories": "HSAFSA"
+    },
+
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HSAplan": "Health Savings Account",
+      "FSAplan": "Health Care FSA"
+    }
+  },
+  "9": {
+    "resource": "memberHRA",
+    "automationgroup": "BF QCOE HRA Benefit Test Automation Group",
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminmember1",
+      "password": "Automation123"
+    },
+
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "9595959595",
+      "homeEmail": "test@test.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "hiredate": "currentdate",
+      "categories": "HSAFSA"
+    },
+
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes",
+      "medicalplan": "Florida Blue $2,500 Deductible Plan",
+      "HSAplan": "Health Savings Account",
+      "FSAplan": "Health Care FSA"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup",
+	"automationgroup": "BF QCOE HRA Benefit Test Automation Group"
+  }
+}

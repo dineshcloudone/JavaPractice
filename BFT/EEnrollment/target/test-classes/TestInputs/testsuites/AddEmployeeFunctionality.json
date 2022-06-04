@@ -1,0 +1,203 @@
+{
+  "addemployeefunctionality": {
+    "bfqatestautomationgroup": {
+      "hradmin": {
+        "mandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",          
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "FSAPlan": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "FSA"
+        },
+        "addemployeewithmedical": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "addemployeewithlife": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Life"
+        },
+        "addemployeewithmedicalforcobra": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "effectivedate:M:-1",
+          "categories": "Medical"
+        },
+        "workinformation": {
+          "phone": "(454) 555-56",
+          "cellphone": "(454) 5555-545",
+          "pager": "Auto Pager",
+          "email": "abc@test.com"
+        },
+        "newworkinformation": {
+          "newphone": "(764) 555-56",
+          "newcellphone": "(764) 5555-545",
+          "newpager": "New Auto Pager",
+          "newemail": "newemail@test.com"
+        },
+        "militaryinformation": {
+          "militaryservice": "Yes",
+          "branch": "Air Force",
+          "startdate": "d:currentdate:y:-10",
+          "dischargestatus": "Under Honorable Conditions",
+          "enddate": "d:currentdate:y:10",
+          "veteranstatus": "Not Applicable"
+        },
+        "newmilitaryinformation": {
+          "militaryservice": "Yes",
+          "branch": "Air Force",
+          "startdate": "d:currentdate:y:-11",
+          "dischargestatus": "Entry Level Separation",
+          "enddate": "d:currentdate:y:11",
+          "veteranstatus": "Not Applicable"
+        },
+        "directdeposit": {
+          "bankname": "Bank of America",
+          "bankroutingnumber": "454121441",
+          "bankaccountnumber": "RND42457895625",
+          "accounttype": "Checking",
+          "amount": "999"
+        },
+        "newdirectdeposit": {
+          "bankname": "Bank of SC",
+          "bankroutingnumber": "124301025",
+          "bankaccountnumber": "RND52457895625",
+          "accounttype": "Checking",
+          "amount": "889"
+        },
+        "qualifyingevent": {
+          "qualifyingevent": "Enter a new event",
+          "selectreason": "Death of employee",
+          "effectiveDate": "effectivedate:M:-1"
+        }
+      }
+    },
+    "underarmour": {
+      "hradmin": {
+        "uamandatory": {
+          "ssn": "RND1111",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "maritalstatus": "Single",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        }
+      }
+    },
+    "addemployeewithdental": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Dental"
+    },   
+    "addemployeeinhra": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "123 Main Street Schenectady",
+          "city": "Schenectady",
+          "state": "NY",
+          "zipcode": "12345-0001",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate"          
+    }
+  }
+}

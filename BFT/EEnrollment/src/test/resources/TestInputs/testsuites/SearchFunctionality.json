@@ -1,0 +1,36 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+  
+}

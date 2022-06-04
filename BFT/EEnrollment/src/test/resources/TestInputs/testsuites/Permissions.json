@@ -1,0 +1,25 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "bhradminautomation",
+      "password": "bfEnrol2"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCoE Test Automation Group-B"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "bhradminautomation",
+      "password": "bfEnrol2"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCoE Test Automation Group-B"
+    }
+  },
+  "default": {
+    "resource": "priorityhradmingroup"
+  }
+}

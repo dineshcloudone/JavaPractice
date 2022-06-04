@@ -1,0 +1,11 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "cnatestcases": {
+    "continentalnorthamerica": {
+      "vista": {
+        "cnamandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+		  "maritalstatus": "Married",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings":"5000",
+          "earningsfrequency":"per month",
+          "calendarset":"MONTHLY",
+          "payfrequency":"Monthly",
+          "frozensalary":"",
+          "frozensalaryperiod":"",
+          "employerid":"RND1101698",
+      	  "categories":"0110 - Allentown#No - NO#3030 - San Jose#E - Error#HRAC - Hourly Active#1 - CAS Salaried Retirees#A - Active#C - Automotive#A - Active#0 - Non Union"
+        },
+        "validvistacredentials": {
+        "username": "bftpuchala",
+        "password": "bfEnrol1"
+        },
+        "adddependent": {
+        "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        },
+        "seflmandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "homeEmail":"nobody@benefitfocus.com",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings":"5000",
+          "earningsfrequency":"per month",
+          "calendarset":"BIWEEKLY",
+          "payfrequency":"Bi-Weekly",
+          "employerid":"RND91741",
+          "occupation":"Testing",
+          "workstate":"AA",          
+      	  "categories": "No#No#Active#FT#No#No#001 - Columbia#Bi-Weekly#No#No#1 - Region 1"
+        },
+        
+        "hradminmandatoryemployeeactions": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTESTSSN",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "createmedicalplan": {
+          "plantype": "Medical",
+          "producttype": "HMO"
+        },
+        "memberloginchangepassword": {
+          "newpassword": "Test@1234",
+          "newconfirmpassword": "Test@1234"
+        },
+        "selectquestionanswer": {
+          "secretquestion1": "index=5",
+          "secretanswer1": "Autotest",
+          "secretquestion2": "index=6",
+          "secretanswer2": "Test",
+          "secretquestion3": "index=7",
+          "secretanswer3": "AutoTest123"
+        },
+        "emergencycontact": {
+          "relationship": "child",
+          "fullname": "RNDAutoTest",
+          "email": "testmail@benefitfocus.com",
+          "state": "AA",
+          "country": "USA"
+        }
+      }
+    }
+    
+    }
+  }
+}

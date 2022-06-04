@@ -1,0 +1,153 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group SY",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "A"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group SY",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newpassword": "bfEnrol2",
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "A"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group SY",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "A"
+    }
+  },
+   "4": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group SY",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "A"
+    },
+    "newusername": "RNDEditedUsername"
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group SY",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "A"
+    },
+    "newpassword": "bfEnrol2"
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

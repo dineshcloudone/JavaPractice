@@ -1,0 +1,18 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the Priorty HR Admin group
+Resource          ../common.txt
+
+*** Keywords ***
+Next button in PCP
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Click    //*[contains(text(),'Next')]    Next Button
+    Capture Page Screenshot
+
+Member Initial Login
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    Yes

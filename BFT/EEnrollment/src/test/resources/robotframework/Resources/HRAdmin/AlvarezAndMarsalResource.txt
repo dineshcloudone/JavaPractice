@@ -1,0 +1,17 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll Medical benefit in Alvarez and Marsal Group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical
+    select plan    Gold 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Healthcare 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Dependent Care 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page

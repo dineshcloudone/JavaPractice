@@ -1,0 +1,254 @@
+*** Settings ***
+Test Setup        getResource
+Force Tags        ManageCarriers
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.View Carrier List
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *View Carrier List*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> View Carrier List'
+    ...
+    ...    3) Verify Carrier Search Results Message
+    ...
+    ...    4) Logout as Vista Admin
+    ...
+    ...
+    ...    Test case No: 8 (From Vista Role Test case Master)
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    View Carrier List
+    Logout Vista Admin
+
+2.Carrier Search
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *View Carrier List*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> Carrier Search
+    ...
+    ...    3) Perform Carrier Search (Eg: BCBSFL)'
+    ...
+    ...    4) Verify BCBSFL Message
+    ...
+    ...    5) Verify View Carrier Profile Message
+    ...
+    ...    6) Logout as Vista Admin
+    ...
+    ...
+    ...    Test case No: 9 (From Vista Role Test case Master)
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Search
+    Perform Carrier Search    BCBSFL
+    Verify Message    View Carrier Profile
+    Verify Message    BCBSFL
+    Logout Vista Admin
+
+3.Verify Carrier Links
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *View Carrier Links*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> Carrier Search'
+    ...
+    ...    3) Perform Carrier Search (Eg: BCBSFL)
+    ...
+    ...    4) Verify BCBSFL Message
+    ...
+    ...    5) Verify View Carrier Profile Message
+    ...
+    ...    6) Navigate to 'Carriers >> View Carrier List'
+    ...
+    ...    7) Verify View Carrier Search Results Message
+    ...
+    ...    8) Navigate to 'Carriers >> Create Third Party Adminstrator'
+    ...
+    ...    9) Verify View Carrier TPA Message
+    ...
+    ...    10) Verify Edit COBRA \ TPA Rules Message
+    ...
+    ...    11) Navigate to 'Carriers >> Template Search'
+    ...
+    ...    12) Verify Template Search Message
+    ...
+    ...    13) Navigate to 'Carriers >> Create New Template'
+    ...
+    ...    14) Verify Add New Template Group Message
+    ...
+    ...    15) Navigate to 'Carriers >> Create Carrier Representatives'
+    ...
+    ...    16) Verify Create New Carrier Representative Account
+    ...
+    ...    17) Logout as Vista Admin
+    ...
+    ...
+    ...    Test case No: 11 (From Vista Role Test case Master)
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Search
+    Perform Carrier Search    BCBSFL
+    Verify Message    View Carrier Profile
+    Verify Message    BCBSFL
+    Navigate To    CARRIERS    View Carrier List
+    Verify Message    Carrier Search Results
+    Navigate To    CARRIERS    Create Third Party Administrator
+    Verify Message    Create TPA
+    Verify Message    Edit COBRA TPA Rules
+    Navigate To    CARRIERS    Template Search
+    Verify Message    Template Search
+    Navigate To    CARRIERS    Create New Template
+    BuiltIn.Sleep    5s
+    Verify Message    Add New Template Group
+    Navigate To    CARRIERS    Carrier Representatives
+    Verify Message    Create New Carrier Representative Account
+    Logout Vista Admin
+
+4.Verify Links Under BASICS and DATES AND RULES \ when Carrier Search
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify Links Under BASICS and DATES AND RULES when Carrier Search*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> Carrier Search'
+    ...
+    ...    3) Perform Carrier Search (Eg: BCBSFL)
+    ...
+    ...    4) Verify BCBSFL Message
+    ...
+    ...    5) Verify View Carrier Profile Message
+    ...
+    ...    6) Navigate to 'Carriers >> View Carrier List'
+    ...
+    ...    7) Verify View Carrier Search Results Message
+    ...
+    ...    8) Navigate to 'Carriers >> Create Third Party Adminstrator'
+    ...
+    ...    9) Verify View Carrier TPA Message
+    ...
+    ...    10) Verify Edit COBRA \ TPA Rules Message
+    ...
+    ...    11) Navigate to 'Carriers >> Template Search'
+    ...
+    ...    12) Verify Template Search Message
+    ...
+    ...    13) Navigate to 'Carriers >> Create New Template'
+    ...
+    ...    14) Verify Add New Template Group Message
+    ...
+    ...    15) Navigate to 'Carriers >> Create Carrier Representatives'
+    ...
+    ...    16) Verify Create New Carrier Representative Account
+    ...
+    ...    17) Logout as Vista Admin
+    ...
+    ...
+    ...    *BASICS*
+    ...    View Carrier Profile
+    ...    Carrier basics
+    ...    Market Segments
+    ...    Billing Classification
+    ...    Group Termination Settings
+    ...    Group ID Settings
+    ...    Data Integration Settings
+    ...    Import Validation Settings
+    ...    Organizations
+    ...    PlugIns
+    ...    *DATES AND RULES*
+    ...    Approve Profiles
+    ...    Rehire Rules
+    ...    Category Change Rules
+    ...    Salary Change Rules
+    ...    Open Enrollment Manager
+    ...    Extraction Date Rules
+    ...    Automated Member Cancellations
+    ...    Relationship Age Out Behavior
+    ...    Relationship Type Dependency Rules
+    ...    Carrier Permission Profiles
+    ...    *LANGUAGE AND AGREEMENTS*
+    ...    Health Statement Notification Text
+    ...    Benefit Declination Acceptance Text
+    ...    Language Setup
+    ...    Relationship Acknowledgement
+    ...    Beneficiary Text
+    ...    Link and Document Manager
+    ...    Employee Agreements
+    ...    Employee Detail Report Footer
+    ...    Benefit Element Prefix Text
+    ...    Member Role Life Event Text
+    ...    *SURVEYS AND HEALTH STATEMENTS*
+    ...    Carrier Survey Setup
+    ...    Carrier Custom Forms
+    ...    Decline Survey Setup
+    ...    Group Health Statements
+    ...    Individual Health Statements
+    ...    Prequalifying Survey Setup
+    ...    Rate Factor Survey Setup
+    ...    *BENEFIT CONFIGURATION*
+    ...    Enrollment Products
+    ...    Product Attributes
+    ...    Rating Strategies
+    ...    PCP Setup
+    ...    Subsidiaries
+    ...    Service Areas
+    ...    Member Alternated IDs
+    ...    Custom Enrollment Form Setup
+    ...    Plan Rates Configuration
+    ...    Additional Insurance
+    ...    Provider Lookup
+    ...    Sales Automation
+    ...    Basic Setup
+    ...    Configure eSales Workflow
+    ...    QUote Census/ Dependent Quote Census
+    ...    Employee Census/ Dependent Employee Census
+    ...    Rejection Reason Codes
+    ...    Automated Workflow Closure
+    ...    Checklist
+    ...    Plan Templates
+    ...    Date Rule Templates
+    ...    Age Validation Rule Templates
+    ...    eSales Task and Transition Email Notification
+    ...    BInder Payment
+    ...    Participation Rules
+    ...    Renewal Initiation and Notification
+    ...    Off-Cycle Renewal and Benefit Changes
+    ...    Quote
+    ...    QUote Products
+    ...    Quote Rules
+    ...    Product Quote Effective Date Rules
+    ...    Eligibility Identifiers
+    ...    Product Sets
+    ...    Quote Product Eligibility
+    ...    Product Collections
+    ...    Quote Display
+    ...    Risk Factors
+    ...    Quote Factors
+    ...    Coverage Levels/Coverage Amounts
+    ...    Quote Product Search Options
+    ...    Product Components
+    ...    Quote Disclaimer Text
+    ...    Other Application
+    ...    Group Shopping Configuration Utility
+    ...    PSA Tools
+    ...    & Click each link under the Tabs and verify it navigates to the proper destination.
+    ...
+    ...    Test case No: 11 (From Vista Role Test case Master)
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Search
+    Perform Carrier Search    BFI
+    Verify Sub Links    td:submenuitems
+    Logout Vista Admin

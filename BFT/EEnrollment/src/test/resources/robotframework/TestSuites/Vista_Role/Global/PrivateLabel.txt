@@ -1,0 +1,85 @@
+*** Settings ***
+Test Setup        getResource
+Force Tags
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Create and Access New Private Label and Update and Verify User Guides
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Create and Access New Private Label and Update and Verify User Guides*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Navigate to GLOBAL/Private Labels
+    ...
+    ...    3) Create New Private Label
+    ...
+    ...    4) Navigate to GLOBAL/Private Labels
+    ...
+    ...    5) Access Private Label
+    ...
+    ...    6) Verify Private label
+    ...
+    ...    7) Edit System Information to Add HR and Member User Guides
+    ...
+    ...    8) Perform Group search and update private label information.
+    ...
+    ...    9) Logout Vista
+    ...
+    ...    10) Login As HR
+    ...
+    ...    11) Navigate to resources and verify user guides.
+    ...
+    ...    12) Logout HR
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Navigate to    Global    Private Labels
+    Create New Private Labels    td:privatelabeldetails    outprivateLabelName
+    VerifyMessage    HMVoutprivateLabelName
+    Access Private Label    HMVoutprivateLabelName
+    Edit System Info To Add HR Member User Guide
+    Navigate To    Groups    Group Search
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    System
+    Update System Information    Private Label    HMVoutprivateLabelName
+    Save Configuration
+    Capture Page Screenshot
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    td:hradminlogin    td:hradminPassword
+    Verify Message    Home
+    Navigate To HR Menu    Resources
+    Verify Message    Sample HR User Guide
+    Logout HR Admin
+
+2.Update Sponsor Private Label
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Update Sponsor Private Label*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate to BASICS/System
+    ...
+    ...    4) Update System Information(Private Label to BancorpSouth)
+    ...
+    ...    5) Verify or capture Screen Shot
+    ...
+    ...    6) Logout from application
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    System
+    Update System Information    Private Label    BancorpSouth
+    Save Configuration
+    Verify Message    BancorpSouth
+    Capture Page Screenshot
+    Logout Vista Admin

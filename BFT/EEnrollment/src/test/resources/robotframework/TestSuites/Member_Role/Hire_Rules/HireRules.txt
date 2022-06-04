@@ -1,0 +1,108 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.New Hire Rule
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *New Hire Rule*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (DATESANDRULES/Eligibility Date Rules/Category Retro Rules)
+    ...
+    ...    4) Change Eligibility Date Rules For Member In Vista Role
+    ...
+    ...    5) Navigate To (Users/Add Member)
+    ...
+    ...    6) Add Member In Vista (td:mandatory/lastname)
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord1234)
+    ...
+    ...    9) Enroll Member to Benefits
+    ...
+    ...    10) Verify Current Benefits
+    ...
+    ...    11) Verify Open Enrollment Benefits
+    ...
+    ...    12) Complete Enrollment
+    ...
+    ...    13) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    DATESANDRULES    Eligibility Date Rules/Category Retro Rules
+    Change Eligibility Date Rules For Member In Vista Role    td:waitperiod    td:gracestartperiod    td:graceendperiod
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Choose Preferred Language    English
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Agreements Page    yes
+    BuiltIn.sleep    5s
+    Perform Get Started In New Member Role
+    BuiltIn.sleep    3s
+    Add Dependent To Member    none    none
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Preferred Care Blue PPO Plan 1
+    Verify Employee Agreements In Member Role    Agree
+    Save Benefit Enrollment In New Member    Preferred Care Blue PPO Plan 1
+    Verify Message    Preferred Care Blue PPO Plan 1
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+
+2.Change W4 Information
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Change W4 Information*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (BASICS/Group Customization)
+    ...
+    ...    4) Navigate To (Users/Add Member)
+    ...
+    ...    5) Add Member In Vista (td:mandatory/lastname)
+    ...
+    ...    6) Logout Vista Admin
+    ...
+    ...    7) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord1234)
+    ...
+    ...    8) Run Member Profile Pages In New UI
+    ...
+    ...    9) Verify Message Add Dependent
+    ...
+    ...    10) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Group Customization
+    Capture Page Screenshot
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Run Member Profile Pages In New UI
+    Verify Message    Home
+    Logout New Member Role

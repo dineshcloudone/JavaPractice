@@ -1,0 +1,43 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefit
+    Select Coverage Level    Associate Only
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In FSA
+    [Arguments]    ${contributionamount}
+    Select Plan    Medical Flexible Spending Account CAI 2016
+    Set Contribution Amount For Flex Benefit    ${contributionamount}
+    Next
+    Select Plan    Dependent Flexible Spending Account 2016
+    Set Contribution Amount For Flex Benefit    ${contributionamount}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Life Benefit
+    Set Coverage Amount For Life Benefit    10000
+    Next
+    Next
+    Select Plan    Optional Spouse Life 2016
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    BuiltIn.Sleep    3s
+    Select Coverage Amount    $10,000.00
+    Next
+    Select Plan    Optional Child Life 2016
+    Add Dependent To Employee    Child    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    BuiltIn.Sleep    3s
+    Select Coverage Amount    $5,000.00
+    Next
+    Select Plan    Optional AD&D - Individual 2016
+    Select Coverage Amount    10000
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page

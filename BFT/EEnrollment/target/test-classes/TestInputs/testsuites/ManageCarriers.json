@@ -1,0 +1,23 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup"    
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup"    
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup"    
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "submenuitems": {
+      "basics": "View Carrier Profile,Carrier Basics,Market Segments,Billing Classifications,Group Termination Settings,Group ID Settings,Data Integration Settings,Import Validation Settings,Organizations,Plugins,Jurisdictions",
+      "datesandrules": "Approval Profiles,Rehire Rules,Category Change Rules,Salary Change Rules,Open Enrollment Manager,Extraction Date Rules,Automated Member Cancellations,Relationship Age Out Behavior,Relationship Type Dependency Rules,Carrier Permission Profiles",
+      "languageandagreements": "Health Statement Notification Text,Benefit Declination / Acceptance Text,Language Setup,Relationship Acknowledgements,Beneficiary Text,Link & Document Manager,Employee Agreements,Employee Detail Report Footer,Benefit Element Prefix Text,Member Role Life Event Text,Member Role Estimator Text",
+      "surveyhealthstatements": "Carrier Custom Forms,Decline Survey Setup,Group Health Statements,Change Reason Survey Setup,Prequalifying Survey Setup,Rate Factor Survey Setup"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

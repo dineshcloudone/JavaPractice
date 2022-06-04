@@ -1,0 +1,52 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "maximumnumberofaccounts": "2",
+    "directdeposit": {
+      "accounttype": "Savings",
+      "bankname": "Test",
+      "city": "Test",
+      "state": "SC",
+      "routingnumber": "012345678",
+      "accountnumber": "012345678123",
+      "howmuchdeposit": "Fixed"
+    }, 
+    "language": "English",
+    "password": "bfEnrol1",
+    "confirmpassword": "bfEnrol1",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "no"
+  },
+  
+    "default": {
+    "resource": "priorityhradmingroup"
+  }
+
+}

@@ -1,0 +1,406 @@
+{
+	"41": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"42": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"43": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"44": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"45": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"46": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"47": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"48": {
+		"resource": "Level3CommunicationsResource",
+		 "l3c": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate:M:-1",
+          "earnings": "8000",
+          "earningsfrequency": "per week",
+          "calendarset": "Semi-Monthly",
+          "payfrequency": "Semi-Monthly",
+          "hoursPerWeek" : "40",
+          "employerid" : "101",
+          "categories": "Fulltime-Regular#Director#AK#Yes#Employee"
+        }
+
+	},
+	"49": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"50": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"51": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"52": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"53": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"54": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"55": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"56": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"57": {
+		"resource": "Level3CommunicationsResource",
+		"l3c2": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per week",
+          "calendarset": "Semi-Monthly",
+          "payfrequency": "Semi-Monthly",
+          "hoursPerWeek" : "40",
+          "employerid" : "101",
+           "categories": "Fulltime-Temporary#Temporary#AL#No#Short Term Assignment"
+        }
+
+	},
+	"58": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"59": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"60": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"61": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"62": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"63": {
+		"resource": "Level3CommunicationsResource",
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "relationship": "Spouse",
+            "address1" : "7205 Plover Circle",
+            "city" : "Texas",
+            "state" : "TX",
+            "zipcode" : "76135",
+            "country" : "USA",
+            "phone" : "817-237-4294"
+          }
+
+	},
+	"64": {
+		"resource": "Level3CommunicationsResource",
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "relationship": "Spouse",
+            "address1" : "7205 Plover Circle",
+            "city" : "Texas",
+            "state" : "TX",
+            "zipcode" : "76135",
+            "country" : "USA",
+            "phone" : "817-237-4294"
+          }
+
+	},
+	"65": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"66": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"67": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"68": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"69": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"70": {
+		"resource": "Level3CommunicationsResource"
+
+	},
+	"71": {
+		"resource": "Level3CommunicationsResource"
+		
+	},
+	"72": {
+		"resource": "Level3CommunicationsResource",
+		"l3cupdate": {
+          "firstname": "MyAuto",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"73": {
+		"resource": "Level3CommunicationsResource"
+	},
+
+	"74": {
+		"resource": "Level3CommunicationsResource"
+	},
+
+
+	"75": {
+		"resource": "Level3CommunicationsResource"
+	},
+
+
+	"76": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"77": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"78": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"79": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"80": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"81": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"82": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"83": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"84": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"85": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"86": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"87": {
+		"resource": "Level3CommunicationsResource",
+		 "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse",
+            "address1" : "123 Main Street",
+            "city" : "Test City",
+            "state" :"AA",
+            "zipcode" :"12345",
+            "country" : "USA",
+            "phone" :"843-284-1052"
+          }
+	},
+	"88": {
+		"resource": "Level3CommunicationsResource",
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Domestic Partner"
+          }
+	},
+	"89": {
+		"resource": "Level3CommunicationsResource",
+		"adddependent" :{
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Domestic Partner"
+          }
+       }
+
+	},
+	"90": {
+		"resource": "Level3CommunicationsResource",
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Male",
+            "relationship": "Spouse"
+          }
+	},
+	"91": {
+		"resource": "Level3CommunicationsResource",
+		"chgender": {
+          "gender": "Female",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"92": {
+		"resource": "Level3CommunicationsResource",
+		"l3c": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per week",
+          "calendarset": "Semi-Monthly",
+          "payfrequency": "Semi-Monthly",
+          "hoursPerWeek" : "40",
+          "employerid" : "101",
+          "benefitsalary" : "500",
+          "benefitsalaryfrequency" : "per month",
+           "categories": "Fulltime-Regular#Director#AK#Yes#Employee"
+        },
+		"advsal": {
+          "benefitsalary" : "400",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"93": {
+		"resource": "Level3CommunicationsResource",
+		"l3c": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per week",
+          "calendarset": "Semi-Monthly",
+          "payfrequency": "Semi-Monthly",
+          "hoursPerWeek" : "40",
+          "employerid" : "101",
+          "benefitsalary" : "500",
+          "benefitsalaryfrequency" : "per month",
+           "categories": "Fulltime-Regular#Director#AK#Yes#Employee"
+        },
+		"advsal": {
+          "benefitsalary" : "600",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"94": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"95": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"96": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"97": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"98": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"99": {
+		"resource": "Level3CommunicationsResource"
+	},
+	"100": {
+		"resource": "Level3CommunicationsResource"
+	}
+
+}

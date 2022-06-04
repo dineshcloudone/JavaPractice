@@ -1,0 +1,26 @@
+{
+  "1": {
+  "resource": "bfqatestautomationgroup", 
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "2": {
+  "resource": "bfqatestautomationgroup", 
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "3": {
+  "resource": "bfqatestautomationgroup", 
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

@@ -1,0 +1,64 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../../Resources/Common.txt
+
+*** Test Cases ***
+1.EditCarrierRepresentative
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *EditCarrierRepresentative*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Navigate to Carriers >> Carrier Representatives
+    ...
+    ...    3) Search for Carrier Representative
+    ...
+    ...    4) Click on 'Edit Account' option against Carrier Representative Account (Eg: Last Name)
+    ...
+    ...    5) Verify updated last name
+    ...
+    ...    6) Logout as Vista Admin
+    ...
+    ...    *Carrier Representative name : carrierrep1*
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Representatives
+    BuiltIn.Sleep    5s
+    Perform Carrier Representative Search    Login ID:carrierrep1    All    All
+    BuiltIn.Sleep    5s
+    Verify Carrier Representative Results    carrierrep1
+    Edit Carrier Representative Account    carrierrep1    td:carrierrepresentative
+    Logout Vista Admin
+
+2.CreateCarrierRepresentative
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Create Carrier Representative*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Navigate to Carriers/Carrier Representative
+    ...
+    ...    3) Create New Carrier Representative
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    5) Login as Carrier Representative
+    ...
+    ...    6) Verify Able to Login
+    ...
+    ...    7) Logout from application
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Navigate To    CARRIERS    Carrier Representatives
+    Create New Carrier Representative Account In Vista Role    td:newcarrierrepresentative
+    Logout Vista Admin
+    Login To Enrollment As Carrier Representive    td:carrierreplogincredentials
+    Update Carrier Representative Password    td:carrierrepupdatepassword
+    Verify Message    Groups
+    Logout Vista Admin

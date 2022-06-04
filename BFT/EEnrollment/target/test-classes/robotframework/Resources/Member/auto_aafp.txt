@@ -1,0 +1,18 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll medical benefit
+    Select Market Plan For New Member Role    2015 Traditional Blue PPO
+    Health Screening Needed In Member Role    No
+    Medicare Information In Member Role    No
+    Additional Insurance Information In Member Role    No
+    Select Market Plan For New Member Role    2015 Taben Group (Medical Spending Account)
+    Contribution Amount For FSA Plan In Member Role    200
+    Save Benefit Enrollment In New Member    2015 Traditional Blue PPO
+
+Member Initial Login
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    yes

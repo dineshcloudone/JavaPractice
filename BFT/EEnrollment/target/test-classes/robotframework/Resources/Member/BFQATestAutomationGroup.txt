@@ -1,0 +1,90 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the BF QA Test Automation group
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefits With Employee Only Coverage
+    [Arguments]    ${jsonTestData}
+    [Documentation]    Purpose : Enroll in Medical benefits with Employee Coverage.
+    ...
+    ...    Usage : User defined keyword to enroll in medical benefits with Employee only coverage
+    ${keys}    Get Test Data    ${jsonTestData}
+    ${items} =    Get From Dictionary    ${keys}    benefitname
+    Add Dependent To Member    None    None
+    Start Current Benefit For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Select Plan For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    coveragelevel
+    Select Coverage Level For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Verify Member Summary Card And Save    ${items}
+
+Enroll In Medical Benefits With Employee and Spouse Coverage
+    [Documentation]    Purpose : Enroll in Medical benefits with Employee and spouse Coverage.
+    ...
+    ...    Usage : User defined keyword to enroll in medical benefits with Employee and Spouse coverage
+    ${keys}    Get Test Data    defaultmedical
+    ${items} =    Get From Dictionary    ${keys}    benefitname
+    Add Dependent To Member    td:spouse    spouselastname
+    Start Current Benefit For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Select Plan For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    coveragelevel
+    Select Coverage Level For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Verify Member Summary Card And Save    ${items}
+
+Add HSA plan Contributions With agree ments
+    [Arguments]    ${ContributionAmount}    @{ContributionType}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Add HSA contributions amounts for a member after selecting HSA Plan during the enrollment in new and old member roles.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${ContributionAmount} --> Contribution Amount to add for all Contrbutiontion Types \ Ex:-100
+    ...
+    ...    @{ContributionType} --> \ It is for Contribution types and User can add more contributions by Comma.
+    ...    Ex:- Initial,HSA,Ongoing.
+    : FOR    ${ContType}    IN    @{ContributionType}
+    \    Run Keyword If    '${ContType}'=='Initial'    Hsa Initial Contribution    ${ContributionAmount}
+    \    ...    ELSE IF    '${ContType}'=='HSA'    Hsa Abstract Contribution    ${ContributionAmount}
+    \    ...    ELSE IF    '${ContType}'=='Schedule'    Hsa Schedule Contribution    ${ContributionAmount}
+    \    ...    ELSE    Hsa Ongoing Contribution    ${ContributionAmount}
+    Hsa Complete Contribution
+    HSA Complete Agreements
+
+Login As Existing Member
+    [Arguments]    ${Username}    ${Password}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to login for an Existed member into the old and New Member roles.
+    ...
+    ...    ${Username} Ex:- bfa1234
+    ...
+    ...    ${Password} Ex:- 123456
+    Login To Enrollment With Valid Credentials    ${Username}    ${Password}
+    ${test}=    Get Value    HMVerrorMsg
+    Set Global Variable    ${test}
+    Run Existed Member
+
+Enroll FSA Plan
+    [Arguments]    ${CurrentBenefitName}    ${BenefitName}    ${FSAContributionAmount}
+    [Documentation]    Purpose : Enroll in FSA Plan for member
+    ...
+    ...    Usage : User defined keyword to enroll in FSA Plan
+    Start Current Benefit For Member    ${CurrentBenefitName}
+    Start FSA Enrollment
+    Select Plan For Member    ${BenefitName}
+    Enter Health Statement
+    Enter Contribution For FSA Plan    ${FSAContributionAmount}
+
+Member Initial Login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    Yes

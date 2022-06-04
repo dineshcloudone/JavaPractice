@@ -1,0 +1,27 @@
+{
+  "1": {
+    "resource": "priorityhradmingroup",
+    "testautomationgroup": "priorityhradmingroup",
+    "validhrcredentialsforgroup": {
+      "username": "priorityhradmin",
+      "password": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "noenablementsadmin",
+      "password": "bfEnrol1"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "noenablementsadmin",
+      "password": "bfEnrol1"
+    }
+  },
+   "default": {
+    "resource": "priorityhradmingroup"
+  }
+}

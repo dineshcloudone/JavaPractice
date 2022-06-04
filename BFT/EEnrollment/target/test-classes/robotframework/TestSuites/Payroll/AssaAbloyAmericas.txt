@@ -1,0 +1,680 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../Resources/common.txt
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+2.Initial enrollment (after approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+3.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Plan (Ameristar)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Medical Benefit
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    2016 Dental
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+4.Accpet after initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Plan (Ameristar)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Medical Benefit
+    Refuse Current Selected Benefit In HR Role    2016 Dental
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Edit Current Plan    Dental
+    Enroll In Dental Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+5.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory2    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    2016 Dental - Pending Approval
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+6.Cancel benefits (after approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory2    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate:d:-5
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    2016 Dental
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+7.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory2    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate:d:-5
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    2016 Dental
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Edit Current Plan    Dental
+    Enroll In Dental Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+8.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Comment    Terminate Employee from HR Admin Role
+    Perform Employee Termination    d:currentdate    Voluntary
+    Sleep    5
+    Close HR Admin
+
+9.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To Employee Home Page
+    Comment    Change the Employee status as Retired
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Sleep    5
+    Approve From HR Admin
+    Close HR Admin
+
+10.Category Change
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    Benefit Plan    CUR
+    Change Employee Cateogry    Full-Part Time Status    P - Part-Time
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+11.Benefit plan change
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Plan (Ameristar)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Medical Benefit
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Plan (Ameristar)
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Current Plan    Plan
+    Select Plan    BlueCross BlueShield - Oklahoma Medical & Pharmacy (PLATINUM) 2016
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+12.Effective date change
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Edit Effective Date
+    Enter Effective Date    d:currentdate:d:8
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+13.Increase coverage level
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Enter Effective Date    d:currentdate
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+14.Decrease coverage level
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+15.Increase coverage amount
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Employer Paid Life & AD&D
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In AD&D Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+16.Decrease coverage amount
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Employer Paid Life & AD&D
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In AD&D Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+17.Increase flex contribution amount
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Health FSA
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Health FSA
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Health FSA
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Set Contribution Amount For Flex Benefit    400
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+18.Decrease flex contribution amount
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Health FSA
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Health FSA
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Health FSA
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Set Contribution Amount For Flex Benefit    150
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+19.Add flex when already enrolled in HSA
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatoryhsa    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Plan (Door Group)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In HSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending Account (Door Group)
+    Enroll In Flexible Spending Account Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+20.Cancel flex when already enrolled in flex
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatoryhsa    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending Account (Door Group)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Select Plan    Medical FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA Participation    HSA Participation    Yes
+    Enter Effective Date    d:currentdate:d:-5
+    Enter Date Explantion    Test
+    Set Deduction Periods    2
+    Select Plan    Dependent Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Enter Effective Date    d:currentdate:d:-5
+    Enter Date Explantion    Test
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Flexible Spending Account (Door Group)
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+21.Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatoryhsa    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Flexible Spending Account (Door Group)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Flexible Spending Account Plan
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Plan (Door Group)
+    Enroll In HSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+22.Cancel HDHP/HSA when already enrolled in flex (if group supports HSA)
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatoryhsa    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Plan (Door Group)
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Select Plan    H.S.A. Plan (Door Group) 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Coverage Level    Employee Only
+    BuiltIn.Sleep    3
+    Enter Effective Date    d:currentdate:d:-5
+    Next
+    BuiltIn.Sleep    3
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Medical Plan (Door Group)
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Close HR Admin
+
+23.Change in EE cost/pp
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    Benefit Plan    CUR
+    Change Employee Cateogry    Full-Part Time Status    P - Part-Time
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    13,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    9,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+29.Add dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Enroll In Dental Benefit    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Enter Effective Date    d:currentdate
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+30.Remove dependent to dependent
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental
+    Select Spouse Coverage Question    My spouse is not employed.
+    Save Spouse Coverage Question
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+31.Change dependent personal information
+    Login as vista admin with valid credentials
+    Perform Group Search    ASSA ABLOY Americas
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:assaabloyamericasmandatory    lastname
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Comment    CHange Dependent details
+    Navigate To HR Menu    Dependents
+    Edit Dependent Details    Spouse    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin

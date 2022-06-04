@@ -1,0 +1,569 @@
+Got settings on level: INFO
+Got settings on level: INFO
+Got settings on level: INFO
+Got settings on level: INFO
+Got settings on level: DEBUG
+START SUITE: Robotframework '' []
+START KW: TestSetUp []
+START KW: BuiltIn.Set Global Variable [${testdatasource}${EMPTY}]
+LOG MESSAGE: [INFO] ${testdatasource} = 
+PASS
+START KW: BuiltIn.Get Variable Value [${browserclient}]
+LOG MESSAGE: [INFO] ${browser} = None
+PASS
+START KW: BuiltIn.Run Keyword If ['${browser}' == 'None'Set Global Variable${browser}FFELSESet Global Variable${browser}]
+START KW: BuiltIn.Set Global Variable [${browser}FF]
+LOG MESSAGE: [INFO] ${browser} = FF
+PASS
+PASS
+START KW: BuiltIn.Get Variable Value [${environment}]
+LOG MESSAGE: [INFO] ${env} = None
+PASS
+START KW: BuiltIn.Set Variable [EESHREL]
+LOG MESSAGE: [INFO] ${env} = EESHREL
+PASS
+START KW: BuiltIn.Get Variable Value [${buildnumber}]
+LOG MESSAGE: [INFO] ${build} = None
+PASS
+START KW: BuiltIn.Log [${build}]
+LOG MESSAGE: [INFO] None
+PASS
+START KW: BuiltIn.Run Keyword If ['${build}' == 'None'Set Global Variable${build}nobuildELSESet Global Variable${build}]
+START KW: BuiltIn.Set Global Variable [${build}nobuild]
+LOG MESSAGE: [INFO] ${build} = nobuild
+PASS
+PASS
+START KW: BuiltIn.Run Keyword If ['${env}' == 'None'Set Global Variable@{AppDetails}@{EESHDEV}ELSE IF'${env}' == 'EESHREL'Set Global Variable@{AppDetails}@{EESHREL}ELSE IF'${env}' == 'EESHPATCH'Set Global Variable@{AppDetails}@{EESHPATCH}ELSE IF'${env}' == 'EESHDEV'Set Global Variable@{AppDetails}@{EESHDEV}ELSE'${env}' == 'EESHDEV'Set Global Variable@{AppDetails}@{EESHDEV}]
+START KW: BuiltIn.Set Global Variable [@{AppDetails}@{EESHREL}]
+LOG MESSAGE: [INFO] @{AppDetails} = [ eEnrollment | http://eeshrel/go | jdbc:oracle:thin:@eeshr1.prod1.benefitfocus.com:1521/eeshr1,BFI_BASE_APP,bf2000 ]
+PASS
+PASS
+START KW: Enrollment.Launch Browser [@{AppDetails}${browser}]
+LOG MESSAGE: [INFO] application : eEnrollment
+LOG MESSAGE: [INFO] url : http://eeshrel/go
+LOG MESSAGE: [INFO] browserType : FF
+PASS
+START KW: Enrollment.Read JSON []
+LOG MESSAGE: [INFO] Reading the testdata json files for application : eEnrollment
+ Test data location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework
+ location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework
+ Test data location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\TestInputs\
+location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\TestInputs\5xmigration
+Reading the json file : AcmeTruckLineInc.json
+Reading the json file : AcmeTruckLineIncResource.json
+Reading the json file : AEPIndustries.json
+Reading the json file : AEPIndustriesResource.json
+Reading the json file : Ancestry.json
+Reading the json file : AncestryResource.json
+Reading the json file : blrestaurant.json
+Reading the json file : BLRestaurantResource.json
+Reading the json file : DollarTree.json
+Reading the json file : DollarTreeResource.json
+Reading the json file : Level3Communications.json
+Reading the json file : Level3CommunicationsResource.json
+Reading the json file : eEnrollmentCommon.json
+location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\TestInputs\groups
+Reading the json file : abhow.json
+Reading the json file : AccessTrustee.json
+Reading the json file : approveoihradmingroup.json
+Reading the json file : autocarousel.json
+Reading the json file : autocosentryguide.json
+Reading the json file : autoprovocitynew.json
+Reading the json file : autoslkamericanew.json
+Reading the json file : bfqahra.json
+Reading the json file : BFQATestAutomationGroup.json
+Reading the json file : BFQCOEQATestAutomationGroup_PCP.json
+Reading the json file : electiniehradmingroup.json
+Reading the json file : oehradmingroup.json
+Reading the json file : priorityhradmingroup.json
+Reading the json file : vistronix.json
+Reading the json file : Mercer.json
+location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\TestInputs\payroll
+Reading the json file : AlvarezAndMarsal.json
+Reading the json file : AlvarezAndMarsalForExistingMember.json
+Reading the json file : AlvarezAndMarsalResource.json
+Reading the json file : AmericanAcademyofFamilyPhysicians.json
+Reading the json file : AmericanAcademyofFamilyPhysiciansForExistingMember.json
+Reading the json file : AmericanAcademyofFamilyPhysiciansResource.json
+Reading the json file : AmericanResidentialServices.json
+Reading the json file : AmericanResidentialServicesResource.json
+Reading the json file : Ametek.json
+Reading the json file : AmetekForExistingMember.json
+Reading the json file : AmetekResource.json
+Reading the json file : AsburyAutomotiveGroup.json
+Reading the json file : AsburyAutomotiveGroupForExistingMember.json
+Reading the json file : AsburyAutomotiveGroupResource.json
+Reading the json file : AssaAbloyAmericas.json
+Reading the json file : AssaAbloyAmericasForExistingMember.json
+Reading the json file : AssaAbloyAmericasResource.json
+Reading the json file : ATIPhysicalTherapy.json
+Reading the json file : ATIPhysicalTherapyForExistingMember.json
+Reading the json file : ATIPhysicalTherapyResource.json
+Reading the json file : Cdw.json
+Reading the json file : CdwResource.json
+Reading the json file : ChickfilA.json
+Reading the json file : ChickfilAForExistingMember.json
+Reading the json file : ChickfilAResource.json
+Reading the json file : ComputerAid.json
+Reading the json file : ComputerAidForExistingMembers.json
+Reading the json file : ComputerAidResource.json
+Reading the json file : ContinentalNorthAmerica.json
+Reading the json file : ContinentalNorthAmericaForExistingMember.json
+Reading the json file : ContinentalNorthAmericaResource.json
+Reading the json file : CorrectcareSolutions.json
+Reading the json file : CorrectcareSolutionsResource.json
+Reading the json file : Cypress.json
+Reading the json file : CypressResource.json
+Reading the json file : DescoCorporation.json
+Reading the json file : DescoCorporationForExistingMember.json
+Reading the json file : DescoCorporationResource.json
+Reading the json file : DreamWorkAnimations.json
+Reading the json file : DreamWorkAnimationsForExistingMember.json
+Reading the json file : DreamWorkAnimationsResource.json
+Reading the json file : DycomIndustries.json
+Reading the json file : DycomIndustriesResource.json
+Reading the json file : EmergentBioSolutions.json
+Reading the json file : EmergentBioSolutionsForExistingMember.json
+Reading the json file : EmergentBioSolutionsResource.json
+Reading the json file : EmersonHealthResources.json
+Reading the json file : EmersonHealthResourcesForExistingMember.json
+Reading the json file : EmersonHealthResourcesResource.json
+Reading the json file : Gerdau.json
+Reading the json file : GerdauResource.json
+Reading the json file : NGHS.json
+Reading the json file : NGHSResource.json
+Reading the json file : SouthEasternFreightLines.json
+Reading the json file : SouthEasternFreightLinesForExistingMember.json
+Reading the json file : SouthEasternFreightLinesResources.json
+Reading the json file : TexasHealthServices.json
+Reading the json file : TexasHealthServicesForExistingMember.json
+Reading the json file : TexasHealthServicesResource.json
+Reading the json file : PluginsDonotExecute.json
+location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\TestInputs\testsuites
+Reading the json file : AddEmployeeFunctionality.json
+Reading the json file : AddingDependents.json
+Reading the json file : AddMemberFunctionality.json
+Reading the json file : Administrators.json
+Reading the json file : Agents.json
+Reading the json file : Announcements.json
+Reading the json file : AppLauncher.json
+Reading the json file : Authorization.json
+Reading the json file : BeneficiariesFunctionality.json
+Reading the json file : BeneficiaryFunctionality.json
+Reading the json file : BenefitsFunctionality.json
+Reading the json file : Calendars.json
+Reading the json file : Categories.json
+Reading the json file : COBRAManager.json
+Reading the json file : CobraSetup.json
+Reading the json file : CodeBaby.json
+Reading the json file : CommunicationPreferences.json
+Reading the json file : CreateCarrierRepresentative.json
+Reading the json file : Dependent.json
+Reading the json file : DirectDeposits.json
+Reading the json file : DisplayNotes.json
+Reading the json file : Document.json
+Reading the json file : DocumentCenter.json
+Reading the json file : EmailMessages.json
+Reading the json file : EmployeeSearchFunctionality.json
+Reading the json file : EmployeeSummaryReports.json
+Reading the json file : EmployeeTerminationWithCOBRA.json
+Reading the json file : FSABenefits.json
+Reading the json file : GroupCustomization.json
+Reading the json file : GroupInformationReport.json
+Reading the json file : GroupSetup.json
+Reading the json file : GuidedShopping.json
+Reading the json file : HealthStatementApprovalManager.json
+Reading the json file : HireRules.json
+Reading the json file : HRABenefits.json
+Reading the json file : HRAdminCategories.json
+Reading the json file : HRAdminCobra.json
+Reading the json file : HRAFunctionality.json
+Reading the json file : HrNoteForEmployee.json
+Reading the json file : IndividualHealthStatements.json
+Reading the json file : InitialLoginPages.json
+Reading the json file : IntegrationSettings.json
+Reading the json file : LifeBenefits.json
+Reading the json file : ManageAdministratorAccounts.json
+Reading the json file : ManageCarriers.json
+Reading the json file : ManageEmployeeFunctionality.json
+Reading the json file : MedicalBenefits.json
+Reading the json file : MedicareEligible.json
+Reading the json file : MedicarePolicy.json
+Reading the json file : MemberEnrollments.json
+Reading the json file : MemberHomePage.json
+Reading the json file : MemberLoginPages.json
+Reading the json file : MemberMenusAndMenuOptions.json
+Reading the json file : MemberPersonalInformation.json
+Reading the json file : Members.json
+Reading the json file : MercerMedicalBenefits.json
+Reading the json file : MercerRateFactorSurvey.json
+Reading the json file : MessageCenter.json
+Reading the json file : MyProfile.json
+Reading the json file : NewEmployeeFunctionality.json
+Reading the json file : Offers.json
+Reading the json file : OpenEnrollmentFunctionality.json
+Reading the json file : PCPSetup.json
+Reading the json file : Permissions.json
+Reading the json file : PersonalCustomization.json
+Reading the json file : Plans.json
+Reading the json file : PreQualifyingSurvey.json
+Reading the json file : PrimaryCareProvider.json
+Reading the json file : PrivateLabel.json
+Reading the json file : RateFactor.json
+Reading the json file : RateFactorSurvey.json
+Reading the json file : RateInformation.json
+Reading the json file : SearchandSortCarrierRepresentatives.json
+Reading the json file : SearchforAgencyandVerify.json
+Reading the json file : SearchFunctionality.json
+Reading the json file : SecureMessages.json
+Reading the json file : StandardReports.json
+Reading the json file : SystemInformation.json
+Reading the json file : TemplateSearch.json
+Reading the json file : TestAutomationGroupHealthStatement.json
+Reading the json file : TodoList.json
+Reading the json file : ToolsandReportsSetup.json
+Reading the json file : UpdateEmployeeinformation.json
+Reading the json file : UserAccess.json
+Reading the json file : VistaAddMemberFunctionality.json
+Reading the json file : VistaSearchfunctionality.json
+Reading the json file : WorkCustomization.json
+location : D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\TestInputs\w2regression
+Reading the json file : AbleServices.json
+Reading the json file : AbleServicesResource.json
+Reading the json file : AdvantageResourcing.json
+Reading the json file : AdvantageResourcingResource.json
+Reading the json file : TribunePublishingCompany.json
+Reading the json file : TribunePublishingCompanyResource.json
+Reading the json file : USIC.json
+Reading the json file : USICResource.json
+PASS
+PASS
+START SUITE: TestSuites '' []
+START SUITE: Payroll '' []
+START SUITE: AlvarezAndMarsal '' []
+START TEST: 1.Initial Enrollment '' [donotrun]
+START KW: common.getResource []
+START KW: Enrollment.Reload Application []
+LOG MESSAGE: [INFO] Reloading the application.. http://eeshrel/go
+PASS
+START KW: Enrollment.Get Value [resourceName]
+LOG MESSAGE: [INFO] Getvalue returns : AlvarezAndMarsalResource
+LOG MESSAGE: [INFO] ${resName} = AlvarezAndMarsalResource
+PASS
+START KW: BuiltIn.Log [D:\\IntelliJ_Workspace\\PayrollAutomation6\\EEnrollment\\src\\test\\resources\\robotframework\\Resources]
+LOG MESSAGE: [INFO] D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework\Resources
+PASS
+START KW: BuiltIn.Catenate [SEPARATOR=D:\\IntelliJ_Workspace\\PayrollAutomation6\\EEnrollment\\src\\test\\resources\\robotframework\\Resources${/}Member${/}${resName}.txt]
+LOG MESSAGE: [INFO] ${path} = D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework\Resources\Member\AlvarezAndMarsalResource.txt
+PASS
+START KW: BuiltIn.Run Keyword And Ignore Error [BuiltIn.Import Resource${path}]
+START KW: BuiltIn.Import Resource [${path}]
+LOG MESSAGE: [FAIL] Resource file 'D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework\Resources\Member\AlvarezAndMarsalResource.txt' does not exist.
+FAIL: null
+PASS
+START KW: BuiltIn.Set Library Search Order [${resName}]
+PASS
+START KW: BuiltIn.Catenate [SEPARATOR=D:\\IntelliJ_Workspace\\PayrollAutomation6\\EEnrollment\\src\\test\\resources\\robotframework\\Resources${/}HRAdmin${/}${resName}.txt]
+LOG MESSAGE: [INFO] ${path} = D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework\Resources\HRAdmin\AlvarezAndMarsalResource.txt
+PASS
+START KW: BuiltIn.Run Keyword And Ignore Error [BuiltIn.Import Resource${path}]
+START KW: BuiltIn.Import Resource [${path}]
+PASS
+PASS
+START KW: BuiltIn.Set Library Search Order [${resName}]
+PASS
+START KW: BuiltIn.Catenate [SEPARATOR=D:\\IntelliJ_Workspace\\PayrollAutomation6\\EEnrollment\\src\\test\\resources\\robotframework\\Resources${/}Vista${/}${resName}.txt]
+LOG MESSAGE: [INFO] ${path} = D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework\Resources\Vista\AlvarezAndMarsalResource.txt
+PASS
+START KW: BuiltIn.Run Keyword And Ignore Error [BuiltIn.Import Resource${path}]
+START KW: BuiltIn.Import Resource [${path}]
+LOG MESSAGE: [FAIL] Resource file 'D:\IntelliJ_Workspace\PayrollAutomation6\EEnrollment\src\test\resources\robotframework\Resources\Vista\AlvarezAndMarsalResource.txt' does not exist.
+FAIL: null
+PASS
+START KW: BuiltIn.Set Library Search Order [${resName}]
+PASS
+PASS
+START KW: BuiltIn.Comment [readHashMapDataFromFileC:\\PayrollAutomationUpdated4\\EEnrollment\\src\\test\\resources\\robotframework\\Resources\\Robotframework.TestSuites.Payroll.AlvarezAndMarsal.AlvarezAndMarsal.txtlastnameaamtc1]
+PASS
+START KW: common.Login as vista admin with valid credentials []
+START KW: Enrollment.Login To Enrollment As Vista Admin [td:validvistacredentials]
+LOG MESSAGE: [INFO] Getvalue returns : bftpuchala
+LOG MESSAGE: [INFO] Getvalue returns : bfEnrol1
+LOG MESSAGE: [INFO] TestSuiteJsonFileName : AlvarezAndMarsal
+strSuiteName  :AlvarezAndMarsal
+ strKey to find - 1
+
+{"resource":"AlvarezAndMarsalResource"}
+{"resource":"AlvarezAndMarsalResource"}
+Key to Find : validvistacredentials
+ strKey to find - validvistacredentials
+
+ strKey to find - resource
+
+sp : AlvarezAndMarsalResource
+ strKey to find - validvistacredentials
+
+credentials = {"username":"bftpuchala","password":"bfEnrol1"}
+PASS
+START KW: Enrollment.Verify Message [Reset Session]
+LOG MESSAGE: [INFO] Getvalue returns : Reset Session
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201154162"><img src="eEnrollment/07272016_201154162" width="400px"></a>
+LOG MESSAGE: [INFO] Verifying that Message Reset Session is present
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+PASS
+START KW: Enrollment.Perform Advanced Group Search [Sponsor OID1888913123]
+LOG MESSAGE: [INFO] Getvalue returns : 1888913123
+PASS
+START KW: BuiltIn.Comment [Perform Group SearchTexas Health Resources]
+PASS
+START KW: Enrollment.Navigate To [UsersAdd Member]
+PASS
+START KW: Enrollment.Add Member In Vista [td:aammandatorylastname]
+LOG MESSAGE: [INFO] Getvalue returns : 443360232
+LOG MESSAGE: [INFO] value : 443360232
+LOG MESSAGE: [INFO] Getvalue returns : Auto
+LOG MESSAGE: [INFO] Getvalue returns : TestMandatory08878
+LOG MESSAGE: [INFO] value : TestMandatory08878
+LOG MESSAGE: [INFO] Getvalue returns : 07/27/1988
+LOG MESSAGE: [INFO] Getvalue returns : Test address
+LOG MESSAGE: [INFO] Getvalue returns : Test address
+LOG MESSAGE: [INFO] Getvalue returns : 12345
+LOG MESSAGE: [INFO] Getvalue returns : 123-456-7890
+LOG MESSAGE: [INFO]  Enter the field  Employer Phone number
+LOG MESSAGE: [INFO] Getvalue returns : nobody@benefitfocus.com
+LOG MESSAGE: [INFO]  Enter the field Personal Email
+LOG MESSAGE: [INFO] Getvalue returns : BFAuto87722
+LOG MESSAGE: [INFO]  Enter the field memberid field textbox
+LOG MESSAGE: [INFO] Getvalue returns : bfEnrol0
+LOG MESSAGE: [INFO]  Enter the field password field textbox
+LOG MESSAGE: [INFO] Getvalue returns : bfEnrol0
+LOG MESSAGE: [INFO]  Enter the field confirmpassword field textbox
+LOG MESSAGE: [INFO] Getvalue returns : 07/27/2016
+LOG MESSAGE: [INFO] Getvalue returns : 5000
+LOG MESSAGE: [INFO] Getvalue returns : 98716667487840
+LOG MESSAGE: [INFO] value : 98716667487840
+LOG MESSAGE: [INFO] Selected category option :US
+LOG MESSAGE: [INFO] Selected category option :Senior Advisor
+LOG MESSAGE: [INFO] Selected category option :CNHK - CN-Hong Kong Office
+LOG MESSAGE: [INFO] Selected category option :B8P - M&G Property - B8P - M&G Property
+LOG MESSAGE: [INFO] Selected category option :090 - A&M Property Investments - 090 - M and G Property Investments
+LOG MESSAGE: [INFO] Selected category option :N/A
+LOG MESSAGE: [INFO] Selected category option :Under 65
+LOG MESSAGE: [INFO] Selected category option :No
+LOG MESSAGE: [INFO] Selected category option :No
+LOG MESSAGE: [INFO] Selected category option :No
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201321963"><img src="eEnrollment/07272016_201321963" width="400px"></a>
+LOG MESSAGE: [INFO] TestSuiteJsonFileName : AlvarezAndMarsal
+strSuiteName  :AlvarezAndMarsal
+ strKey to find - 1
+
+{"resource":"AlvarezAndMarsalResource"}
+{"resource":"AlvarezAndMarsalResource"}
+Key to Find : aammandatory
+ strKey to find - aammandatory
+
+ strKey to find - resource
+
+sp : AlvarezAndMarsalResource
+ strKey to find - aammandatory
+
+fields = {"earnings":"5000","hiredate":"currentdate","homeEmail":"nobody@benefitfocus.com","memberid":"RNDBFAuto","zipcode":"12345","ssn":"RND4433","state":"SC","employerid":"RND987166674","payfrequency":"Semi-Monthly","confirmpassword":"bfEnrol0","lastname":"RNDTestMandatory","address1":"Test address","address2":"Test address","firstname":"Auto","password":"bfEnrol0","homePhone":"123-456-7890","city":"Test City","country":"USA","earningsfrequency":"per month","calendarset":"Semi-Monthly","createlogin":"Create a login account for this person","birthdate":"currentdate:y:-28","gender":"Male","categories":"US#Senior Advisor#CNHK - CN-Hong Kong Office#B8P - M&G Property - B8P - M&G Property#090 - A&M Property Investments - 090 - M and G Property Investments#N\/A#Under 65#No#No#No"}
+Random number generated : 443360232
+Random number generated : TestMandatory08878
+Date Format : MM/dd/yyyy
+Date specified : currentdate:y:-28
+Current Date  = 07/27/2016
+ Required date : 07/27/1988
+Random number generated : BFAuto87722
+Date Format : MM/dd/yyyy
+Date specified : currentdate
+Current Date  = 07/27/2016
+Random number generated : 98716667487840
+Element 'By.id: errorListContainerForEntirePage' not found.
+Element 'By.xpath: //b[contains(text(),'Continue with address you entered')]' not found.
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: Enrollment.Open Group In HR Role []
+PASS
+START KW: Enrollment.Navigate To HR Menu [Employees]
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201337846"><img src="eEnrollment/07272016_201337846" width="400px"></a>
+LOG MESSAGE: [INFO] buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: Enrollment.Perform Simple Employee Search [HMVlastname]
+LOG MESSAGE: [INFO] Getvalue returns : TestMandatory08878
+LOG MESSAGE: [INFO] Getvalue returns : TestMandatory08878
+LOG MESSAGE: [INFO] Getvalue returns : TestMandatory08878
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201422763"><img src="eEnrollment/07272016_201422763" width="400px"></a>
+LOG MESSAGE: [INFO] Employee with TestMandatory08878 Found 
+LOG MESSAGE: [INFO] Element 'By.className: dtrException' not found.
+Verifying that Message TestMandatory08878 is present
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: AlvarezAndMarsalResource.Enroll Medical benefit in Alvarez and Marsal Group []
+START KW: Enrollment.Navigate To HR Menu [benefitdetails]
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201432377"><img src="eEnrollment/07272016_201432377" width="400px"></a>
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201441128"><img src="eEnrollment/07272016_201441128" width="400px"></a>
+LOG MESSAGE: [INFO] buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: Enrollment.Start Current Benefit [2016 Medical]
+LOG MESSAGE: [INFO] listBy.xpath: //div[@id='preFurlBenefitsDisplay']/table
+LOG MESSAGE: [INFO] benefitsCount8
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201445371"><img src="eEnrollment/07272016_201445371" width="400px"></a>
+LOG MESSAGE: [INFO] buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: Enrollment.Select Plan [Gold 2016]
+LOG MESSAGE: [INFO] rowsize : 4
+LOG MESSAGE: [INFO] rowsize : 4
+LOG MESSAGE: [INFO] availablePlan : gold 2016
+LOG MESSAGE: [INFO] Gold 2016Found in the row no : 1
+PASS
+START KW: Enrollment.Select Coverage Level [Employee Only]
+LOG MESSAGE: [INFO] Employee OnlyFound in the row no : 1
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201504589"><img src="eEnrollment/07272016_201504589" width="400px"></a>
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201506074"><img src="eEnrollment/07272016_201506074" width="400px"></a>
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201508690"><img src="eEnrollment/07272016_201508690" width="400px"></a>
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201511230"><img src="eEnrollment/07272016_201511230" width="400px"></a>
+LOG MESSAGE: [INFO] Element is not clickable at point exception
+loc is <div id="navbar"></div>
+tag is div
+subloc is  id="navbar"
+type of attribute :  id
+attribute value : navbar
+//div[@id="navbar"]
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+Element is not clickable at point exception
+loc is <nav class="navbar navbar-default navbar-app-header navbar-fixed-top"></nav>
+tag is nav
+subloc is  class="navbar navbar-default navbar-app-header navbar-fixed-top"
+type of attribute :  class
+attribute value : navbar navbar-default navbar-app-header navbar-fixed-top
+//nav[@class="navbar navbar-default navbar-app-header navbar-fixed-top"]
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: Enrollment.Enter Effective Date [d:currentdate]
+LOG MESSAGE: [INFO] Getvalue returns : 07/27/2016
+LOG MESSAGE: [INFO]  Enter the field Enter Effective Date
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201535945"><img src="eEnrollment/07272016_201535945" width="400px"></a>
+LOG MESSAGE: [INFO] Date Format : MM/dd/yyyy
+Date specified : currentdate
+Current Date  = 07/27/2016
+Element 'By.id: reasonEntry' not found.
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+PASS
+START KW: Enrollment.Select Plan [FSA Healthcare 2016]
+LOG MESSAGE: [INFO] rowsize : 2
+LOG MESSAGE: [INFO] rowsize : 2
+LOG MESSAGE: [INFO] availablePlan : fsa healthcare 2016
+LOG MESSAGE: [INFO] FSA Healthcare 2016Found in the row no : 1
+PASS
+START KW: Enrollment.Set Contribution Amount For Flex Benefit [150]
+LOG MESSAGE: [INFO] Getvalue returns : 150
+LOG MESSAGE: [INFO]  Enter the field Coverage Amount
+PASS
+START KW: Enrollment.Enter Effective Date [d:currentdate]
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201636296"><img src="eEnrollment/07272016_201636296" width="400px"></a>
+LOG MESSAGE: [INFO] </td></tr><tr><td colspan="3"><a href="eEnrollment/07272016_201636823"><img src="eEnrollment/07272016_201636823" width="400px"></a>
+LOG MESSAGE: [INFO] Exception in entering Effective Date of Employee Exception occured while explicitly waiting until required page element to be presentTimed out after 30 seconds waiting for visibility of element located by By.name: overallEffectiveDate
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'c5-c42n2', ip: '10.200.232.242', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_91'
+Session ID: 15fb9e3f-bfc4-4acf-9531-6d61de43798c
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=47.0.1}]
+LOG MESSAGE: [INFO] buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+buildnumber : nobuild
+logDirName : D:\TestRuns\CheckOut_Executions\Payroll\AAM_AAFP\log-20160727-201121.html
+LOG MESSAGE: [FAIL] Exception in entering Effective Date of Employee Exception occured while explicitly waiting until required page element to be presentTimed out after 30 seconds waiting for visibility of element located by By.name: overallEffectiveDate
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'c5-c42n2', ip: '10.200.232.242', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_91'
+Session ID: 15fb9e3f-bfc4-4acf-9531-6d61de43798c
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=47.0.1}]
+LOG MESSAGE: [DEBUG] java.lang.RuntimeException: 
+	at org.robotframework.javalib.library.AnnotationLibrary.retrieveInnerException(AnnotationLibrary.java:148)
+	at org.robotframework.javalib.library.AnnotationLibrary.runKeyword(AnnotationLibrary.java:130)
+	at Enrollment.runKeyword(Enrollment.java:74)
+	at robot.model.testcase$py.visit$7(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testcase.py:73)
+	at robot.model.testcase$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testcase.py)
+	at robot.model.itemlist$py.visit$10(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py:68)
+	at robot.model.itemlist$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$10(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py:68)
+	at robot.model.itemlist$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$10(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py:68)
+	at robot.model.itemlist$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$10(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py:68)
+	at robot.model.itemlist$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\model\testsuite.py)
+	at robot.utils.application$py._execute$10(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\utils\application.py:91)
+	at robot.utils.application$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\utils\application.py)
+	at robot.utils.application$py.execute_cli$5(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\utils\application.py:46)
+	at robot.utils.application$py.call_function(c:\jython2.7.0\lib\site-packages\robotframework-3.0-py2.7.egg\robot\utils\application.py)
+	at runpy$py._run_code$9(C:\jython2.7.0\Lib\runpy.py:73)
+	at runpy$py.call_function(C:\jython2.7.0\Lib\runpy.py)
+	at runpy$py._run_module_as_main$14(C:\jython2.7.0\Lib\runpy.py:161)
+	at runpy$py.call_function(C:\jython2.7.0\Lib\runpy.py)
+Caused by: com.benefitfocus.robot.utils.CustomException: Exception in entering Effective Date of Employee Exception occured while explicitly waiting until required page element to be presentTimed out after 30 seconds waiting for visibility of element located by By.name: overallEffectiveDate
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'c5-c42n2', ip: '10.200.232.242', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_91'
+Session ID: 15fb9e3f-bfc4-4acf-9531-6d61de43798c
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=47.0.1}]
+	at com.benefitfocus.robot.hradmin.ManageEmployee.enterEffectiveDate(ManageEmployee.java:1107)
+	at org.robotframework.javalib.reflection.KeywordInvoker.invoke(KeywordInvoker.java:50)
+	at org.robotframework.javalib.beans.annotation.AnnotationKeywordExtractor$1.execute(AnnotationKeywordExtractor.java:62)
+	at org.robotframework.javalib.library.KeywordFactoryBasedLibrary.runKeyword(KeywordFactoryBasedLibrary.java:37)
+	at org.robotframework.javalib.library.AnnotationLibrary.runKeyword(AnnotationLibrary.java:128)
+	... 231 more
+FAIL: null
+FAIL: null
+END TEST: FAIL: Exception in entering Effective Date of Employee Exception occured while explicitly waiting until required page element to be presentTimed out after 30 seconds waiting for visibility of element located by By.name: overallEffectiveDate
+Build info: version: 'unknown', revision: 'unknown', time: 'unknown'
+System info: host: 'c5-c42n2', ip: '10.200.232.242', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_91'
+Session ID: 15fb9e3f-bfc4-4acf-9531-6d61de43798c
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=47.0.1}]
+END SUITE: FAIL: 1 critical test, 0 passed, 1 failed
+1 test total, 0 passed, 1 failed
+END SUITE: FAIL: 1 critical test, 0 passed, 1 failed
+1 test total, 0 passed, 1 failed
+END SUITE: FAIL: 1 critical test, 0 passed, 1 failed
+1 test total, 0 passed, 1 failed
+START KW: Enrollment.Close Browser []
+PASS
+END SUITE: FAIL: 1 critical test, 0 passed, 1 failed
+1 test total, 0 passed, 1 failed
+Output (java): output-20160727-201121.xml
+Log (java): log-20160727-201638.html
+Report (java): report-20160727-201638.html
+The End

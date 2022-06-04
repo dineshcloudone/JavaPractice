@@ -1,0 +1,35 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "Automation Group For Vista HRA Testing"
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "Automation Group For Vista HRA Testing"
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "Automation Group For Vista HRA Testing"
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "Automation Group For Vista HRA Testing"
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "Automation Group For Vista HRA Testing"
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

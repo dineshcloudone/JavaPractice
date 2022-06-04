@@ -1,0 +1,63 @@
+{
+  "dollartreetestcases": {
+    "ancestor": {
+      "vista": {
+       "dollartreemandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "homeEmail": "nobody@benefitfocus.com",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto195",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "50000",
+          "earningsfrequency": "per year",
+          "calendarset":"BWSA",
+          "payfrequency": "Bi-Weekly",
+          "categories": "Dollar Tree Distribution#001#N#No#ASMGR#SSC#Not Assigned#BWSC#001#Salary#AL#Active Assignment - Fulltime-Regular#412771#01"
+        },
+        "prasadvalidvistacredentials": {
+          "username": "bfppasupuleti",
+          "password": "bfEnrol1"
+        },
+        "validvistacredentials": {
+          "username": "bftpuchala",
+          "password": "bfEnrol1"
+        },        
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+          
+		  },
+      "cobrapolicy":"2016 COBRA PHARM Offer",
+      "plan":"2016 UHC Pharmacy",
+      "reasonforchange":"other"
+		  
+
+    }
+  }
+}}

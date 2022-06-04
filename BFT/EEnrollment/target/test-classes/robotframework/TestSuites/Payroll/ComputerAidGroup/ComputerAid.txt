@@ -1,0 +1,454 @@
+*** Settings ***
+Suite Setup
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc1
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc1
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc1
+
+2.Initial enrollment after approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc2
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc2
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc2
+
+3.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc3
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc3
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Flexible Spending Benefits CAI 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc3
+
+4.Accpet after initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc4
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc4
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Flexible Spending Benefits CAI 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Flexible Spending Benefits CAI 2016
+    Edit Current Plan    Health FSA
+    Select Plan    Medical Flexible Spending Account CAI 2016
+    Set Contribution Amount For Flex Benefit    200
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc4
+
+5.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc5
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc5
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical Benefits CAI 2016 - Pending Approval
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc5
+
+6.Cancel benefits after approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc6
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc6
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical Benefits CAI 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc6
+
+7.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc7
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc7
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical Benefits CAI 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Benefits CAI 2016
+    Edit Current Plan    Medical
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc7
+
+8.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc8
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc8
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc8
+
+9.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc9
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc9
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc9
+
+10.Category Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc10
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ComputerAidlastnametc10
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc12
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc12
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc13
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc14
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical Benefits CAI 2016
+    Select Coverage Level    Associate and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc14
+
+15.Increase Coverage Amount For Life Benefit - Pending
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc15
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc15
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Employee Paid Life and AD&D Benefits CAI 2016
+    Enroll In Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc15
+
+16.Decrease Coverage Amount For Life Benefit - pending
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Employer Paid Benefits CAI 2016
+    Enroll In Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc16
+
+17.Increase Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Flexible Spending Benefits CAI 2016
+    Enroll In FSA    200
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc17
+
+18.Decrease Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Flexible Spending Benefits CAI 2016
+    Enroll In FSA    200
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc18
+
+20.Cancel flex when already enrolled in flex
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc20
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc20
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Flexible Spending Benefits CAI 2016
+    Enroll In FSA    200
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc20
+
+23.Change in EE cost
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc23
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ComputerAidlastnametc23
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc24
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ComputerAidlastnametc24
+    [Teardown]
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc25
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ComputerAidlastnametc25
+
+29.Add Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc29
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc29
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Medical Benefits CAI 2016
+    Enroll In Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc29
+
+30.Remove Dependent from benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc30
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc30
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Medical Benefits CAI 2016
+    Select Coverage Level    Associate and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc30
+
+31.Change dependent personnel information
+    Login as vista admin with valid credentials
+    Perform Group Search    Computer Aid, Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:computeraidmandatory    ComputerAidlastnametc31
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVComputerAidlastnametc31
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ComputerAidlastnametc31

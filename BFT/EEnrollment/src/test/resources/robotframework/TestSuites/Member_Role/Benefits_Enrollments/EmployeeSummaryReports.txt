@@ -1,0 +1,151 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for menu and menu options
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Employee Summary Report for Coverage Amounts
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Employee Summary Report For coverage Amounts*
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search "QCOE Test Automation Group-B1"
+    ...
+    ...    3) Add a new member from Vista login
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (using credentials created from vista)
+    ...
+    ...    2) Complete member initial login (Language selction, Password Change etc.,)
+    ...
+    ...    3) Run through member profile pages ( personal information, emergency contacts, etc.,)
+    ...
+    ...    4) Begin Enrollment and select life coverage plan ( Employee + Sp+ 1 Ch/$1,000)
+    ...
+    ...    5) Add Spouse as Beneficiary with 100% allocation
+    ...
+    ...    6) Save benefit and complete enrollment
+    ...
+    ...    7) Navigate to Home page and Click on Employee Summary Report
+    ...
+    ...    8) Verify the plan details in the downloaded PDF report
+    ...
+    ...    9) Logout Member
+    [Tags]    QCOE
+    #Prerequiste:
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    #Test Steps:
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    Employee + Sp + 1 Ch / $1,000.00
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    Supp Life 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    Builtin.Sleep    10s
+    Verify PDF Content    Supp Life 2016
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+2.Verify a member can open and view the Employee Summary Report
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Verify a Member can open and view Employee summary report*
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search "QCOE Test Automation Group-B1"
+    ...
+    ...    3) Navigate to Basics -> Tools and Reports Setup
+    ...
+    ...    4) Update Tools and Reports configuration, " Display Employee benefit Summary Report in member Role" to "Yes"
+    ...
+    ...    5) Logout Vista Admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (SUNITHAY6440/bfEnrol1)
+    ...
+    ...    2) Navigate to Member home page and click on Employee Summary Report
+    ...
+    ...    3) Verify the plan details in the downloaded PDF report
+    ...
+    ...    4) Logout Member
+    [Tags]    QCOE
+    #Prerequiste:
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Basics    Tools and Reports Setup
+    Update Tools And Reports    Display Employee Benefit Summary Report in Member Role    yes
+    Logout Vista Admin
+    #Test Steps:
+    Login To Enrollment With Valid Credentials    td:memberusername    td:memberpassword
+    Announcements Page    td:annoucementpage
+    Builtin.Sleep    3s
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    Verify PDF Content    Flat Term Life
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+3.Verify Member Can Open and View Employee Detail Report
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Verify Member Can Open and View Employee Detail Report
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group'
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    5) Login using above created member
+    ...
+    ...    6) Change password and navigate to 'Get Started' Page.
+    ...
+    ...    7) Click Get Started button and enroll into the Life Benefit.
+    ...
+    ...    8) Complete enrollment.
+    ...
+    ...    9) Click on Employee Detail report in home page and verify data.
+    ...
+    ...    10) Logout member role.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    $50,000.00
+    HSA Complete Contribution
+    Verify Message    Life
+    Save Benefit Enrollment In New Member    Life
+    Complete Enrollemnt In New Member Role
+    Verify Employee Detail Report In New Member UI    Personal Information    td:verifymessages
+    Logout New Member Role

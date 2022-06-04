@@ -1,0 +1,209 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "Life"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "LTD Plus STD"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "LTD Plus STD"
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "ViaQuest_SuppLife",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "categories": "Y"
+    },
+    "beneficiaryspouse": {
+      "firstname": "AutoDep",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "relationship": "Spouse",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "phone": "(454) 555-56"
+    },
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "child": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-1",
+      "gender": "Female",
+      "relationship": "Child"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "testautomationgroup": "QCOE BF QA Test Automation Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvistaforlifechange": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate:y:-1",
+      "earnings": "5000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Monthly",
+      "categories": "Life Plus LTD Plus STD"
+    }
+
+  },
+  "6": {
+    "resource": "BFQATestAutomationGroup",
+    "testautomationgroup": "QCOE Rex HealthCare",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "5000",
+      "earningsfrequency": "per year",
+      "calendarset": "Bi-Weekly",
+      "payfrequency": "Monthly",
+      "categories": "Full Time,Greater than 10 - Greater than or equal to 10 dollars an hour"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

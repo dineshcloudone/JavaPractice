@@ -1,0 +1,99 @@
+{
+  "1": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "getinsured": {
+      "pagetitle": "We need to share something with you about your health insurance options.",
+      "pagemessage": "Did you know that you <b>do</b> have options when selecting health insurance? And did you know that you may qualify for <b><i>tax credits</i></b> for your insurance?</br><br><b><i>Open Enrollment is Nov. 15th - Feb. 15th and is the time for you to take action.</b></i> Click below to learn about your options & any financial assistance you may be eligible for.</br><br><b>You can’t be denied coverage for health reasons, and all plans cover prescription drugs, doctor or hospital visits & more.</b></br><br>Health insurance can be confusing, but GetInsured makes it easy:</br>",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/getInsured/getinsured_intro.png",
+      "message1": "Affordability:  It’s less expensive than you may think.",
+      "message2": "Peace-of-mind:  Enrolling may help minimize future healthcare costs for you & any family members.",
+      "message3": "Options:  You select the plan, the provider & the amount of coverage."
+    }
+  },
+  "2": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "audaxrally": {
+      "pagetitle": "You're done with enrollment. Now it's time to Rally!",
+      "pagemessage": "Rally, our health engagement partner, empowers you to create lasting, positive habits you can stick to by making small simple changes - one step at a time.  Sign up for free to receive your personalized plan tailored to you.  ",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/audax/audax_device.png",
+      "listtitle": "Here's why Rally works:",
+      "bullet1": "Made just for you",
+      "message1": "Fill out our fast and fun health survey, and right away you'll get custom-made missions to help recharge your life.",
+      "bullet2": "Track your progress",
+      "message2": "Create and track personal health goals to keep you on the path to a healthier you.",
+      "bullet3": "Sweet, sweet rewards",
+      "message3": "Earn Rally Coins and win great prizes for making healthier choices, tracking your progress, and completing your missions."
+    }
+  },
+  "3": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "4": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "5": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "getinsuredvalidation": {
+      "pagetitle": "We need to share something with you about your health insurance options.",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/getInsured/getinsured_intro.png",
+      "message1": "Affordability:  It’s less expensive than you may think.",
+      "message2": "Peace-of-mind:  Enrolling may help minimize future healthcare costs for you & any family members.",
+      "message3": "Options:  You select the plan, the provider & the amount of coverage."
+    }
+  },
+  "6": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "audaxrallyvalidation": {
+      "pagetitle": "You're done with enrollment. Now it's time to Rally!",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/audax/audax_device.png",
+      "listtitle": "Here's why Rally works:",
+      "bullet1": "Made just for you",
+      "message1": "Fill out our fast and fun health survey, and right away you'll get custom-made missions to help recharge your life.",
+      "bullet2": "Track your progress",
+      "message2": "Create and track personal health goals to keep you on the path to a healthier you.",
+      "bullet3": "Sweet, sweet rewards",
+      "message3": "Earn Rally Coins and win great prizes for making healthier choices, tracking your progress, and completing your missions."
+    }
+  },
+  "7": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "8": {
+    "resource": "mercer",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+		"default": {
+			"resource": "mercer"
+		}
+}

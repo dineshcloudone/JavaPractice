@@ -1,0 +1,74 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "7": {
+    "resource": "bfqatestautomationgroup",    
+    "newaddress": {
+      "address1": "Test address1",
+      "city": "Test City1",
+      "state": "SC",
+      "zipcode": "12346",
+      "country": "USA",
+      "date": "d:currentdate"
+    }
+  },
+  "8": {
+    "resource": "bfqatestautomationgroup"    
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "employeeprofile": {
+      "date": "currentdate",
+      "relationship": "Wife",
+      "fullname": "RNDAuto",
+      "phonenumber": "RND98854",
+      "alternatephone": "RND97754",
+      "email": "test@benefitfocus.com"
+    }
+  },
+  "9": {
+    "resource": "bfqatestautomationgroup",    
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "employeeprofile": {
+      "date": "currentdate",
+      "relationship": "Wife",
+      "fullname": "RNDAuto",
+      "phonenumber": "RND98854",
+      "alternatephone": "RND97754",
+      "email": "test@benefitfocus.com"
+    }
+  },
+  "10": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "11": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "addmemberfunctionality": {
+    "Cypress": {
+      "vista": {
+           "validvistacredentials": {
+      "username": "bftpuchala",
+      "password": "bfEnrol1"
+    },
+        "cypressmandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "hiredate": "currentdate",
+          "earnings":"5000",
+          "earningsfrequency":"per month",
+          "calendarset":"BIWEEKLY",
+          "payfrequency":"Bi-Weekly",
+          "employerid":"RND91741",
+          "categories":"1 - Employee#Yes#900_USCO#40.0#0#0"
+        },
+        "validvistacredentials": {
+          "username": "bftpuchala",
+          "password": "bfEnrol1"
+        },
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+
+        }
+      }
+
+    }
+  }
+}

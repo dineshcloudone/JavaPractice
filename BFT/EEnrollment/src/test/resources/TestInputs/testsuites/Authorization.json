@@ -1,0 +1,179 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": "QCOE Common Diamond Foods Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "BIWEEKLY",
+      "payfrequency": "Bi-Weekly",
+      "employerid": "12345"
+    }
+  },
+  "2": {
+    "resource": "QCOE Commons Diamond Foods Groups",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_6",
+      "memberpassword": "passWord123"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE Commons Diamond Foods Groups",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "BIWEEKLY",
+      "payfrequency": "Bi-Weekly",
+      "employerid": "12345"
+    }
+  },
+  "3": {
+    "resource": "QCOE Commons Diamond Foods Groups",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_6",
+      "memberpassword": "passWord123"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE Commons Diamond Foods Groups",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "BIWEEKLY",
+      "payfrequency": "Bi-Weekly",
+      "employerid": "12345"
+    }
+  },
+  "4": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "bhradminautomation",
+      "password": "bfEnrol2"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "BIWEEKLY",
+      "payfrequency": "Bi-Weekly",
+      "employerid": "12345",
+      "categories": "Medical"
+    },
+    "terminate": {
+      "disablelogin": "Yes",
+      "terminationreason": "Voluntary"
+    }
+  },
+  "5": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "bhradminautomation",
+      "password": "bfEnrol2"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "BIWEEKLY",
+      "payfrequency": "Bi-Weekly",
+      "employerid": "12345",
+      "categories": "Medical"
+    },
+    "terminate": {
+      "disablelogin": "No",
+      "terminationreason": "Voluntary"
+    }
+  },
+  "default": {
+    "resource": "QCOE Commons Diamond Foods Groups"
+  }
+}

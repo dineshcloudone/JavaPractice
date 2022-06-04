@@ -1,0 +1,364 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for CheckCodeBabyImage in HR Admin Role functionality
+Test Setup        getResource
+Force Tags        QCOE    donotrun
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Confirm Avatar displays on the plan listing page
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays on the plan listing page*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    7) Add a new employee from HR Admin
+    ...
+    ...    8) Open employee in Member role
+    ...
+    ...    9) Switch to new UI in member role
+    ...
+    ...    10) Click on Get started and Run through member profile pages
+    ...
+    ...    11) Begin medical enrollment and in plan listing page, verify that code baby plug in displayed and \ script is running.
+    ...
+    ...    12) Logout member role
+    ...
+    ...    Test Case No: 131 (From Regression Suite )
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Plugins
+    SelectAndEnableCodeBabyPlugin    CodeBaby Hannah Helper Avatar
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    View In Member Role
+    CheckCodeBabyImage
+    SelectLoginAndSwitchUIStyle
+    BuiltIn.Sleep    20s
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    CheckCodeBabyImage
+    comment    Logout New Member Role
+    BuiltIn.Sleep    60s
+    Log Out To See Latest Changes    You have been working in another window
+
+2.Confirm Avatar displays during Life Event Change
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays during Life Event Change*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    7) Add a new employee from HR Admin
+    ...
+    ...    8) Enroll the employee for life coverage plan of $10,000.00
+    ...
+    ...    9) Open employee in Member role
+    ...
+    ...    10) Switch to new UI in member role
+    ...
+    ...    11) Click on Get started and Run through member profile pages
+    ...
+    ...    12) Edit life coverage and verify that code baby plug in displayed and \ script is running.
+    ...
+    ...    13) Logout of member role
+    ...
+    ...    Test Case No: 133 (From Regression Suite )
+    [Tags]    donotrun
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Plugins
+    SelectAndEnableCodeBabyPlugin    CodeBaby Hannah Helper Avatar
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    Yes
+    Enter Effective Date    currentdate
+    Save Benefit Enrollment
+    Select Coverage Amount    $10,000.00
+    Save Benefit    currentdate
+    Navigate To HR Menu    Overview
+    View In Member Role
+    SelectLoginAndSwitchUIStyle
+    Run Member Profile Pages In New UI
+    Edit Life Coverage In Current Benefits Page In New UI
+    CheckCodeBabyImage
+    Logout New Member Role
+
+3.Confirm Avatar displays on PSA
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays on PSA*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Navigate to Basics -> Integration settings and set "Plan comparision strategy" to " Plan Shopping Application(PSA)"
+    ...
+    ...    6) Navigate to Benefits -> Offers -> Medical 2016 offer details and set "Display PSA selections on HSA contribution screen in Member role" field to Yes
+    ...
+    ...    6) Logout to eEnrollment as a Vista User
+    ...
+    ...    7) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    8) Add a new employee from HR Admin
+    ...
+    ...    9) Open employee in Member role
+    ...
+    ...    10) Switch to new UI in member role
+    ...
+    ...    11) Click on Get started and Run through member profile pages
+    ...
+    ...    12) Begin medical enrollment and select Medical 2016 and Medical 2016 plus plans to compare
+    ...
+    ...    13) Verify that code baby plug in displayed and \ script is running.
+    ...
+    ...    12) Logout of member role
+    ...
+    ...    Test Case No: 132 (From Regression Suite )
+    #Prerequisite:
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Integration Settings
+    Update Integration Settings    Plan Comparison Strategy    Plan Shopping Application (PSA)
+    Save Configuration
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Update Edit Offer Details    Display PSA selections on HSA Contribution screen in the Member role?    Yes
+    Save Configuration
+    Logout Vista Admin
+    #Test Steps:
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    View In Member Role
+    SelectLoginAndSwitchUIStyle
+    Run Member Profile Pages In New UI
+    Compare Medical Plans In Member Role In New UI
+    CheckCodeBabyImage
+    Logout New Member Role
+
+4.Confirm Avatar displays on main Membor Role page
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays on main Member Role page*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    7) Add a new employee from HR Admin
+    ...
+    ...    8) Open employee in Member role
+    ...
+    ...    9) Switch to new UI in member role
+    ...
+    ...    10) Logout member role
+    ...
+    ...    Test Case No: 127 (From Regression Suite )
+    #PreRequisite
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Plugins
+    SelectAndEnableCodeBabyPlugin    CodeBaby Hannah Helper Avatar
+    Logout Vista Admin
+    #Test Steps
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    View In Member Role
+    CheckCodeBabyImage
+    Logout New Member Role
+
+5.Confirm Avatar displays on Profile page
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays on the Profile page*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    7) Add a new employee from HR Admin
+    ...
+    ...    8) Open employee in Member role
+    ...
+    ...    9) Switch to new UI in member role
+    ...
+    ...    10) Click on Get started and Run through member profile pages
+    ...
+    ...    11) Logout member role
+    ...
+    ...    Test Case No: 128 (From Regression Suite )
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Plugins
+    Select And Enable Code Baby Plugin    CodeBaby Hannah Helper Avatar
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    View In Member Role
+    Comment    CheckCodeBabyImage
+    SelectLoginAndSwitchUIStyle
+    BuiltIn.Sleep    20s
+    Click Get Startedbutton On New UI
+    CheckCodeBabyImage
+    Logout New Member Role
+
+6.Confirm Avatar displays on Benefit page
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays on theBenefits page*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    7) Add a new employee from HR Admin
+    ...
+    ...    8) Open employee in Member role
+    ...
+    ...    9) Switch to new UI in member role
+    ...
+    ...    10) Click on Get started and Run through member profile pages
+    ...
+    ...    11) Begin medical enrollment and in plan listing page, verify that code baby plug in displayed and \ script is running.
+    ...
+    ...    12) Logout member role
+    ...
+    ...    Test Case No: 129 (From Regression Suite )
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Plugins
+    SelectAndEnableCodeBabyPlugin    CodeBaby Hannah Helper Avatar
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    View In Member Role
+    SelectLoginAndSwitchUIStyle
+    BuiltIn.Sleep    20s
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    CheckCodeBabyImage
+    Logout New Member Role
+
+7.Confirm Avatar displays on 'Who do you want to cover?' page
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title: *Confirm Avatar displays on "Who do you want to cover?" page*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User (bfautomation/Password1)
+    ...
+    ...    2) Search for Sponsor "QCoE Test Automation Group-B"
+    ...
+    ...    3) Navigate to Basics -> Plugins
+    ...
+    ...    4) Add Code baby plugin and enable plugin.
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin (bhradminautomation/bfEnrol2)
+    ...
+    ...    7) Add a new employee from HR Admin
+    ...
+    ...    8) Open employee in Member role
+    ...
+    ...    9) Switch to new UI in member role
+    ...
+    ...    10) Click on Get started and Run through member profile pages
+    ...
+    ...    11) Begin medical enrollment and in plan listing page, verify that code baby plug in displayed and \ script is running.
+    ...
+    ...    12) Logout member role
+    ...
+    ...    Test Case No: 130 (From Regression Suite )
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Plugins
+    SelectAndEnableCodeBabyPlugin    CodeBaby Hannah Helper Avatar
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    View In Member Role
+    SelectLoginAndSwitchUIStyle
+    BuiltIn.Sleep    20s
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    CheckCodeBabyImage
+    Logout New Member Role

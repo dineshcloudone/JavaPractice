@@ -1,0 +1,44 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "passwordvalues": {
+      "password": "RNDpassWord",
+      "confirmpassword": "RNDpassWord"
+    },
+    "agentloginid": "AGENTADMINISTRATOR",
+    "agentpassword": "HMVagentloginpassword",
+    "agentupdatepassword": {
+      "newpassword": "bfEnrol1",
+      "confirmpassword": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": "QCOE Common Group Vista Role",
+    "agentvalues": {
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "worknumber": "1234567890",
+      "agentid": "RNDQCOEAgent",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "loginallowed": "Yes",
+      "agentrole": "Agent"
+    },
+    "agentupdatepassword": {
+      "newpassword": "passWord123",
+      "confirmpassword": "passWord123"
+    }
+  },
+  "default": {
+    "resource": "BF QA Test Automation Group"
+  }
+}

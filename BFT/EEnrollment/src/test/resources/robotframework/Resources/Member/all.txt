@@ -1,0 +1,137 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefits With Employee Only Coverage
+    [Arguments]    ${jsonTestData}
+    ${keys}    Get Test Data    ${jsonTestData}
+    ${items} =    Get From Dictionary    ${keys}    benefitname
+    Add Dependent To Member    None    None
+    Start Current Benefit For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Select Plan For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    coveragelevel
+    Select Coverage Level For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Verify Member Summary Card And Save    ${items}
+
+Enroll In Medical Benefits With Employee and Spouse Coverage
+    ${keys}    Get Test Data    defaultmedical
+    ${items} =    Get From Dictionary    ${keys}    benefitname
+    Add Dependent To Member    td:spouse    spouselastname
+    Start Current Benefit For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Select Plan For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    coveragelevel
+    Select Coverage Level For Member    ${items}
+    ${items} =    Get From Dictionary    ${keys}    planname
+    Verify Member Summary Card And Save    ${items}
+
+Add HSA plan Contributions With agree ments
+    [Arguments]    ${ContributionAmount}    @{ContributionType}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Add HSA contributions amounts for a member after selecting HSA Plan during the enrollment in new and old member roles.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${ContributionAmount} --> Contribution Amount to add for all Contrbutiontion Types \ Ex:-100
+    ...
+    ...    @{ContributionType} --> \ It is for Contribution types and User can add more contributions by Comma.
+    ...    Ex:- Initial,HSA,Ongoing.
+    : FOR    ${ContType}    IN    @{ContributionType}
+    \    Run Keyword If    '${ContType}'=='Initial'    Hsa Initial Contribution    ${ContributionAmount}    ELSE IF    '${ContType}'=='HSA'
+    \    ...    Hsa Abstract Contribution    ${ContributionAmount}    ELSE IF    '${ContType}'=='Schedule'    Hsa Schedule Contribution
+    \    ...    ${ContributionAmount}    ELSE    Hsa Ongoing Contribution    ${ContributionAmount}
+    Hsa Complete Contribution
+    Hsa Complete Agreemnets
+
+Login As Existing Member
+    [Arguments]    ${Username}    ${Password}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to login for an Existed member into the old and New Member roles.
+    ...
+    ...    ${Username} Ex:- bfa1234
+    ...
+    ...    ${Password} Ex:- 123456
+    ${test}=    Login To Enrollment With Valid Credentials    ${Username}    ${Password}
+    Set Global Variable    ${test}
+    Run Existed Member
+
+Add HSA Without Agreements
+    [Arguments]    ${ContributionAmount}    @{ContributionType}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Add HSA Plan to the Member without HSA Agreements in old and new member roles.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${ContributionAmount} --> Contribution Amount to add for all Contrbutiontion Types \ Ex:-100
+    ...
+    ...    @{ContributionType} --> \ It is for Contribution types and User can add more contributions by Comma.
+    ...    Ex:- Initial,HSA,Ongoing.
+    : FOR    ${ContType}    IN    @{ContributionType}
+    \    Run Keyword If    '${ContType}'=='Initial'    Hsa Initial Contribution    ${ContributionAmount}    ELSE IF    '${ContType}'=='HSA'
+    \    ...    Hsa Abstract Contribution    ${ContributionAmount}    ELSE IF    '${ContType}'=='Schedule'    Hsa Schedule Contribution
+    \    ...    ${ContributionAmount}    ELSE    Hsa Ongoing Contribution    ${ContributionAmount}
+    Hsa Complete Contribution
+
+Run Member Initial Login
+    [Arguments]    ${testdata}
+    [Documentation]    Member Initial login pages involved following pages
+    ...
+    ...    1. Preferred language page
+    ...
+    ...    2. Password change page
+    ...
+    ...    3. Secret Questions page
+    ...
+    ...    4. Announcements Page having both Global and Group level annoucements if any
+    ...
+    ...    5. Agreements pages if configured for the Group / Sponsor.
+    ...
+    ...    Depending on the group / sponsor configurations for the member, \ the pages displayed and the tool interaction can be control from the json test data file "eEnrollmentCommon"
+    ...
+    ...    "memberinitiallogin": {
+    ...
+    ...
+    ...    "langugage":"English"
+    ...
+    ...
+    ...    "password": "bfEnrol1",
+    ...
+    ...
+    ...    "confirmpassword": "RNDDepSpouse",
+    ...
+    ...
+    ...    "secretquestionscount": "0",
+    ...
+    ...
+    ...    "annoucementpage": "yes",
+    ...
+    ...
+    ...    "agreementpage": "yes"
+    ...
+    ...    }
+    ...
+    ...    "memberinitiallogin" is the JSON key to be passed as an arugument from the Calling test cases while running through the member initial login pages.
+    ${keys}    Get Test Data    ${testdata}
+    ${items} =    Get From Dictionary    ${keys}    language
+    Choose Preferred Language    ${items}
+    ${items} =    Get From Dictionary    ${keys}    password
+    Change Initial Member Password    ${items}
+    ${items} =    Get From Dictionary    ${keys}    secretquestionscount
+    Select Secret Questions And Save    ${items}
+    ${items} =    Get From Dictionary    ${keys}    annoucementpage
+    Announcements Page    ${items}
+    ${items} =    Get From Dictionary    ${keys}    agreementpage
+    Agreements Page    ${items}
+
+Enroll FSA Plan
+    [Arguments]    ${CurrentBenefitName}    ${BenefitName}    ${FSAContributionAmount}
+    Start Current Benefit For Member    ${CurrentBenefitName}
+    Start FSA Enrollment
+    Select Plan For Member     ${BenefitName}
+    Enter Health Statement
+    Enter Contribution For FSA Plan    ${FSAContributionAmount}

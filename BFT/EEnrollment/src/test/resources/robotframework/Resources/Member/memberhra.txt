@@ -1,0 +1,25 @@
+*** Settings ***
+Resource          ../Common.txt
+
+*** Keywords ***
+Member Initial Login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process for carrier "Arkansas Blue Cross and Blue Shield"
+    Announcements Page    yes
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Announcements Page    yes    #for handle group/global level announcements
+    Agreements Page    Yes
+    Agreements Page    Yes
+
+Click Next Button
+    [Documentation]    Purpose : Click Next button on Member Initial Login
+    ...
+    ...    Usage : User defined keyword to click Next button
+    Builtin.sleep    5s
+    Next
+    Comment    Builtin.sleep    5s
+    Comment    click    //button[@class='btn btn-primary]    nextbutton

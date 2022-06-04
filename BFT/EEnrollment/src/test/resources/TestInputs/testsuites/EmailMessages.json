@@ -1,0 +1,105 @@
+{
+  "1": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "bhradminautomation",
+      "password": "bfEnrol2"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCoE Test Automation Group-B"
+    },
+    "add employee in HR": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical",
+      "personalemail": "nobody@benefitfocus.com"
+    }
+  },
+  "2": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "bhradminautomation",
+      "password": "bfEnrol2"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCoE Test Automation Group-B"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "PersonalEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical",
+      "personalemail": "nobody@benefitfocus.com"
+    }
+  },
+  "3": {
+    "resource": "BFQATestAutomationGroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfqcoeadmin18",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA Test Automation OE Group18"
+    },
+    "allfields": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical",
+      "personalemail": "nobody@benefitfocus.com"
+    }
+  },
+  "default": {
+    "resource": "bfqaautomationvistaadmin"
+  }
+}

@@ -1,0 +1,34 @@
+{
+	"validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "newmember": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "BP7 - Corp/Fed Civ,Full-Time Regular,1 - Fringe 1-Enhanced"
+    },
+    "memberlogin":{
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+    }
+}

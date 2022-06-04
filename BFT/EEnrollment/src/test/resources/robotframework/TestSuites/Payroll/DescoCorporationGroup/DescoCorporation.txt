@@ -1,0 +1,463 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc1
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc1
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc1
+
+2.Initial enrollment (after approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc2
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc2
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc2
+
+3.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc3
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc3
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Dental 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc3
+
+4.Accpet after initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc4
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc4
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Dental 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Dental 2016
+    Edit Current Plan    Dental
+    Enroll In Dental Benefit    Single
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc4
+
+5.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc5
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc5
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical Pharmacy 2016 - Pending Approval
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc5
+
+6.Cancel benefits (after approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc6
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc6
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical Pharmacy 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc6
+
+7.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc7
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc7
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical Pharmacy 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Pharmacy 2016
+    Edit Current Plan    Pharmacy
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc7
+
+8.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc8
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc8
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Perform Employee Termination    d:currentdate    Voluntary
+    Verify Message    Terminated
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc8
+
+9.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc9
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc9
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc9
+
+10.Category Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc10
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    DescoCorporationlastnametc10
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc12
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc12
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc13
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc14
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical Pharmacy 2016
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc14
+
+15.Increase Coverage Amount For Life Benefit - Pending
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc15
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc15
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Bellofram - Basic Life Insurance 2016
+    Enroll In Life Benefit    $5,000.00
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc15
+
+16.Decrease Coverage Amount For Life Benefit - pending
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Bellofram - Basic Life Insurance 2016
+    Enroll In Life Benefit    $5,000.00
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc16
+
+17.Increase Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Health Care Flexible Spending Account 2016
+    Enroll In FSA Plan    UMR - Health Care Spending Account 2016    300
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc17
+
+18.Decrease Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Health Care Flexible Spending Account 2016
+    Enroll In FSA Plan    UMR - Health Care Spending Account 2016    200
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc18
+
+20.Cancel flex when already enrolled in flex
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc20
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc20
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Health Care Flexible Spending Account 2016
+    Enroll In FSA Plan    UMR - Health Care Spending Account 2016    200
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc20
+
+23.Change in EE cost
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc23
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    DescoCorporationlastnametc23
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc24
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc24
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc24
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc25
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc25
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc25
+
+29.Add Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc29
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc29
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Medical Pharmacy 2016
+    Enroll In Medical Pharmacy Benefit    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc29
+
+30.Remove Dependent from benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc30
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc30
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Medical Pharmacy 2016
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc30
+
+31.Change dependent personnel information
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:descocorporationmandatory    DescoCorporationlastnametc31
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDescoCorporationlastnametc31
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical Pharmacy 2016
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DescoCorporationlastnametc31

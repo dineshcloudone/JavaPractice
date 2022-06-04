@@ -1,0 +1,150 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Select benefit and select plan and coverage level as HR admin
+    [Arguments]    ${Benefit}    ${Plan}    ${Level}
+    [Documentation]    Author : CH Phani Srikar
+    ...
+    ...    Purpose : Keyword used to select benefit, plan coverage levels in HR admin role for the group "BF QA Test Automation Group"
+    ...
+    ...    Aruguments : Benefit Name, Plan Name, Coverage level
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    ${Benefit}
+    Run Keyword Unless    '${Plan}' =='${EMPTY}'    Select Plan    ${Plan}
+    Select Coverage Level    ${Level}
+
+Add Beneficiary with any relationship as Primary Beneficiary and 100% allocation
+    [Arguments]    ${strrelationship}    ${benefittype}    ${coverageamount}
+    [Documentation]    Author : Sekhar Tirumala
+    ...
+    ...    Purpose : In HR admin role, enroll a member with life pplan and add a new beneficiary to employee and verify the benefit in pending state after enrollment.
+    ...
+    ...    Arguments : relationship, benefittype, coverageamount
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    ${benefittype}
+    Select Coverage Amount    ${coverageamount}
+    Add New Beneficiary To Employee    ${strrelationship}    Primary    100    lastname
+    Enter Effective Date    default
+    Save Benefit Enrollment
+
+Add Dependent as Primary Beneficiary with 100% Allocation
+    [Arguments]    ${strrelationship}    ${benefittype}    ${coverageamount}
+    [Documentation]    Author : Sekhar Tirumala
+    ...
+    ...    Purpose : In HR admin role, enroll a member with life plan with dependent and add a existing dependent as beneficiary to employee and verify the benefit in pending state after enrollment.
+    ...
+    ...    Arguments : relationship, benefittype, coverageamount
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    ${benefittype}
+    Select Coverage Amount    ${coverageamount}
+    Add Dependent As Beneficiary    ${strrelationship}    Primary    100    lastname
+    ${var}=    Catenate    ${benefittype}    - Pending Approval
+    Verify Current Benefit    ${var}
+
+Add Dependent and update plan in HR role
+    [Arguments]    ${Relationship}    ${Benefitname}    ${CoverageLevel}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Add dependent to an employee and update the selected plan in HR adimin role.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${RelationShip} --> Dependent RelationShip to Add
+    ...
+    ...    ${LastName}---> Last Name for Adding Dependent
+    ...
+    ...    ${BenefitName}----> Benefit Nmae to Add
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    ${Relationship}    lastname
+    Change Coverage    ${Benefitname}    ${CoverageLevel}
+
+Change Coverage
+    [Arguments]    ${BenefitName}    ${Relationship}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This keyword to change coverage of an Employee from One type to another type in HR admin role.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${BenefitName} --> Benefit Name to edit
+    ...
+    ...    ${RelationShip} --> Dependent RelationShip to Add
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    ${BenefitName}
+    Change Coverage Level    ${Relationship}
+    Apply Coverage To Dependent
+    Save Benefit After Edit
+
+Add COBRA Policy
+    [Documentation]    Author : Phani Srikar Ch | Dilip K
+    ...
+    ...    Test Case Name : Add COBRA Policy
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Click on 'Manage Employee >> Manage Cobra' Link
+    ...
+    ...    2. Click on 'Add Policy' button
+    ...
+    ...    3. Select a Medical 2015 plan
+    ...
+    ...    4. Select New Qualifying Event and Enter necessary details,Click on 'Next' button
+    ...
+    ...    5. Click on 'Next' button from 'Persons Covered' page
+    ...
+    ...    6. Enter effective date as 'current date' and click on 'Next' button.
+    ...
+    ...    7. Click on 'Save' button
+    Navigate To Manage Employee In HR Role    Manage COBRA
+    Manage Cobra And Add Policy    td:cobrapolicy
+    Select Qualifying Event    new event    Death of employee,d:currentdate
+    Select Plan    td:plan
+    Persons Covered    click on    nex button
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+
+Edit COBRA Policy
+    [Arguments]    ${BenefitName}
+    [Documentation]    Author : Phani Srikar Ch | Dilip K
+    ...
+    ...    Test Case Name : Edit COBRA Policy
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Click on 'Manage Employee >> Manage Cobra' Link
+    ...
+    ...    2. Click on 'Edit' button against Plan Selected.
+    ...
+    ...    3. Click on 'Cancel Benefits for All' button
+    ...
+    ...    4. Accept Alert button
+    ...
+    ...    5. Select 'Other' option from Reason for Benefit Change page
+    ...
+    ...    6. Enter current date in End Date text box.
+    ...
+    ...    7. Click on Save button.
+    Navigate To Manage Employee In HR Role    Manage COBRA
+    Manage Cobra And Edit Policy    ${BenefitName}    none
+    performCancelBenefitsForAll
+    Reason For Benefit Change    td:reasonforchange
+    Select Plan    Decline coverage for this person
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+
+Open Enrollment Manager Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : Nagarjuna Behara
+    ...
+    ...    Purpose : Robot user keyword is used to update OpenEnrollemet Manager Congiguarations in Carrier level
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value}
+    ...
+    ...    ${field} : Fiedl label seen on the application. Eg Enable Open Enrollment Manager. etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Yes \ etc
+    Update Open Enrollment Manager    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration

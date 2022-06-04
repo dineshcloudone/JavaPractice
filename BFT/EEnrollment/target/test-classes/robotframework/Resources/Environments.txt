@@ -1,0 +1,12 @@
+*** Settings ***
+Documentation     Robot levle variables represening various environments in eEnrollment application
+...
+...
+...               @(EESHREL) \ - List variables with application name, URL and HDBC connection string to connect to the application database
+
+*** Variables ***
+@{EESHDEV}        eEnrollment    http://eeshdev.benefitfocus.com/go/bfi    jdbc:oracle:thin:@eeshd1.prod1.benefitfocus.com:1521/eeshd1,BFI_BASE_APP,bf2000
+@{EESHREL}        eEnrollment    http://eeshrel/go    jdbc:oracle:thin:@eeshr1.prod1.benefitfocus.com:1521/eeshr1,BFI_BASE_APP,bf2000
+@{EESHPATCH}      eEnrollment    http://eeshpatch.benefitfocus.com/go/bfi    jdbc:oracle:thin:@eesha1.prod1.benefitfocus.com:1521/eesha1,BFI_BASE_APP,bf2000
+
+*** Keywords ***

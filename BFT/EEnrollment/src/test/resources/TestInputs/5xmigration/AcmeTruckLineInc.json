@@ -1,0 +1,328 @@
+{
+	"41": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"42": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"43": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"44": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"45": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"46": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"47": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"48": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"49": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"50": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"51": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"52": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"53": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"54": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"55": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"56": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"57": {
+		"resource": "AcmeTruckLineIncResource",
+		 "acme": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per month",
+          "payfrequency": "Weekly",
+          "categories": "CL2 - Class 2#EXEC - Executives#LT 30 - Employees working 1-29 hours weekly"
+        }
+
+	},
+	"58": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"59": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"60": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"61": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"62": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"63": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"64": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"65": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"66": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"67": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"68": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"69": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"70": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"71": {
+		"resource": "AcmeTruckLineIncResource"
+
+	},
+	"72": {
+		"resource": "AcmeTruckLineIncResource",
+		"acmepdate": {
+          "firstname": "MyAuto",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+
+	"73": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+
+	"74": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+
+
+	"75": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+
+
+	"76": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"77": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"78": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"79": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"80": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"81": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"82": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"83": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"84": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"85": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"86": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"87": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"88": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"89": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"90": {
+		"resource": "AcmeTruckLineIncResource",
+		"abc": {
+			"ssn": "RND4433",
+			"firstname": "Auto",
+			"lastname": "RNDTestMandatory",
+			"birthdate": "currentdate:y:-28",
+			"gender": "Female",
+			"address1": "Test address",
+			"city": "Test City",
+			"state": "SC",
+			"zipcode": "12345",
+			"country": "USA",
+			"homePhone": "123-456-7890",
+			"createlogin": "Create a login account for this person",
+			"memberid": "RNDBFAuto",
+			"password": "bfEnrol0",
+			"confirmpassword": "bfEnrol0",
+			"hiredate": "currentdate",
+			"earnings": "8000",
+			"earningsfrequency": "per month",
+			"payfrequency": "Weekly",
+			"categories": "CL1 - Class 1#ADMIN1 - Administrative 1 - biweekly#GE 30 - Employees working 30 or more"
+		}
+	},
+	"91": {
+		"resource": "AcmeTruckLineIncResource",
+		"chgender": {
+          "gender": "Female",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"92": {
+		"resource": "AcmeTruckLineIncResource",
+		"acme": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per month",
+          "payfrequency": "Weekly",
+          "benefitsalary" : "80",
+          "benefitsalaryfrequency" : "per month",
+          "categories": "CL1 - Class 1#ADMIN1 - Administrative 1 - biweekly#GE 30 - Employees working 30 or more"
+        },
+		"advsal": {
+          "benefitsalary" : "100",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"93": {
+		"resource": "AcmeTruckLineIncResource",
+		"acme": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "8000",
+          "earningsfrequency": "per month",
+          "payfrequency": "Weekly",
+          "benefitsalary" : "80",
+          "benefitsalaryfrequency" : "per month",
+          "categories": "CL1 - Class 1#ADMIN1 - Administrative 1 - biweekly#GE 30 - Employees working 30 or more"
+        },
+		"advsal": {
+          "benefitsalary" : "70",
+          "effectivedate": "d:currentdate"        
+        }
+	},
+	"94": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"95": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"96": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"97": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"98": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"99": {
+		"resource": "AcmeTruckLineIncResource"
+	},
+	"100": {
+		"resource": "AcmeTruckLineIncResource"
+
+	}
+}

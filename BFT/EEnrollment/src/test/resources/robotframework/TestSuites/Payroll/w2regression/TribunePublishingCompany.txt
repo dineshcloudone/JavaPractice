@@ -1,0 +1,791 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../Resources/common.txt
+Resource          ../../Resources/HRAdmin/W2RegressionResources/TribunePublishingCompanyResource.txt
+
+*** Variables ***
+${initial_benefit_enrollment_date}    currentdate
+${start_month_date_cat}    05/01/2016
+${day_event_month_date_cat}    05/15/2016
+${end_month_date_cat}    05/31/2016
+${start_month_date}    08/01/2016
+${day_event_month_date}    08/15/2016
+${end_month_date}    08/31/2016
+
+*** Test Cases ***
+1. Adjust Servicedate for new hire
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc01
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVltribunepublishingcompanytc01
+    Edit Work Information    td:newworkinformation
+    Navigate To HR Menu    Overview
+    Enroll In Medical Benefit With effective date    d:currentdate
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    sleep    5
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc01
+
+2.Adjust servicedate for rehire with benefit eligible earlier
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc02
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc02
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    Perform Employee Rehire    d:currentdate:d:2
+    Edit Work Information    td:newworkinformation
+    Enroll In Medical Benefit with effective date    d:currentdate:M:1
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    sleep    5
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc02
+
+3.Adjust servicedate for rehire with benefit eligible later
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc03
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc03
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    Perform Employee Rehire    d:currentdate:d:2
+    Edit Work Information    td:newworkinformation
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    sleep    5
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc03
+
+4.Change category that does not effect on eligible benefits(1 St month changes)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc04
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc04
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    changeEmployeeCateogryWithEffectivedate    Co Code    132 - N/A    ${start_month_date_cat}
+    sleep    5
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc04
+
+7. Change category and cancel benefits(1 St month changes)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc07
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc07
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    changeEmployeeCateogryWithEffectivedate    Employment Type    PT - Part-Time Employee    ${start_month_date_cat}
+    sleep    5
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc07
+
+9. Change category and eligible for benefits(Enrolled through enrollment based on New Hire Rules)(1 St month changes)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory2    tribunepublishingcompanytc09
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc09
+    changeEmployeeCateogryWithEffectivedate    Employment Type    FT - Full-Time Employee    ${start_month_date_cat}
+    sleep    5
+    Navigate To HR Menu    Overview
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Approve From HR Admin
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc09
+
+10. Change category that does not effect on eligible benefits(Mid month changes)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc10
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc10
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    changeEmployeeCateogryWithEffectivedate    Co Code    132 - N/A    ${day_event_month_date_cat}
+    sleep    5
+    close hr admin
+    Logout Vista Admin
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc10
+
+13. Change category and cancel benefits(Mid month changes)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc13
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc13
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    changeEmployeeCateogryWithEffectivedate    Employment Type    PT - Part-Time Employee    ${day_event_month_date_cat}
+    sleep    5
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc13
+
+15. Change category and eligible for benefits(Enrolled through enrollment based on New Hire Rules)(Mid month changes)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory2    tribunepublishingcompanytc15
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc15
+    changeEmployeeCateogryWithEffectivedate    Employment Type    FT - Full-Time Employee    ${day_event_month_date_cat}
+    sleep    5
+    Navigate To HR Menu    Overview
+    Enroll In Medical Benefit with effective date    d:currentdate
+    Approve From HR Admin
+    close hr admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc15
+
+16.Life Event With Out Coverage(1st Of Month Start)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${start_month_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${start_month_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${start_month_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc16
+
+17.Life Event With Employee and Child Coverage(1st Of Month Start)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${start_month_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc17
+
+18.Life Event With Employee Only Coverage(1st Of Month Start)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee Only
+    Enter New Effective Date    ${start_month_date}    Test
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc18
+
+19.Life Event - Day Of Event Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc19
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc19
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Click On Cancel Benefit For All
+    Enter New Effective Date    ${day_event_month_date}    Test
+    Save Benefit Enrollment
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc19
+
+20.Life Event - 1st Of Following Month Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc20
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc20
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Click On Cancel Benefit For All
+    Enter New Effective Date    ${start_month_date}    Test
+    Save Benefit Enrollment
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc20
+
+21.Life Event - End Of Month Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc21
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc21
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Click On Cancel Benefit For All
+    Enter New Effective Date    ${end_month_date}    Test
+    Save Benefit Enrollment
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc21
+
+22.Life Event With Out Coverage(Day Of Event Start)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc22
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc22
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${day_event_month_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${day_event_month_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${day_event_month_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc22
+
+23.Life Event With Employee and Child Coverage(Day Of Event Start)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc23
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc23
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${day_event_month_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc23
+
+24.Life Event With Employee Only Coverage(Day Of Event Start)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc24
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc24
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee Only
+    Enter New Effective Date    ${day_event_month_date}    Test
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc24
+
+25.Mid Year Plan Elections - Initial Decline Coverage
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc25
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc25
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    Decline coverage for this person
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Current Plan    Medical
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc25
+
+26.Mid Year Plan ELections - Employee and Spouse Coverage
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc26
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc26
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Child    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc26
+
+27.Mid Year Plan Elections - Employee Only Coverage
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanylifeeventmandatory    TribunePublishingCompanylastnametc27
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVTribunePublishingCompanylastnametc27
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Decline coverage for this employee
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+    appendHashMapValue    TribunePublishingCompanylastnametc27
+
+28.Rehire Employee As Never Terminated
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc28
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory75571
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc28
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc28
+
+29.Rehire Employee with No Lapse in Coverage
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc29
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc29
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc29
+
+30.Rehire Employee with Wait Period
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc30
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc30
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc30
+
+31.Rehire Employee without wait Period
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc31
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc31
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc31
+
+32.Rehire Employee with Change in Plan ,Coverage Level or Persons covered
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc32
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc32
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc32
+
+33.Rehire Employee as Employee can make benefit elections
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc33
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc33
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc33
+
+34.Rehire Employee as Employee benefits will not reinstated at this time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc34
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc34
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc34
+
+35.Rehire Employee with change in Plan , Coverage Level and Persons covered without a wait period
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc35
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc35
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc35
+
+36.Rehire Employee with change in Plan , Coverage Level and Persons covered with wait period
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5557269405
+    Navigate To    Users    Add Member
+    Comment    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:tribunepublishingcompanymandatory    tribunepublishingcompanytc36
+    Open Group In HR Role
+    Comment    Perform Simple Employee Search    TestMandatory26805
+    Perform Simple Employee Search    HMVtribunepublishingcompanytc36
+    Enroll In Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    Sleep    3
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Perform Employee Reinstate Rehire    td:reinstateemployeerehire
+    Approve From HR Admin
+    Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    tribunepublishingcompanytc36

@@ -1,0 +1,562 @@
+*** Settings ***
+Documentation     *Test Suite consists of all the automated test scenarios for Mercer Rate Dactor Survey*
+Test Setup        getResource
+Force Tags        Ratefactorsurvey
+Resource          ../../Resources/common.txt
+
+*** Test Cases ***
+1.Verify that Survey questions are presented to the member right after dependents page and before the benefits selection page when group is enabled with Rate factor Survey feature
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Rate Factor Survey is shown to the members in Member role who are in their OE period.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create two Global Rate factor surveys for future and present participation periods to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5.Verify the both surveys.
+    ...
+    ...    6.Logout from the new membe role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Auto Test Question 3
+    Logout New Member Role
+
+2.Verify that Survey questions are presented in the HR role
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Survey questions are presented in the HR role.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.Login to HR Role and search for the member.
+    ...
+    ...    5. Start the enrollment for the Employee, befor plans page the rate factor survey page will come.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test    Member,HR Admin,Vista
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    td:hrcredentials
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Survey Questions Answer    Auto Test Question 3    No
+    Logout HR Admin
+
+3.Verify that Survey questions are presented to the member and all the dependents
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Create Global Rate factor survey and verify the Rate factor survey in member role.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Navigate To New Member Menu    Dependents
+    Add Dependent To Member    td:Spouse    lastname
+    Verify Rate Factor Survey    Auto Test Question 3
+    Logout New Member Role
+
+4.Correct Survey presentment to the member- use member situs state are choosen
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Correct Survey presentment to the member when \ member situs state are choosen in Carrier Rate Factor Survey*
+    ...
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create carrier Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Carrier Rate Factor Survey in Group    Use member state of residence    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Test Question For AA ?
+    Logout New Member Role
+
+5.Correct Survey presentment to the member-use Group situs state are choosen
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Create CarrierRate factor survey and verify the Rate factor survey in member role.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create carrier Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Carrier Rate Factor Survey in Group    Use Group Situs    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Test Question For CT ?
+    Logout New Member Role
+
+6.Correct Survey presentment to the member-use Carrier situs state are choosen
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Correct Survey presentment to the member when Carrier situs state are choosen in Carrier RAte Factor Survey*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create carrier Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Carrier Rate Factor Survey in Group    Use Sponsor Carrier Situs    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Test Question For SC ?
+    Logout New Member Role
+
+7.Verify that correct survey is shown to the member in Member role when the Global survey strategy Survey is chosen at the group level - Only in current participation period
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Auto Test Question 3
+    Logout New Member Role
+
+8.Verify that correct survey is shown to the member in Member role when the Global survey strategy Survey is chosen at the group level - Only in future participation period
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that correct survey is shown to the member in Member role when the Global survey strategy Survey is chosen at the group level - Only in future participation period.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey question with future participation period to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5.perform and verify \ the survey and save the survey.
+    ...
+    ...    6.Logout from the new member role
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Navigate To    Basics    System
+    Select Rate Factor Survey Setup    Enabled
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    Auto Test
+    Delete Existing Rate Factor Survey In Vista    Auto Test Future
+    Create Global Rate Factor Survey In Vista    01/01/2017 - 12/31/2017    Auto Test    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Rate Factor Surevy    NO
+    Perform Begin Enrollment In Member Role
+    Logout New Member Role
+
+9.Verify that correct survey is shown to the member in Member role when the Global survey strategy Survey is chosen at the group level - Both in current and future participation periods
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that correct survey is shown to the member in Member role when the Global survey strategy Survey is chosen at the group level - Both in current and future participation periods*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey question with future and cureent periods to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5.perform and verify the survey and save the survey.
+    ...
+    ...    6.Logout from the new member role
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2017 - 12/31/2017,01/01/2016 - 12/31/2016    Auto Test Future    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Test Question For Future?
+    Perform Rate Factor Surevy    NO
+    Logout New Member Role
+
+10.Verify that Survey questions are presented to the Member and dependent based on the Gender restriction (If any) configured at the Survey questions
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test 2    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Navigate To New Member Menu    Dependents
+    Add Dependent To Member    td:Spouse    lastname
+    Verify Rate Factor Survey    Test Question For Age and Spouse ?
+    Logout New Member Role
+
+11.Verify that the Survey is not presented to the Member if the Member role is not selected at the Group level
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that the Survey is not presented to the Member if the Member role is not selected at the Group level.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create global Rate factor survey question in that group and dont add member role while creating the survey.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will not be displayed
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test    Vista
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Logout New Member Role
+
+12.Verify that follow up questions are displayed (If configured at the Survey questions) after answering the Primary question
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that follow up questions are displayed (If configured at the Survey questions) after answering the Primary question*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey to the member in tha required group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5. Follow-up Question will be displayed after After selecting NO option.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test 4    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Message    Test Question For Followup?
+    Perform Rate Factor Surevy    NO
+    Verify Message    Test Follow Up Question?
+    Logout New Member Role
+
+13.Verify the functionality of Save and continue button by skipping the follow up questions if they are optional
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Follow up questions- When follow up questions are optional.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey to the member in the required group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5. Follow-up Question will be displayed after After selecting NO option.
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test 3    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Rate Factor Surevy    NO
+    Logout New Member Role
+
+14.Verify the functionality of Save and continue button by skipping the follow up questions if they are not optional
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Follow up questions- When follow up questions are not optional*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey to the member in tha required group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5. Follow-up Question will be displayed after After selecting NO option.
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test 4    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Message    Test Question For Followup?
+    Perform Rate Factor Surevy    NO
+    Verify Message    Test Follow Up Question?
+    Verify Message    Please provide an answer to
+    Logout New Member Role
+
+15.Verify that Survey questions are presented only to the relations that have been configured at the Survey questions (Provided the age condition is met)
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Survey questions are presented only to the relations that have been configured at the Survey questions (Provided the age condition is met)*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test 2    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Navigate To New Member Menu    Dependents
+    Add Dependent To Member    td:Spouse    lastname
+    Verify Rate Factor Survey    Test Question For Age and Spouse ?
+    Logout New Member Role
+
+16.Survey questions presentment to the Member and dependent with different situs states
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Survey questions presentment to the member and dependent with different situs states*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey to the member in tha required group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed to member and dependent.
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Carrier Rate Factor Survey in Group    Use member state of residence    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfsaa    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Navigate To New Member Menu    Dependents
+    Add Dependent With Address    td:spouseae    Outlastname
+    Verify Message    Test Question For AE ?
+    Verify Message    Test Question For AA ?
+    Logout New Member Role
+
+17.Verify that Survey answers are not editable by member if the “Allow users to edit” is set to NO at the Survey question at Carrier or Global level.
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Editing the Survey answers- when editing the survey answers is not allowed*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey to the member in tha required group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed and complete the survey.
+    ...
+    ...    5.come back to home page and edit the survey.
+    [Tags]    mercer    RateFactroSurvey
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test 5    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Rate Factor Survey    Test Question For Not Edit?
+    Perform Rate Factor Surevy    NO
+    Return To Rate Factor Survey Page    Auto Test 5
+    Verify Message    Yes
+    Logout New Member Role
+
+18.Verify that Rate Factor Survey is not throwing an exception when members changes survey answers and saves the survey.
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Rate Factor Survey is not throwing an exception when members changes survey answers and saves the survey.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey question to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5.perform the survey and save the survey.
+    ...
+    ...    6.return to home page and click on the survey name.
+    ...
+    ...    7.edit the survey and save the survey.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Rate Factor Surevy    NO
+    Return To Rate Factor Survey Page    Auto Test
+    Perform Rate Factor Surevy    YES
+    Logout New Member Role
+
+19.Verify that Rate Factor Survey is shown to the members in Member role who are in their OE period.
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Rate Factor Survey is shown to the members in Member role who are in their OE period.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create two Global Rate factor surveys for future and present participation periods to the member in that group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed.
+    ...
+    ...    5.Verify the both surveys.
+    ...
+    ...    6.Logout from the new membe role.
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Navigate To    Basics    System
+    Select Rate Factor Survey Setup    Enabled
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    Auto Test
+    Delete Existing Rate Factor Survey In Vista    Auto Test Future
+    Create Global Rate Factor Survey In Vista    01/01/2016 - 12/31/2016    Auto Test    Member
+    Navigate To    Benefits    Rate Factor Survey
+    Create Global Rate Factor Survey In Vista    01/01/2017 - 12/31/2017    Auto Test Future    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Verify Message    Test Question For Future?
+    Verify Message    Auto Test
+    Verify Message    Auto Test Future
+    Logout New Member Role
+
+20.Verify if plan rates configured based on RFS responses work as expected.
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Editing the Survey answers- functionality of editing the Survey answers*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. create Global Rate factor survey to the member in tha required group.
+    ...
+    ...    3. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    4.start enrollment, while enrolling the benefits Rate factor survey questions will be displayed and complete the survey.
+    ...
+    ...    5.come back to home page and edit the survey.
+    [Tags]
+    Login as vista admin with valid credentials
+    Perform Group Search    td:rfsgroup
+    Create Global Rate Factor Survey in Group    01/01/2016 - 12/31/2016    Tobacco Survey (Mercer Tobacco Survey)    Member
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:rfs    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Rate Factor Surevy    No
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    2016 UnitedHealthcare $800 Deductible Plan
+    Select Medicare    No
+    Decline Coverage
+    Decline Coverage
+    Verify Message    $66.55

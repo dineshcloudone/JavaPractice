@@ -1,0 +1,359 @@
+{
+  "vistalogin": {
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "AutoConnolly": {
+    "vista": {
+      "rfs": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Bi-Weekly",
+        "calenderset": "BIWEEKLY",
+        "employerid": "RND",
+        "categories": "3ER,N - No,E - benefit eligible"
+      },
+      "rfsaa": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "AA",
+        "zipcode": "12345",
+        "country": "USA",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Bi-Weekly",
+        "calenderset": "BIWEEKLY",
+        "employerid": "RND",
+        "categories": "3ER,N - No,E - benefit eligible"
+      }
+    }
+  },
+  "AutoProvoCity": {
+    "vista": {
+      "hidebeneficiaries": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "maritalstatus": "RND",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "homePhone": "1234567890",
+        "homeEmail": "nobody@benefitfocus.com",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Bi-Weekly",
+        "calenderset": "BIWEEKLY",
+        "employerid": "RND",
+        "categories": "RET"
+      }
+    }
+  },
+  "AutoCosentry": {
+    "vista": {
+      "guidedshopping": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "homePhone": "1234567890",
+        "homeEmail": "nobody@benefitfocus.com",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Semi-Monthly",
+        "calenderset": "SEMIMONTHLY",
+        "employerid": "RND",
+        "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+      }
+    }
+  },
+  "AutoCarousel": {
+    "vista": {
+      "membergetinsured": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "homePhone": "1234567890",
+        "homeEmail": "nobody@benefitfocus.com",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Semi-Monthly",
+        "calenderset": "SEMIMONTHLY",
+        "employerid": "RND",
+        "categories": "Help Desk Services - Location 4,PT - Part-Time,NT - Non-Tobacco"
+      },
+      "memberaudax": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "homePhone": "1234567890",
+        "homeEmail": "nobody@benefitfocus.com",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Semi-Monthly",
+        "calenderset": "SEMIMONTHLY",
+        "employerid": "RND",
+        "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+      }
+    }
+  },
+  "AutoProvocity": {
+    "AddDependent": {
+      "beneficiary": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "relationship": "Spouse"
+      },
+      "beneficiarychild": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-12",
+        "relationship": "Child"
+      }
+    }
+  },
+  "AutoConnlly": {
+    "AddDependent": {
+      "spouse": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Female",
+        "relationship": "Spouse"
+      },
+      "spouseae": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Female",
+        "relationship": "Spouse",
+        "address": "TestAddress",
+        "city": "TestCity",
+        "state": "AE",
+        "country": "USA",
+        "zip": "12345"
+      }
+    }
+  },
+  "Member": {
+    "login": {
+      "language": "",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes"
+    }
+  },
+  "diamondfoods": {
+    "vista": {
+      "dfmandatory": {
+        "ssn": "RND4433",
+        "firstname": "Auto",
+        "lastname": "RNDTestMandatory",
+        "birthdate": "currentdate:y:-28",
+        "gender": "Male",
+        "address1": "Test address",
+        "city": "Test City",
+        "state": "SC",
+        "zipcode": "12345",
+        "country": "USA",
+        "homePhone": "1234567890",
+        "homeEmail": "nobody@benefitfocus.com",
+        "createlogin": "Create a login account for this person",
+        "memberid": "RNDBFAuto",
+        "password": "bfEnrol0",
+        "confirmpassword": "bfEnrol0",
+        "hiredate": "currentdate",
+        "earnings": "50000",
+        "earningsfrequency": "per year",
+        "payfrequency": "Bi-Weekly",
+        "calenderset": "BIWEEKLY",
+        "employerid": "RND",
+        "categories": "A,DIA_ADMINCA - Diamond Admin Calif,NO - No,0 - Active"
+      }
+    },
+    "dfmemberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes"
+    },
+    "dfmemberprofilepages": {
+      "personalinformation": "yes",
+      "militaryservices": "yes",
+      "directdeposit": "yes",
+      "emergencycontact": "no"
+    },
+    "dfPreQualifyingSurvey": {
+      "survey": "yes",
+      "surveys": "2",
+      "question1": "Will you be covering a spouse for Medical?",
+      "answer1": "Yes",
+      "question2": "Is your spouse eligible for coverage under his/her employer's plan",
+      "answer2": "Yes"
+    },
+    "PreQualifyingSurvey1": {
+      "survey": "yes",
+      "surveys": "1",
+      "question1": "Will you be covering a spouse for Medical?",
+      "answer1": "No"
+    },
+    "mercermemberlogin": {
+      "language": "",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "yes"
+    }
+  },
+  "guidedshopping": {
+    "shopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do"
+    },
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": ""
+    }
+  },
+  "mercerplugindata": {
+    "getinsured": {
+      "pagetitle": "We need to share something with you about your health insurance options.",
+      "pagemessage": "Did you know that you <b>do</b> have options when selecting health insurance? And did you know that you may qualify for <b><i>tax credits</i></b> for your insurance?</br><br><b><i>Open Enrollment is Nov. 15th - Feb. 15th and is the time for you to take action.</b></i> Click below to learn about your options & any financial assistance you may be eligible for.</br><br><b>You can’t be denied coverage for health reasons, and all plans cover prescription drugs, doctor or hospital visits & more.</b></br><br>Health insurance can be confusing, but GetInsured makes it easy:</br>",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/getInsured/getinsured_intro.png",
+      "message1": "Affordability:  It’s less expensive than you may think.",
+      "message2": "Peace-of-mind:  Enrolling may help minimize future healthcare costs for you & any family members.",
+      "message3": "Options:  You select the plan, the provider & the amount of coverage."
+    },
+    "getinsuredvalidation": {
+      "pagetitle": "We need to share something with you about your health insurance options.",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/getInsured/getinsured_intro.png",
+      "message1": "Affordability:  It’s less expensive than you may think.",
+      "message2": "Peace-of-mind:  Enrolling may help minimize future healthcare costs for you & any family members.",
+      "message3": "Options:  You select the plan, the provider & the amount of coverage."
+    },
+    "audaxrally": {
+      "pagetitle": "You're done with enrollment. Now it's time to Rally!",
+      "pagemessage": "Rally, our health engagement partner, empowers you to create lasting, positive habits you can stick to by making small simple changes - one step at a time.  Sign up for free to receive your personalized plan tailored to you.  ",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/audax/audax_device.png",
+      "listtitle": "Here's why Rally works:",
+      "bullet1": "Made just for you",
+      "message1": "Fill out our fast and fun health survey, and right away you'll get custom-made missions to help recharge your life.",
+      "bullet2": "Track your progress",
+      "message2": "Create and track personal health goals to keep you on the path to a healthier you.",
+      "bullet3": "Sweet, sweet rewards",
+      "message3": "Earn Rally Coins and win great prizes for making healthier choices, tracking your progress, and completing your missions."
+    },
+    "audaxrallyvalidation": {
+      "pagetitle": "You're done with enrollment. Now it's time to Rally!",
+      "imageurl": "https://cdns.benefitfocus.com/netstorage/platform/static/img/clients/audax/audax_device.png",
+      "listtitle": "Here's why Rally works:",
+      "bullet1": "Made just for you",
+      "message1": "Fill out our fast and fun health survey, and right away you'll get custom-made missions to help recharge your life.",
+      "bullet2": "Track your progress",
+      "message2": "Create and track personal health goals to keep you on the path to a healthier you.",
+      "bullet3": "Sweet, sweet rewards",
+      "message3": "Earn Rally Coins and win great prizes for making healthier choices, tracking your progress, and completing your missions."
+    }
+  },
+  "memberpassword": "bfEnrol1",
+  "secretquestions": "3",
+  "anouncements": "yes",
+  "Agreements": "yes",
+  "medicalbenefit": "2016 Medical Insurance and Spending Accounts",
+  "medicalplan": "2016 Cigna $800 Deductible Plan",
+  "medicare": "No",
+  "fsa1": "decline",
+  "fsa2": "decline",
+  "hsaplan": "decline"
+}

@@ -1,0 +1,26 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCoE Test Automation Group-B1"
+    },
+    "validmemberlogincredentials": {
+      "memberusername": "SUNITHAY6440",
+      "memberpassword": "bfEnrol1"
+    },
+    "memberpagenavigations": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

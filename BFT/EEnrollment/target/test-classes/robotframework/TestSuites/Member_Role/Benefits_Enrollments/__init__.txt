@@ -1,0 +1,2 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for FSA Benefits functionality

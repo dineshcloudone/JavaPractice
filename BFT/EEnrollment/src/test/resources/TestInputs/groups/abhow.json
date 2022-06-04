@@ -1,0 +1,29 @@
+{
+  "validvistacredentials": {
+    "username": "bfautomation",
+    "password": "Password1"
+  },
+  "rfs": {
+    "ssn": "RND4433",
+    "firstname": "Auto",
+    "lastname": "RNDTestMandatory",
+    "birthdate": "currentdate:y:-28",
+    "gender": "Male",
+    "address1": "Test address",
+    "city": "Test City",
+    "state": "SC",
+    "zipcode": "12345",
+    "country": "USA",
+    "createlogin": "Create a login account for this person",
+    "memberid": "RNDBFAuto",
+    "password": "bfEnrol0",
+    "confirmpassword": "bfEnrol0",
+    "hiredate": "currentdate",
+    "earnings": "50000",
+    "earningsfrequency": "per year",
+    "employerid": "RND",
+    "payfrequency": "Semi-Monthly",
+    "calenderset": "SEMIMONTHLY",
+    "categories": "N - Pre (64 or Younger),Benefited Exempt - Benefited Exempt,001 - Corporate/Home Office,Casual - Casual,AGP - Amber Grove Place,No,Hourly - Hourly,Non-Union - Non-Union"
+  }
+}

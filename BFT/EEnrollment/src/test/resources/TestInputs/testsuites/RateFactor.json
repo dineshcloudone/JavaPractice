@@ -1,0 +1,9 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup1": "BF QA test Automation group"
+  },
+   "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

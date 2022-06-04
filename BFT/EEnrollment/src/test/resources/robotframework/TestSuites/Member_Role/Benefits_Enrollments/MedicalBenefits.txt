@@ -1,0 +1,575 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Medical Benefits functionality
+Test Setup        getResource
+Test Teardown
+Force Tags        medicalbenefits
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Add member and enroll medical benefits
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Title : As a member enroll in Medical Benefits with Employee only Coverage
+    ...
+    ...    Test Steps :
+    ...
+    ...    Login to Enrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Add New Member with "default" information and login "enabled" and Category as "Medical"
+    ...
+    ...    Login as New Member
+    ...
+    ...    Verify Member Home Page loaded Successfully
+    ...
+    ...    Verify countdown to elect Current enrollment benefits
+    ...
+    ...    Enroll in medical benefits with "Employee Only" Coverage
+    ...
+    ...    Logout
+    [Tags]    smoke
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QA test Automation Group
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Verify Count Down To Elect Current Enrollment Benefits
+    Run Member Profile Pages
+    Enroll In Medical Benefits With Employee Only Coverage    defaultmedical
+    Logout Member
+
+2.HSA - Intitial/Ongoing
+    [Documentation]    Author : Dilip K
+    ...
+    ...    Test Case Name : HSA - Intitial/Ongoing/Scheduled
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search (Test Automation Group_Dilip), Navigate to 'Users >> Add Member'
+    ...
+    ...    3) Select 'Medical Plus HSA' plan
+    ...
+    ...    4) Logout as Vista Admin
+    ...
+    ...    5) Login using above created member login
+    ...
+    ...    6) Enter necessary details, Navigate to Profile pages
+    ...
+    ...    7) Add dependent as spouse
+    ...
+    ...    8) Select 'Medical plus HSA 2016' button
+    ...
+    ...    9) Select 'Medical plus 2016' plan
+    ...
+    ...    10) Select 'Employee Only' coverage level.
+    ...
+    ...    11) Select 'HSA 2016' plan, click on next button
+    ...
+    ...    12) Click on 'Add Contribution' button
+    ...
+    ...    13) Enter initial contribution as '10' in text box
+    ...
+    ...    14) Click on add button
+    ...
+    ...    15) Click 'Add Contribution' button
+    ...
+    ...    16) Enter Ongoing Contribution as '11' , Enter Current date as 'Start date' and 2 months future date from current date in 'End Date'.
+    ...
+    ...    17) click on Add button
+    ...
+    ...    18) Click on Save button
+    ...
+    ...    19) Logout as Member.
+    [Tags]    donotrun
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinmedicalplushsa    lastname
+    Logout Member
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    BuiltIn.Sleep    5s
+    Run Member Profile Pages
+    Add Dependent To Member    none    none
+    Medicare Information In Member Role    no
+    BuiltIn.Sleep    5s
+    Start Current Benefit For Member    Medical plus HSA 2016
+    Select Plan For Member    Medical plus 2016
+    Select Coverage Level For Member    Employee Only
+    Select Plan For Member    HSA 2016
+    BuiltIn.Sleep    5s
+    Add HSA Contribution In Member Role
+    HSA Initial Contribution    9.00
+    BuiltIn.Sleep    5s
+    Add HSA Contribution In Member Role
+    HSA Ongoing Contribution    22.00    d:currentdate    d:currentdate:M:2
+    Add HSA Contribution In Member Role
+    Save Cobra Policy    save
+    Logout Member
+
+3.Verify a member can enroll in open enrollment (OE) benefits
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *Verify a member can enroll in open enrollment (OE) benefits*
+    ...
+    ...    Test Case Description: *This test verifies if member can be successfully enrolled in open Enrollment \ (OE) Benefits*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login to Vista with valid credentials
+    ...
+    ...    2) Search for the Group QA Automation Redeemer Church Orlando Inc
+    ...
+    ...    3) Add a member with login credentials.
+    ...
+    ...    4) Logout Vista
+    ...
+    ...    5) Login to member role with auto generated credentials.
+    ...
+    ...    6) Choose preferred language and update the member pasword.
+    ...
+    ...    7) Select secret questions and accept announcement, agreements page.
+    ...
+    ...    8) Update the complete profile for the member.
+    ...
+    ...    9) Click on Begin enrollment.
+    ...
+    ...    10) Select plan for Preferred Care Blue PPO Plan 1
+    ...
+    ...    11) Save and Verify the enrollment.
+    ...
+    ...    12) Clickl Next for accepting the OE offer.
+    ...
+    ...    13) Click on Save and Continue
+    ...
+    ...    14) Complete enrollment and verify OE enrollment successful.
+    ...
+    ...    15) Logout Member role
+    [Tags]    QCOE
+    #PreRequisites
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    QA AUTOMATION REDEEMER CHURCH ORLANDO INC
+    BuiltIn.Sleep    1s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    #Steps
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    Yes
+    BuiltIn.Sleep    2s
+    Run Member Profile Pages
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Preferred Care Blue PPO Plan 1
+    Next
+    Save Benefit Enrollment In New Member    Preferred Care Blue PPO Plan 1
+    Next
+    Save Benefit Enrollment In New Member    Preferred Care Blue PPO Plan 1
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    2s
+    [Teardown]    Logout New Member Role    # This keyword is used to logout member role irrespective of test result
+
+4.HSA - Not Eligible
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *HSA - Not Eligible*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Offers and set dependency rule not to allow HSA Plan to Enroll
+    ...
+    ...    4.Navigate to Users and Add Memeber
+    ...
+    ...    5.Logout as Vista
+    ...
+    ...    6.Login as Member and Run profile pages
+    ...
+    ...    7.Begin Enrollment and Enroll member in Only Medical Plan
+    ...
+    ...    8.Verify that HSA Not Eligible message
+    ...
+    ...    9.Logout as Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Offers
+    Comment    Edit Offer In Vista Role    Current    Medical plus HSA 2016
+    Comment    Save Configuration
+    Set Dependency Rule For HS Aand FSA Plans    Medical plus HSA 2016    Display this benefit element
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Comment    Add Dependent To Member    none    none
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical 2016
+    Select Premium Deduction    no
+    Verify Message    Health Savings Account (HSA)
+    Verify Message    Not Eligible
+    Save Benefit Enrollment In New Member    Medical 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Verify Employee Detail Report In New Member UI    Personal Information    td:verifyingmessage
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+5.Verify HSA election status
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Verify HSA election status*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Offers and set dependency rule not to allow HSA Plan to Enroll and not to display on the Benefit summary
+    ...
+    ...    4.Navigate to Users and Add Memeber
+    ...
+    ...    5.Logout as Vista
+    ...
+    ...    6.Login as Member and Run profile pages
+    ...
+    ...    7.Begin Enrollment and Enroll member in Only Medical Plan
+    ...
+    ...    8.Verify that HSA \ is not exist
+    ...
+    ...    9.Logout as Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For HS Aand FSA Plans    Medical plus HSA 2016    Do not display this benefit element
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical 2016
+    Select Premium Deduction    no
+    Save Benefit Enrollment In New Member    Medical 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Verify Message Not Exist    HSA 2016
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    EmployeeDetailReport
+    Handle Employee Report    Personal Information    Health Savings Account (HSA)
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+6.Add a new H.S.A. contribution
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Add a new H.S.A contibution*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Offers and set dependency rule \ to allow HSA Plan to Enroll and \ display on the Benefit summary
+    ...
+    ...    4.Navigate to Users and Add Memeber
+    ...
+    ...    5.Logout as Vista
+    ...
+    ...    6.Login as Member and Run profile pages
+    ...
+    ...    7.Begin Enrollment and Enroll member in \ Medical Plan and HSA
+    ...
+    ...    8.Edit Contribution and Add new intial contribution
+    ...
+    ...    9.Verify contribution amount in HSA summary
+    ...
+    ...    9.Logout as Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    Medical plus HSA 2016    HSA 2016    Medical plus 2016    Always Available
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical plus 2016
+    Select Premium Deduction    no
+    Select Market Plan For New Member Role    HSA 2016
+    BuiltIn.Sleep    3s
+    HSA Complete Contribution
+    Save Benefit Enrollment In New Member    HSA 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Benefits
+    Edit HSA Contribution In Member Role
+    Add HSA Contribution In Member Role
+    HSA Initial Contribution    20
+    BuiltIn.Sleep    5s
+    HSA Complete Contribution
+    BuiltIn.Sleep    3s
+    Save Benefit Enrollment In New Member    HSA 2016
+    Verify Message    $20.00
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+7.Change the Amount of a H.S.A. contribution
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Change the amount of a H.S.A contibution*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Offers and set dependency rule \ to allow HSA Plan to Enroll and \ display on the Benefit summary
+    ...
+    ...    4.Navigate to Users and Add Memeber
+    ...
+    ...    5.Logout as Vista
+    ...
+    ...    6.Login as Member and Run profile pages
+    ...
+    ...    7.Begin Enrollment and Enroll member in \ Medical Plan and HSA
+    ...
+    ...    8.Edit Contribution and Add new intial contribution
+    ...
+    ...    9.Update the exist contribution amount
+    ...
+    ...    9.Verify contribution amount is changed or not in HSA summary
+    ...
+    ...    9.Logout as Member
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    Medical plus HSA 2016    HSA 2016    Medical plus 2016    Always Available
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical plus 2016
+    Select Premium Deduction    no
+    Select Market Plan For New Member Role    HSA 2016
+    BuiltIn.Sleep    3s
+    HSA Complete Contribution
+    Save Benefit Enrollment In New Member    HSA 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Benefits
+    Edit HSA Contribution In Member Role
+    Add HSA Contribution In Member Role
+    HSA Initial Contribution    10
+    BuiltIn.Sleep    5s
+    HSA Complete Contribution
+    BuiltIn.Sleep    2s
+    Save Benefit Enrollment In New Member    HSA 2016
+    BuiltIn.Sleep    2s
+    Update HSA Initial Contribution Amount In Member Role    15
+    BuiltIn.Sleep    5s
+    HSA Complete Contribution
+    BuiltIn.Sleep    3s
+    Save Benefit Enrollment In New Member    HSA 2016
+    Verify Message    $15.00
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+8.Change the Pay Frequency for a Member enrolled in HSA with an Ongoing contribution
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Change the pay frequency for a member enrolled in HSA with Ongoing Contribution*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Offers and set dependency rule \ to allow HSA Plan to Enroll and \ display on the Benefit summary
+    ...
+    ...    4.Navigate to Users and Add Memeber
+    ...
+    ...    5.Logout as Vista
+    ...
+    ...    6.Login as Member and Run profile pages
+    ...
+    ...    7.Begin Enrollment and Enroll member in \ Medical Plan and HSA plan
+    ...
+    ...    8.Edit Contribution and Add new Ongoing contribution
+    ...
+    ...    9.Verify deduction frequency
+    ...
+    ...    9.Logout as Member
+    ...
+    ...    10.Login as HR Admin
+    ...
+    ...    11.Search for member andchange the pay frequency to Bi-Monthly
+    ...
+    ...    12.Logout as HR Admin
+    ...
+    ...    13.Login as Member
+    ...
+    ...    14. verify thecontributions are removed due to pay frequency changed
+    ...
+    ...    15.Logout as Member.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    Medical plus HSA 2016    HSA 2016    Medical plus 2016    Always Available
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical plus 2016
+    Select Premium Deduction    no
+    Select Market Plan For New Member Role    HSA 2016
+    BuiltIn.Sleep    3s
+    HSA Complete Contribution
+    Save Benefit Enrollment In New Member    HSA 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Benefits
+    Edit HSA Contribution In Member Role
+    Add HSA Contribution In Member Role
+    HSA Ongoing Contribution    10    d:currentdate    d:currentdate:M:2
+    BuiltIn.Sleep    5s
+    HSA Complete Contribution
+    BuiltIn.Sleep    3s
+    Save Benefit Enrollment In New Member    HSA 2016
+    BuiltIn.sleep    3s
+    Verify Message    per month
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+    Login To Enrollment As HR Admin    td:validhrcredentialsforgroup
+    Perform Simple Employee Search    HMVlastname
+    updateEmployeePayFrequency    Bi-Monthly
+    Logout HR Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol1
+    Announcements Page    yes
+    BuiltIn.Sleep    3s
+    Verify Message    HSA contributions have changed and future contributions have been capped and/or canceled due to a category or pay frequency change. Please review HSA contributions to make any desired updates.
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+9.Change the Pay Frequency for a Member enrolled in HSA with an Scheduling contribution
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Change the pay frequency for a member enrolled in HSA with an Scheduled Contribution*
+    ...
+    ...    Precondition:
+    ...
+    ...    1.Set schedule contribution to Offer Manually
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista admin to QCoE BF \ Test Automation Group R
+    ...
+    ...    2. Perform Group Search
+    ...
+    ...    3.Navigate to Offers and set dependency rule \ to allow HSA Plan to Enroll and \ display on the Benefit summary
+    ...
+    ...    4.Navigate to Users and Add Memeber
+    ...
+    ...    5.Logout as Vista
+    ...
+    ...    6.Login as Member and Run profile pages
+    ...
+    ...    7.Begin Enrollment and Enroll member in \ Medical Plan and HSA plan with scheduled contribution
+    ...
+    ...    8.Verify deduction frequency
+    ...
+    ...    9.Logout as Member
+    ...
+    ...    10.Login as HR Admin
+    ...
+    ...    11.Search for member and \ change the payfrequency to bi monthly
+    ...
+    ...    12.Logout as HR Admin
+    ...
+    ...    13.Login as Member
+    ...
+    ...    14. verify the deduction frequency changed or not
+    ...
+    ...    15.Logout as Member.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Current Offer Plan In Vista Role    Medical plus HSA 2016    HSA 2016    Medical plus 2016    Always Available
+    Comment    Edit Offer In Vista Role    Current    Medical plus HSA 2016
+    Comment    Check HSA Contribution    Ongoing Contribution
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical plus 2016
+    Select Premium Deduction    no
+    Select Market Plan For New Member Role    HSA 2016
+    BuiltIn.Sleep    3s
+    HSA Complete Contribution
+    Save Benefit Enrollment In New Member    HSA 2016
+    Verify Message    $20.00
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Benefits
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+    Login To Enrollment As HR Admin    td:validhrcredentialsforgroup
+    Perform Simple Employee Search    HMVlastname
+    updateEmployeePayFrequency    Bi-Monthly
+    Logout HR Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol1
+    Announcements Page    yes
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Benefits
+    BuiltIn.Sleep    5s
+    Verify Message    $40.00
+    Verify Message    six times per year
+    BuiltIn.Sleep    3s
+    Logout New Member Role

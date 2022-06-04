@@ -1,0 +1,39 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for categories functionality
+Test Setup        getResource
+Force Tags        categories
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Adding categories to the group
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests Case Title: *Adding categories to the group*
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Navigate to Categiries
+    ...
+    ...    Add Category Type
+    ...
+    ...    Add New Categories
+    ...
+    ...    Save the Category
+    ...
+    ...    Logout to eEnrollment as a Vista User
+    ...
+    ...
+    ...    Test case No: 158
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Categories
+    Add Category Type    Category Type Name    RNDAutoTest    strCatgoryName
+    Add Category Type    Selection Required    Yes    selectiontype
+    Next
+    Create New Category    RNDCategoryName    RNDCategoryDescription    yes
+    Delete Category    HMVstrCatgoryName
+    Logout Vista Admin

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="6386" started-at="2018-02-17T12:13:23Z" finished-at="2018-02-17T12:13:30Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="6386" started-at="2018-02-17T12:13:23Z" finished-at="2018-02-17T12:13:30Z">
+      <class name="test.sanity.SanityTests">
+        <test-method status="PASS" signature="OpenBrowser()[pri:0, instance:test.sanity.SanityTests@6ba0ac]" name="OpenBrowser" is-config="true" duration-ms="10" started-at="2018-02-17T17:43:23Z" finished-at="2018-02-17T17:43:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- OpenBrowser -->
+        <test-method status="PASS" signature="VerifyLogin_InvalidCredentials()[pri:0, instance:test.sanity.SanityTests@6ba0ac]" name="VerifyLogin_InvalidCredentials" duration-ms="6365" started-at="2018-02-17T17:43:23Z" finished-at="2018-02-17T17:43:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyLogin_InvalidCredentials -->
+        <test-method status="PASS" signature="CloseBrowser()[pri:0, instance:test.sanity.SanityTests@6ba0ac]" name="CloseBrowser" is-config="true" duration-ms="1" started-at="2018-02-17T17:43:30Z" finished-at="2018-02-17T17:43:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseBrowser -->
+      </class> <!-- test.sanity.SanityTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

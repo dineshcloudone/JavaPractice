@@ -1,0 +1,90 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Verify That You See Global Announcements When Available
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Verify That You See Global Announcements When Available*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Navigate to Global > Announcements
+    ...
+    ...    3) Create New Global Announcement
+    ...
+    ...    4) Logout from Vista Admin
+    ...
+    ...    5) Login as Member (testqcoe_1/passWord123)
+    ...
+    ...    6) Verify Announcement
+    ...
+    ...    7) Click Next for Home Page
+    ...
+    ...    8) Logout from application
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Navigate To    GLOBAL    Announcements
+    Create New Announcement    Delete
+    Create New Announcement    Global
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    td:memberusername    td:memberpassword
+    Verify Message    Global Announcement for Member
+    Announcements Page    yes
+    Verify Message    Home
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Navigate To    GLOBAL    Announcements
+    Create New Announcement    Delete
+    Logout Vista Admin
+
+2.Verify That You Get The Group Announcements (If Active)
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Verify That You Get The Group Announcements (If Active)*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (QCOE Diamond Foods)
+    ...
+    ...    3) Navigate to Basics > Announcements
+    ...
+    ...    4) Create New Group Announcement
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as Member (testqcoe_1/passWord123)
+    ...
+    ...    7) Verify Announcement
+    ...
+    ...    8) Click Next for Home Page
+    ...
+    ...    9) Logout from application
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Announcements
+    Create New Announcement    Delete
+    Create New Announcement    Group
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    td:memberusername    td:memberpassword
+    Verify Message    Group Announcement for Member
+    Announcements Page    yes
+    Verify Message    Home
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Announcements
+    Create New Announcement    Delete
+    Logout Vista Admin

@@ -1,0 +1,75 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for System Information functionality
+Test Setup        getResource
+Force Tags        systeminformation
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify the functionality of changing the status of the group
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify the functionality of changing the status of the group*
+    ...
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Update the status in System Information
+    ...
+    ...    Save and verify the changed information in System Information
+    ...
+    ...    Logout
+    ...
+    ...    Test case No : 136
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Update system configuration for Group in vista    Status    Not Live    yes
+    Update system configuration for Group in vista    Status    Live    yes
+    Logout Vista Admin
+
+2.Verify the functionality of enabling rate factor survey with Carrier Survey strategy
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify that member login credentials are created when "Create Member Login" is set to Yes and "Create Member Login" is set to No*
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Update the Rate Factor Survey in System Information
+    ...
+    ...    Save and verify the changed information in System Information
+    ...
+    ...    Logout
+    ...
+    ...    Test case No : 138
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Update system configuration for Group in vista    Rate Factor Survey    Enabled    yes
+    Logout Vista Admin
+
+3.Verify the functionality of the changing the Sponsoring carrier for a group
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify the functionality of the changing the Sponsoring carrier for a group*
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Update the Sponsoring \ Carrier ID \ in System Information
+    ...
+    ...    Save and verify the changed information in System Information
+    ...
+    ...    Logout
+    ...
+    ...    Test case No : 137
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Update system configuration for Group in vista    Sponsoring Carrier    WellDyne Rx    yes
+    Update system configuration for Group in vista    Sponsoring Carrier ID    test message    no
+    Update system configuration for Group in vista    Sponsoring Carrier    BFI    yes
+    Logout Vista Admin

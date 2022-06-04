@@ -1,0 +1,188 @@
+{
+    "1": {
+      "resource": "EmergentBioSolutionsResource"
+        
+    },
+"2": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "3": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "4": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "5": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "6": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "7": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "8": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "9": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "10": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "11": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "12": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "13": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "14": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "15": {
+      "resource": "EmergentBioSolutionsResource",
+      "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "address1":"testing",
+          "city":"testing",
+          "zipcode":"40017",
+          "state":"CA",
+          "phone":"(876) 567-5787",
+          "country":"USA",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+      	  
+    },
+    "16": {
+      "resource": "EmergentBioSolutionsResource",
+      "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "relationship": "Spouse",
+          "address1":"testing",
+          "city":"testing",
+          "zipcode":"40017",
+          "state":"CA",
+          "phone":"(876) 567-5787",
+          "country":"USA",
+          "gender": "Female"
+         },
+         "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }  
+      	  
+    },
+    "17": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "18": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "19": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "20": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "21": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "22": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "23": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "24": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "25": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "26": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "27": {
+      "resource": "EmergentBioSolutionsResource",
+      "plan":"Premier Plus PPO Plan 2016"
+      	  
+    },
+    "28": {
+      "resource": "EmergentBioSolutionsResource",
+      "plan":"Premier Plus PPO Plan 2016"
+      	  
+    },
+    "29": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "30": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "31": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "32": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "33": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "34": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    },
+    "35": {
+      "resource": "EmergentBioSolutionsResource"
+      	  
+    }
+}

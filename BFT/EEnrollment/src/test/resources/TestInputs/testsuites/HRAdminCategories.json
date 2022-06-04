@@ -1,0 +1,106 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "validvistacredentials": {
+        "username": "bfautomation",
+        "password": "Password1"
+      },
+      "groupsearch": {
+        "automationracegroup": "BF QA Race Group"
+      },
+      "validhrcredentialsforgroup": {
+        "username": "raceadmin",
+        "password": "bfEnrol1"
+      },
+      "categorydetails": {
+        "effectivedate": "currentdate:d:-2",
+        "category": "Dental"
+      }
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "groupsearch": {
+        "automationracegroup": "BF QA Race Group"
+      },
+      "validhrcredentialsforgroup": {
+        "username": "raceadmin",
+        "password": "bfEnrol1"
+      },
+      "categorydetails": {
+        "whatwouldyouliketodo": "Make changes to current categories",
+        "effectivedate": "currentdate",
+        "category": "Dental"
+      }
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "groupsearch": {
+        "automationracegroup": "BF QA Race Group"
+      },
+      "validhrcredentialsforgroup": {
+        "username": "raceadmin",
+        "password": "bfEnrol1"
+      },
+      "categorydetails": {
+        "whatwouldyouliketodo": "Schedule future changes to categories",
+        "effectivedate": "currentdate:d:1",
+        "category": "Dental"
+      }
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "validvistacredentials": {
+        "username": "bfautomation",
+        "password": "Password1"
+      },
+      "groupsearch": {
+        "automationracegroup": "BF QA Race Group"
+      },
+      "validhrcredentialsforgroup": {
+        "username": "raceadmin",
+        "password": "bfEnrol1"
+      },
+      "categorydetails": {
+        "whatwouldyouliketodo": "Schedule future changes to categories",
+        "effectivedate": "currentdate:d:2",
+        "category": "Dental"
+      },
+      "cancelcategorydetails": {
+        "whatwouldyouliketodo": "Cancel future category changes"
+      }
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "groupsearch": {
+        "automationracegroup": "BF QA Test Automation Group"
+      },
+      "categorydetails": {
+        "whatwouldyouliketodo": "Make changes to current categories",
+        "effectivedate": "currentdate",
+        "category": "Dental"
+      }
+    }
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "bfqcoeadmin18",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup5": "BF QA test Automation OE Group18"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

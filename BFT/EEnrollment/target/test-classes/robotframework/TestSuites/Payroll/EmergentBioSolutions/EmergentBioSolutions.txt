@@ -1,0 +1,607 @@
+*** Settings ***
+Suite Teardown    printHashMapDatatoFile
+Test Setup        Reload application
+Resource          ../../../Resources/common.txt
+Resource          ../../../Resources/HRAdmin/PayrollResources/EmergentBioSolutionsResource.txt
+Resource          ../../../Resources/HRAdmin/bfqatestautomationgroup.txt
+
+*** Test Cases ***
+1.Initial Enrollment
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+2.Initial Enrollment(After Approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+3.Refuse All Eligible Benefits
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    Dependent Care Flexible Spending Account (DCFSA) 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Dependent Life 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Supplemental Life 2016
+    BuiltIn.Sleep    2s    wait time
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+4.Accept Benefit After Refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    Dependent Care Flexible Spending Account (DCFSA) 2016
+    BuiltIn.Sleep    2s    wait time
+    Navigate To HR Menu    overview
+    Comment    Navigate To Current Enrollment
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Dependent Care Flexible Spending Account (DCFSA) 2016
+    Edit Current Plan    Dependent Care Flexible Spending Account (DCFSA)
+    Select Plan    Dependent Care Flexible Spending Account (DCFSA) 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before closing HR-Admin
+    Close HR Admin
+    Logout Vista Admin
+
+5.Cancel Benefit Before Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+
+6.Cancel Benefit After Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+
+7.Enroll Benefit After Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Medical
+    Select Plan    Premier Plus PPO Plan 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+
+8.Terminate the Employee
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    Verify Message    Terminated
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+9.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Perform Employee Retirement
+    Navigate To HR Menu    Overview
+    Verify Message    Retired
+    Close HR Admin
+    Logout Vista Admin
+
+10.ChangeCategory
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Change Employee Cateogry    Location    BLT - Baltimore (Bayview)
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+11.Change Plan
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Plan
+    Select Plan    Consumer Directed Health Plan (CDHP) 2016
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Effective Date
+    Enter Effective Date    d:currentdate:d:1
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+13.Increase Coverage Level
+    comment    flow is not as expected , it is like looping
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    dependents
+    Comment    Add Dependent To Employee    td:spouse    lnSpouse
+    Comment    Verify Dependent For Benefits    Spouse
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    td:child    lnchild
+    Comment    Apply Coverage To Dependent
+    Select Survey Questions Answer    Child Information    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    Comment    Navigate To HR Menu    benefitdetails
+    Comment    Edit Current Benefit    2016 Medical
+    Comment    Edit Benefit Details    Medical    Coverage Level
+    Comment    Select Coverage Level    Employee and Spouse
+    Comment    Apply Coverage To Dependent
+    Comment    Enter Effective Date    d:currentdate
+    Comment    Save Benefit In Snapshot Page
+    Comment    Approve From HR Admin
+    Comment    Close HR Admin
+    Comment    Logout Vista Admin
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Comment    Add Dependent To Employee    td:spouse    lnSpouse
+    Comment    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Health 2016
+    select plan    Premier Plus PPO Plan 2016
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    td:child    lstChild
+    Select Survey Questions Answer    Child Information    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Enter Effective Date    d:currentdate
+    Select Plan    Flexible Spending Account (FSA) 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    Employee Only
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+15.Increase Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Perform Simple Employee Search    HMVlastname
+    Enroll Supplemental Life in EBS Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Supplemental Life 2016
+    Edit Benefit Details    Supplemental Child Life    Coverage Amount
+    Select Coverage Amount    $2,500.00
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time before HR-Close
+    Close HR Admin
+    Logout Vista Admin
+
+16.Decrease Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Perform Simple Employee Search    HMVlastname
+    Enroll Supplemental Life in EBS Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Supplemental Life 2016
+    Edit Benefit Details    Supplemental Child Life    Coverage Amount
+    Select Coverage Amount    $1,000.00
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time before HR-Close
+    Close HR Admin
+    Logout Vista Admin
+
+17.Increase Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Flexible Spending Account (FSA)    Contribution Amount
+    Set Contribution Amount For Flex Benefit    160
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+18.Decrease Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Flexible Spending Account (FSA)    Contribution Amount
+    Set Contribution Amount For Flex Benefit    140
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+NA19.Add Flex when already enrolled in HSA
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:cnamandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitOfCNAGroup
+    Approve All Benefits
+    Verify Message    $2,500 CDHP+ - Not A Tobacco User 2016
+    cancelFSA
+    Enroll FSA When Already Enrolled in HSA
+
+20.Cancel Flex when already enrolled in Flex
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Health 2016
+    Edit Benefit Details    Flexible Spending Account (FSA)    Flexible Spending Account (FSA)
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+NA21.Add HDHP/HSA when already enrolled in Flex(if Group Supports HSA)
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitInAAGgroup
+    Approve All Benefits
+    CancelHSAForNewMember
+    ADDFSAForNewMember
+    CancelFSAForNewMember
+    ADDFSAForNewMember
+
+NA22.Cancel HDHP/HSA when already enrolled in flex(if Group supports HSA)
+    comment    We can't cancel HSA ,it is showing new option qualifying event
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    3134823298
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefitInAAGgroup
+    Approve All Benefits
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    CancelHSAForNewMember
+
+23.Change in EE cost/pp
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Change Employee Cateogry    Location    DC - Washington DC
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Update Employee Salary    53100    per year
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Verify Message    Premier Plus PPO Plan 2016
+    Update Employee Salary    53100    per year
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+NA26.Change in remaining pay period
+
+27.Enroll COBRA
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Add COBRA Policy
+    Close HR Admin
+    Logout Vista Admin
+    comment    443-33-5071
+
+28.Cancel COBRA
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Health Benefit of Emergent Bio Solutions Group
+    Approve From HR Admin
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    Add COBRA Policy
+    Cancel COBRA Benefits For Member In HRR Ole
+    Close HR Admin
+    Logout Vista Admin
+
+29.Add Dependent to Benefit
+
+30.Remove Dependent from Benefit
+
+31.Change Dependent Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    7605325053
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ebsmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Comment    Add Dependent To Employee    td:spouse    lnSpouse
+    Comment    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Health 2016
+    select plan    Premier Plus PPO Plan 2016
+    Select Coverage Level    Employee + 1
+    Add Dependent To Employee    td:child    lstChild
+    Select Survey Questions Answer    Child Information    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Enter Effective Date    d:currentdate
+    Select Plan    Flexible Spending Account (FSA) 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Navigate To HR Menu    dependents
+    Edit Dependent Details    Child    lastname
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Comment    Approve All Benefits After Employee Edit
+    Navigate To HR Menu    dependents
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin

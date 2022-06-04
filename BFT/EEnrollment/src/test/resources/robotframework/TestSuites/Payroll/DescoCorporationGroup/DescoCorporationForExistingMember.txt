@@ -1,0 +1,237 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+${existing_members_temp_location}    ../../resources/robotframework/Resources/Robotframework.TestSuites.Payroll.DescoCorporationGroup.DescoCorporation.txt
+
+*** Test Cases ***
+10.Category Change
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc10
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    ACA Eligibility    2 - Eligible due to ACA
+    Sleep    5
+    Close HR Admin
+
+12.Effective Date Change
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc12
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Pharmacy 2016
+    Edit Effective Date
+    Enter Effective Date    d:currentdate:d:8
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+13.Increase Coverage Level
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc13
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Pharmacy 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+14.Decrease Coverage Level
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc14
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Pharmacy 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+17.Increase Contribution Amount For Flex Benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc17
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Health Care Flexible Spending Account 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Enter Contribution Amount For FSA Plan    400
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+18.Decrease Contribution Amount For Flex Benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc18
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Health Care Flexible Spending Account 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Edit Contribution Amount For FSA
+    Enter Contribution Amount For FSA Plan    100
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+20.Cancel flex when already enrolled in flex
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc20
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Health Care Flexible Spending Account 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+23.Change in EE cost
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc23
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change the Categaries from the existing values from HR Admin Role
+    Change Employee Cateogry    ACA Eligibility    2 - Eligible due to ACA
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+24.Salary Increase
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc24
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    13,500    Per Month
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+25.Salary Decrease
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc25
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    9,500    Per Month
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+
+29.Add Dependent to benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc29
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Pharmacy 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+30.Remove Dependent from benefit
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc30
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical Pharmacy 2016
+    Comment    Click On Edit Due To Change Reason
+    Comment    Reason For Benefit Change    Other
+    Comment    Changes the Coverage level for existing benefit
+    Change Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+
+31.Change dependent personnel information
+    ${lastname}    readHashMapDataFromFile    ${existing_members_temp_location}    DescoCorporationlastnametc31
+    Login as vista admin with valid credentials
+    Perform Group Search    Desco Corporation
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    ${lastname}
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Comment    CHange Dependent details
+    Navigate To HR Menu    Dependents
+    Edit Dependent Details    Spouse    lastname
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin

@@ -1,0 +1,525 @@
+*** Settings ***
+Suite Setup
+Test Setup        Reload application
+Force Tags        Paroll Regression Test Cases
+Resource          ../../../Resources/common.txt
+Resource          ../../../Resources/HRAdmin/AmericanAcademyofFamilyPhysiciansResource.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Initial Enrollment
+    [Documentation]    Author : Teja Puchala
+    ...
+    ...    Test Case Name : Initial Enrollment
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin and add a new member to the group
+    ...
+    ...    2)Open the member in HR-Admin role and search for the employee
+    ...
+    ...    3)Enroll in medical benefit by adding HSA and FSA
+    ...
+    ...    4)Don't approve the Enrollment
+    ...
+    ...    5)Close the HR-Admin and Logout the Vista role
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc1
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc1
+    EnrollMedicalBenefit    Employee Only
+    BuiltIn.Sleep    3s    wait time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc1
+
+2.Initial Enrollment(After Approval)
+    [Documentation]    Author : Teja Puchala
+    ...
+    ...    Test Case Name : Initial Enrollment
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin and add a new member to the group
+    ...
+    ...    2)Open the member in HR-Admin role and search for the employee
+    ...
+    ...    3)Enroll in medical benefit by adding HSA and FSA
+    ...
+    ...    4)Approve the enrollment
+    ...
+    ...    5)Close the HR-Admin and Logout the from vista
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc2
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc2
+    EnrollMedicalBenefit    Employee Only
+    Navigate To HR Menu    benefitdetails
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc2
+
+3.Refuse All Eligible Benefits for a Member
+    [Documentation]    Author : Teja Puchala
+    ...
+    ...    Test Case Name : Refuse All Eligible Benefits for a Member
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin and add a new member to the group
+    ...
+    ...    2)Open the member in HR-Admin role and search for the employee
+    ...
+    ...    3)Refuse the benefits which are not enrolled by member
+    ...
+    ...    4)Don't approve the Enrollment
+    ...
+    ...    5)Close the HR-Admin and Logout from vista
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc3
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc3
+    Navigate To HR Menu    benefitdetails
+    Refuse Current Selected Benefit In HR Role    2016 DCFSA
+    Select Tobacco And Health Survey Answer    Did you complete all 3 requirements    No    Have you used tobacco products in the past 12 months?    No
+    Navigate To HR Menu    benefitdetails
+    BuiltIn.Sleep    2s    Wait Time before refusing 2016 Adoption FSA
+    Refuse Current Selected Benefit In HR Role    2016 Adoption FSA
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc3
+
+4.Accept After Benefit Refusal
+    [Documentation]    Author : Teja Puchala
+    ...
+    ...    Test Case Name : Accept after Benefit refusal
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin and add a new member to the group
+    ...
+    ...    2)Open the member in HR-Admin role and search for the employee
+    ...
+    ...    3)Refuse the benefit which are not enrolled by member
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc4
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc4
+    Navigate To HR Menu    benefitdetails
+    Refuse Current Selected Benefit In HR Role    2016 Adoption FSA
+    Comment    Select Tobacco And Health Survey Answer    Did you complete all 3 requirements    No    Have you used tobacco products in the past 12 months?    No
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Adoption FSA
+    Edit Current Plan    2016 Adoption FSA
+    BuiltIn.Sleep    \    Wait time time before selectingthe coverage level
+    Select Plan    2016 Taben Group (Adoption FSA)
+    Select Premium Deduction    No
+    Set Contribution Amount For Flex Benefit    200
+    Enter New Effective Date    d:currentdate    test
+    Comment    Select Coverage Level    Employee Only
+    Comment    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    2016 Taben Group (Adoption FSA)
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc4
+
+5.Cancel Benefits Before Approval
+    [Documentation]    Author : Teja Puchala
+    ...
+    ...    Test Case Name : Accept after Benefit refusal
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as Vista Admin and add a new member to the group
+    ...
+    ...    2)Open the member in HR-Admin role and search for the employee
+    ...
+    ...    3)Enroll the member in a benefit
+    ...
+    ...    4)Accept the refused benefit
+    ...
+    ...    5)Close the HR-Admin and Logout from vista
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc5
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc5
+    EnrollDentalBenefit
+    BuiltIn.Sleep    3s    sleep time before closing the HR-Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Dental - Pending Approval
+    BuiltIn.Sleep    3s    wait time before editing the medical account
+    Edit Benefit Details    2016 Dental    Dental
+    BuiltIn.Sleep    3s    wait time before entering the effective date
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc5
+
+6.Cancel Benefits After Approval
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc6
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc6
+    EnrollDentalBenefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    2016 Delta Dental Premier Plan
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Dental
+    Edit Benefit Details    2016 Dental    Dental
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc6
+
+7.Enroll Benefit After Cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc7
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc7
+    EnrollDentalBenefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    2016 Delta Dental Premier Plan
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Dental
+    Edit Benefit Details    2016 Dental    Dental
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Edit Current Benefit    2016 Dental
+    Edit Current Plan    Dental
+    BuiltIn.Sleep    2s    wait time before selecting coverage level
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    2016 Delta Dental Premier Plan
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc7
+
+8.Terminate the Employee
+    Comment    after enrolling the person in a a medical benefit unable to terminate the employee
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc8
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc8
+    EnrollDentalBenefit
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Comment    EnrollMedicalBenefit    Employee Only
+    Comment    Approve From HR Admin
+    Perform Employee Termination    d:currentdate    Voluntary
+    BuiltIn.Sleep    3s    wait time
+    Verify Message    Terminated
+    BuiltIn.Sleep    3s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc8
+
+9.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc9
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc9
+    EnrollMedicalBenefit    Employee Only
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Perform Employee Retirement
+    BuiltIn.Sleep    3s    wait time before closing the HR Admin
+    Verify Message    Retired
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc9
+
+10.Change Category of the Member
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc10
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc10
+    EnrollMedicalBenefit    Employee Only
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc10
+
+11.Benefit Plan Change
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc11
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc11
+    EnrollMedicalBenefit    Employee Only
+    Comment    Approve All Benefits
+    Comment    ChangeMedicalBenefitPlan    2016 BlueSaver PPO (High Deductible Plan)
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Comment    ChangeMedicalBenefitPlan    2016 Traditional Blue PPO
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc11
+
+12.Effective Date Change
+    Comment    Implemented for new user
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc12
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc12
+    EnrollMedicalBenefit    Employee Only
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc12
+
+13.Increase Coverage Level
+    Comment    Member should be enrolled with medical benefit and Employee Only coverage and by default spouse should not be added to the member
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc13
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc13
+    EnrollMedicalBenefit    Employee Only
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc14
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc14
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    Spouse    lnSpouse
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    2016 Medical/HSA/Medical FSA
+    Select Survey Questions Answer    Did you complete all 3 requirements    No
+    Select Survey Questions Answer    Have you used tobacco products    No
+    Select Survey Questions Answer    AutoDep    No
+    Next
+    Save Benefit In Snapshot Page
+    Select Plan    2016 Traditional Blue PPO
+    BuiltIn.Sleep    3s    Waiting time before Health Screening Answer
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Medicare Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    BuiltIn.Sleep    3s    wait time before selecting the plan
+    Select Plan    2016 Taben Group (Medical Spending Account)
+    Set Contribution Amount For Flex Benefit    200
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc14
+
+17.Increase Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc17
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc17
+    EnrollMedicalBenefit    Employee Only
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc17
+
+18.Decrease Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc18
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc18
+    EnrollMedicalBenefit    Employee Only
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc18
+
+20.Cancel Flex when already enrolled in Flex
+    comment    FSA is completely not eligible in Medical Group
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefit    Employee Only
+    Approve All Benefits
+    BuiltIn.Sleep    3s    wait time before closing HR Admin
+    Cancel Medical FSA Benefit
+    Approve All Benefits After Employee Edit
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc20
+
+23.Change in EE cost/pp
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc10
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc10
+    EnrollMedicalBenefit    Employee Only
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc23
+
+29.Add Dependent to Benefit
+    Comment    Member should be enrolled with medical benefit and Employee Only coverage and by default spouse should not be added to the member
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollMedicalBenefit    Employee Only
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc29
+
+30.Remove Dependent from Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    Spouse    lnSpouse
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    2016 Medical/HSA/Medical FSA
+    Select Survey Questions Answer    Did you complete all 3 requirements    No
+    Select Survey Questions Answer    Have you used tobacco products    No
+    Select Survey Questions Answer    AutoDep    No
+    Next
+    Save Benefit In Snapshot Page
+    Select Plan    2016 Traditional Blue PPO
+    BuiltIn.Sleep    3s    Waiting time before Health Screening Answer
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Medicare Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    BuiltIn.Sleep    3s    wait time before selecting the plan
+    Select Plan    2016 Taben Group (Medical Spending Account)
+    Set Contribution Amount For Flex Benefit    200
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc30
+
+31.Change Dependent Personal Information
+    Comment    Member should be enrolled with medical benefit and Employee Only coverage and by default spouse should not be added to the member
+    Login as vista admin with valid credentials
+    Perform Group Search    American Academy of Family Physicians
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aafpmandatory    aafplastnametc31
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVaafplastnametc31
+    EnrollMedicalBenefit    Employee Only
+    Approve All Benefits
+    BuiltIn.Sleep    3s    wait time before closing HR Admin
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    Spouse    lnSpouse
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Edit Current Benefit    2016 Medical/HSA/Medical FSA
+    Comment    Edit Due To Change Reason    medical
+    Comment    Reason For Benefit Change    Other
+    Select Tobacco Survey Answer    No
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter Effective Date    d:currentdate
+    BuiltIn.Sleep    2s    wait time before saving the benefit at final page
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    aafplastnametc31

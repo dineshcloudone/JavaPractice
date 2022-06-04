@@ -1,0 +1,607 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Plans functionality
+Test Setup        getResource
+Force Tags        plans
+Resource          ../../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify the functionality of creating Plans and Benefits Enablements.
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title : *Login as a vista Admin and create a new vista Plan and Plan Enablement and delete the Current vista plan.*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) \ Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) \ Enter the *BF QA Automation Vista Admin* value in the Group search Box and click on Search button.
+    ...
+    ...    3) \ Navigate to *Benefits* Menu Bar and click on *Plans* Link.
+    ...
+    ...    4) \ Click on *Create New Plan* button and fill all mandatory fields and click on save button.
+    ...
+    ...    5) \ Verify the plan name in the plans list page.
+    ...
+    ...    6) \ Navigate to *Benefits* Menu Bar and click on *Plan Enablements* Link.
+    ...
+    ...    7) \ Select the plan name in the filterd by plan name list box.
+    ...
+    ...    8) \ Click on editenablement button to that plan,click on delete all button.
+    ...
+    ...    9) \ Click on *Select ALL Link* and click on *Add Enablements* Button and click on save button.
+    ...
+    ...    10) Delete the plana name and logout as a Vista admin.
+    ...
+    ...    Test Cases : 188 and 189 and 200
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup2
+    Navigate To    BENEFITS    Plans
+    Create Vista Plan In Vista Role    td:createnewvistaplan    strPlanName
+    Verify Vista Plan In Vista Role    HMVstrPlanName
+    Navigate To    BENEFITS    Plan Enablement
+    Vista Plan Enablement In Vista Role    HMVstrPlanName
+    Delete Vista Plan In Vista Role    HMVstrPlanName
+    Logout Vista Admin
+
+2.Verify the functionality of benefit enablement per category (Such that the offer is available to only selected categories).
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title : *Login as a vista Admin and Verify the functionality of benefit enablement per category (Such that the offer is available to only selected categories).*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) \ Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) \ Enter the *BF QA Automation Vista Admin* value in the Group search Box and click on Search button.
+    ...
+    ...    3) \ Navigate to *Benefits* Menu Bar and click on *Plans* Link.
+    ...
+    ...    4) \ Click on *Create New Plan* button and fill all mandatory fields and click on save button.
+    ...
+    ...    5) \ Verify the plan name in the plans list page.
+    ...
+    ...    6) \ Navigate to *Benefits* Menu Bar and click on *Plan Enablements* Link.
+    ...
+    ...    7) \ Select the plan name in the filterd by plan name list box.
+    ...
+    ...    8) \ Click on editenablement button to that plan,click on delete all button.
+    ...
+    ...    9) \ Click on *Select ALL Link* and click on *Add Enablements* Button and click on save button.
+    ...
+    ...    10)\ Open Group in Hr Role,and slect latest window.
+    ...
+    ...    11)\ Navigate to HR Menu and click on *Employees* Link.
+    ...
+    ...    12)\ Click on Add Employee in HR Admin button, and fill all mandtory fields.
+    ...
+    ...    13)\ Verify the lastname in the add employe page.
+    ...
+    ...    14)\ Close lates window and Select Latest Window.
+    ...
+    ...    15)\ Logout as a Vista admin.
+    ...
+    ...    Test Cases : 192
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup2
+    Navigate To    BENEFITS    Plans
+    Create Vista Plan In Vista Role    td:createnewvistaplan    strPlanName
+    Verify Vista Plan In Vista Role    HMVstrPlanName
+    Navigate To    BENEFITS    Plan Enablement
+    Vista Plan Enablement In Vista Role    HMVstrPlanName
+    Open Group In HR Role
+    Select Latest Window    Welcome, BF QA Automation Vista Admin!
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    OutLastName
+    Close Latest Window    Home
+    Select Latest Window    td:automationgroup2
+    Logout Vista Admin
+
+3.Toggle between plan Summary and Detail
+    [Documentation]    Author : *Sunitha Yerra*
+    ...
+    ...    Test Case Title : *Toggle between plan Summary and Detail*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search (BF QA Test Automation group)
+    ...
+    ...    3) Navigate to *Benefits* Menu Bar and click on *Plans* Link.
+    ...
+    ...    4) Click on *Show* button for the given plan (Medical 2016)
+    ...
+    ...    5) Verify plan details are visible
+    ...
+    ...    6) Click on *Hide* button for the given plan and verify.
+    ...
+    ...    7) Logout Vista admin.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Show Hide Plan    Medical 2016    Show
+    Verify Message    Plan Information
+    Show Hide Plan    Medical 2016    Hide
+    Logout Vista Admin
+
+4.Verify filter by Plan
+    [Documentation]    Author : *Sunitha Yerra*
+    ...
+    ...    Test Case Title : *Verify filter by Plan*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search (BF QA Test Automation group)
+    ...
+    ...    3) Navigate to *Benefits* Menu Bar and click on *Plans* Link.
+    ...
+    ...    4) Select any given plan in the "Filter by Plan" drop down.
+    ...
+    ...    5) Verify only the selected plan details are visible
+    ...
+    ...    6) Logout Vista admin.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Sort Plan By Filter    Dental 2016
+    Verify Message    Dental 2016
+    Logout Vista Admin
+
+5.Delete existing Plan rate
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title : *Deleting Existing Plan rate.*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plan Rates" Link.
+    ...
+    ...    4) Click on Specified Plan name and click on "Create New Plan Rate" link
+    ...
+    ...    5) Enter Plan rates and click on save button
+    ...
+    ...    6) Verify create plan rate
+    ...
+    ...    7) Delete plan rate and verify
+    ...
+    ...    8) Logout as a Vista admin.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plan Rates
+    Create Plan Rate In Vista Role    Medical 2016    td:createplanrate
+    Delete Plan Rate In Vista Role    Medical 2016
+    Logout Vista Admin
+
+6.Copy Plan Rate
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title : *Copy Plan rate to another Plan*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plan Rates" Link.
+    ...
+    ...    4) Click on Specified Plan name and click on "Create New Plan Rate" link
+    ...
+    ...    5) Enter Plan rates and click on save button
+    ...
+    ...    6) Copy the plan rate to another plan
+    ...
+    ...    6) Verify copy plan rate
+    ...
+    ...    7)Delete plan rate for both plans and verify
+    ...
+    ...    8) Logout as a Vista admin.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plan Rates
+    Create Plan Rate In Vista Role    Medical 2016    td:createplanrate
+    Copy Plan Rate In Vista Role    Medical 2016    Medical 2017
+    Verify Message    copied successfully
+    Delete Plan Rate In Vista Role    Medical 2016
+    Delete Plan Rate In Vista Role    Medical 2017
+    Logout Vista Admin
+
+7.Health FSA min/max
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title : *Health FSA min/max*
+    ...
+    ...    Test Case Description : Test case set \ FSA contribution minimum and \ maximum amounts \ in \ vista role and verifying member is able to enter contribution minimum or maximum amount and verify contribution amount per year.
+    ...
+    ...    Test Steps:
+    ...
+    ...    1.Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2.Search for \ group *BF QA Test Automation Group Vista* .
+    ...
+    ...    3.Navigate to *Benefits* Menu Bar and click on *Offer Enablement*.
+    ...
+    ...    4.Enable FSA 2016 plan
+    ...
+    ...    5.Navigate to *Benefits* Menu Bar and click on *Offers*.
+    ...
+    ...    6.Click on Offer , Edit offer details and Enter \ FSA contribution amounts.
+    ...
+    ...    7.Navigate to *Users* Menu Bar and click on *Add Member*.
+    ...
+    ...    8.Add member and save
+    ...
+    ...    9.Logout Vista
+    ...
+    ...    10.Login as member
+    ...
+    ...    11.Enrol member in FSA 2016 plan
+    ...
+    ...    12.Enter contribution amount
+    ...
+    ...    13.Verify contribution amount
+    ...
+    ...    14.Logout member
+    ...
+    ...    15.Login as vista
+    ...
+    ...    16.Disable Plan enablement
+    ...
+    ...    17.Logout vista
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    FSA 2016    enable
+    BuiltIn.Sleep    3s
+    Navigate To    Benefits    Offers
+    Enter HFSA Min Max Contribution    FSA 2016    50    500
+    BuiltIn.Sleep    3s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:fsaplan    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    BuiltIn.sleep    2s
+    Select Market Plan For New Member Role    HFSA 2016
+    Add Contribution Amount For FSA    50
+    Save Benefit Enrollment In New Member    HFSA 2016
+    BuiltIn.sleep    3s
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    FSA 2016    disable
+    Logout Vista Admin
+
+8.Dependency Rule for HSA and FSA
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title : *Dependency Rule for HSA and FSA*
+    ...
+    ...    Test Case Description : Test case set Dependency rule for \ FSA in vista role and Confirm dependency rule working as designed in member role.
+    ...
+    ...    Test Steps:
+    ...
+    ...    1.Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2.Search for group *BF QA Test Automation Group Vista* .
+    ...
+    ...    3.Navigate to *Benefits* Menu Bar and click on *Offer Enablement*.
+    ...
+    ...    4.Enable HSA Plus FSA 2016 plan
+    ...
+    ...    5.Navigate to *Benefits* Menu Bar and click on *Offers*.
+    ...
+    ...    6.Click on Offer , Edit Dependency details for HFSA Plan 2016.
+    ...
+    ...    7.Navigate to *Users* Menu Bar and click on *Add Member*.
+    ...
+    ...    8.Add member and save
+    ...
+    ...    9.Logout Vista
+    ...
+    ...    10.Login as member
+    ...
+    ...    11.Enrol member in HSA 2016 plan
+    ...
+    ...    12.Verify member is enrolled in HSA and Not Eligible For HFSA
+    ...
+    ...    13.Logout member
+    ...
+    ...    14.Login as vista
+    ...
+    ...    15.Disable Plan enablement
+    ...
+    ...    16.Logout vista
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA Plus FSA 2016    enable
+    BuiltIn.Sleep    3s
+    Navigate To    Benefits    Offers
+    BuiltIn.Sleep    2s
+    Set Dependency Rule For Current Offer Plan In Vista Role    HSA Plus FSA 2016    Health FSA    Health Savings Account (HSA)    Available if user refuses parent element
+    BuiltIn.Sleep    3s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:fsaplan    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    HSA Plan 2016
+    BuiltIn.Sleep    2s
+    Verify Message    Health FSA
+    Verify Message    Not Eligible
+    Save Benefit Enrollment In New Member    HSA Plan 2016
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    BuiltIn.Sleep    2s
+    Set Dependency Rule For Current Offer Plan In Vista Role    HSA Plus FSA 2016    Health FSA    Health Savings Account (HSA)    Always Available
+    BuiltIn.Sleep    2s
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA Plus FSA 2016    disable
+    Logout Vista Admin
+
+9.Plan Enablements
+    [Documentation]    Author : *Srilatha*
+    ...
+    ...    Test Case Title : *Plan Enablements.*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plans Enablements" Link.
+    ...
+    ...    4) Click on Specified Offer name to Enable
+    ...
+    ...    5) To Verify Steps add Add Member In Vista and \ do initial member login
+    ...
+    ...    6)Verify Message for Life 2016 plan
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plan Enablement
+    Vista Plan Enablement In Vista Role    Life 2016
+    #Verify Steps
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Choose Preferred Language    td:language
+    Change Initial Member Password    td:password
+    Select Secret Questions And Save    td:secretquestionscount
+    Announcements Page    td:annoucementpage
+    Run Member Profile Pages In New UI
+    Comment    Add Dependent To Member    None    None
+    Perform Begin Enrollment In Member Role
+    Verify Message    Life 2016
+    Logout New Member Role
+
+10.Copying plan from future to future participation period
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title : *Copying plan from future to future participation period*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plans"Link.
+    ...
+    ...    4) Click on Create New PlanButton, and fill mandtory fields.
+    ...
+    ...    5) Click on Save Button.
+    ...
+    ...    6) Now Verify the Plan in the Plan's List.
+    ...
+    ...    7) Move the mouse cursor on *Options* Button and click *CopyPlan* Link.
+    ...
+    ...    8) Enter the Plan name and \ new particpation periods and click on save Button.
+    ...
+    ...    9) Now Verfiy the *New participations Dates* in the cop offers page.
+    ...
+    ...    10) Click on Copy Plan Button.
+    ...
+    ...    11) Now Click on Future Link and select the Plan name in the dropdown list.
+    ...
+    ...    12) Verify the copied Plan name
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Create Vista Plan In Vista Role    td:createnewvistaplan    strPlanName
+    Filter Plan By Time    Future
+    Verify Vista Plan In Vista Role    HMVstrPlanName
+    Copy Vista Plan    HMVstrPlanName    td:copyplan    Future    OutCopyPlanName
+    Filter Plan By Time    Future
+    Verify Vista Plan In Vista Role    HMVOutCopyPlanName
+    Delete Vista Plan In Vista Role    HMVOutCopyPlanName
+    Filter Plan By Time    Future
+    Delete Vista Plan In Vista Role    HMVstrPlanName
+    Logout Vista Admin
+
+11.Copying plan from current to future participation period
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title : *Copying plan from Current to future participation period*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plans"Link.
+    ...
+    ...    4) Click on Create New PlanButton, and fill mandtory fields.
+    ...
+    ...    5) Click on Save Button.
+    ...
+    ...    6) Now Verify the Plan in the Plan's List.
+    ...
+    ...    7) Move the mouse cursor on *Options* Button and click *CopyPlan* Link.
+    ...
+    ...    8) Enter the Plan name and \ new particpation periods and click on save Button.
+    ...
+    ...    9) Now Verfiy the *New participations Dates* in the cop offers page.
+    ...
+    ...    10) Click on Copy Plan Button.
+    ...
+    ...    11) Now Click on Future Link and select the Plan name in the dropdown list.
+    ...
+    ...    12) Verify the copied Plan name
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Create Vista Plan In Vista Role    td:createnewvistaplan    strPlanName
+    Filter Plan By Time    Current
+    Verify Vista Plan In Vista Role    HMVstrPlanName
+    Copy Vista Plan    HMVstrPlanName    td:copyplan    Current    OutCopyPlanName
+    Filter Plan By Time    Future
+    Verify Vista Plan In Vista Role    HMVOutCopyPlanName
+    Delete Vista Plan In Vista Role    HMVOutCopyPlanName
+    Filter Plan By Time    Current
+    Delete Vista Plan In Vista Role    HMVstrPlanName
+    Logout Vista Admin
+
+12.Copying plan from current to current participation period
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title : *Copying plan from Current to Current participation period*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plans"Link.
+    ...
+    ...    4) Click on Create New PlanButton, and fill mandtory fields.
+    ...
+    ...    5) Click on Save Button.
+    ...
+    ...    6) Now Verify the Plan in the Plan's List.
+    ...
+    ...    7) Move the mouse cursor on *Options* Button and click *CopyPlan* Link.
+    ...
+    ...    8) Enter the Plan name and \ new particpation periods and click on save Button.
+    ...
+    ...    9) Now Verfiy the *New participations Dates* in the cop offers page.
+    ...
+    ...    10) Click on Copy Plan Button.
+    ...
+    ...    11) Now Click on Current Link and select the Plan name in the dropdown list.
+    ...
+    ...    12) Verify the copied Plan name
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Create Vista Plan In Vista Role    td:createnewvistaplan    strPlanName
+    Filter Plan By Time    Current
+    Verify Vista Plan In Vista Role    HMVstrPlanName
+    Copy Vista Plan    HMVstrPlanName    td:copyplan    Current    OutCopyPlanName
+    Filter Plan By Time    Current
+    Verify Vista Plan In Vista Role    HMVOutCopyPlanName
+    Delete Vista Plan In Vista Role    HMVOutCopyPlanName
+    Filter Plan By Time    Current
+    Delete Vista Plan In Vista Role    HMVstrPlanName
+    Logout Vista Admin
+
+13.Copying plan from future to future participation period
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title : *Copying plan from future to future participation period*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search
+    ...
+    ...    3) Navigate to Benefits Menu Bar and click on "Plans"Link.
+    ...
+    ...    4) Click on Create New PlanButton, and fill mandtory fields.
+    ...
+    ...    5) Click on Save Button.
+    ...
+    ...    6) Now Verify the Plan in the Plan's List.
+    ...
+    ...    7) Move the mouse cursor on *Options* Button and click *CopyPlan* Link.
+    ...
+    ...    8) Enter the Plan name and \ new particpation periods and click on save Button.
+    ...
+    ...    9) Now Verfiy the *New participations Dates* in the cop offers page.
+    ...
+    ...    10) Click on Copy Plan Button.
+    ...
+    ...    11) Now Click on Future Link and select the Plan name in the dropdown list.
+    ...
+    ...    12) Verify the copied Plan name
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Create Vista Plan In Vista Role    td:createnewvistaplan    strPlanName
+    Filter Plan By Time    Future
+    Verify Vista Plan In Vista Role    HMVstrPlanName
+    Copy Vista Plan    HMVstrPlanName    td:copyplan    Future    OutCopyPlanName
+    Filter Plan By Time    Future
+    Verify Vista Plan In Vista Role    HMVOutCopyPlanName
+    Delete Vista Plan In Vista Role    HMVOutCopyPlanName
+    Filter Plan By Time    Future
+    Delete Vista Plan In Vista Role    HMVstrPlanName
+    Logout Vista Admin
+
+14. Filter Plan By Time
+    [Documentation]    Author : *Sunitha Yerra*
+    ...
+    ...    Test Case Title : *Filter Plan By Time*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as Vistadmin (bfautomation/Password1)
+    ...
+    ...    2) Perform group search (BF QA Test Automation group)
+    ...
+    ...    3) Navigate to *Benefits* Menu Bar and click on *Plans* Link.
+    ...
+    ...    4) Click on the given action link(All or Previous or Current or Future)
+    ...
+    ...    5) Verify plans are filtered by appropriate time link selected
+    ...
+    ...    6) Logout Vista admin.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Plans
+    Filter Plan By Time    Future
+    Logout Vista Admin

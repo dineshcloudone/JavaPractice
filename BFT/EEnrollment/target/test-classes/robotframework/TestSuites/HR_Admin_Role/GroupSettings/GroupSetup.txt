@@ -1,0 +1,216 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Verify Group Information in Group Setup as HR Admin Role
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify Group information in Group Setup as HR Admin Role*
+    ...
+    ...
+    ...    1) Login to eEnrollment as a Vista User
+    ...
+    ...    2) Search for Sponsor *BF QA Test Automation Group*
+    ...
+    ...    3) Navigate to Users
+    ...
+    ...    4) Set 'Allow access to manage HR Administrator accounts' property as Yes
+    ...
+    ...    5) Logout to eEnrollment as a Vista User
+    ...
+    ...    6) Login to eEnrollment as HR Admin
+    ...
+    ...    7) Navigate to Group Settings Under HR Menu
+    ...
+    ...    8) Click on Group setup Under Group Settings page
+    ...
+    ...    8) Verify the created Hr Admin Account details \ in Group setup page
+    ...
+    ...    9) Logout HR Admin
+    ...
+    ...    Test Case No:
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Users    Administrators & Contacts
+    Update Admin Account Configuration    Allow access to manage HR Administrator accounts    Yes    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    GROUPSETTINGS
+    Verify Group Setup    td:groupsetupinfo
+    Logout HR Admin
+
+2.Verify the HR Admin is able to create a new Administrator account
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the HR Admin is able to create a new Administrator account*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Nagivigate to Goup Setup page in HR Admin
+    ...
+    ...    3. click on Add Aministrator Account under Users Menu
+    ...
+    ...    4. enter all mandatory fileds and click on Save Button
+    ...
+    ...    5. Logout
+    [Tags]    positive
+    Login as HR admin
+    Navigate To HR Menu    GROUPSETUP
+    Navigate To HR Menu    ADDADMINISTRATORACCOUNT
+    Create New Administrator Account In Hr Role    td:admindetails    strlogind    strpassword
+    Logout HR Admin
+
+3.Verify the links are functional under each tab in Group setup tab
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the links are functional under each tab in Group setup tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Nagivigate to Goup Setup page in HR Admin
+    ...
+    ...    3.Click on each link under (Basics, Users, Benefits, Dates & Rules, Carrier Information, Tools & Reporting).
+    ...
+    ...    *Sub Menu Items Under Basics Tab*
+    ...    Aggregate Group
+    ...    Custom Fields
+    ...    Group Customization
+    ...    Identification
+    ...    Member Role Help Text
+    ...    Open Enrollment Settings
+    ...    Personal Customization
+    ...    Tools and Reports Setup
+    ...    Unique Person Validation
+    ...    Work Customization
+    ...
+    ...    *Sub Menu Items Under Users Tab*
+    ...    Agents
+    ...    Administrators
+    ...    Add Administrator Account
+    ...
+    ...    *Sub Menu Items Under Benefits*
+    ...    PlanMatchingCPPW
+    ...    RateFactorSurvey
+    ...    Plans
+    ...    ContributionAmounts
+    ...    Plan Rates
+    ...    View Rate Information
+    ...    Offers
+    ...
+    ...    *Sub Menu Items Under Dates & Rules Tab*
+    ...    Enrollment Dates and TimeZone
+    ...    Eligibility Date Rules OR Category Retro Rules
+    ...    Rehire Rules
+    ...    Cancellation Termination Rules
+    ...    Retroactivity and EDI Rules
+    ...    Relationship Type Dependency Rules
+    ...    COBRA Rules
+    ...
+    ...
+    ...
+    ...    4. Logout
+    [Tags]    positive
+    Login as HR admin
+    Navigate To HR Menu    GROUPSETUP
+    Navigate To HR Menu    AGGREGATEGROUP
+    Navigate To HR Menu    CUSTOMFIELDS
+    Navigate To HR Menu    GROUPCUSTOMIZATION
+    Navigate To HR Menu    IDENTIFICATION
+    Navigate To HR Menu    MEMBERROLEHELPTEXT
+    Navigate To HR Menu    OPENENROLLMENTSETTINGS
+    Navigate To HR Menu    PERSONALCUSTOMIZATION
+    Navigate To HR Menu    TOOLSANDREPORTSSETUP
+    Navigate To HR Menu    UNIQUEPERSONVALIDATION
+    Navigate To HR Menu    WORKCUSTOMIZATION
+    Navigate To HR Menu    AGENTS
+    Navigate To HR Menu    ADMINISTRATORS
+    Navigate To HR Menu    GROUPSETUP
+    Navigate To HR Menu    ADDADMINISTRATORACCOUNT
+    Navigate To HR Menu    GROUPSETUP
+    Navigate To HR Menu    PLANMATCHINGCPPW
+    Navigate To HR Menu    RATEFACTORSURVEY
+    Navigate To HR Menu    PLANS
+    Navigate To HR Menu    CONTRIBUTIONAMOUNTS
+    Navigate To HR Menu    PLANRATES
+    Navigate To HR Menu    VIEWRATEINFORMATION
+    Navigate To HR Menu    GROUPSETUP
+    Navigate To HR Menu    OFFERS
+    Navigate To HR Menu    ENROLLMENTDATESANDTIMEZONE
+    Navigate To HR Menu    ELIGIBILITYDATERULES
+    Navigate To HR Menu    REHIRERULES
+    Navigate To HR Menu    CANCELLATIONTERMINATIONRULES
+    Navigate To HR Menu    RETROACTIVITYANDEDIRULES
+    Navigate To HR Menu    RELATIONSHIPTYPEDEPENDENCYRULES
+    Navigate To HR Menu    COBRARULES
+    Navigate To HR Menu    CARRIERIDENTIFIERS
+    Navigate To HR Menu    PROSPECTDOCUMENTS
+    Navigate To HR Menu    MASSCATEGORYCHANGE
+    Navigate To HR Menu    VIEWSCHEDULEDPROCESSES
+    Navigate To HR Menu    LOGINIDGENERATION
+    Logout HR Admin
+
+4.Verify without entering Mandatory field verification in Add Category Type Page in HR Admin
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify without entering Mandatory field verification in Add Category Type Page in HR Admin*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Nagivigate to GroupSetup page in Goup Settings page in HR Admin
+    ...
+    ...    3. Edit the Categories is Basics page in HR Admin
+    ...
+    ...    4. click on create new category
+    ...
+    ...    5. click on Next Button without adding mandatory data
+    ...
+    ...    6. Verify Error warning messsages
+    ...    "Please enter a Category Type Name."
+    ...
+    ...    7. Logout
+    [Tags]    negative
+    Login as HR admin
+    Navigate To HR Menu    GROUPSETUP
+    Edit Basics Information In HR Admin    Categories
+    Create Category In HR Admin    td:category
+    Verify Message    Please enter a Category Type Name.
+    Logout HR Admin
+
+5.Verify the File upload format for Import Category Values funtionality
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify the File upload format for Import Category Values funtionality*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Nagivigate to GroupSetup page in Goup Settings page in HR Admin
+    ...
+    ...    3. Edit the Categories is Basics page in HR Admin
+    ...
+    ...    4. click on create new category
+    ...
+    ...    5. click on upload buttton add upload the .jpg file instead of .xls file
+    ...
+    ...    6. Verify Error warning messsages
+    ...    The JPG file format is not supported. Please re-save the file into a CSV or XLS format.
+    ...    No new categories were added.
+    ...
+    ...    7. Logout
+    [Tags]    negative
+    Login as HR admin
+    Navigate To HR Menu    GROUPSETUP
+    Edit Basics Information In HR Admin    Categories
+    Create Category In HR Admin    td:category
+    Import Category Values    FileUpload_GChrome:hrintouchjpg.jpg
+    Verify Message    The JPG file format is not supported. Please re-save the file into a CSV or XLS format.
+    Verify Message    No new categories were added.
+    Logout HR Admin

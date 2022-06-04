@@ -1,0 +1,11 @@
+{
+  "1": {
+    "resource": "BFQATestAutomationGroup",
+    "groupsearch": {
+      "automationgroup1": "QCoE Test Automation Group-B"
+    }
+  },
+  "default": {
+    "resource": "bfqaautomationvistaadmin"
+  }
+}

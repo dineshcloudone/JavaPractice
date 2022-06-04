@@ -1,0 +1,9 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "documentdata": {}
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

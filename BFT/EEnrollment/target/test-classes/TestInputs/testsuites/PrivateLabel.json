@@ -1,0 +1,28 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "privatelabeldetails": {
+      "labelname": "RNDAutoQCoE",
+      "labeltype": "RNDAutoQCoEType"
+    },
+    "groupsearch": "QCOE Common Group Vista Role",
+    "privatelabelchange": "AutoQCoEPrivateLabel24186",
+    "hradminlogin": "newhrlogin",
+    "hradminPassword": "passWord123"
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": "QCOE Common Group Vista Role"
+  },
+  "default": {
+    "resource": "BF QA Test Automation Group"
+  }
+}

@@ -1,0 +1,56 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll in Medical benefit as per Rehire scenario
+    [Arguments]    ${effectivedate}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Comment    Reason For Benefit Change    Other
+    Select Plan    2016 Anthem $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    2016 Health Care FSA
+    Enter Contribution Amount For FSA Plan    80
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    2016 Dependent Care FSA
+    Enter Contribution Amount For FSA Plan    80
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    ${effectivedate}    test
+    BuiltIn.Sleep    3s
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+
+Enroll In Medical Benefit
+    [Arguments]    ${effectivedate}
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Comment    Reason For Benefit Change    Other
+    Select Plan    2016 Anthem $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    2016 Health Care FSA
+    Enter Contribution Amount For FSA Plan    80
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    2016 Dependent Care FSA
+    Enter Contribution Amount For FSA Plan    80
+    Enter New Effective Date    ${effectivedate}    test
+    BuiltIn.Sleep    3s
+    Save Benefit In Snapshot Page
+
+Enroll in Dental and Vision Benefit
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Select Plan    2016 Cigna Basic Plus Dental
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

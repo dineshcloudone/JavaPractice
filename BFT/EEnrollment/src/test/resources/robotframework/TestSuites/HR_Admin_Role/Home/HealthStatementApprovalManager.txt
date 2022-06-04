@@ -1,0 +1,204 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.HS Approval Mgr: Ees Pending Approval
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *HS Approval Mgr: Ees Pending Approval*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Search for Group
+    ...
+    ...    3. Open Group in HR Role
+    ...
+    ...    4. Add a new Employee in Life Ofeer with coverage Amount greater than GI Amount
+    ...
+    ...    5. Complete the Enrollment
+    ...
+    ...    6. Navigate to Home Page >> Additional Tools >> Health Statement Approval Manger Link
+    ...
+    ...    7. Select Employees Pending Approval Button, click on Go Button
+    ...
+    ...    8. Verify above created employee in Pending Approval list
+    ...
+    ...    9. Logout as HR Admin
+    ...
+    ...    10. Logout as Vista Admin
+    ...
+    ...    *Sponsor Name : Test Automation Group Health Statement*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithlife    lastname
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ 2014 Evidence of Insurability and submit it to BFI
+    Add New Beneficiary To Employee    none    none    none    none
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Employees Pending Approval
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Close Latest Window    Health Statement Approval Manager
+    Select Latest Window    Test Automation Group Health Statement
+    Logout Vista Admin
+
+2.HS Approval Mgr: Approved Employees
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *HS Approval Mgr: Approved Employees*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Search for Group
+    ...
+    ...    3. Open Group in HR Role
+    ...
+    ...    4. Add a new Employee in Life Ofeer with coverage Amount greater than GI Amount
+    ...
+    ...    5. Complete the Enrollment
+    ...
+    ...    6. NAvigate to Home Page >> Additional Tools >> Health Statement Approval Manger Link
+    ...
+    ...    7. Search for Employee and click on Approve/Decline link
+    ...
+    ...    8. Select Approve Coverage amount
+    ...
+    ...    9. click on next button
+    ...
+    ...    10. Click on save button
+    ...
+    ...    11. Logout as HR Admin
+    ...
+    ...    12. Logout as Vista Admin
+    ...
+    ...    *Sponsor Name : Test Automation Group Health Statement*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithlife    lastname
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ 2014 Evidence of Insurability and submit it to BFI
+    Add New Beneficiary To Employee    none    none    none    none
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Employees Pending Approval
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Approve Or Cancel Requested Amount In HR Role    HMVlastname    Approve $60,000.00
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Approved Employees
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Close Latest Window    Health Statement Approval Manager
+    Select Latest Window    Test Automation Group Health Statement
+    Logout Vista Admin
+
+3.HS Approval Mgr: Declined Employees
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *HS Approval Mgr: Declined Employees*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Search for Group
+    ...
+    ...    3. Open Group in HR Role
+    ...
+    ...    4. Add a new Employee in Life Ofeer with coverage Amount greater than GI Amount
+    ...
+    ...    5. Complete the Enrollment
+    ...
+    ...    6. NAvigate to Home Page >> Additional Tools >> Health Statement Approval Manger Link
+    ...
+    ...    7. Search for Employee and click on Approve/Decline link
+    ...
+    ...    8. Click on Decline radio button
+    ...
+    ...    9. Enter reason for decline
+    ...
+    ...    10. Click on save button
+    ...
+    ...    11. Logout as HR Admin
+    ...
+    ...    12. Logout as Vista Admin
+    ...
+    ...    *Sponsor Name : Test Automation Group Health Statement*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithlife    lastname
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ 2014 Evidence of Insurability and submit it to BFI
+    Add New Beneficiary To Employee    none    none    none    none
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Employees Pending Approval
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Decline Requested Amount In HR Role    HMVlastname    Cancer
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Declined Employees
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Close Latest Window    Health Statement Approval Manager
+    Select Latest Window    Test Automation Group Health Statement
+    Logout Vista Admin
+
+4.HS Approval Mgr: Canceled Employees
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Add Cobra Exception and Update Plan*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Search for Group
+    ...
+    ...    3. Open Group in HR Role
+    ...
+    ...    4. Add a new Employee in Life Ofeer with coverage Amount greater than GI Amount
+    ...
+    ...    5. Complete the Enrollment
+    ...
+    ...    6. NAvigate to Home Page >> Additional Tools >> Health Statement Approval Manger Link
+    ...
+    ...    7. Search for Employee and click on Cancel link
+    ...
+    ...    8. Click on Cancel this Request button
+    ...
+    ...    9. click on next button
+    ...
+    ...    10. Click on save button
+    ...
+    ...    11. Logout as HR Admin
+    ...
+    ...    12. Logout as Vista Admin
+    ...
+    ...    *Sponsor Name : Test Automation Group Health Statement*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithlife    lastname
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ 2014 Evidence of Insurability and submit it to BFI
+    Add New Beneficiary To Employee    none    none    none    none
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Employees Pending Approval
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Approve Or Cancel Requested Amount In HR Role    HMVlastname    Cancel
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Canceled Employees
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Close Latest Window    Health Statement Approval Manager
+    Select Latest Window    Test Automation Group Health Statement
+    Logout Vista Admin

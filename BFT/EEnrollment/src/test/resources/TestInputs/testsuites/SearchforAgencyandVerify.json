@@ -1,0 +1,34 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "addnewagency": {
+      "newagencyname": "RNDAutomation Test Agency",
+      "newagencystate": "UT",
+      "newagencycoutry": "USA",
+      "newagencyzip": "27016",
+      "newagencycarrier": "BFI",
+      "newagencyprivatelabel": "BFI"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "filtervalues": {
+      "carrierfiltervalue": "ACME",
+      "privatelabelfiltervalue": "ABCBS",
+      "esalesfiltervalue": "Any"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

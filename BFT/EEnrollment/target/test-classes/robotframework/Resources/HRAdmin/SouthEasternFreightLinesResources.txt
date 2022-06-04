@@ -1,0 +1,30 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+EnrollHealthOfferofSEFL
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Health Offer
+    Comment    Reason For Benefit Change    Other
+    Comment    Select Other Coverage Survey Drop Down    No, I do not have a spouse or dependent children    NA
+    Select Plan    BCBSSC Co-Pay Plan 2016
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Healthcare FSA
+    Comment    Select Plan For Health Benefit Of SEFL Group    2016 Medical Flexible Spending
+    Set Contribution Amount For Flex Benefit    280
+    Enter Effective Date    d:currentdate
+    Select Plan    2016 Dependent (Daycare) FSA
+    Set Contribution Amount For Flex Benefit    280
+    Comment    Below keyword is using becuase of property match,exact sceanrio is \ clicking agree for SEFL
+    Comment    Select Plan    *I agree
+    Agree Terms And Conditions
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+Enroll Dental Offer In SEFL Group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Dental Offer
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

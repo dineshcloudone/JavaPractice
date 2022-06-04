@@ -1,0 +1,284 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "child": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepChild",
+      "birthdate": "d:currentdate:y:-10",
+      "gender": "Female",
+      "relationship": "Child"
+    },
+    "spouse": {
+      "ssn": "RND7732",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "5": {
+    "resource": "priorityhradmingroup",
+    "validhrcredentialsforgroup": {
+      "username": "priorityhradmin",
+      "password": "bfEnrol1"
+    }
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup"
+   },
+  "7": {
+    "resource": "priorityhradmingroup",
+    "addmedicarepolicydetails": {
+      "medicarenumber": "RNDA4466",
+      "eligibilityreason": "Age",
+      "partaeligibilitydate": "d:effectivedate:M:-1",
+      "partaeffectivedate": "d:effectivedate:M:-1",
+      "partaenddate": "d:monthend:M:-1",
+      "partbeligibilitydate": "d:effectivedate",
+      "partbeffectivedate": "d:effectivedate"
+    }
+  },
+  "8": {
+    "resource": "priorityhradmingroup",
+    "additonalinsuranceinformation": {
+      "policynumber": "RNDA1234",
+      "policyholder": "index=1",
+      "carriername": "BFI",
+      "coverageinformation": "Actively Covered",
+      "coverageeffectivedate": "d:effectivedate"
+    }
+  },
+  "9": {
+    "resource": "oehradmingroup",
+  },
+  "10": {
+    "resource": "bfqahra"
+  },
+  "11": {
+    "resource": "TestAutomationGroupHealthStatement"
+  },
+  "12": {
+    "resource": "priorityhradmingroup",
+  },
+  "13": {
+    "resource": "priorityhradmingroup",
+  },
+  "14": {
+    "resource": "priorityhradmingroup",
+  },
+  "15": {
+    "resource": "priorityhradmingroup",
+  },
+  "16": {
+    "resource": "priorityhradmingroup",
+  },
+  "17": {
+    "resource": "priorityhradmingroup",
+  },
+  "18": {
+    "resource": "priorityhradmingroup",
+    "lifeevent": {
+      "reason": "Birth",
+      "birthdate": "currentdate",
+      "notifieddate": "currentdate"
+    },
+    "newbornchild": {
+      "ssn": "RND7732",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepChild",
+      "birthdate": "d:currentdate",
+      "gender": "Male",
+      "relationship": "Child"
+    }
+  },
+  "19": {
+    "resource": "TestAutomationGroup1",
+    "myvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "Testhrautomation1",
+      "password": "bfEnrol1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+	  "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "hiredate": "currentdate",
+	  "payfrequency": "Annually"
+    }
+  },
+  "20": {
+    "resource": "oehradmingroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "qcoehradmin",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QCOE Flex test group"
+    },
+    "addemployeewithmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "A"
+    }
+  },
+  "21": {
+    "resource": "oehradmingroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "qcoehradmin",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QCOE Flex test group"
+    },
+    "addemployeewithmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "A"
+    }
+  },
+  "22": {
+    "resource": "medicareadvantagegroup",
+    "validhrcredentialsforgroup": {
+      "username": "medicarehradmin",
+      "password": "bfEnrol1"
+    },
+    "addemployeeinmedicare": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-85",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "d:currentdate:y:-31",
+      "categories": "13 - RRA,0.00,0.00,Deceased Retiree",
+      "retirement":"yes"
+    },
+     "addmedicarepolicydetailswithmedicarepayer": {
+      "medicarenumber": "RNDA4466",
+      "eligibilityreason": "Age",
+      "partaeligibilitydate": "d:effectivedate",
+      "partaeffectivedate": "d:effectivedate",
+      "partaenddate": "d:monthend",
+      "partbeligibilitydate": "d:effectivedate",
+      "partbeffectivedate": "d:effectivedate",
+      "medicarepayerstatus":"Primary",
+      "medicarepayereffectivedate":"d:effectivedate"
+    }
+  },
+  "24": {
+    "resource": "priorityhradmingroup",
+    
+  },
+  "default": {
+    "resource": "priorityhradmingroup"
+  }
+}

@@ -1,0 +1,141 @@
+*** Settings ***
+Documentation     *This Suite consistes of Medical benefits test cases.*
+Test Setup        getResource
+Force Tags        medicalbenefits
+Resource          ../../Resources/common.txt
+
+*** Test Cases ***
+1.Add Member with HSA Benefits
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Add Member in vista role and enroll medical with HSA in New Member role*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. Logout from vista role and login as added member with member credentials.
+    ...
+    ...    3. Completes Medical offre by selectin the HSA Plans with adding contribution amounts.
+    ...
+    ...    4. Logout from the Member role.
+    [Tags]    donotrun
+    Login as vista admin with valid credentials
+    Perform Group Search    td:hsagroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:HSA    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Verify Message    td:medicalplan
+    Select Market Plan For New Member Role    td:medicalplan
+    Select Medicare    No
+    Decline Coverage
+    Decline Coverage
+    Select Market Plan For New Member Role    td:hsaplan
+    Add HSA Without Agreements    100    Ongoing
+    Logout New Member Role
+
+2.Add Member with Life plans
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Add Member in Vista and enroll Life plan for the member.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. Logout from vista role and login with added member by member credentials.
+    ...
+    ...    3. Completes life offre by selecting the coverage amount.
+    ...
+    ...    4.Add spouse as primary Beneficiary and allocates the allocation percentage.
+    ...
+    ...    5. saves trhe offer and complete the enrollemnt.
+    ...
+    ...    6. Logout from the Member role.
+    Login as vista admin with valid credentials
+    Perform Group Search    Auto_Provo city_New
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:hidebeneficiaries    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    2016 Basic Life
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:beneficiaryspouse    Outlastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Verify Beneficiary And Save    Spouse
+
+3.Verify Guided Shoping for member
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Add Member in vista role and complete Guided shopping for th member in New member role*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2.Logout from vista role and login as added member with member credentials.
+    ...
+    ...    3.select getstarted in home page and redirected to guided shoping page.
+    ...
+    ...    4.verifys the guided shoping questions and selects answers in randomly.
+    ...
+    ...    5. completes the guided shopping and logout from the new member role.
+    [Tags]    donotrun
+    Login as vista admin with valid credentials
+    Perform Group Search    Auto_bodycote_Regression_New
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:HSA    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Complete Guided Shopping In Member Role
+
+4.Hide Beneficiary In New Member role
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Add Member in Vista and Hide Beneficiary by adding another primary Beneficiary for the life plan in New member role.*
+    ...
+    ...    1. Login as vista admin and add a member into the group.
+    ...
+    ...    2. Logout from vista role and login with added member by member credentials.
+    ...
+    ...    3. Completes life offre by selecting the coverage amount.
+    ...
+    ...    4.Add spouse as primary Beneficiary and allocates the allocation percentage.
+    ...
+    ...    5. saves trhe offer and complete the enrollemnt.
+    ...
+    ...    6. Edit the beneficiary for the life plan to add another primary beneficiary.
+    ...
+    ...    7. Add anothe primary beneficiary an dallocated allocation amount.
+    ...
+    ...    8. edit the unused beneficary and select hide beneficiary in the page and save sthe offer.
+    ...
+    ...    9.Logout from the Mercer New member role
+    Login as vista admin with valid credentials
+    Perform Group Search    Auto_Provo city_New
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:hidebeneficiaries    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    2016 Basic Life
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:beneficiaryspouse    Outlastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Verify Beneficiary And Save    Spouse
+    Navigate To New Member Menu    Benefits
+    Edit Beneficiary In New Member Role    Your Employer Paid Term Life coverage
+    Add Another Primary Beneficiary    Person    td:beneficiarychild    OutlastName
+    Verify Beneficiary And Save    Child
+    Navigate To New Member Menu    Benefits
+    Edit Beneficiary In New Member Role    Your Employer Paid Term Life coverage
+    Hide Beneficiary    ${EMPTY}
+    Verify Beneficiary And Save    Child
+    Logout New Member Role

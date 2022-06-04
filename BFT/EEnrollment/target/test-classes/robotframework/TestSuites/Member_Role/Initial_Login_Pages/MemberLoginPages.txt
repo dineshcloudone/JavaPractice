@@ -1,0 +1,282 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Attempt to add a PO Box address
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *Attempt to add a PO Box address*
+    ...
+    ...    Test Case Documentation: *This test verifies adding a P.O Box in the address box is not allowed and a custom defined error message is displayed*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfadesai/bfErnol0)
+    ...
+    ...    2) Search for group (QA AUTOMATION REDEEMER CHURCH ORLANDO INC)
+    ...
+    ...    3) Navigate to "Users>> Add Member"
+    ...
+    ...    4) Enter all the mandatory fields through json file and then click on Save
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as Member Role (auto generated credentials)
+    ...
+    ...    7) Choose the preferred language as English
+    ...
+    ...    8) Change Initial member password to bfErnol1
+    ...
+    ...    9) Fill secret questions and save
+    ...
+    ...    10) Complete Announcements and Agreements page.
+    ...
+    ...    11) Complete all the member profile information.
+    ...
+    ...    12) Go back to profile page and add the Personal information for a member along with the P.O Box address in the address1 field.
+    ...
+    ...    13) Verify custom error message defined for the group is displayed and the changes are not saved.
+    ...
+    ...    14) Logout Member role
+    [Tags]    QCOE
+    #PreRequisites
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    QA AUTOMATION REDEEMER CHURCH ORLANDO INC
+    BuiltIn.Sleep    1s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    #Steps
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    Yes
+    BuiltIn.Sleep    2s
+    Run Member Profile Pages
+    BuiltIn.Sleep    2s
+    Navigate To New Member Menu    Profile
+    Comment    BuiltIn.Sleep    2s
+    Add Personal Information In Member Role    td:personalinformation
+    Verify Message    This is my warning message
+    BuiltIn.Sleep    2s
+    [Teardown]    Logout New Member Role    # This keyword is used to logout member role irrespective of test result
+
+2.Verify you can add military information for a member
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *Verify you can add military information for a member*
+    ...
+    ...    Test Case Description: *This test verifies military information can be added to a member profile in profile page from member role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfadesai/bfErnol0)
+    ...
+    ...    2) Search for group (QA AUTOMATION REDEEMER CHURCH ORLANDO INC)
+    ...
+    ...    3) Navigate to "Users>> Add Member"
+    ...
+    ...    4) Enter all the mandatory fields through json file and then click on Save
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as Member Role (auto generated credentials)
+    ...
+    ...    7) Choose the preferred language as English
+    ...
+    ...    8) Change Initial member password to bfErnol1
+    ...
+    ...    9) Fill secret questions and save
+    ...
+    ...    10) Complete Announcements and Agreements page.
+    ...
+    ...    11) Complete all the member profile information.
+    ...
+    ...    12) Go back to profile page and add the military service information for a member.
+    ...
+    ...    13) Verify the changes
+    ...
+    ...    14) Logout Member role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    QA AUTOMATION REDEEMER CHURCH ORLANDO INC
+    BuiltIn.Sleep    1s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    Yes
+    BuiltIn.Sleep    2s
+    Run Member Profile Pages
+    BuiltIn.Sleep    5s
+    Add Military Service Information In Member Role    td:militaryinformation
+    [Teardown]    Logout New Member Role    # This keyword is used to logout member role irrespective of test result
+
+3.Verify that you can change direct deposit information
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *Verify that you can change direct deposit information*
+    ...
+    ...    Test Case Description: *This test verifies direct deposit information can be added to a member profile in profile page from member role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfadesai/bfErnol0)
+    ...
+    ...    2) Search for group (QA AUTOMATION REDEEMER CHURCH ORLANDO INC)
+    ...
+    ...    3) Navigate to "Users>> Add Member"
+    ...
+    ...    4) Enter all the mandatory fields through json file and then click on Save
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as Member Role (auto generated credentials)
+    ...
+    ...    7) Choose the preferred language as English
+    ...
+    ...    8) Change Initial member password to bfErnol1
+    ...
+    ...    9) Fill secret questions and save
+    ...
+    ...    10) Complete Announcements and Agreements page.
+    ...
+    ...    11) Complete all the member profile information.
+    ...
+    ...    12) Go back to profile page and add the direct deposit information for a member.
+    ...
+    ...    13) Verify the changes
+    ...
+    ...    14) Logout Member role
+    [Tags]    QCOE
+    #PreRequisites
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    QA AUTOMATION REDEEMER CHURCH ORLANDO INC
+    BuiltIn.Sleep    1s
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    #Steps
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Choose Preferred Language    English
+    Change Initial Member Password    bfEnrol1
+    Select Secret Questions And Save    3
+    Announcements Page    yes
+    Agreements Page    Yes
+    BuiltIn.Sleep    2s
+    Run Member Profile Pages
+    BuiltIn.Sleep    2s
+    Add Direct Deposit In Member Role    td:directdeposit
+    [Teardown]    Logout New Member Role    # This keyword is used to logout member role irrespective of test result
+
+4.Verify User is able to view information in each Section on Profile Page
+    [Documentation]    Author : *Srikanth G*
+    ...
+    ...    Test Case Title: *Verify User is able to view information in each Section on Profile Page*
+    ...
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (MemberPositiveTestAutomationGroupForProfile)
+    ...
+    ...    3) Navigate to Group>Basics>Personal Customization and Set 'Allow Member to Edit Personal Information' = 'All Fields' \ and Save.
+    ...
+    ...    4) Navigate to Group>Basics>Group Customization and Set 'Military', 'Direct Deposit' option as enabled and Save
+    ...
+    ...    5) Navigate to "Users>> Add Member"
+    ...
+    ...    6) Enter all the mandatory member details and then click on Save and Logout from Vista Admin
+    ...
+    ...    7) Login as Member Role (auto generated credentials)
+    ...
+    ...    8) Click on Next on Accouncement page.
+    ...
+    ...    9) Change Initial member password to bfErnol1
+    ...
+    ...    10) Fill secret questions and save
+    ...
+    ...    11) Complete Announcements and Agreements page.
+    ...
+    ...    12) Complete all the member profile information.
+    ...
+    ...    13) Click on 'Get Started' button and Navigate through all profile pages (Personal Informtion,Military and Direct Deposit) and click save
+    ...
+    ...    14) Verify that 'Benefits' page appears.
+    ...
+    ...    14) Logout Member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Personal Customization
+    Update Personal Customization    Allow Member to edit Personal Information    All Fields
+    Save Configuration
+    Navigate To    BASICS    Group Customization
+    Update Group Customization    Military    Enabled
+    Save Configuration
+    Navigate To    BASICS    Group Customization
+    Update Group Customization    Direct Deposit    Enabled
+    Save Configuration
+    Navigate To    USERS    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Verify Message    Before you enroll in benefits
+    Logout New Member Role
+
+5.Verify you can add 'Emergency Contacts' for a Member
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Tests \ Case Title: *Verify you can add 'Emergency Contacts' for a Member*
+    ...
+    ...    1 ) Login to eEnrollment as a Vista User
+    ...
+    ...    2) Search for Sponsor "QCOE BF QA Test Automation Group Member"
+    ...
+    ...    3) Navigate to Users, Add new Member
+    ...
+    ...    4) Logout to eEnrollment as a Vista User
+    ...
+    ...    5)Login to eEnrollment as Member (with Initial Login)
+    ...
+    ...    6) Perform Get Started in New Member role
+    ...
+    ...    7) Complete the enrollment process
+    ...
+    ...    8) Navigate to Profile and Add Emergency Contact in Member Role
+    ...
+    ...    9) Verify 'Emergency Contact' information is saved for the member
+    ...
+    ...    10) Logout as Member Role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    USERS    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    td:medicalplan
+    Save Benefit Enrollment In New Member    td:medicalplan
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    Profile
+    Add Emergency Contact In Member Role    td:emergencycontact
+    Verify Message    HMVemail
+    Logout New Member Role

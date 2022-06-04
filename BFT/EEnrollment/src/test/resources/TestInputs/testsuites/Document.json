@@ -1,0 +1,73 @@
+{
+  "1": {
+    "resource": "QCOE Common UAB Health Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_23",
+      "memberpassword": "passWord123"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE Common UAB Health Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate"
+    }
+  },
+  "2": {
+    "resource": "QCOE Common UAB Health Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_24",
+      "memberpassword": "passWord123"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE Common UAB Health Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate"
+    }
+  },
+  "default": {
+    "resource": "QCOE Common UAB Health Group"
+  }
+}

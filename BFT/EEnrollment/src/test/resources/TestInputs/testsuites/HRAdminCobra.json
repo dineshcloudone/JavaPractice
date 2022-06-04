@@ -1,0 +1,18 @@
+{
+    "cobrainhrrole":{
+    	"addcobraexception": {
+			"ssn": "RND4433",
+			"firstname": "Auto",
+			"lastname": "RNDTestMandatory",
+			"race": "Hispanic",
+			"birthdate": "currentdate:y:-28",
+			"gender": "Male",
+			"address1": "Test address",
+			"city": "Test City",
+			"state": "SC",
+			"zipcode": "12345",
+			"country": "USA",
+			"plan": "Medical"
+    	}
+    }    
+}

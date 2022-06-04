@@ -1,0 +1,98 @@
+*** Settings ***
+Test Setup        getResource
+Force Tags        calendars    QCOE
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Pay Calendars
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *This test verifies Admin is able to view Pay Calendars in Calendars page when clicked on Calendars tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfhoso/bfEnrol1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to "Basics >> Work Customization"
+    ...
+    ...    4) \ Enable 'Pay Calendars' option, click on save button
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    7) Now click on 'Group Settings' side menu
+    ...
+    ...    8) Now click on 'Calendars' side menu tab
+    ...
+    ...    9) Verify Admin is navigated to Calendars page and able to see Pay Calendars if available
+    ...
+    ...    10) Logout from application
+    #PreRequisites
+    Login To Enrollment As Vista Admin    td:myvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    TestAutomationGroup1
+    Navigate To    Basics    Group Customization
+    Work Custamiztion Configuration    Pay Calendars    Enabled    yes
+    Logout Vista Admin
+    BuiltIn.Sleep    2s
+    #Steps
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+    BuiltIn.Sleep    2s
+    Navigate To HR Menu    GroupSettings
+    BuiltIn.Sleep    2s
+    Navigate To HR Menu    Calendars
+    BuiltIn.Sleep    1s
+    Verify Message    Pay Calendars
+    Logout HR Admin
+
+2.Deduction Calendars
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *This test verifies Admin is able to view Deduction Calendars in Calendars page when clicked on Calendars tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfhoso/bfEnrol1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to "Basics >> Work Customization"
+    ...
+    ...    4) \ Enable 'Pay Calendars' and 'Deduction Calendars' option and click on save button
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    7) Now click on 'Group Settings' side menu
+    ...
+    ...    8) Now click on 'Calendars' side menu tab
+    ...
+    ...    9) Verify Admin is able to view Deduction Calendars if available in Calendars page
+    ...
+    ...    10) Logout from application
+    #PreRequisites
+    Login To Enrollment As Vista Admin    td:myvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    TestAutomationGroup1
+    Navigate To    Basics    Group Customization
+    Work Custamiztion Configuration    Pay Calendars    Enabled    yes
+    Work Custamiztion Configuration    Deduction Calendars    Enabled    yes
+    Logout Vista Admin
+    BuiltIn.Sleep    2s
+    #Steps
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+    BuiltIn.Sleep    2s
+    Navigate To HR Menu    GroupSettings
+    BuiltIn.Sleep    1s
+    Navigate To HR Menu    Calendars
+    BuiltIn.Sleep    1s
+    Verify Message    Deduction Calendars
+    Logout HR Admin

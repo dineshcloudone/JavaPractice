@@ -1,0 +1,91 @@
+{
+  "1": {
+    "resource": "QCOE Commons Diamond Foods Groups",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_29",
+      "memberpassword": "passWord123"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE Commons Diamond Foods Groups",
+    "waitperiod": "7",
+    "gracestartperiod": "7",
+    "graceendperiod": "2",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "BIWEEKLY",
+      "payfrequency": "Bi-Weekly",
+      "employerid": "12345"
+    },
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "2": {
+    "resource": "QCOE W4 Information Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validmembercredentialsforgroup": {
+      "memberusername": "testqcoe_30",
+      "memberpassword": "passWord123"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE W4 Information Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "maritalstatus": "Single",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "Bi-weekly"
+    }
+  },
+  "default": {
+    "resource": "QCOE Common UAB Health Group"
+  }
+}

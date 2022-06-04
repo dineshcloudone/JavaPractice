@@ -1,0 +1,105 @@
+{
+  "assaabloyamericastestcases": {
+    "Assaabloyamericas": {
+      "vista": {
+        "assaabloyamericasmandatory": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Monthly",
+					"employerid": "111",
+					"categories": "AMS - Ameristar#001 - Sargent Manufacturing Company#N - No#E - Exempt#F - Full Time#35000#AAACT#7QP#R - Regular#1137"
+			},
+			 "assaabloyamericasmandatory2": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate:d:-10",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Monthly",
+					"employerid": "111",
+					"categories": "AMS - Ameristar#001 - Sargent Manufacturing Company#N - No#E - Exempt#F - Full Time#35000#AAACT#7QP#R - Regular#1137"
+			},
+			"assaabloyamericasmandatoryhsa": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate:d:-10",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Monthly",
+					"employerid": "111",
+					"categories": "CUR#410 - Curries#N - No#H - Hourly#F - Full Time#NA#CU001#CWL#R - Regular#N"
+			},
+        "validvistacredentials": {
+        "username": "bftpuchala",
+        "password": "bfEnrol1"
+        },
+        "adddependent": {
+        "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+         "changespouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+        
+      }
+    }
+    
+    }
+  }
+}

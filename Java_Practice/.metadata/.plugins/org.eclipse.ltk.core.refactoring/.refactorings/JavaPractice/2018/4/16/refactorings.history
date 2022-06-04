@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;java8newfeatures.MethodReference.java&apos; to &apos;StaticMethodReference.java&apos;&#x0D;&#x0A;- Original project: &apos;JavaPractice&apos;&#x0D;&#x0A;- Original element: &apos;java8newfeatures.MethodReference.java&apos;&#x0D;&#x0A;- Renamed element: &apos;java8newfeatures.StaticMethodReference.java&apos;" description="Rename compilation unit &apos;MethodReference.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;java8newfeatures{MethodReference.java" name="StaticMethodReference.java" references="false" stamp="1524130131095" version="1.0"/>
+</session>

@@ -1,0 +1,8 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Update Carrier Basics
+    [Arguments]    ${field}    ${value}    ${save}
+    Update User Access    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration

@@ -1,0 +1,26 @@
+{
+  "1": {
+  "resource": "bfqatestautomationgroup",
+  "templatename": "Aasonn Group Template"
+  },
+  "2": {
+  "resource": "bfqatestautomationgroup",
+    "createnewvistaplan": {
+      "NewPlanName": "js:Dental",
+      "ProductPlanType": "js:Dental PPO",
+      "EDICarrierKey": "js:ACME",
+      "UnderwritingCarrierKey": "js:ACME",
+      "strPlanName": "RNDAuto",
+      "ContractEffectiveDate": "currentdate",
+      "ContractExpirationDate": "currentdate:y:+1",
+      "ConfigurationEffectivedate": "currentdate",
+      "ConfigurationExpirationDate": "currentdate:y:+1",
+      "CostDisplayPeriod": "js:Annual",
+      "AllowInsuranceCardRequests": "js:Do not allow card requests"
+    },
+    "templatename": "Test automation template"
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

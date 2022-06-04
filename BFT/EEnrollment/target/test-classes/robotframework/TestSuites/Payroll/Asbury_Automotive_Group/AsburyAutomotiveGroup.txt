@@ -1,0 +1,499 @@
+*** Settings ***
+Test Setup        Reload application
+Resource          ../../../Resources/common.txt
+Resource          ../../../Resources/HRAdmin/AsburyAutomotiveGroupResource.txt
+
+*** Test Cases ***
+1.Initial Enrollment
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc1
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc1
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    BuiltIn.Sleep    2s    Sleep Time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc1
+
+2.Initial Enrollment(After Approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc2
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc2
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc2
+
+3.Refuse All Eligible Benefits
+    Comment    FLow is not as expected
+    Comment    Need to add verificaitons for refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc3
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc2
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    Dependent Care FSA 2016
+    BuiltIn.Sleep    2s    Wait Time before refusing Dental Insurance
+    Refuse Current Selected Benefit In HR Role    Dental Insurance 2016
+    Comment    BuiltIn.Sleep    2s    Wait Time before refusing Vision Insurance 2016
+    Comment    Refuse Current Selected Benefit In HR Role    Vision Insurance 2016
+    Comment    BuiltIn.Sleep    2s    Wait Time before refusing Short-Term Disability
+    Comment    Refuse Current Selected Benefit In HR Role    Short-Term Disability Insurance 2016
+    Comment    BuiltIn.Sleep    2s    Wait Time before refusing Long Term Disability
+    Comment    Refuse Current Selected Benefit In HR Role    Long-Term Disability Insurance 2016
+    Comment    BuiltIn.Sleep    2s    Wait Time before refusing Supplement Life Insurance
+    Comment    Refuse Current Selected Benefit In HR Role    Supplemental Life Insurance 2016
+    Comment    BuiltIn.Sleep    2s    Sleep time before closing HR admin
+    Approve All Benefits After Employee Edit
+    BuiltIn.Sleep    2s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc3
+
+4.Accept Benefit After Refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc4
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc4
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    BuiltIn.Sleep    3s    wait time
+    Refuse Current Selected Benefit In HR Role    Dental Insurance 2016
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Edit Current Benefit    Dental Insurance 2016 - Pending Approval
+    Edit Current Plan    Dental
+    Select Plan    Dental Basic 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time before closing HR-Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc4
+
+5.Cancel Benefit Before Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc5
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc5
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Verify Message    Not Eligible
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc5
+
+6.Cancel Benefit After Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc6
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc2
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Navigate To HR Menu    Overview
+    Approve All Benefits
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Verify Message    Not Eligible
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc2
+
+7.Enroll Benefit After Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc7
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc7
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Navigate To HR Menu    Overview
+    Approve All Benefits
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve All Benefits After Employee Edit
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Verify Message    Not Eligible
+    Comment    Benefit Enrollment After Cencellation
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Select Plan    Asbury Base HSA Plan 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Select Plan    Health Savings Account 2016
+    Enter Effective Date    d:currentdate
+    Comment    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    Asbury Base HSA Plan 2016
+    BuiltIn.Sleep    3s    wait time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc7
+
+8.Terminate the Employee
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc8
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc8
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Perform Employee Termination    d:currentdate    Voluntary
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc8
+
+9.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc9
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc9
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Perform Employee Retirement
+    BuiltIn.Sleep    3s    wait time before closing the HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc9
+
+10.ChangeCategory
+    comment    Category is not changing after assigning a values once it is assigned with
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc10
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc10
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc10
+
+11.Change Plan
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc11
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc11
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc11
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc12
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc12
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc13
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc13
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc14
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc14
+    Comment    Navigate To HR Menu    dependents
+    Comment    Add Dependent To Employee    td:spouse    lnSpouse
+    Comment    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical 2016
+    Select Plan    Asbury Base HSA Plan 2016
+    Select Coverage Level    Employee + Spouse
+    Add Dependent To Employee    Spouse    lst2Spouse
+    Comment    Apply Coverage To Dependent
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Comment    Select Survey Questions Answer    Spouse Information    I acknowledge that the above requirements are met.
+    Next
+    Enter Effective Date    d:currentdate
+    Next
+    Select Plan    Health Savings Account 2016
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Edit Current Benefit    Medical 2016
+    Comment    Edit Due To Change Reason    Medical
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    BuiltIn.Sleep    3s    wait time
+    Next
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    Employee Only
+    BuiltIn.Sleep    2s    wait time before Closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc14
+
+22.Cancel HDHP/HSA when already enrolled in flex(if Group supports HSA)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc22
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc22
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Comment    Navigate To HR Menu    overview
+    Comment    Verify Message    Asbury Base HSA Plan 2016
+    Comment    CancelHSAForNewMember
+    Comment    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc22
+
+23.Change in EE cost/pp
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc23
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc23
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc23
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc24
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc24
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Update Employee Salary    53201    per year
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc24
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc24
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc24
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Update Employee Salary    4990    per year
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc24
+
+29.Add Dependent to Benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc29
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc29
+    EnrollMedicalBenefitInAAGgroup    Employee Only
+    Approve From HR Admin
+    Navigate To HR Menu    overview
+    Verify Message    Asbury Base HSA Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc29
+
+30.Remove Dependent from Benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc30
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc30
+    Comment    Navigate To HR Menu    dependents
+    Comment    Add Dependent To Employee    td:spouse    lnSpouse
+    Comment    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical 2016
+    Select Plan    Asbury Base HSA Plan 2016
+    Select Coverage Level    Employee + Spouse
+    Add Dependent To Employee    Spouse    lst2Spouse
+    Comment    Apply Coverage To Dependent
+    Select Spouse Information    Persons Covered    I acknowledge that the above requirements are met.
+    Comment    Select Survey Questions Answer    Spouse Information    I acknowledge that the above requirements are met.
+    Next
+    Enter Effective Date    d:currentdate
+    Next
+    Select Plan    Health Savings Account 2016
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Edit Current Benefit    Medical 2016
+    Comment    Edit Due To Change Reason    Medical
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    BuiltIn.Sleep    3s    wait time
+    Next
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Verify Message    Employee Only
+    BuiltIn.Sleep    2s    wait time before Closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc30
+
+31.Change Dependent Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5386137475
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aagmandatory    AsburyAutomotivelastnametc31
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVAsburyAutomotivelastnametc31
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Medical 2016
+    Select Plan    Asbury Base HSA Plan 2016
+    Select Coverage Level    Employee + Spouse
+    Apply Coverage To Dependent
+    Select Other Coverage Survey Drop Down    Spouse Information    I acknowledge that the above requirements are met.
+    Next
+    Next
+    Enter Effective Date    d:currentdate
+    Next
+    Select Plan    Health Savings Account 2016
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve All Benefits
+    Navigate To HR Menu    dependents
+    Edit Dependent Details    Spouse    lastname
+    BuiltIn.Sleep    2s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Comment    Approve All Benefits After Employee Edit
+    Comment    Navigate To HR Menu    dependents
+    BuiltIn.Sleep    2s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    AsburyAutomotivelastnametc31

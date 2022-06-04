@@ -1,0 +1,82 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA Race Group"
+    },
+    "createnewadministratoraccountdetailsinhrrole": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "raceadmin",
+      "password": "bfEnrol1"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "email": "sun@sun.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate",
+      "categories": "A"
+    },
+    "directdeposit": {
+      "bankname": "Bank of America",
+      "bankroutingnumber": "454121441",
+      "bankaccountnumber": "RND42457895625",
+      "accounttype": "Checking",
+      "amount": "999"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation1",
+      "password": "bfEnrol1"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "addadminstrator": {}
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

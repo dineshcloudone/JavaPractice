@@ -1,0 +1,25 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",    
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }    
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",    
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },    
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

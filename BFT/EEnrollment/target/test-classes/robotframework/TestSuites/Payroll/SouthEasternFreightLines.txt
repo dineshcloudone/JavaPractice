@@ -1,0 +1,621 @@
+*** Settings ***
+Suite Setup
+Test Setup        getResource
+Force Tags        Paroll Regression Test Cases
+Resource          ../../Resources/common.txt
+Resource          ../../Resources/HRAdmin/PayrollResources/SouthEasternFreightLinesResources.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Initial Enrollment
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC Co-Pay Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+
+2.Initial Enrollment(After Approval)
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC Co-Pay Plan 2016
+    Close HR Admin
+    Logout Vista Admin
+
+3.Refuse All Eligible Benefits
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Refuse Current Selected Benefit In HR Role    2016 Dental Offer
+    BuiltIn.Sleep    3s    Wait time before refusal
+    Refuse Current Selected Benefit In HR Role    2016 Health Offer
+    BuiltIn.Sleep    3s    Wait time before refusal
+    Comment    Refuse Current Selected Benefit In HR Role    2016 Vision Offer
+    Comment    BuiltIn.Sleep    3s    Wait time before refusal
+    Comment    Refuse Current Selected Benefit In HR Role    2016 Supplemental Life Offer
+    Comment    BuiltIn.Sleep    3s    Wait time before refusal
+    Comment    Refuse Current Selected Benefit In HR Role    2016 Critical Illness Offer
+    Comment    BuiltIn.Sleep    3s    Wait time before refusal
+    Comment    Refuse Current Selected Benefit In HR Role    2016 Accident Offer
+    Comment    BuiltIn.Sleep    3s    Wait time before refusal
+    Comment    Refuse Current Selected Benefit In HR Role    2016 Whole Life Offer
+    Comment    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+4.Accept After Benefit Refusal
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    BuiltIn.Sleep    1s    wait time
+    Navigate To HR Menu    benefitdetails
+    Refuse Current Selected Benefit In HR Role    2016 Health Offer
+    Navigate To HR Menu    Overview
+    BuiltIn.Sleep    1s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Comment    Select Other Coverage Survey Drop Down    No, I do not have a spouse or dependent children    NA
+    Edit Current Plan    Health
+    Select Plan    BCBSSC Co-Pay Plan 2016
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate:d:3    test
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    1s    wait time
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+5.Cancel Benefits Before Approval
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Health    Health
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+
+6.Cancel Benefits After Approval
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    BuiltIn.Sleep    3s    wait time
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Health    Health
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+7.Enroll Benefit After Cancellation
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Health    Health
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Cancelled
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Health    Health
+    Select Plan    BCBSSC Co-Pay Plan 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+8.Terminatethe Employee
+    BuiltIn.Sleep    3s    wait time
+    Comment    Unable to see the Terminate Employee link after Benefit Enrollment
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    BuiltIn.Sleep    3s    wait time
+    Enroll Dental Offer In SEFL Group
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Comment    Navigate To HR Menu    Overview
+    Comment    Verify Message    BCBSSC Co-Pay Plan 2016
+    Comment    BuiltIn.Sleep    3s    waittime
+    Perform Employee Termination    d:currentdate    Voluntary
+    BuiltIn.Sleep    3s    waittime
+    Approve From HR Admin
+    Verify Message    Terminated
+    Close HR Admin
+    Logout Vista Admin
+
+9.Employee Retirement
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    BuiltIn.Sleep    3s    wait time
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC Co-Pay Plan 2016
+    Perform Employee Retirement
+    BuiltIn.Sleep    3s    waittime
+    Close HR Admin
+    Logout Vista Admin
+
+10.Change Category of the member
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Comment    EnrollHealthOfferofSEFL
+    Comment    Approve From HR Admin
+    Comment    Navigate To HR Menu    Overview
+    Comment    Verify Message    BCBSSC Co-Pay Plan 2016
+    Comment    Perform Simple Employee Search    HMVlastname
+    Change Employee Cateogry    EMPLOYEE STATUS    FMLA
+    Change Employee Cateogry    EMPLOYEE TYPE    PT
+    comment    ---------------------------------
+    Comment    Change Employee Cateogry    EMPLOYEE STATUS    Active
+    Comment    Change Employee Cateogry    EMPLOYEE TYPE    FT
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+11.Benefit Plan Change
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health    Plan
+    Select Plan    BCBSSC CDHP 2016
+    Comment    Select Plan    BCBSSC Co-Pay Plan 2016
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Health Savings Account (HSA)
+    Enter Effective Date    d:currentdate:m:3
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC CDHP 2016
+    Close HR Admin
+    Logout Vista Admin
+
+12.Effective Date Change
+    BuiltIn.Sleep    3s    wait time
+    comment    application is having issues with effective date change
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Comment    Select Other Coverage Survey Drop Down    No, I do not have a spouse or dependent children    NA
+    Comment    Edit Due To Change Reason    default
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health    Effective Date
+    Enter Effective Date    d:currentdate:d:2
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+13.Increase Coverage Level
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Edit Benefit Details    Health    Coverage Level
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Other Coverage Survey Drop Down    Yes, my spouse has access to other coverage    NA
+    Next
+    Enter New Effective Date    d:currentdate:m:3    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+14.Decrease Coverage Level
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Health Offer
+    Select Plan    BCBSSC Co-Pay Plan 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Other Coverage Survey Drop Down    No, neither my spouse or dependent children have access to other coverage    NA
+    Next
+    Enter New Effective Date    d:currentdate:m:3    test
+    Select Plan    2016 Healthcare FSA
+    Set Contribution Amount For Flex Benefit    280
+    Enter Effective Date    d:currentdate:m:3
+    Select Plan    2016 Dependent (Daycare) FSA
+    Set Contribution Amount For Flex Benefit    280
+    Agree Terms And Conditions
+    Enter Effective Date    d:currentdate:m:3
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+15.Increase Coverage Amount
+    BuiltIn.Sleep    3s    wait time
+    comment    showing some error message while saving in final page
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Basic Life and AD&D
+    Select Coverage Amount    Life and AD&D Coverage
+    Comment    Navigate To Current Enrollment
+    Comment    Edit Current Benefit    2016 Basic Life/AD&D
+    Comment    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Comment    Comment    Edit Benefit Details    Basic Life    Coverage Amount
+    Comment    Select Coverage Amount    Life and AD&D Coverage
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate:m:3    test
+    select plan    Liberty Mutual Dependent Life Insurance 2016
+    Add Dependent To Employee    Spouse    lstSpouse
+    Next
+    Select Coverage Amount    $2,000.00
+    Enter Effective Date    d:currentdate:m:3
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Basic Life and AD&D
+    Edit Benefit Details    Dependent Life    Coverage Amount
+    Select Coverage Amount    $2,000.00
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+16.Decrease Coverage Amount
+    comment    showing some error message while saving in final page
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Basic Life and AD&D
+    Select Coverage Amount    Life and AD&D Coverage
+    Comment    Navigate To Current Enrollment
+    Comment    Edit Current Benefit    2016 Basic Life/AD&D
+    Comment    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    Other
+    Comment    Comment    Edit Benefit Details    Basic Life    Coverage Amount
+    Comment    Select Coverage Amount    Life and AD&D Coverage
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate:m:3    test
+    select plan    Liberty Mutual Dependent Life Insurance 2016
+    Add Dependent To Employee    Spouse    lstSpouse
+    Next
+    Select Coverage Amount    $2,000.00
+    Enter Effective Date    d:currentdate:m:3
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Basic Life and AD&D
+    Edit Benefit Details    Dependent Life    Coverage Amount
+    Select Coverage Amount    $2,000.00
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+17.Increase Flex Contribution
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC Co-Pay Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Healthcare FSA    Contribution Amount
+    Set Contribution Amount For Flex Benefit    290
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+18.Decrease Flex Contribution
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC Co-Pay Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Healthcare FSA    Contribution Amount
+    Set Contribution Amount For Flex Benefit    270
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+19.Add Flex when already enrolled in HSA
+
+20.Cancel Flex when already enrolled in Flex
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    EnrollHealthOfferofSEFL
+    BuiltIn.Sleep    3s    wait time
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Verify Message    BCBSSC Co-Pay Plan 2016
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Health Offer
+    Edit Benefit Details    Health    Health
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+21.Add HDHP/HSA when already enrolled in Flex(if Group Supports HSA)
+
+22.Cancel HDHP/HSA when already enrolled in flex(if Group supports HSA)
+
+23.Change in EE cost/pp
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Comment    EnrollHealthOfferofSEFL
+    Comment    Approve From HR Admin
+    Comment    Navigate To HR Menu    Overview
+    Comment    Verify Message    BCBSSC Co-Pay Plan 2016
+    Comment    Perform Simple Employee Search    HMVlastname
+    Change Employee Cateogry    DRIVER    Yes
+    Change Employee Cateogry    PT ELIGIBLE    Yes
+    comment    ---------------------------------
+    Comment    Change Employee Cateogry    EMPLOYEE STATUS    Active
+    Comment    Change Employee Cateogry    EMPLOYEE TYPE    FT
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+24.Salary Increase
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Update Employee Salary    51000    per year
+    Close HR Admin
+    Logout Vista Admin
+
+25.Salary Decrease
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Update Employee Salary    49000    per year
+    Close HR Admin
+    Logout Vista Admin
+
+NATestCase 26 - Change in Remaining Pay Periods
+
+27.Enroll in COBRA
+
+28.Cancel COBRA
+
+29.Add Dependent to Benefit
+
+Pe30.Remove Dependent from Benefit
+
+31.Change Dependent Personal Information
+    BuiltIn.Sleep    3s    wait time
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:seflmandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Health Offer
+    Select Plan    BCBSSC Co-Pay Plan 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Other Coverage Survey Drop Down    No, neither my spouse or dependent children have access to other coverage    NA
+    Next
+    Enter New Effective Date    d:currentdate:m:3    test
+    Select Plan    2016 Healthcare FSA
+    Set Contribution Amount For Flex Benefit    280
+    Enter New Effective Date    d:currentdate:m:3    test
+    Select Plan    2016 Dependent (Daycare) FSA
+    Set Contribution Amount For Flex Benefit    280
+    Agree Terms And Conditions
+    Enter New Effective Date    d:currentdate:m:3    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    overview
+    Approve From HR Admin
+    Navigate To HR Menu    dependents
+    Edit Dependent Details    Spouse    lastname
+    BuiltIn.Sleep    3s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+32.Test
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5429473465
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    Teja PucTest7829
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Health Offer
+    BuiltIn.Sleep    10s    wait time
+    selectAnswerForOtherCoverageSurvey

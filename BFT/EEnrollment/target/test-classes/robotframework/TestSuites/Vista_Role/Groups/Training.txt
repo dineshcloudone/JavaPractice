@@ -1,0 +1,9 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1. TC1
+    Login as vista admin with valid credentials
+    Perform Group Search    td:zipcode
+    Logout Vista Admin

@@ -1,0 +1,96 @@
+{
+  "1": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "b1hradminautomation",
+      "password": "bfEnrol2"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE Test Automation Group-B1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "supplifeplan": "Supp Life 2016",
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "2": {
+    "resource": "BFQATestAutomationGroup",
+    "validmembercredentialsforgroup": {
+      "memberusername": "SUNITHAY6440",
+      "memberpassword": "bfEnrol1"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE Test Automation Group-B1"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+     "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "testautomationgroup": "QCOE BF QA Test Automation Group"
+    },
+    "addmemberinvista": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "Life"
+    },
+    "verifymessages": {
+      "message1": "Personal Information",
+      "message2": "Plan name"
+    }
+  },
+  "default": {
+    "resource": "bfqaautomationvistaadmin"
+  }
+}

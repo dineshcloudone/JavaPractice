@@ -1,0 +1,440 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc1
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc1
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Benefits with Company Paid Basic Life and AD&D Insurance
+    Enroll In Medical Benefit    2016 Medical Plan 1    $15,000.00    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc1
+
+2.Initial enrollment (after approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc2
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc2
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Benefits with Company Paid Basic Life and AD&D Insurance
+    Enroll In Medical Benefit    2016 Medical Plan 1    $15,000.00    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc2
+
+3.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc3
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc3
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    2016 Dental Benefits
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc3
+
+4.Accpet after initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc4
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc4
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    2016 Dental Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental Benefits
+    Edit Current Plan    Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc4
+
+5.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc5
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc5
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Dental Benefits
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc5
+
+6.Cancel benefits (after approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc6
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc6
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Dental Benefits
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc6
+
+7.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc7
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc7
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    2016 Dental Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental Benefits
+    Edit Current Plan    Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc7
+
+8.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc8
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc8
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To Employee Home Page
+    Perform Employee Termination    d:currentdate    Voluntary
+    Verify Message    Terminated
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc8
+
+9.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc9
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc9
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Navigate To Employee Home Page
+    Sleep    5
+    appendHashMapValue    DycomIndustrieslastnametc9
+
+10.Category Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc10
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    DycomIndustrieslastnametc10
+
+11.Benefit plan change
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc11
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc11
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc11
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc12
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc12
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental Benefits
+    Enroll In Dental Benefit    Delta Dental Low Option Plan 2016    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc13
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    2016 Medical Benefits with Company Paid Basic Life and AD&D Insurance
+    Enroll In Medical Benefit    2016 Medical Plan 1    $15,000.00    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc14
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    2016 Dental Benefits
+    Select Plan    Delta Dental Low Option Plan 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc14
+
+15.Increase Coverage Amount For Life Benefit - Pending
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc15
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc15
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Benefits with Company Paid Basic Life and AD&D Insurance
+    Enroll In Medical Benefit    2016 Medical Plan 1    $15,000.00    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc15
+
+16.Decrease Coverage Amount For Life Benefit - pending
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Benefits with Company Paid Basic Life and AD&D Insurance
+    Enroll In Medical Benefit    2016 Medical Plan 1    $15,000.00    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc16
+
+17.Increase Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending Accounts (FSAs)
+    Enroll In FSA Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc17
+
+18.Decrease Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending Accounts (FSAs)
+    Enroll In FSA Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc18
+
+20.Cancel flex when already enrolled in flex
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc20
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc20
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Flexible Spending Accounts (FSAs)
+    Enroll In FSA Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc20
+
+23.Change in EE cost
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc23
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    DycomIndustrieslastnametc23
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc24
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    DycomIndustrieslastnametc24
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc25
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    DycomIndustrieslastnametc25
+
+29.Add Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc29
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc29
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    2016 Medical Benefits with Company Paid Basic Life and AD&D Insurance
+    Enroll In Medical Benefit    2016 Medical Plan 1    $15,000.00    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc29
+
+30.Remove Dependent from benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc30
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc30
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    2016 Dental Benefits
+    Select Plan    Delta Dental Low Option Plan 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc30
+
+31.Change dependent personnel information
+    Login as vista admin with valid credentials
+    Perform Group Search    Dycom Industries, Inc.
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:dycomindustriesmandatory    DycomIndustrieslastnametc31
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVDycomIndustrieslastnametc31
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental Benefits
+    Select Plan    Delta Dental Low Option Plan 2016
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    DycomIndustrieslastnametc31

@@ -1,0 +1,61 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Insurance and Spending Accounts Benefit With Employee Only Coverage
+    Select Plan    2016 United Healthcare $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate    Test
+    Select Plan    2016 Health Care FSA
+    Enter Contribution Amount For FSA Plan    300
+    Enter New Effective Date    d:currentdate    Test
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental and Vision Insurance Benefit with Employee+1 Coverage
+    Select Plan    2016 Delta Dental Standard Dental
+    Select Coverage Level    Employee + Spouse
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Select Tobacco Survey Answer    Yes
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental and Vision Insurance Benefit with Employee + Children Coverage Level
+    Select Plan    2016 Delta Dental Standard Dental
+    Select Coverage Level    Employee + Child(ren)
+    Add Dependent To Employee    Child    dep1
+    Add Another Dependent To Employee    Child    dep2
+    Add Another Dependent To Employee    Child    dep3
+    Next
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental and Vision Insurance Benefit with Employee Only Coverage level
+    Select Plan    2016 Delta Dental Standard Dental
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    Test
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Life Insurance Benefit with Employee Only Coverage Level
+    Select Coverage Amount    $15,000.00
+    Add New Beneficiary To Employee And Navigate To Next Page    Spouse    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate    Test
+    Select Coverage Amount    $15,000.00
+    Add New Beneficiary To Employee And Navigate To Next Page    Child    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate    Test
+    Select Plan    2016 Employee Paid Term Life
+    Select Coverage Amount    $30,000.00
+    Add New Beneficiary To Employee And Navigate To Next Page    Child    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate    Test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    Test
+    Select Coverage Amount    $10,000.00
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page

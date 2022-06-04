@@ -1,0 +1,193 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Beneficiaries functionality
+Test Setup        getResource
+Force Tags        beneficiaries
+Resource          ../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+2.Login as HR Admin and Verify Dependents Beneficiaries link
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Verify Dependents Beneficiaries link is displayed*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1.Login to enrollment as a HRAdmin
+    ...
+    ...    2.Add a member
+    ...
+    ...    3.Add a spouse dependent
+    ...
+    ...    4.Enroll the member in Medical Offer with employee and spouse coverage
+    ...
+    ...    5.Enroll the member in Life Benefit with "Spouse" as "Primary Beneficiary" and "100% allocation"
+    ...
+    ...    6.Verify Dependents and Beneficiaries Link Exists
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:allfields    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:Spouse    lastname
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee and Spouse
+    Apply Coverage To Dependent
+    Save Benefit    d:currentdate
+    Add Dependent as Primary Beneficiary with 100% Allocation    spouse    Life Plan 2016    $10,000.00
+    Verify Dependents And Beneficiaries Link
+    Logout HR Admin
+
+3.Add HR Employee with Life Benefits, Child as primary beneficiary and 100% allocation
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Add HR Employee with Life Benefits, Child as primary beneficiary and 100% allocation*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login to eEnrollment as HR Admin (hradminautomation1/bfEnrol1)
+    ...
+    ...    2) Navigate to Employees,Click on 'Add a new Employee' button
+    ...
+    ...    3) Enter neccessary details, click on save button.
+    ...
+    ...    4) Click on benefits link
+    ...
+    ...    5) Select Life Plan 2015,Click on Next Button.
+    ...
+    ...    6) Click on 'Add Beneficiary' link
+    ...
+    ...    7) Add beneficiary as child with necessary details,Click on Add Button.
+    ...
+    ...    8) Select 'Beneficiary type'(Primary/Secondary),Allocation%. Click on 'Next' Button
+    ...
+    ...    9) Click on 'Next', 'Save' button.
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:allfields    lastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Life Plan 2016
+    BuiltIn.Sleep    3s
+    Select Coverage Amount    $10,000.00
+    Add New Beneficiary To Employee    child    Primary    100    lastname
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Logout HR Admin
+
+1.Login as HR Admin and add a new employee with Life Benefit with "Spouse" as "Primary Beneficiary" and "100% allocation"
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Login as HR Admin and add a new employee with Life Benefit with 'Spouse' as 'Primary Beneficiary' and 100% allocation*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1). Login to enrollment as a HRAdmin
+    ...
+    ...    2). Add a member
+    ...
+    ...    3). Enroll the member in Life Benefit with "Spouse" as "Primary Beneficiary" and "100% allocation"
+    ...
+    ...    4). Verify Dependents and Beneficiaries Link Exists
+    ...
+    ...    5). Verify the Message
+    ...
+    ...    6). Logout as HR Admin
+    [Tags]    smoke
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithlife    lastname
+    Add Beneficiary with any relationship as Primary Beneficiary and 100% allocation    spouse    Life Plan 2016    $10,000.00
+    Verify Dependents And Beneficiaries Link
+    Logout HR Admin
+
+4.Beneficiary Form
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Beneficiary Form*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (BF QCOE Test Group Automation_6)
+    ...
+    ...    3) Navigate to Benefits/Offers
+    ...
+    ...    4) Go to Edit Offer Details
+    ...
+    ...    5) Change Entering Beneficiaries to "Require User to Provide this Information"
+    ...
+    ...    6) Additional Changes are DOB as Optinal, Beneficiary Details to Print
+    ...
+    ...    6) Save and Logout of Vista Role
+    ...
+    ...    7) Login as HR Admin (testautomationhr_6/passWord123)
+    ...
+    ...    8) Add Member to Group
+    ...
+    ...    9) Enroll Member to Benefits
+    ...
+    ...    10) Add Beneficiary Details
+    ...
+    ...    11) Click on Beneficiary Details Link Report on Employee Overview Page
+    ...
+    ...    12) Verify Beneficiary Details in PDF Report
+    ...
+    ...    13) Logout from application
+    [Tags]    QCOE
+    [Setup]    Delete Files In Download Folder
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Medical Life    Disable
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Life    Enable
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA FSA    Disable
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    Life
+    Add Beneficiary Configurations Changes Update    td:beneficiariesconfiguration
+    Save Configuration
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Select Coverage Amount    $20,000.00
+    Add New Beneficiary To Employee    Spouse    Primary    100%    lastname
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    BENEFICIARYREPORT
+    Verify Text In Exported Pdf Report    BENEFICIARIES_SUMMARY    Beneficiary Form
+    Logout HR Admin
+
+5.Blank Enrollment Form
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Blank Enrollment Form*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as HR Admin (testautomationhr_6/passWord123)
+    ...
+    ...    2) Add Member to Group
+    ...
+    ...    3) Enroll Member to Benefits
+    ...
+    ...    4) Add Beneficiary Details
+    ...
+    ...    5) Click on Employee Details Link Report on Employee Overview Page
+    ...
+    ...    6) Verify Employee Details in PDF Report
+    ...
+    ...    7) Logout from application
+    [Tags]    QCOE
+    [Setup]    Delete Files In Download Folder
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    EMPLOYEEBENEFITSUMMARYREPORT
+    Verify Text In Exported Pdf Report    EE_BENEFIT_SUMMARY    Employee Benefit Summary Report
+    Logout HR Admin

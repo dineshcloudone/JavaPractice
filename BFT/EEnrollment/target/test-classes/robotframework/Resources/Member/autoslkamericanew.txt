@@ -1,0 +1,54 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to theAuto_Slk America New group
+Resource          ../Common.txt
+
+*** Keywords ***
+member initial login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Change Initial Member Password    td:memberpassword
+    Select Secret Questions And Save    td:secretquestions
+    Announcements Page    td:annoucementpage
+    Agreements Page    td:agreementpage
+
+Create Global Rate Factor Survey in Group
+    [Arguments]    ${ParticipationPeriod}    ${SurveyName}    ${Roles}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to create Global Rate Factor Survey by taking user inputs.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${ParticipationPeriod} --> Ex:- 01/01/2015 - 12/31/2015 or index=1
+    ...
+    ...    ${SurveyName} -->Survey Question \ Ex:- Tobbaco Survey(Mercer)
+    ...
+    ...    @{Roles}----> Add Roles with comma Ex- Member,Vista,Carrier
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    none
+    Create Global Rate Factor Survey In Vista    ${ParticipationPeriod}    ${SurveyName}    ${Roles}
+
+Create Carrier Rate Factor Survey in Group
+    [Arguments]    ${SitusStrategy}    ${Roles}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to create Global Rate Factor Survey by taking user inputs.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${SurveyName} -->Survey Question \ Ex:- Tobbaco Survey(Mercer)
+    ...
+    ...    @{Roles}----> Add Roles with comma Ex- Member,Vista,Carrier
+    Navigate To    Benefits    Rate Factor Survey
+    Delete Existing Rate Factor Survey In Vista    none
+    Enrollment.Create Carrier Rate Factor Survey    ${SitusStrategy}    ${Roles}
+
+Disable Rate Factor Survey
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Disable the Rate factor Survey in Vista role.
+    ...
+    ...    Arguments : NA
+    Navigate To    Basics    System
+    Select Rate Factor Survey Setup    Disabled

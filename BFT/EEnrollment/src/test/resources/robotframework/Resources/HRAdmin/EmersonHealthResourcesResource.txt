@@ -1,0 +1,65 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll PPO Medical Benefit
+    Select Plan    PPO Saver Plan 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    Health Savings Account 2016
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll HMO Medical Benefit
+    Select Plan    HMO Network Blue New England 2016
+    Select Coverage Level    Employee Only
+    Select Primary Care Provider Information    Test    1234    No
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll Dental Benefit
+    Select Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll Vision Benefit
+    Select Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll FSA Plan
+    Select Plan    Health Care Flexible Spending Account 2016
+    Set Contribution Amount For Flex Benefit    300
+    Next
+    Set Deduction Periods    2
+    Select Plan    Dependent Care Flexible Spending Account 2016
+    Set Contribution Amount For Flex Benefit    200
+    Next
+    Next
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+
+Enroll Life Benefit
+    Select Coverage Amount    $20,000.00
+    Next
+    Next
+    Select Coverage Amount    $20,000.00
+    Next
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Select Plan    Decline coverage for this person
+    Next
+    Select Coverage Amount    $4,000.00
+    Next
+    Select Coverage Amount    $4,000.00
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Add COBRA Policy
+    Manage Cobra And Add Policy    COBRA MEDICAL Offer
+    Select Qualifying Event    new event    Death of employee,d:currentdate
+    Select Plan    Medical 2015
+    Persons Covered    click on    nex button
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save

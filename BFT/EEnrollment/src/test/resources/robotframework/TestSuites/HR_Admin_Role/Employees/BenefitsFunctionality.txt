@@ -1,0 +1,1155 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Benefits functionality
+Test Setup        getResource
+Force Tags        benefits
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Cancel Benefit
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Case Title: *Cancel a Benefit using benefits tab in HR role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as HR admin
+    ...
+    ...    2. Add an employee in HR Admin
+    ...
+    ...    3. Add an dependent to employee
+    ...
+    ...    4. Enroll a Medical Benefit with Employee and Spouse Coverage
+    ...
+    ...    5. Apply the coverage to dependent
+    ...
+    ...    6. Now Cancel the benefit from HR role
+    ...
+    ...    7. Logout
+    [Tags]    smoke
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:medicalplan    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:Spouse    lastname
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee and Spouse
+    Apply Coverage To Dependent
+    Save Benefit    d:currentdate
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical 2016
+    Logout HR Admin
+
+2.Change Coverage level to Employee Only
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Change the coverage level to Employee Only*
+    ...
+    ...    1. Login as HR admin
+    ...
+    ...    2. Add an employee in HR Admin
+    ...
+    ...    3. Add an dependent to employee
+    ...
+    ...    4. Enroll a Medical Benefit with Employee and Spouse Coverage
+    ...
+    ...    5. Apply the coverage to dependent
+    ...
+    ...    6. Change the coverage level to Employee Only and verify the dependent coverage is removed.
+    ...
+    ...    7. Logout
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:medicalplan    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:spouse    lastname
+    Navigate To HR Menu    Benefitdetails
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee and Spouse
+    Apply Coverage To Dependent
+    Save Benefit    d:currentdate
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016 - Pending Approval
+    Change Coverage Level    Employee Only
+    Save Benefit After Edit
+    Logout HR Admin
+
+3.Add Dependent and update plan
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Add Employee and Enroll medical plan and update plan by cahnging coverage level Employee and spouse.*
+    ...
+    ...    1. Login as HR admin
+    ...
+    ...    2. Add an employee in HR Admin
+    ...
+    ...    3. Enroll a Medical Benefit with Employee Only Coverage and complete medical enrollment.
+    ...
+    ...    4.Add Spouse as depndent to the member.
+    ...
+    ...    5.Update the plan by Employee and Spouse coverage.
+    ...
+    ...    6. Logout
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:medicalplan    lastname
+    Navigate To HR Menu    Benefitdetails
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee Only
+    Save Benefit    d:currentdate
+    Add Dependent and update plan in HR role    td:spouse    Medical 2016 - Pending Approval    Employee and Spouse
+    Logout HR Admin
+
+4.Add Dependent and change coverage to Employee and Child
+    [Documentation]    Author : *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Add Employee and Enroll medical plan and update plan by cahnging coverage level to Employee and child.*
+    ...
+    ...    1. Login as HR admin
+    ...
+    ...    2. Add an employee in HR Admin
+    ...
+    ...    3. Enroll a Medical Benefit with Employee Only Coverage and complete medical enrollment.
+    ...
+    ...    4.Add Child as depndent to the member.
+    ...
+    ...    5.Update the plan by Employee and Child coverage.
+    ...
+    ...    6. Logout
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:medicalplan    lastname
+    Navigate To HR Menu    Dependents
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Navigate To HR Menu    Benefitdetails
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee and Spouse
+    Apply Coverage To Dependent
+    Save Benefit    d:currentdate
+    Navigate To HR Menu    Dependents
+    Add Another Dependent To Employee    td:child    lastname
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016 - Pending Approval
+    Change Coverage Level    Employee and Child
+    Cancel Coverage To Dependent
+    Apply Coverage To Dependent
+    Save Benefit After Edit
+    Logout HR Admin
+
+5.Verify member in New Benefit Enrollees
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Verify member in New Benefit Enrollees*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (hradminautomation1/bfEnrol1)
+    ...
+    ...    2) Click on "Employees" link from Home page.
+    ...
+    ...    3) Click on "Add a new employee" button
+    ...
+    ...    4) Enter neccessary information in "contact information" page
+    ...
+    ...    5) Enter "Hiredate" as previous month effective date.
+    ...
+    ...    6) Click on Save Button
+    ...
+    ...    7) Select 'Other' option,Click on Next Button
+    ...
+    ...    8) Select any Medical plan,Click on Next Button
+    ...
+    ...    9) check 'Employee Only' Radio button,Click on Next Button
+    ...
+    ...    10 ) Save benefits with effective date as \ previous month effective date.
+    ...
+    ...    11) Click on Manage Employee button, Click on Terminate Employee Button
+    ...
+    ...    12) Enter termination Date as previous month end,Click on Save Button.
+    ...
+    ...    13) Go to Home Page.
+    ...
+    ...    14) Click on 'COBRA Manager' Link.
+    ...
+    ...    15) Click on 'New Benefit Enrollees' Link.
+    ...
+    ...    16) Click on 'Show persons with COBRA eligible benefits accepted within the past' radio button.
+    ...
+    ...    17) Selec 1 day from drop down.
+    ...
+    ...    18) Click on Search button
+    ...
+    ...    19) Verify above created enrollee/employee is found in Search List.
+    ...
+    ...    *Sponsor Name : oehradmingroup*
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedicalforcobra    lastname
+    Reason For Benefit Change    other
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Medicare Information    no    no
+    Enter Effective Date    d:effectivedate:M:-1
+    Save Cobra Policy    save
+    Navigate To HR Menu    Overview
+    Perform Employee Termination    d:monthend:M:-1    Voluntary
+    Search New COBRA Benefit Enrollees In HR Role    HMVlastname    1
+    Logout HR Admin
+
+6.Decline Medical Benefit Coverage for an Employee
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Decline Medical Benefit Coverage for an Employee*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (hradminautomation1/bfEnrol1)
+    ...
+    ...    2) Click on "Employees" link from Home page.
+    ...
+    ...    3) Click on "Add a new employee" button
+    ...
+    ...    4) Enter neccessary information in "contact information" page
+    ...
+    ...    5) Enter "Hiredate" as current date.
+    ...
+    ...    6) Click on "Decline coverage for this person" radio button.
+    ...
+    ...    7) Click on Next Button.
+    ...
+    ...    8) Enter effective date,Click on Next Button
+    ...
+    ...    9) Click on Save Button
+    ...
+    ...    10) Verify Medical Coverage Declined message in 'Overview' Tab.
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Select Plan    Decline coverage for this person
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+    Navigate To HR Menu    Benefitdetails
+    Verify Message    Coverage Declined
+    Logout HR Admin
+
+7.Enroll member in Medicare via medical benefits workflow
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Enroll member in Medicare via medical benefits workflow*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (priorityhradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to 'HR Menu >> Employees' tab
+    ...
+    ...    3) Click on 'Add a new Employee' button.
+    ...
+    ...    4) Enter necessary details with 'Medical' Plan, click on save button.
+    ...
+    ...    5) Select 'Employee Only' as Coverage Level, click on Next Button
+    ...
+    ...    6) Select 'Yes' against premium deduction, click on 'Next' button
+    ...
+    ...    7) Select 'Yes' against Medicare and 'yes' against having required details, click on Next Button
+    ...
+    ...    8) Enter necessary medicare details, click on Add,Next Button
+    ...
+    ...    9) Enter current date in Effective date text box
+    ...
+    ...    10) Click on Save button
+    ...
+    ...    11) Logout as HR Admin.
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Medicare Information    yes    yes
+    Add Medicare Policydetails    td:addmedicarepolicydetails
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+
+8.Add Additional Insurance
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Add Additional Insurance*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (priorityhradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to 'HR Menu >> Employees' tab
+    ...
+    ...    3) Click on 'Add a new Employee' button.
+    ...
+    ...    4) Enter necessary details with 'Dental Plan, click on save button.
+    ...
+    ...    5) Select 'Employee Only' as Coverage Level, click on Next Button
+    ...
+    ...    6) Select 'Yes' against premium deduction, click on 'Next' button
+    ...
+    ...    7) click 'yes' against additional Insurance Information.
+    ...
+    ...    8) Enter necessary additonal Insurance details, click on Save button
+    ...
+    ...    9) Now click on 'no' against against additonal insurance option, click on 'next' button
+    ...
+    ...    10) Enter current date in Effective Date Text Box.
+    ...
+    ...    11) click on Save button
+    ...
+    ...    12) Logout as HR Admin.
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithdental    memberid
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Additional Insurance Information    yes
+    Add Additional Insurance Information    td:additonalinsuranceinformation
+    Additional Insurance Information    no
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+    Logout HR Admin
+
+9.Accept Medical - Future/OE period
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Accept Medical - Future/OE period*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (oehradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to 'HR Menu >> Employees' tab
+    ...
+    ...    3) Click on 'Add a new Employee' button.
+    ...
+    ...    4) Enter necessary details with 'Medical' Plan, click on save button.
+    ...
+    ...    5) Select 'Employee Only' as Coverage Level, click on Next Button
+    ...
+    ...    6) Select 'Yes' against premium deduction, click on 'Next' button
+    ...
+    ...    7) Enter current date in Effective Date Text Box.
+    ...
+    ...    8) Click on Save Button
+    ...
+    ...    9) Click on Next Button from OE Message Box.
+    ...
+    ...    10) Select Medical 2017 plan from Open Enrollment Tab
+    ...
+    ...    11) Select 'Employee Only' as Coverage Level, click on Next Button
+    ...
+    ...    12) Select 'Yes' against premium deduction, click on 'Next' button
+    ...
+    ...    13) Enter current date in Effective Date Text Box.
+    ...
+    ...    14) Click on Save Button
+    ...
+    ...    15) Logout as HR Admin.
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+    Navigate To Open Enrollment Tab In HR Role    next button
+    Select Plan    Medical 2017
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+    Logout HR Admin
+
+10.HRA - Elect in IE
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *HRA - Elect in IE*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (electiehradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to Employees tab
+    ...
+    ...    3) Add an Employee with HRA.
+    ...
+    ...    4) Click on 'Benefit Details' link
+    ...
+    ...    5) Click on Start Button against '2016 Medical Insurance and Spending Accounts'
+    ...
+    ...    6) Select following plan '2016 UnitedHealthcare $800 Deductible Plan', click on 'Next' Button
+    ...
+    ...    7) Select Employee Only as Coverage Level, click on 'Next' Button
+    ...
+    ...    8) Select no against Medicare Information, \ click on 'Next' Button
+    ...
+    ...    9) Select Decline coverage for this option, \ click on 'Next' Button
+    ...
+    ...    10) Again select Decline coverage for this option, \ click on 'Next' Button
+    ...
+    ...    11) Select HRA, \ click on 'Next' Button
+    ...
+    ...    12) Verify Contribution amounts, click on Save Button
+    ...
+    ...    13) Logout as HR Admin
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeeinhra    lastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical Plus HRA 2016
+    Select Plan    2016 UnitedHealthcare $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Enter Effective Date    default
+    Select Plan    HRA
+    Verify Message    Ongoing Contributions
+    Save Benefit Enrollment
+    Logout HR Admin
+
+11.Approve EOI
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Approve EOI*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (hsapprovalhradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to HR Menu 'Employees' tab
+    ...
+    ...    3) Click on 'Add a new Employee' button,click on save button
+    ...
+    ...    4) Navigate to 'Benefit Details' tab in HR Menu
+    ...
+    ...    5) Click on start button against 'Life Plan 2016'
+    ...
+    ...    6) Select coverage amount as '$210,000.00- This amount is more than the guaranteed issue. The employee must complete Evidence of Insurability and submit it to Aetna, click on next button
+    ...
+    ...    7) click on next button from beneficiary page
+    ...
+    ...    8) Click on next button against effective date
+    ...
+    ...    9) Click on save button
+    ...
+    ...    10) Click on Approve All button from Overview tab
+    ...
+    ...    11) Navigate to Benefit details tab and click on Admin or Broker Approval link
+    ...
+    ...    12) Approve Health statement for Employee
+    ...
+    ...    13) Verify Approved employee from 'Health Statement Approval Manager' link from Additional Tools panel
+    ...
+    ...    14) Logout as HR Admin
+    ...
+    ...    *Sponsor Name : Test Automation Group Health Statement*
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithlife    lastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Life Plan 2016
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ 2014 Evidence of Insurability and submit it to BFI
+    Add New Beneficiary To Employee    none    none    none    none
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Approve All Benefits
+    Navigate To HR Menu    Benefitdetails
+    Approve Requested Amount For Employee From Benefit Details Page    Life Plan 2016    Approve $60,000.00
+    Navigate To HR Menu    Home
+    Navigate To Health Statement Approval Manager And Filter    Approved Employees
+    Verify Employee In Health Statement Approval Manager    HMVlastname
+    Logout HR Admin
+
+12.Refuse Medical - via Benefits tab
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Refuse Medical - via Benefits tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group 'priorityhradmingroup'
+    ...
+    ...    3) Navigate to 'Benefits >> Offers'
+    ...
+    ...    4) Navigate to 'Current offers >> Medical 2016'
+    ...
+    ...    5) Select 'Require user to Accept or Refuse' from Accepting Benefit drop down
+    ...
+    ...    6) click on Save button
+    ...
+    ...    7) Logout from Vista Admin
+    ...
+    ...    8) Login as HR Admin (priorityhradmin/bfEnrol1)
+    ...
+    ...    9) Navigate to Employees tab >> Add a new Employee button
+    ...
+    ...    10) Enter necessary details click on save button
+    ...
+    ...    11) Select 'Decline coverage for this person' from select plan page
+    ...
+    ...    12) Enter current effective date
+    ...
+    ...    13) Click on Save button
+    ...
+    ...    14) Logout from HR Admin
+    ...
+    ...    *Sponsor Name : priorityhradmingroup*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Enable Options From Edit Offer Details In Vista Role    Medical    Accepting Benefit    Require user to Accept or Refuse
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    lastname
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical 2016
+    Select Plan    Decline coverage for this person
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Logout HR Admin
+
+13.Refuse Medical Benefit using Refuse Benefits Button via Benefits tab
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Refuse Medical Benefit using Refuse Benefits Button via Benefits tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group 'priorityhradmingroup'
+    ...
+    ...    3) Navigate to 'Benefits >> Offers'
+    ...
+    ...    4) Navigate to 'Current offers >> Medical 2016'
+    ...
+    ...    5) Select 'Require user to Accept or Refuse' from Accepting Benefit drop down
+    ...
+    ...    6) click on Save button
+    ...
+    ...    7) Logout from Vista Admin
+    ...
+    ...    8) Login as HR Admin (priorityhradmin/bfEnrol1)
+    ...
+    ...    9) Navigate to Employees tab >> Add a new Employee button
+    ...
+    ...    10) Enter necessary details click on save button
+    ...
+    ...    11) Click on Benefit Details tab of an employee
+    ...
+    ...    12) Accept the alert message
+    ...
+    ...    13) Click Refuse button below Start Button against Medical 2016 Offer
+    ...
+    ...    14) Verify Coverage Declined message in Benefit Details page
+    ...
+    ...    15) Logout as Hr Admin
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Enable Options From Edit Offer Details In Vista Role    Medical    Accepting Benefit    Require user to Accept or Refuse
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    lastname
+    Navigate To HR Menu    Benefitdetails
+    Refuse Current Selected Benefit In HR Role    Medical 2016
+    Verify Message    Coverage Declined
+    Logout HR Admin
+
+14.Cancel a benefit - via Benefits tab
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Cancel a benefit - via Benefits tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as HR admin (priorityhradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to Employees >> Add a new Employee Button
+    ...
+    ...    3) Enter necessary details, click on save button
+    ...
+    ...    4) Select Medical 2016 plan
+    ...
+    ...    5) Select Employee Only as coverage level
+    ...
+    ...    6) Select premium deduction as 'yes'
+    ...
+    ...    7) Select no against medicare information
+    ...
+    ...    8) Enter current date in effective date text box
+    ...
+    ...    9) Click on save button
+    ...
+    ...    10) Navigate to Overview tab and click on 'Approve All' button
+    ...
+    ...    11) Navigate to Benefit Details tab
+    ...
+    ...    12) Click on Edit button against Medical Offer
+    ...
+    ...    13) Click on 'Perform Cancel Benefits for All' button
+    ...
+    ...    14) Click on Next button against Effective date
+    ...
+    ...    15) Click on Save button
+    ...
+    ...    16) Logout as HR Admin.
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Medicare Information    no    no
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Approve All Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016
+    performCancelBenefitsForAll
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Logout HR Admin
+
+15.Add dependent - with coverage level change
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Add dependent - with coverage level change*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as HR admin (priorityhradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to Employees >> Add a new Employee Button
+    ...
+    ...    3) Enter necessary details, click on save button
+    ...
+    ...    4) Select Medical 2016 plan
+    ...
+    ...    5) Select Employee Only as coverage level
+    ...
+    ...    6) Select premium deduction as 'yes'
+    ...
+    ...    7) Select no against medicare information
+    ...
+    ...    8) Enter current date in effective date text box
+    ...
+    ...    9) Click on save button
+    ...
+    ...    10) Navigate to Overview tab and click on 'Approve All' button
+    ...
+    ...    11) Navigate to Benefit Details tab
+    ...
+    ...    12) Click on Edit button against Medical offer
+    ...
+    ...    13) Edit Coverage and select 'Employee and Children' as coverage level
+    ...
+    ...    14) add Dependent from persons covered page
+    ...
+    ...    15) Select no against medicare information
+    ...
+    ...    16) Enter current date in effective date text box
+    ...
+    ...    17) Click on save button
+    ...
+    ...    18) Verify message 'Employee and Children' from home page
+    ...
+    ...    19) Logout as HR Admin.
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    [Tags]    smoke
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Medicare Information    no    no
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Approve All Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Coverage In Benefit
+    Select Coverage Level    Employee and Children
+    Persons Covered    add dependent    td:child
+    BuiltIn.Sleep    5s    wait for page load
+    Medicare Information    no    no
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Verify Message    Employee and Children
+    Logout HR Admin
+
+16.Has "Other Correction" permission
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Has "Other Correction" permission*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Perform Group search
+    ...
+    ...    3. Navigate to Users >> Administrators and Contacts page
+    ...
+    ...    4. Enable necessary options.
+    ...
+    ...    5. Click on Save button
+    ...
+    ...    6. Logout as Vista admin
+    ...
+    ...    7. Login as HR Admin
+    ...
+    ...    8. Enroll an employee in Medical Offer with previous hire date
+    ...
+    ...    9. complete Enrollment.
+    ...
+    ...    10. Navigate to Benefit Details
+    ...
+    ...    11. Edit current benefit >> Edit due to Change Reason
+    ...
+    ...    12. Select reason for Benefit Change
+    ...
+    ...    13. Edit plan and select other plan
+    ...
+    ...    14. Enter effective date
+    ...
+    ...    15. Click on save button
+    ...
+    ...    16. Logout as HR Admin
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Administrators & Contacts
+    Update Admin Account Configuration    Add/Edit benefit elections    Yes    yes
+    Update Admin Account Configuration    Benefit dates are editable    Yes    yes
+    Update Admin Account Configuration    Other (Correction) option is available    Yes    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedicalforothercorrection    lastname
+    Reason For Benefit Change    Other
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    Yes
+    Medicare Information    no    no
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Approve All Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Due To Change Reason    edit
+    Reason For Benefit Change    Other
+    Edit Current Plan    Medical 2016
+    Select Plan    Medical plus 2016
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Logout HR Admin
+
+17.No "Other Correction" permission
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *No "Other Correction" permission*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as Vista Admin
+    ...
+    ...    2. Perform Group search
+    ...
+    ...    3. Navigate to Users >> Administrators and Contacts page
+    ...
+    ...    4. Enable necessary options.
+    ...
+    ...    5. Click on Save button
+    ...
+    ...    6. Logout as Vista admin
+    ...
+    ...    7. Login as HR Admin
+    ...
+    ...    8. Enroll an employee in Medical Offer
+    ...
+    ...    9. complete Enrollment.
+    ...
+    ...    10. Navigate to Benefit Details
+    ...
+    ...    11. Edit current benefit >> Edit Effective Date
+    ...
+    ...    12. Enter effective date
+    ...
+    ...    13. Click on save button
+    ...
+    ...    14. Logout as HR Admin
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Administrators & Contacts
+    Update Admin Account Configuration    Other (Correction) option is available    No    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    lastname
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    Yes
+    Medicare Information    no    no
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Approve All Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Current Benefit Details    Effective Date
+    Enter Effective Date    d:currentdate:d:1
+    Save Benefit Enrollment
+    Logout HR Admin
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Administrators & Contacts
+    Update Admin Account Configuration    Other (Correction) option is available    Yes    yes
+    Logout Vista Admin
+
+18.Add dependent - without coverage level change
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Add dependent - without coverage level change*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login as HR Admin
+    ...
+    ...    2. Add a new employee in medical offer with previous hire date
+    ...
+    ...    3. Select Other option from 'Reason for Benefit Change
+    ...
+    ...    4. Select Medical 2016 plan
+    ...
+    ...    5. Select Employee and Children as Coverage level
+    ...
+    ...    6. Add a child as dependent
+    ...
+    ...    7. Select yes against premium deduction
+    ...
+    ...    8. Select no against medicare information
+    ...
+    ...    9. Enter default effective date
+    ...
+    ...    10. CLick on save button
+    ...
+    ...    11. Click on Approve all button from Overview tab
+    ...
+    ...    12. Navigate to Benefit Details, click on start button from Medical 2016
+    ...
+    ...    13. Click on Edit due to change reason button
+    ...
+    ...    14. Select life event as Birth
+    ...
+    ...    15. Click on Edit button against Persons covered page
+    ...
+    ...    16. Add child as dependent
+    ...
+    ...    17. Select no against medicare information
+    ...
+    ...    18. Click on save button
+    ...
+    ...    19. Logout as HR admin
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    ...    '
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedicalforothercorrection    lastname
+    Reason For Benefit Change    Other
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee and Children
+    Persons Covered    add dependent    td:child
+    Select Premium Deduction    yes
+    Medicare Information    no    no
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Approve All Benefits
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Due To Change Reason    edit
+    Select Life Event    td:lifeevent
+    Edit Current Benefit Details    strPersons Covered
+    Persons Covered    add another dependent    td:newbornchild
+    Medicare Information    no    no
+    Save Benefit Enrollment
+    Logout HR Admin
+
+19.Refuse all Benefit not Started tasks
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *Refuse all Benefit not Started tasks*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    2) Add Member to Group
+    ...
+    ...    3) Donot Enroll Member and Navigate to Benefits Details
+    ...
+    ...    4) Refuse All Benefits for Employee
+    ...
+    ...    5) Verify Coverage Declined Successfully
+    ...
+    ...    6) Logout from Application
+    [Tags]    QCOE
+    [Timeout]
+    #PreRequisites
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    BuiltIn.Sleep    2s
+    #Steps
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    Benefitdetails
+    Refuse All Benefits For Employee In HR Role
+    Verify Message    Coverage Declined
+    Logout HR Admin
+
+20.Enroll member in Flex benefits and elect a contribution
+    [Documentation]    Author : *Sunitha Yerra*
+    ...
+    ...    Test Case Title: *Enroll member in Flex benefits and elect a contribution*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin
+    ...
+    ...    2) Search for the group and go to its Benefits page
+    ...
+    ...    3) Click on "Edit Offer Details" under Offers menu
+    ...
+    ...    4) Select value of "Collecting Employee Contribution" field as "Ask For Employee Contribution"
+    ...
+    ...    5) Save the configuration changes and logout Vista role.
+    ...
+    ...    6) Login as HR Admin
+    ...
+    ...    7) Navigate to 'HR Menu >> Employees' tab
+    ...
+    ...    8) Click on 'Add a new Employee' button.
+    ...
+    ...    9) Enter necessary details and click on save button.
+    ...
+    ...    10) Select the Health Care FSA plan, click on Next Button
+    ...
+    ...    11) Enter amount the employee wants to contribute per year, click on 'Next' button
+    ...
+    ...    12) Enter the flexible number of deductions per year, click on 'Next' button
+    ...
+    ...    13) Continue and save the enrollment.
+    ...
+    ...    14) In the Overview page, verify for message "Health Care FSA" to confirm that the employee is enrolled to FSA benefit properly.
+    ...
+    ...    15) Logout HR Admin
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    FSA
+    updateEditOfferDetails    Collecting Employee Contribution    Ask for Employee Contribution
+    Save Configuration
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Navigate to HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    lastname
+    Select Plan    FSA
+    Enter Contribution Amount For FSA Plan    400
+    BuiltIn.sleep    3s
+    Navigate To Open Enrollment Tab In HR Role    Next Button
+    Enter Flexible Spending Deduction Periods    4
+    Save Benefit Enrollment
+    Verify Message    FSA
+    Logout HR Admin
+
+21.Enroll member in Flex benefits and elect a max over contribution
+    [Documentation]    Author : *Sunitha Yerra*
+    ...
+    ...    Test Case Title: *Enroll member in Flex benefits and elect a contribution*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin
+    ...
+    ...    2) Search for the group and go to its Benefits page
+    ...
+    ...    3) Click on "Edit Offer Details" under Offers menu
+    ...
+    ...    4) Select value of "Collecting Employee Contribution" field as "Ask For Employee Contribution"
+    ...
+    ...    5) Enter some maximum value for "Maximum Annual Contribution" field
+    ...
+    ...    6) Save the configuration changes and logout Vista role.
+    ...
+    ...    7) Login as HR Admin
+    ...
+    ...    8) Navigate to 'HR Menu >> Employees' tab
+    ...
+    ...    9) Click on 'Add a new Employee' button.
+    ...
+    ...    10) Enter necessary details and click on save button.
+    ...
+    ...    11) Select the Health Care FSA plan, click on Next Button
+    ...
+    ...    12) Enter a contribution amount more than the maximum value given in configurations, click on 'Next' button
+    ...
+    ...    13) Verify error message for entering an amount over the limit.
+    ...
+    ...    14) Logout HR Admin
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    FSA
+    updateEditOfferDetails    Collecting Employee Contribution    Ask for Employee Contribution
+    Save Configuration
+    Edit Offer In Vista Role    Current    FSA
+    updateEditOfferDetails    Maximum Annual Contribution    2000
+    Save Configuration
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Navigate to HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    lastname
+    Select Plan    FSA
+    Enter Contribution Amount For FSA Plan    2200
+    BuiltIn.sleep    3s
+    Verify Message    Please enter an amount less than or equal to the maximum value
+    Logout HR Admin
+
+22.Medicare Advantage - Lowest Cost Rate
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeeinmedicare    lastname
+    Navigate To Manage Employee In HR Role    Manage Medicare
+    Add Medicare Policydetails    td:addmedicarepolicydetailswithmedicarepayer
+    BuiltIn.Sleep    25s
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Retiree Medical and Pharmacy 2016
+    Select Plan    Medicare (C03) PPO with Rx-R4 2016
+    Select Coverage Level    Subscriber Only
+    Enter Effective Date    default
+    Save Benefit Enrollment
+    Logout HR Admin
+
+23.Defined Contributions
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *Defined Contributions*
+    ...
+    ...    Documentation: This test verifies the defined contributions amount for the enrolled employee is calculated and displayed correctly for an employee in HR Admin Role
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    2) Add Employee to Group
+    ...
+    ...    3) Enroll added employee to Medical Benefit plan and decline for HSA plan
+    ...
+    ...    4) On the Benefit Summary page, click on Save button
+    ...
+    ...    5) Now click on Defined Contributions tab
+    ...
+    ...    6) Verify the contribution amount is calculated and displayed properly
+    ...
+    ...    7) Logout from Application
+    [Tags]    QCOE
+    #Steps
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    BuiltIn.Sleep    2s
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    BuiltIn.Sleep    1s
+    Select Coverage Level    Decline coverage for this employee
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    BuiltIn.Sleep    1s
+    Navigate To HR Menu    DefinedContributions
+    #Verifying the Defined contribution amount provided for this group for an employee
+    Verify Message    50
+    Logout HR Admin
+
+24.Member Role - Enrollment - Employee with Dependent
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Member Role - Enrollment - Employee with Dependent*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (priorityhradmin\bfEnrol1)
+    ...
+    ...    2) Navigate to Employees >> Click on 'Add new Employee' button
+    ...
+    ...    3) Enter necessary details of employee, click on save button
+    ...
+    ...    4) Navigate to 'Manage Employee >> View in Member Role'
+    ...
+    ...    5) Click on Get Started, enter profile pages information
+    ...
+    ...    6) Add Child as dependent
+    ...
+    ...    7) Select no against medicare information
+    ...
+    ...    8) Click on Get Started against 'Medical 2016'
+    ...
+    ...    9) Select 'Medical 2016' plan
+    ...
+    ...    10) Select 'Employee and Children' as coverage level
+    ...
+    ...    11) Select Dependent eligible for covered benefit
+    ...
+    ...    12) Select 'no' against premium deduction
+    ...
+    ...    13) Select 'no' against medicare information
+    ...
+    ...    14) Click on Save button.
+    ...
+    ...    15) Verify success message
+    ...
+    ...    16) Logout as Member.
+    ...
+    ...    17) Logout as HR Admin.
+    ...
+    ...    *Sponsor Name : Priorityhradmingroup*
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    lastname
+    View in Member Role
+    Run Member Profile Pages
+    Add Dependent To Member    td:child    deplastname
+    Medicare Information In Member Role    no
+    Start Current Benefit For Member    Medical 2016
+    Select Plan For Member    Medical 2016
+    Select Coverage Level For Member    Employee and Children
+    Select Dependents To Be Covered By Benefit    HMVdeplastname
+    Select Premium Deduction    no
+    Medicare Information In Member Role    no
+    Save Benefit Enrollment In New Member    none
+    Log Out To See Latest Changes    You have been working in another window

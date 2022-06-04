@@ -1,0 +1,99 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Individual Health Statements functionality
+Test Setup        getResource
+Force Tags        individualhealthstatement
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1. Add New Health Statement To Plan
+    [Documentation]    Author : *Arun Kasarla*
+    ...
+    ...    Test Case Title: *Add New Health Statement To Plan*
+    ...
+    ...    Login to eEnrollment as a Vista admin
+    ...
+    ...    Perform Carrier Search
+    ...
+    ...    Add Health Statement
+    ...
+    ...    Delete Health Statement
+    ...
+    ...    Logout
+    [Tags]    smoke
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    ACME
+    Navigate To    SurveysAndHealthStatements    Individual Health Statements
+    Add New Health Statement Profile    RNDHealthStatement    Online within eEnrollment
+    Delete Health Statement    HMVprofileName
+    Logout Vista Admin
+
+2. Add Page and Question To Health Statement
+    [Documentation]    Author : *Arun Kasarla*
+    ...
+    ...    Test Case Title: *Add Page and Question To Health Statement*
+    ...
+    ...    Login to eEnrollment as a Vista admin
+    ...
+    ...    Perform Carrier Search
+    ...
+    ...    Add Health Statement
+    ...
+    ...    Add Page To Health Statement
+    ...
+    ...    Add Question To The Page
+    ...
+    ...    Delete Health Statement
+    ...
+    ...    Logout
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    ACME
+    Navigate To    SurveysAndHealthStatements    Individual Health Statements
+    Add New Health Statement Profile    RNDHealthStatement    Online within eEnrollment
+    Add Page To Health Statement    HMVprofileName
+    Add Question To Health Statement    Page 1    Question1
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    ACME
+    Navigate To    SurveysAndHealthStatements    Individual Health Statements
+    Delete Health Statement    HMVprofileName
+    Logout Vista Admin
+
+3. Add New Health Statement and Verify from Drop Down
+    [Documentation]    Author : *Arun Kasarla*
+    ...
+    ...    Test Case Title: *Add New Health Statement and Verify from Drop Down*
+    ...
+    ...    Login to eEnrollment as a Vista admin
+    ...
+    ...    Perform Carrier Search
+    ...
+    ...    Add Health Statement
+    ...
+    ...    Add Page To Health Statement
+    ...
+    ...    Add Question To The Page
+    ...
+    ...    Verify Health Statement In Plan Edit Page
+    ...
+    ...    Delete Health Statement
+    ...
+    ...    Logout
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    ACME
+    Navigate To    SurveysAndHealthStatements    Individual Health Statements
+    Add New Health Statement Profile    RNDHealthStatement    Online within eEnrollment
+    Add Page To Health Statement    HMVprofileName
+    Add Question To Health Statement    Page 1    Question1
+    Navigate To    GROUPS    Group Search
+    Perform Group Search    BF QA Test Automation Group
+    Navigate To    BENEFITS    Plans
+    Verify Health Statement In Edit Plan    HFSA 2016    HMVprofileName
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    ACME
+    Navigate To    SurveysAndHealthStatements    Individual Health Statements
+    Delete Health Statement    HMVprofileName
+    Logout Vista Admin

@@ -1,0 +1,225 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Variables ***
+@{Configurations}    Add new employee    Add/Edit employee login information    Change employee personal information    Work Information: Access to Earnings Info    Work Information: Add/Edit all other work information on the Employee Profile    Add/Edit SSO Id    Terminate an employee
+...               Rehire an Employee    Change the category for an employee    Add/Edit benefit elections    Allow Access to the Correct Effective Date Wizard    Allow Administrator to Hide Dependents
+
+*** Keywords ***
+Update system configuration for Group in vista
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : CH Phani Srikar
+    ...
+    ...    Purpose : Robot user keyword is used to update / change any field value in Basics - > System Information Page for a Group.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} | ${save}
+    ...
+    ...    ${field} \ : Fiedl label seen on the application. Eg : Status, Private Label, Sponcoring Carrier Etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Not Live/Live, \ BFI/BCBSSC etc , BFI/Benefit Resource etc
+    ...
+    ...    ${save} : Yes / No value to perform the save action after changing the field value in the system information page.
+    Navigate To    Basics    System
+    Update System Information    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Update User configuration for Group in vista
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : CH Phani Srikar
+    ...
+    ...    Purpose : Robot user keyword is used to update / change any field value in Basics - > System Information Page for a Group.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} | ${save}
+    ...
+    ...    ${field} \ : Fiedl label seen on the application. Eg : Status, Private Label, Sponcoring Carrier Etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Not Live/Live, \ BFI/BCBSSC etc , BFI/Benefit Resource etc
+    ...
+    ...    ${save} : Yes / No value to perform the save action after changing the field value in the system information page.
+    Update User Access    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Cobra Setup Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : Nagarjuna Behara
+    ...
+    ...    Purpose : Robot user keyword is used to update \ change any field value in Basics - >Cobra setup Page for a Group.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} | ${save}
+    ...
+    ...    ${field} \ : Fiedl label seen on the application. Eg : Enable COBRA Manager,Allow COBRA Exceptions,Continuation Type Etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Yes/No, Yes/No etc , COBRA/State Continution etc
+    ...
+    ...    ${save} : Save the Cobra setup page
+    Navigate To    BASICS    COBRA Setup
+    Update Cobra Setup    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Group Customization Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Purpose : Robot user keyword is used to update the configuration in \ Basics - >Group Caustomization Page for a Group in Vista Role.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value}
+    ...
+    ...    ${field} : Fiedl label seen on the application. Eg : Military,Display HSA Statement,Content Management
+    ...    Etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Enabled/Disabled, Yes/No /User Carrier Dafault ,Enabled/Disabled etc
+    Update Group Customization    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Create New Category
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Purpose : Robot user keyword is used to Add new category for Category Type in Basics - > Category Information Page for a Group.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} | ${save}
+    ...
+    ...    ${field} \ : Category Name
+    ...
+    ...    ${value} : \ Category Description
+    ...
+    ...    ${save} : Save the Category
+    Add New Category    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Work Custamiztion Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : Nagarjuna Behara
+    ...
+    ...    Purpose : Robot user keyword is used to configure the work customization in Basics , vista role
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} | $save}
+    ...
+    ...    ${field} \ : Fiedl label seen on the application. Eg :Pay Calendars,Pay Frequency etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Enabled/Disabled, Required /Optional/Not captured etc
+    ...
+    ...    $save} : Save the configuaration
+    Navigate To    BASICS    Work Customization
+    Update Work Customization    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Rate Factor Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Purpose : Update Rate factor survey
+    ...
+    ...    Usage : User defined keyword to update the rate factor survey
+    Update Rate Factor Survey    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Personal Customization Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : Nagarjuna Behara
+    ...
+    ...    Purpose : Robot user keyword is used tocreate new Category Type Basics - >Personal Caustomization Page for a Group.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} \ ${save}
+    ...
+    ...    ${field} : Fiedl label seen on the application. Eg : Race Etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Enabled/Disabled etc
+    ...
+    ...    $save} : Save the configuaration
+    Update Personal Customization    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Tools and Reports Configurations
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : Nagarjuna Behara
+    ...
+    ...    Purpose : Robot user keyword is used tocreate new Category Type Basics - >Tools and Reports Setup for a Group.
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value}
+    ...
+    ...    ${field} : Fiedl label seen on the application. Eg : Military,Display HSA Statement,Content Management
+    ...    Etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Enabled/Disabled, Yes/No /User Carrier Dafault ,Enabled/Disabled etc
+    Update Tools And Reports    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Login with InValid vista credentials
+    [Documentation]    Author : CH Phani Srikar
+    ...
+    ...    Purpose : Login to eEnrollment application with Invalid vista credentials \ and verify the error message
+    Login To Enrollment As Vista Admin    invalidvistacredentials
+    Verify Message    You could not be logged in with the information provided. Please check your Username and Password
+
+Update Admin Account Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    *Author : Nagarjuna Behara*
+    ...
+    ...    Purpose : Robot user keyword is used to Update the configuration of sub menu,s under \ Basics tab Menu
+    ...    (User Accesss, Personal Customization, Work Customization, Group Customization)
+    ...
+    ...    *Arguments :*
+    ...
+    ...    ${field} | ${value} | ${save}
+    ...
+    ...    *Example:*
+    ...
+    ...    ${field} : Fiedl label seen on the application. Eg : Race
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : Enabled/Disabled
+    ...
+    ...    ${save}: if yes then save the Configurations
+    Edit Administrator Account    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Configure Edit Offer Details Page
+    [Arguments]    ${field}    ${value}    ${save}
+    Update Edit Offer Details    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Update Identification Configuration
+    [Arguments]    ${field}    ${value}    ${save}
+    [Documentation]    Author : Nagarjuna Behara
+    ...
+    ...    Purpose : Robot user keyword is used to update the configuration of Idenetication under Basic Tab in Vista Role
+    ...
+    ...    Arguments :
+    ...
+    ...    ${field} | ${value} | ${save}
+    ...
+    ...    ${field} : Fiedl label seen on the application. Eg : Name,Sponsor ID, Phone Number etc
+    ...
+    ...    ${value} : Value to be selected or entered for the specific field. Eg : BF QA Test Automation Group, BF QA Automation, 1234586907 etc
+    Update Identification Information    ${field}    ${value}
+    Run Keyword If    '${save}' == 'yes'    Save Configuration
+
+Update All Transactional permissions of HR admin to Yes
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Description: This keyword \ navigate to USERS > Administrators & Contacts > Account Options > Edit Account > Transaction Permissions \ and \ Sets all configurations to Yes.
+    : FOR    ${element}    IN    @{Configurations}
+    \    Run Keyword And Continue On Failure    Edit Administrator Account    ${element}    Yes
+    \    Save Configuration
+
+Update All Transactional permissions of HR admin to No
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Description: This keyword \ navigate to USERS > Administrators & Contacts > Account Options > Edit Account > Transaction Permissions \ and \ Sets all configurations to Yes.
+    : FOR    ${element}    IN    @{Configurations}
+    \    Run Keyword And Continue On Failure    Edit Administrator Account    ${element}    No
+    \    Save Configuration

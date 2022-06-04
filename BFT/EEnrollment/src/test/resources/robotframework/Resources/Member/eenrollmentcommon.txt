@@ -1,0 +1,2 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the Common eEnrollment

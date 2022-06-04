@@ -1,0 +1,833 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../Resources/common.txt
+Resource          ../../Resources/HRAdmin/5xMigration/DollarTreeResource.txt
+Resource          ../../Resources/HRAdmin/bfqatestautomationgroup.txt
+
+*** Variables ***
+${initial_benefit_enrollment_date}    d:currentdate
+
+*** Test Cases ***
+41.Initial Enrollment(Before Approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc41
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    TestMandatory31077
+    Perform Simple Employee Search    HMVdollartreelastnametc41
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Close HR Admin
+    Logout Vista Admin
+
+42.Initial Enrollment(After Aprroval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc42
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc42
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+43.Refuse All Eligible Benefits
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc43
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc43
+    Navigate To HR Menu    benefitdetails
+    Refuse Current Selected Benefit In HR Role    Dental 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Vision 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Voluntary Life 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Short Term Disability 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Long Term Disability 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Health Flexible Spending Accounts 2016
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    Dependent Care Flexible Spending Account 2016
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Comment    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+44.Accept Benefit After Refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc44
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc44
+    Navigate To HR Menu    benefitdetails
+    Refuse Current Selected Benefit In HR Role    Dental 2016
+    BuiltIn.Sleep    2s    wait time
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Dental 2016
+    Edit Benefit Details    Dental 2016    Dental
+    Select Plan    Basic 2016
+    Select Coverage Level    Associate Only
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+45.Cancel Benefit Before Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc45
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc45
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Next
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+46.Cancel Benefit After Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc46
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc46
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Next
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+47.Enroll Benefit After Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc47
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc47
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Approve From HR Admin
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Next
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Medical
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate Only
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    select plan    No, I am not a tobacco user.
+    BuiltIn.Sleep    3s
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save benefit in snapshot page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+48.Terminate the Employee
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc48
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc48
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+49.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc49
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc49
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Perform Employee Retirement
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+50.Enroll in COBRA
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc50
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc50
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Add COBRA Policy
+    Close HR Admin
+    Logout Vista Admin
+
+51.Cancel COBRA
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc51
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc51
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Approve From HR Admin
+    Add COBRA Policy
+    Cancel COBRA Benefits For Member In HRR Ole
+    Close HR Admin
+    Logout Vista Admin
+
+52.Add Dependent to Member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc52
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc52
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    BuiltIn.Sleep    3s
+    Next
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Comment    Enter Effective Date    d:currentdate
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Select Plan    No, I am not a tobacco user.
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+53.Remove Dependent from Member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc53
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc53
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    Next
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Select Plan    No, I am not a tobacco user.
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Associate Only
+    Enter New Effective Date    d:currentdate    test
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+54.Add and Apply Dependent with an Updated effective date
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5425001410
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ancestrymandatory    ancestrylastnametc53
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVancestrylastnametc53
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    2016 UHC $350 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Health Care FSA
+    Set Contribution Amount For Flex Benefit    80
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Dependent Care FSA
+    Set Contribution Amount For Flex Benefit    80
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    dependents
+    Add Another Dependent To Employee    Child    lstChild
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    Apply Coverage To Dependent
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+55.Remove and Apply Dependent
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    5425001410
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:ancestrymandatory    ancestrylastnametc55
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVancestrylastnametc55
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    2016 UHC $350 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Health Care FSA
+    Set Contribution Amount For Flex Benefit    80
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Dependent Care FSA
+    Set Contribution Amount For Flex Benefit    80
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    dependents
+    Add Another Dependent To Employee    Child    lstChild
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    BuiltIn.Sleep    3s
+    Cancel Coverage To Dependent
+    Next
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+56.Change Category to make beneift eligible to non-eligible
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc56
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc56
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Change Employee Cateogry    Locations    DC1
+    Comment    Change Employee Cateogry    OFFICE    SBU 60F Business Consulting - Global Business Serv
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+57.Change Category from Non Benefit Eligible to Benefit Eligible
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc57
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc57
+    Change Employee Cateogry    Locations    SSC
+    Comment    Change Employee Cateogry    OFFICE    SBU 60F Business Consulting - Global Business Serv
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+58.Change Category Value that enables for Multiple Benefits
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc58
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc58
+    Change Employee Cateogry    Locations    DC1
+    Comment    Change Employee Cateogry    OFFICE    SBU 60F Business Consulting - Global Business Serv
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Enroll in Voluntary Life 2016    ${initial_benefit_enrollment_date}    $140,000.00
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+59.Update Effective date of Enrolled Benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc59
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc59
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Effective Date
+    Enter New Effective Date    d:currentdate:d:1    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+60.Change the Benefit Plan for Enrolled member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc60
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc60
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Plan
+    Select Plan    Gold 2016
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+61.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc61
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc61
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    Next
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+62.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc52
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc52
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    BuiltIn.Sleep    3s
+    Next
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Comment    Enter Effective Date    d:currentdate
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Select Plan    No, I am not a tobacco user.
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Associate Only
+    Enter New Effective Date    d:currentdate    test
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+63.Increase Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc63
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc63
+    Enroll in Voluntary Life 2016    ${initial_benefit_enrollment_date}    $60,000.00
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Voluntary Life 2016
+    Edit Benefit Details    Voluntary Life    Coverage Amount
+    Select Coverage Amount    $70,000.00
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+64.Decrease Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc64
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc64
+    Enroll in Voluntary Life 2016    ${initial_benefit_enrollment_date}    $60,000.00
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Voluntary Life 2016
+    Edit Benefit Details    Voluntary Life    Coverage Amount
+    Select Coverage Amount    $50,000.00
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+65.Change in Employee Enrollment Cost
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc65
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc65
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    Next
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+68.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc68
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc68
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Update Employee Salary    53100    per year
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+69.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc69
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc69
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Update Employee Salary    49500    per year
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR Admin
+    Close HR Admin
+
+71.Change Dependent Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc71
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc71
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    BuiltIn.Sleep    3s
+    Next
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Comment    Enter Effective Date    d:currentdate
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Select Plan    No, I am not a tobacco user.
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Navigate To HR Menu    dependents
+    Edit Dependent Details    Spouse    lstSpouse
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+72.Change Subscriber Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc72
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc72
+    Enroll in Medical 2016 Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Update Employee Personel Profile    td:dollartreememberupdate    HMVdollartreelastnametc72
+    Close HR Admin
+    Logout Vista Admin
+
+87.Enroll a member in Basic Life with a coverage amount over $50,000
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc87
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc87
+    Enroll in Voluntary Life 2016    ${initial_benefit_enrollment_date}    $60,000.00
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+90.Enroll in medical benefit with Spouse Coverage Level of same Sex
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc90
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc90
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    BuiltIn.Sleep    3s
+    Next
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Comment    Enter Effective Date    d:currentdate
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Select Plan    No, I am not a tobacco user.
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+91.Change spouse sex to same as subscriber or vise versa
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc91
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc91
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate + Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Select Spouse Information    Spouse Information    I acknowledge that the above requirements are met.
+    Select Spouse Policy Survey Answer    Yes
+    BuiltIn.Sleep    3s
+    Next
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Comment    Enter Effective Date    d:currentdate
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Select Plan    No, I am not a tobacco user.
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Update Employee Personel Profile    td:dollartreememberupdate    HMVdollartreelastnametc72
+    Close HR Admin
+    Logout Vista Admin
+
+101.Enroll a member in a coverage level greater than guanrateed amount but do not approve
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc101
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc101
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Voluntary Life 2016
+    BuiltIn.Sleep    3s    wait time
+    Select Coverage Amount    $170,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ Evidence of Insurability and submit it to Unum
+    Comment    Select Plan    Voluntary Spouse Life and AD&D 2016
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Comment    Next
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+102.Enroll a member in a coverage level greater than the guaranteed issue amount but the amount over the GI is not approved. The GI amount is approved.
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    2933833214
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:dollartreemandatory    dollartreelastnametc101
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVdollartreelastnametc101
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Voluntary Life 2016
+    Select Coverage Amount    $170,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ Evidence of Insurability and submit it to Unum
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin

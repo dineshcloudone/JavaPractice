@@ -1,0 +1,506 @@
+{
+  "1": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryguide",
+    "shopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    }
+  },
+  "2": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryguide",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses"
+      
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "3": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryguide",
+    "shopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    }
+  },
+  "4": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryguide"
+  },
+  "5": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses,College expenses,Mortgage payment",
+      "answer5": "No, I do not"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "6": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "7": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "8": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-71",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "9": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses,I already have insurance",
+      "answer5": "No, I do not"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "10": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses,I already have insurance",
+      "answer5": "No, I do not"
+    },
+    "child": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepChild",
+      "birthdate": "d:currentdate:y:-7",
+      "gender": "Female",
+      "relationship": "Child"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "11": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Very confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "12": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Frequent treatment for illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Very confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "13": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Very confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "14": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Very confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "15": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Frequent treatment for illness",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Very confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "16": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Very confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "17": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "18": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Frequent treatment for illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "19": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "20": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "21": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Frequent treatment for illness",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "22": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Somewhat confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "23": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "24": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Frequent treatment for illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "language": "English",
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "25": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "26": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "27": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "28": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+   "29": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "30": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "Yes, for a few months"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "31": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "Yes, for up to a year"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "32": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "Yes, for more than a year"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "33": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "34": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "Yes, for a few months"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "35": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "Yes, for up to a year"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "36": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryLifeguided",
+    "validationshopping": {
+      "answer1": "Serious medical condition",
+      "answer2": "Less from paycheck and more if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "Yes, for more than a year"
+    },
+    "message": "Your request is missing information or needs correcting. Please fix the areas indicated below."
+  },
+  "37": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryguide",
+    "shopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    }
+  },
+   "38": {
+    "resource": "autocosentryguide",
+    "guidedshoppinggroup": "autocosentryguide",
+    "shopping": {
+      "answer1": "Preventive care and occasional illness",
+      "answer2": "More from paycheck and less if care needed",
+      "answer3": "Not confident",
+      "answer4": "Family Living expenses",
+      "answer5": "No, I do not"
+    }
+  },
+  "default": {
+    "resource": "mercer"
+  }
+}

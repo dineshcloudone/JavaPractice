@@ -1,0 +1,358 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Adding Dependents functionality
+Test Setup        getResource
+Force Tags        adddependent
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Add spouse as dependent to a member
+    [Documentation]    Author : *Rajeswari Nimmala*
+    ...
+    ...    Test Case Title: *Add dependent to member and enrol in medical*
+    ...
+    ...    As a member add a single dependent
+    ...
+    ...    ======================
+    ...
+    ...    Test Steps :
+    ...
+    ...    1.Login to Enrollment as a Vista User
+    ...
+    ...    2.Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    3.Add New Member with "default" information and login "enabled" and Category as "Medical"
+    ...
+    ...    4.Login as New Member
+    ...
+    ...    5.Add dependent "spouse" to dependent screen
+    ...
+    ...    6.Verify dependent added successfully
+    ...
+    ...    7.Enroll in medical benefits
+    ...
+    ...    8.Logout
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    QCOE BF QA Test Automation Group R
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For HS Aand FSA Plans    Medical plus HSA 2016    Do not display this benefit element
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Run Member Profile Pages In New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    td:spouse    spouselastname
+    Verify Dependent Data    name    HMVspouselastname    Dependent table
+    Select Market Plan For New Member Role    Medical plus 2016
+    Select Premium Deduction    no
+    Save Benefit Enrollment In New Member    Medical plus 2016
+    Complete Enrollemnt In New Member Role
+    Verify Employee Detail Report In New Member UI    Personal Information    HMVspouselastname
+    Logout New Member Role
+
+2. Add child as dependent to a member
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QA test Automation Group
+    Navigate to    Users    Add Member
+    Add Member in Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Run Member Profile Pages
+    Add Dependent to Member    td:Child    childlastname
+    Logout Member
+
+3.Verify member can Add Beneficiary
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Verify Member can Add Beneficiary*
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Member should have valid login credentials
+    ...
+    ...    2) Member should be enrolled for a life/retirement benefit
+    ...
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (BHAVNATEST123/bfEnrol1)
+    ...
+    ...    2) Complete member initial login (Language selction, Password Change etc.,)
+    ...
+    ...    3) Click on Life Life coverage paln
+    ...
+    ...    4) Click on Edit life coverage button
+    ...
+    ...    5) Add Spouse as Beneficiary with 100% allocation
+    ...
+    ...    6) Save benefit and complete enrollment
+    ...
+    ...    7) Navigate to Home page and Verify that Beneficiary is added
+    ...
+    ...    8) Logout Member
+    [Tags]    QCOE
+    Login To Enrollment with Valid Credentials    td:memberusername    td:memberpassword
+    Announcements Page    td:annoucementpage
+    Navigate To New Member Menu    Benefits
+    Edit Coverage In New Member Role    Supp Life 2016
+    Select Life Coverage Plan    Employee + Sp + 1 Ch / $1,000.00
+    Edit Beneficiary In New Member Role    Supplemental Life
+    Add Another Primary Beneficiary    person    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Verify Beneficiary And Save    Spouse
+    Logout New Member Role
+
+4.Enter Dependents Outside of Enrollment
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Enter Dependents Outside of Enrollment*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search(QCOE Diamond Foods)
+    ...
+    ...    3) Navigate to Basics and Personal Customization
+    ...
+    ...    4) Allow Unknown Gender - Allow Subscriber and dependents
+    ...
+    ...    5) Save and Logout Vista Admin
+    ...
+    ...    6) Login as Member (testqcoe_1/passWord1234)
+    ...
+    ...    7) Navigate to Dependents
+    ...
+    ...    8) Add Dependents to Member
+    ...
+    ...    9) Verify the dependent is added sucessfully and Logout Member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Personal Customization
+    Change Dependent Configuration For Member In Vista Role    Allow Unknown Gender
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    DEPENDENTS
+    Add Dependent To Member    td:spouse    dependentlastname
+    Medicare Information In Member Role    no
+    Verify Dependent Data    Name    HMVdependentlastname    Dependent data
+    Logout New Member Role
+
+5.Remove A Dependent From A Benefit and Prevent Them From Displaying As A Dependent
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Remove A Dependent From Benefit and Prevent Them From Displaying As A Dependent*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search(QCOE Diamond Foods)
+    ...
+    ...    3) Navigate to Basics and Personal Customization
+    ...
+    ...    4) Allow Users to Hide Dependents = Allow HR Admin and Member
+    ...
+    ...    5) Save and Logout Vista Admin
+    ...
+    ...    6) Login as Member (testqcoe_8/passWord1234)
+    ...
+    ...    7) Navigate to Benefits
+    ...
+    ...    8) Remove Dependents from Benefits and As Dependent
+    ...
+    ...    9) Verify and Logout Member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Personal Customization
+    Change Dependent Configuration For Member In Vista Role    Allow Users to Hide Dependents
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    td:spouse    lastname
+    Perform Begin Enrollment in Member Role
+    Select Dependent In Add Dependents Page    Spouse
+    Select Market Plan For New Member Role    Preferred Care Blue PPO Plan 1
+    Additional Insurance Information In Member Role    no
+    Save Benefit Enrollment In New Member    Preferred Care Blue PPO Plan 1
+    HSA Complete Contribution
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    BENEFITS
+    Remove Dependent From Benefits
+    Navigate To New Member Menu    DEPENDENTS
+    Delete Dependent For Member
+    Logout New Member Role
+
+6.Verify Beneficairy data is not saved when user selects 'PREVIOUS' button on 'Beneficiary information' page
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: * Verify Beneficairy data is not saved when user selects 'PREVIOUS' button on 'Beneficiary information' page*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Add member with Life Plan
+    ...
+    ...    3) Logout Vista
+    ...
+    ...    4) Login as Member and add dependent.
+    ...
+    ...    5) Perform Begin Enrolment for Life Plan
+    ...
+    ...    6)Add the beneficiary information and click Previous Button
+    ...
+    ...    7)Verify that the beneficairy details are not saved
+    ...
+    ...    8) Logout as member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    Dependents
+    Add Dependent to Member    td:Child    childlastname
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    $50,000.00
+    Verify Previous Cancel Button In Add Beneficiary Page    Person    td:beneficiaryspouse    OutbenlastName
+    Logout New Member Role
+
+7.Verify Beneficairy data is not saved when user selects 'CANCEL' button on 'Beneficiary information' page
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: * Verify Beneficairy data is not saved when user selects 'CANCEL' button on 'Beneficiary information' page*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Add member with Life Plan
+    ...
+    ...    3) Logout Vista
+    ...
+    ...    4) Login as Member and add dependent.
+    ...
+    ...    5) Perform Begin Enrolment for Life Plan
+    ...
+    ...    6)Add the beneficiary information and click Cancel Button
+    ...
+    ...    7)Verify that the beneficairy details are not saved
+    ...
+    ...    8) Logout as member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    Dependents
+    Add Dependent to Member    td:Child    childlastname
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    $50,000.00
+    Verify Previous Cancel Button In Add Beneficiary Page    Person    td:beneficiaryspouse    OutbenlastName
+    Logout New Member Role
+
+8.Verify User is able to edit Beneficiary information with EDIT option on 'Life: Beneficiary information' page
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: * Verify User is able to edit Beneficiary information with EDIT option on 'Life: Beneficiary information' page*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Add member with Life Plan
+    ...
+    ...    3) Logout Vista
+    ...
+    ...    4) Login as Member and add dependent.
+    ...
+    ...    5) Perform Begin Enrolment for Life Plan
+    ...
+    ...    6)Add the beneficiary information and click Next Button
+    ...
+    ...    7)Add second beneficiary information and click Next Button
+    ...
+    ...    8) Click on Edit button and update the beneficiary information
+    ...
+    ...    9)Verify that the beneficairy details are updated correctly
+    ...
+    ...    10) Logout as member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    Dependents
+    Add Dependent to Member    td:Child    childlastname
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    $50,000.00
+    Verify Previous Cancel Button In Add Beneficiary Page    Person    td:beneficiaryspouse    OutbenlastName
+    Verify Previous Cancel Button In Add Beneficiary Page    Person    td:beneficiarychild    Outben1lastName
+    Edit Beneficiary Data    HMVOutbenlastName    td:beneficiaryspouse    outSecLastName
+    Logout New Member Role
+
+9.Verify subscriber is able to add Dependents with 'Save' and 'Save and Add Another' button
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Verify subscriber is able to add Dependents with 'Save' and 'Save and Add Another' button*
+    ...
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login to enrollment as vista admin
+    ...
+    ...    2) Perform group search and select group
+    ...
+    ...    3) Add member in vista
+    ...
+    ...    4) logout vista role
+    ...
+    ...    5) Login as member role with new member credentials
+    ...
+    ...    6) Navigate to dependents
+    ...
+    ...    7) Add dependent "child" to dependent screen by clicking on Save button
+    ...
+    ...    8) Verify dependent added successfully
+    ...
+    ...    9) Navigate to Dependents screen and Add dependent "spouse" by clicking on 'Save and Add Another' button
+    ...
+    ...    10) Verify dependent added successfully and user navigated to add another dependent.
+    ...
+    ...    11) Logout from the application
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    USERS    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    Dependents
+    Add Dependent to Member    td:child    childlastname
+    Verify Dependent Data    name    HMVchildlastname    Dependent table
+    Navigate To New Member Menu    Dependents
+    Add Dependent To Member    td:spouse    spouselastname
+    Verify Dependent Data    name    HMVspouselastname    Dependent table
+    Logout New Member Role

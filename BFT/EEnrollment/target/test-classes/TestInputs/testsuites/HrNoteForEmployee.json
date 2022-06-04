@@ -1,0 +1,33 @@
+{
+  "1": {
+    "resource": "priorityhradmingroup",
+    "hrnotes": {
+      "hrnoteslink": "Member Profile Page",
+      "benefit": "Dental",
+      "title": "RNDA Note from HR Administrator",
+      "message": "A Message from HR Administrator"
+    }
+  },
+  "2": {
+    "resource": "priorityhradmingroup",
+    "hrnotesdependentselection": {
+      "hrnoteslink": "Dependent Relationship Selection",
+      "benefit": "Dental",
+      "plan": "Dental Offer 2016",
+      "title": "RNDA Note from HR Administrator",
+      "message": "A Message from HR Administrator"
+    }
+  },
+  "3": {
+    "resource": "priorityhradmingroup",
+    "hrnotesaddbenefitslist": {
+      "hrnoteslink": "Benefits List Page",
+      "benefit": "Dental",
+      "title": "RNDBenefits List Page Note from HR Administrator",
+      "message": "Benefits List Page Message from HR Administrator"
+    }
+  },
+  "default": {
+    "resource": "priorityhradmingroup"
+  }
+}

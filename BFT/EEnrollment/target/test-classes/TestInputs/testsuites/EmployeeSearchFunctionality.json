@@ -1,0 +1,99 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "employeehistory": {
+      "whatdoyouwant": "Point in time",
+      "effectivedate": "currentdate:d:2"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "No enablement Group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "noenablementsadmin",
+      "password": "bfEnrol1"
+    },
+    "mandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate",
+      "categories": "New Delhi Name - New Delhi Name,Chennai Name - Chennai Name"
+    },
+    "memberwithcategorydif": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-27",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate",
+      "categories": "New York Name - New York Name,Hyderabad Name - Hyderabad Name"
+    }
+  },
+  "6": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "7": {
+    "resource": "bfqatestautomationgroup",
+    "memberidentifierinformation": {
+      "memberidentifier": "RNDAutoMember",
+      "carriername": "medical (BFI)"
+    },
+    "alternateidentifierinformation": {
+      "alternateidentifier": "RNDAutoAlternate",
+      "carriername": "medical (BFI)"
+    }
+  },
+  "8": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "9": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "10": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "11": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

@@ -1,0 +1,29 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+Enroll Health Benefit of Emergent Bio Solutions Group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Health 2016
+    Select Plan    Premier Plus PPO Plan 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    select plan    Flexible Spending Account (FSA) 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+Enroll Basic Life AD and D benefit in EBS Group
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Basic Life and Accidental Death and Dismemberment 2016
+    Next
+    Select Coverage Amount    $50,000.00
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Next
+    Enter Effective Date    d:currentdate
+    Next
+    Next
+    click use for this benefit
+    Next
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page

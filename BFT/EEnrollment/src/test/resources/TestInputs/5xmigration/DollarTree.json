@@ -1,0 +1,441 @@
+{
+	"1": {
+		"resource": "DollarTreeResource",
+		"newworkinformation": {
+		"newservicedate" :"currentdate:M:1" 
+      }
+	},
+	"2": {
+		"resource": "DollarTreeResource",
+
+		"newworkinformation": {
+		"newservicedate" :"currentdate:Y:1" 
+      }
+	},
+	"3": {
+		"resource": "DollarTreeResource",
+		"newworkinformation": {
+		"newservicedate" :"currentdate:M:1" 
+      }
+
+	},
+	"4": {
+		"resource": "DollarTreeResource"
+
+	},
+	"5": {
+		"resource": "DollarTreeResource"
+
+	},
+	"6": {
+		"resource": "DollarTreeResource"
+
+	},
+	"7": {
+		"resource": "DollarTreeResource"
+
+	},
+	"8": {
+		"resource": "DollarTreeResource"
+
+	},
+	"9": {
+		"resource": "DollarTreeResource"
+
+	},
+	"10": {
+		"resource": "DollarTreeResource"
+
+	},
+	"11": {
+		"resource": "DollarTreeResource"
+
+	},
+	"12": {
+		"resource": "DollarTreeResource"
+
+	},
+	"13": {
+		"resource": "DollarTreeResource"
+
+	},
+	"14": {
+		"resource": "DollarTreeResource"
+
+	},
+	"15": {
+		"resource": "DollarTreeResource"
+
+	},
+	"16": {
+		"resource": "DollarTreeResource"
+
+	},
+	"17": {
+		"resource": "DollarTreeResource"
+
+	},
+	"18": {
+		"resource": "DollarTreeResource"
+
+	},
+	"19": {
+		"resource": "DollarTreeResource"
+
+	},
+	"20": {
+		"resource": "DollarTreeResource"
+
+	},
+	"21": {
+		"resource": "DollarTreeResource"
+
+	},
+	"22": {
+		"resource": "DollarTreeResource"
+
+	},
+	"23": {
+		"resource": "DollarTreeResource"
+
+	},
+	"24": {
+		"resource": "DollarTreeResource"
+
+	},
+	"25": {
+		"resource": "DollarTreeResource"
+
+	},
+	"26": {
+		"resource": "DollarTreeResource"
+
+	},
+	"27": {
+		"resource": "DollarTreeResource"
+
+	},
+	"28": {
+		"resource": "DollarTreeResource"
+		},
+	"29": {
+		"resource": "DollarTreeResource"
+
+	},
+	"30": {
+		"resource": "DollarTreeResource"
+
+	},
+	"31": {
+		"resource": "DollarTreeResource",
+		"reinstateemployeerehire": {
+          "rehiredate": "d:currentdate:d:4",
+          "reinstatement": "Yes, I want to reinstate the employee's benefits with the SAME plan, coverage level, and persons covered.",
+          "reinstatestrategy":"Without a wait period",
+          "benefittoreinstate":"2016 Medical Insurance"
+          }
+
+	},
+	"32": {
+		"resource": "DollarTreeResource",
+		"reinstateemployeerehire": {
+          "rehiredate": "d:currentdate:d:4",
+          "reinstatement": "Yes, I want to reinstate the employee's benefits, but I want to CHANGE the plan, coverage level or persons covered.",
+          "reinstatestrategy":"Without a wait period",
+          "benefittoreinstate":"2016 Medical Insurance"
+        }
+
+	},
+	"33": {
+		"resource": "DollarTreeResource",
+		"reinstateemployeerehire": {
+          "rehiredate": "d:currentdate:d:4",
+          "reinstatement": "No, I want the employee to make the benefit elections.",
+          "reinstatestrategy":"Without a wait period",
+          "benefittoreinstate":"2016 Medical Insurance"
+        }
+
+	},
+	"34": {
+		"resource": "DollarTreeResource",
+		"reinstateemployeerehire": {
+          "rehiredate": "d:currentdate:d:4",
+          "reinstatement": "No, I do not want to reinstate benefits for the employee at this time.",
+          "reinstatestrategy":"Without a wait period",
+          "benefittoreinstate":"2016 Medical Insurance"
+        }
+
+	},
+	"35": {
+		"resource": "DollarTreeResource"
+
+	},
+	"36": {
+		"resource": "DollarTreeResource"
+
+	},
+	"41": {
+		"resource": "DollarTreeResource"
+
+	},
+	"42": {
+		"resource": "DollarTreeResource"
+
+	},
+	"43": {
+		"resource": "DollarTreeResource"
+
+	},
+	"44": {
+		"resource": "DollarTreeResource"
+
+	},
+	"45": {
+		"resource": "DollarTreeResource"
+
+	},
+	"46": {
+		"resource": "DollarTreeResource"
+
+	},
+	"47": {
+		"resource": "DollarTreeResource"
+
+	},
+	"48": {
+		"resource": "DollarTreeResource"
+
+	},
+	"49": {
+		"resource": "DollarTreeResource"
+
+	},
+	"50": {
+		"resource": "DollarTreeResource"
+
+	},
+	"51": {
+		"resource": "DollarTreeResource"
+
+	},
+	"52": {
+		"resource": "DollarTreeResource"
+
+	},
+	"53": {
+		"resource": "DollarTreeResource"
+
+	},
+	"54": {
+		"resource": "DollarTreeResource"
+
+	},
+	"55": {
+		"resource": "DollarTreeResource"
+
+	},
+	"56": {
+		"resource": "DollarTreeResource"
+
+	},
+	"57": {
+		"resource": "DollarTreeResource",
+		"dollartreemandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "homeEmail": "nobody@benefitfocus.com",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto195",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "50000",
+          "earningsfrequency": "per year",
+          "calendarset":"BWSA",
+          "payfrequency": "Bi-Weekly",
+          "categories": "Dollar Tree Distribution#001#No#ASMGR#DC1#Not Assigned#BWSC#001#Salary#AL#Active Assignment - Fulltime-Regular#412771#01"
+        }
+
+	},
+	"58": {
+		"resource": "DollarTreeResource",
+		"dollartreemandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "homeEmail": "nobody@benefitfocus.com",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto195",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings": "50000",
+          "earningsfrequency": "per year",
+          "calendarset":"BWSA",
+          "payfrequency": "Bi-Weekly",
+          "categories": "Dollar Tree Distribution#001#No#ASMGR#SSC#Not Assigned#BWSC#001#Salary#AL#Active Assignment - Fulltime-Regular#412771#01"
+        }
+	},
+	"59": {
+		"resource": "DollarTreeResource"
+
+	},
+	"60": {
+		"resource": "DollarTreeResource"
+
+	},
+	"61": {
+		"resource": "DollarTreeResource"
+
+	},
+	"62": {
+		"resource": "DollarTreeResource"
+
+	},
+	"63": {
+		"resource": "DollarTreeResource"
+
+	},
+	"64": {
+		"resource": "DollarTreeResource"
+
+	},
+	"65": {
+		"resource": "DollarTreeResource"
+
+	},
+	"66": {
+		"resource": "DollarTreeResource"
+
+	},
+	"67": {
+		"resource": "DollarTreeResource"
+
+	},
+	"68": {
+		"resource": "DollarTreeResource"
+
+	},
+	"69": {
+		"resource": "DollarTreeResource"
+
+	},
+	"70": {
+		"resource": "DollarTreeResource"
+
+	},
+	"71": {
+		"resource": "DollarTreeResource"
+
+	},
+	"72": {
+		"resource": "DollarTreeResource",
+        "dollartreememberupdate": {
+          "firstname": "MyAuto",
+          "effectivedate": "d:currentdate"        
+        }
+
+	},
+	"73": {
+		"resource": "DollarTreeResource"
+
+	},
+	"74": {
+		"resource": "DollarTreeResource"
+
+	},
+	"75": {
+		"resource": "DollarTreeResource"
+
+	},
+	"76": {
+		"resource": "DollarTreeResource"
+
+	},
+	"87": {
+		"resource": "DollarTreeResource"
+
+	},
+	"88": {
+		"resource": "DollarTreeResource",	
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Male",
+            "relationship": "Domestic Partner"
+          }
+
+	},
+	"89": {
+		"resource": "DollarTreeResource",	
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Male",
+            "relationship": "Domestic Partner"
+          }
+	},
+	"90": {
+		"resource": "DollarTreeResource",	
+		"spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Male",
+            "relationship": "Spouse"
+          }
+	},
+	"91": {
+		"resource": "DollarTreeResource",
+          "dollartreememberupdate": {
+          "firstname": "MyAuto",
+          "effectivedate": "d:currentdate",
+          "gender":"Female"          
+        }
+	},
+	"92": {
+		"resource": "DollarTreeResource",
+          "ancestrymemberupdate": {
+          "benefitsalary":"3000",
+          "benefitsalaryfrequency":"per two weeks"        
+        }
+	},
+	"93": {
+		"resource": "DollarTreeResource",	
+          "ancestrymemberupdate": {
+          "benefitsalary":"1000",
+          "benefitsalaryfrequency":"per two weeks"       
+        }
+	},
+	"101": {
+		"resource": "DollarTreeResource"
+
+	},
+	"102": {
+		"resource": "DollarTreeResource"
+
+	}
+	
+}

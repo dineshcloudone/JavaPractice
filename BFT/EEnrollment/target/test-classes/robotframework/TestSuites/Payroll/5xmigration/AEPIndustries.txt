@@ -1,0 +1,710 @@
+*** Settings ***
+Resource          ../../Resources/common.txt
+Resource          ../../Resources/HRAdmin/AepIndustriesResource.txt
+
+*** Test Cases ***
+41.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc41
+    Open Group In HR Role
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc41
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee Only Coverage    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Employee Only
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+
+42.Initial enrollment (after approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc42
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc42
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee Only Coverage    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+43.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc43
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc43
+    Navigate To HR Menu    Benefitdetails
+    Refuse Current Selected Benefit In HR Role    2016 Dental and Vision Insurance
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+44.Accept after initial refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc44
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc44
+    Navigate To HR Menu    Benefitdetails
+    Refuse Current Selected Benefit In HR Role    2016 Dental and Vision Insurance
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Current Plan    Dental
+    Select Plan    2016 Cigna Enhanced Dental with Orthodontia
+    Select Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+45.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc45
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc45
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance - Pending Approval
+    Click On Cancel Benefit For All
+    Enter New Effective Date    d:currentdate:M:2    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+
+46.Cancel benefits (after approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc46
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc46
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Click On Cancel Benefit For All
+    Enter New Effective Date    d:currentdate:M:2    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+
+47.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc47
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc47
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Click On Cancel Benefit For All
+    Enter New Effective Date    d:currentdate:M:2    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Current Plan    Dental
+    Select Plan    2016 Cigna Enhanced Dental with Orthodontia
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate:M:2    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+48.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc48
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc48
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Click On Terminate Employee
+    Next
+    Save Benefit Enrollment
+    Sleep    2
+    Close HR Admin
+
+49.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc49
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc49
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+52.Add dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc52
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc52
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee + 1 Coverage Level    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Child
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Dependents
+    Add Another Dependent To Employee    Child    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+53.Remove dependent from benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc53
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc53
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee + Family Coverage
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Current Plan    Persons Covered
+    Cancel Coverage To Dependent
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+
+54.Add Dependent and Apply Coverage
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc54
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc54
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Select Plan    2016 Cigna Enhanced Dental with Orthodontia
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    Child    lastname
+    Add Another Dependent To Employee    Child    lastname
+    Next
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Select Plan    2016 EyeMed Enhanced Vision
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Dependents
+    Add Another Dependent To Employee    Child    lastname
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Current Plan    Persons Covered
+    Apply Coverage To Dependent
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Close HR Admin
+
+55.Remove Dependent and Apply Coverage
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc55
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc55
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee + Family Coverage
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Current Plan    Persons Covered
+    Cancel Coverage To Dependent
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    2
+    Close HR Admin
+
+56.Category Change [Eligible to Non-Eligible Benefits]
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc56
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc56
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Employment Status    Part Time
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Job Status    Active - Active employee
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Location    AL - Alabama
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Process Level    AL1 - Montgomery, AL - Plant 1
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Salary Class    Hourly - Hourly Rate
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Union Code    ALUN - AL union
+    Navigate To Employee Home Page
+    Close HR Admin
+
+57.Category Change [Non-Eligible to Eligible Benefits]
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc57
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc57
+    Change Employee Cateogry    Employment Status    Full Time - = 40 hours
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Job Status    Permanent - Active Permanent
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Location    CORP - Corp - New Jersey
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Process Level    CORP - AEP Industries Inc.
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Salary Class    Salary - Annual Salary
+    Navigate To Employee Home Page
+    Change Employee Cateogry    Union Code    NONUNION - Nonunion
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+58.Category Change [Eligible For Different Benefits]
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc58
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc58
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Change Employee Cateogry    Employment Status    Part Time
+    Sleep    2
+    Close HR Admin
+
+59.Benefit plan change
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc59
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc59
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Current Plan    Plan
+    Select Plan    2016 Cigna Standard Dental
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+60.Change effective date
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc60
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc60
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Enroll In Dental and Vision Insurance Benefit With Employee Only Coverage    2016 Cigna Enhanced Dental with Orthodontia    2016 EyeMed Enhanced Vision    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Dental and Vision Insurance
+    Edit Effective Date
+    Enter New Effective Date    d:currentdate:M:2    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+61.Increase coverage level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc61
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc61
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee Only Coverage    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close Browser
+
+62.Decrease coverage level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc62
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc62
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee + 1 Coverage Level    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Child
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+63.Increase coverage amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc63
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc63
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Term Life Insurance
+    Enroll In Term Life Insurance Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Term Life Insurance
+    Edit Benefit Details    Dependent Life    Coverage Amount
+    Select Coverage Amount    $15,000.00
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+64.Decrease coverage amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc64
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc64
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Term Life Insurance
+    Enroll In Term Life Insurance Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Term Life Insurance
+    Edit Benefit Details    Dependent Life    Coverage Amount
+    Select Coverage Amount    $5,000.00
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+65.Change in EE cost/pp[Coverage Level & Pay Frequency]
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc65
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc65
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee Only Coverage    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Change Coverage Level    Employee + 1
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close Browser
+
+68.Salary increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc68
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc68
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    13,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+69.Salary decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc69
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc69
+    Navigate To Employee Home Page
+    Comment    Change Employee salary from HR Admin Role
+    Update Employee Salary    6,500    Per Month
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+71.Change dependent personal information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc71
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc71
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee + 1 Coverage Level    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Child
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Dependents
+    Edit Dependent Details    Child    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+72.Change Subscriber personal information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc72
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc72
+    Update Employee Personel Profile    td:aepupdate    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+73.Increase flex contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnamet73
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc73
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee Only Coverage    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Contribution Amount For FSA
+    Enter Contribution Amount For FSA Plan    400
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2s
+    Close HR Admin
+
+74.Decrease flex contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc74
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc74
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Enroll In Medical Insurance Benefit With Employee Only Coverage    2016 Cigna $800 Deductible Plan    2016 Health Care FSA    2016 Dependent Care FSA    Employee Only
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Contribution Amount For FSA
+    Enter Contribution Amount For FSA Plan    200
+    Enter New Effective Date    d:currentdate:M:1    Test
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2s
+    Close HR Admin
+
+87.Enroll a member in Basic Life with a coverage amount over $50,000
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc87
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc87
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Term Life Insurance
+    Enroll In Term Life Insurance Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+92.Increase the advanced salary for a member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc92
+    Open Group In HR Role
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc92
+    Update Employee Personel Profile    td:advsal    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin
+
+93.Decrease the advanced salary for a member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    4954101341
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aep    AEPIndustrieslastnametc93
+    Open Group In HR Role
+    Perform Simple Employee Search    HMVAEPIndustrieslastnametc93
+    Update Employee Personel Profile    td:advsal    lastname
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    2
+    Close HR Admin

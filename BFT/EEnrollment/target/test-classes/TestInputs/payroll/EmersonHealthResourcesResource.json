@@ -1,0 +1,78 @@
+{
+  "emersonhealthresourcestestcases": {
+    "Emersonhealthresources": {
+      "vista": {
+        "emersonhealthresourcesmandatory": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate:d:-5",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Weekly",
+					"hoursPerWeek" : "40",
+					"employerid": "111",
+					"categories": "Salary - 35+ Hours"
+				},
+		"emersonhealthresourcesmandatory2": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"country": "USA",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate:d:-5",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"payfrequency": "Weekly",
+					"hoursPerWeek" : "40",
+					"employerid": "111",
+					"categories": "Benefits Eligible#Salary - 35+ Hours"
+				},
+        "validvistacredentials": {
+        "username": "bftpuchala",
+        "password": "bfEnrol1"
+        },
+        "adddependent": {
+        "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+        
+      }
+    }
+    
+    }
+  }
+}

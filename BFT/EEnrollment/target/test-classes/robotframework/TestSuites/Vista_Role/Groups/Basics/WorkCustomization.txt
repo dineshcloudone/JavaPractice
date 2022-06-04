@@ -1,0 +1,85 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Work Customization functionality
+Test Setup        getResource
+Force Tags        workcustomization
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify that the link for creating the Pay calendars in HR role is shown when Pay calendars are enabled at group level
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests Case Title: *Verify that the link for creating the Pay calendars in HR role is shown when Pay calendars are enabled at group level*
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Navigate to Work Customization
+    ...
+    ...    Set 'Pay Calenders' property as Enable
+    ...
+    ...    Logout to eEnrollment as a Vista User
+    ...
+    ...    Login to HR Admin
+    ...
+    ...    Naviigate to EMPLOYESS
+    ...
+    ...    Click on Create \ a new employee
+    ...
+    ...    Verify the "Calender Set" Message
+    ...
+    ...    Logout HR Admin
+    ...
+    ...
+    ...    Test case No: 161
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Work Custamiztion Configuration    Pay Calendars    Enabled    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    EMPLOYEES
+    Add Employee In HR Admin    td:mandatory    memberid
+    Logout HR Admin
+
+2.Verify that user is forced to select the Pay frequency while creating a new member when Pay frequency is enabled at the group basics level
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify that all the fields in the Personal section in Member role are shown as per the settings in the Personal customization section in Group basics*
+    ...
+    ...    1 ) Login to eEnrollment as a Vista User
+    ...
+    ...    2) Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    3) Navigate to Personal \ Customization
+    ...
+    ...    4) Verify *Race* property as Enable
+    ...
+    ...    5) Navigate to Users, Add new Member
+    ...
+    ...    6) Logout to eEnrollment as a Vista User
+    ...
+    ...    7)Login to eEnrollment as Meber (with Initial Login)
+    ...
+    ...    8) Perform Get Started in New Member role
+    ...
+    ...    9) Update Member Personal Information
+    ...
+    ...    10) Logout as Member Role
+    ...
+    ...    TestCases Coverd : 173
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Work Custamiztion Configuration    Pay Frequency    Required    yes
+    Navigate To    USERS    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages
+    Logout Member
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Work Custamiztion Configuration    Pay Frequency    Not captured    yes
+    Logout Vista Admin

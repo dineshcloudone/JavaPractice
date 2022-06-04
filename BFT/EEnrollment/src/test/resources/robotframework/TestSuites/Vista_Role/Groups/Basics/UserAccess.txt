@@ -1,0 +1,62 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for User Access functionality
+Test Setup        getResource
+Force Tags        useraccess
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify that member login credentials are created when "Create Member Login" is set to Yes and "Create Member Login" is set to No
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify that member login credentials are created when "Create Member Login" is set to Yes and "Create Member Login" is set to No*
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Update the "Create Member Logins" in "User Access Page"
+    ...
+    ...    Save and verify the changed information in "User Access Page"
+    ...
+    ...    Logout
+    ...
+    ...    Test case No : 140,141
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    HR Admin member login permission    Enable and edit member logins    yes
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    HR Admin member login permission    None    yes
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    HR Admin member login permission    Enable and edit member logins    yes
+    Logout Vista Admin
+
+2.Verify that HR is able to manage the member login when "Allow HR to manage member login" is set to Yes and "Allow HR to manage member login" is set to No
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Tests \ Case Title: *Verify that HR is able to manage the member login when "Allow HR to manage member login" is set to Yes and "Allow HR to manage member login" is set to No*
+    ...
+    ...    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Update the "Create Member Logins" in "User Access Page"
+    ...
+    ...    Save and verify the changed information in "System Information"
+    ...
+    ...    Logout
+    ...
+    ...    Test case No : 142,143
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    Create member logins    Yes    yes
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    HR Admin member login permission    Enable and edit member logins    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    memberid
+    Logout HR Admin

@@ -1,0 +1,57 @@
+{
+  "validvistacredentials": {
+    "username": "bfautomation",
+    "password": "Password1"
+  },
+  "newmember": {
+    "ssn": "RND4433",
+    "firstname": "Auto",
+    "lastname": "RNDTestMandatory",
+    "birthdate": "currentdate:y:-28",
+    "gender": "Male",
+    "address1": "Test address",
+    "city": "Test City",
+    "state": "SC",
+    "zipcode": "12345",
+    "country": "USA",
+    "createlogin": "Create a login account for this person",
+    "memberid": "RNDBFAuto",
+    "password": "bfEnrol0",
+    "confirmpassword": "bfEnrol0",
+    "hiredate": "currentdate",
+    "earnings": "50000",
+    "earningsfrequency": "per year",
+    "payfrequency": "Semi-Monthly",
+    "calenderset": "SEMIMONTHLY",
+    "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+  },
+  "memberlogin": {
+    "language": "English",
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "lifeguided": {
+    "ssn": "RND4433",
+    "firstname": "Auto",
+    "lastname": "RNDTestMandatory",
+    "birthdate": "currentdate:y:-28",
+    "gender": "Male",
+    "address1": "Test address",
+    "city": "Test City",
+    "state": "SC",
+    "zipcode": "12345",
+    "country": "USA",
+    "createlogin": "Create a login account for this person",
+    "memberid": "RNDBFAuto",
+    "password": "bfEnrol0",
+    "confirmpassword": "bfEnrol0",
+    "hiredate": "currentdate",
+    "earnings": "50000",
+    "earningsfrequency": "per year",
+    "payfrequency": "Semi-Monthly",
+    "calenderset": "SEMIMONTHLY",
+    "categories": "Kansas City - Locaiton 2,PT - Part-Time,T - Tobacco"
+  }
+}

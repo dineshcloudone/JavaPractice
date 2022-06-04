@@ -1,0 +1,354 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "yes"
+        },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "2": {
+    "resource": "priorityhradmingroup",
+    "testautomationgroup": "Test Automation Group_Dilip",
+    "spouse": {
+      "ssn": "RND7711",
+      "firstname": "AutoDep",
+      "lastname": "RNDTestDep",
+      "birthdate": "currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "language": "English",
+    "password": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "no"
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+	"validvistacredentials": {
+		"username" : "bfautomation",
+		"password" : "Password1"
+	},
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate"
+    }
+    },
+    "4": {
+    "resource": "bfqatestautomationgroup",
+	 "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical plus HSA 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "no"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+	 "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical plus HSA 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "no"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+    "6": {
+    "resource": "bfqatestautomationgroup",
+	 "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical plus HSA 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "no"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "7": {
+    "resource": "bfqatestautomationgroup",
+	 "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical plus HSA 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "no"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+   "8": {
+    "resource": "bfqatestautomationgroup",
+	 "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+   	"validhrcredentialsforgroup": {
+      "username": "hrqcoeadmin",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical plus HSA 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "no"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "9": {
+    "resource": "bfqatestautomationgroup",
+	 "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+   	"validhrcredentialsforgroup": {
+      "username": "hrqcoeadmin",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE BF QA Test Automation Group R"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "categories": "Medical"
+    },
+    "defaultmedical": {
+          "benefitname": "Medical plus HSA 2016",
+          "planname": "Medical 2016",
+          "coveragelevel": "Employee Only",
+          "pretaxchoice": "no"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+ 
+  "default": {
+    "resource": "priorityhradmingroup"
+  }
+}

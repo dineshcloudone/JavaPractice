@@ -1,0 +1,86 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Agency functionality
+Test Setup        getResource
+Force Tags        searchagency
+Resource          ../../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Searching For The Document Associated To A Subscriber In The Document Center
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Name : *Searching For The Document Associated To A Subscriber In The Document Center*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To Basics/Integration Settings
+    ...
+    ...    4) Update Document Centre to Enabled
+    ...
+    ...    5) Navigate to Basics/Personal Customization
+    ...
+    ...    6) Change Dependent Verification Settings for Medical Plan
+    ...
+    ...    7) Add Member
+    ...
+    ...    8) Logout Vista and Login Member
+    ...
+    ...    9) Begin Enrollment
+    ...
+    ...    10) Add Dependent as Spouse
+    ...
+    ...    11) Enroll Member and Dependent to Benefits (Employee and Spouse)
+    ...
+    ...    12) Save Enrollment
+    ...
+    ...    13) Upload Document as reference
+    ...
+    ...    14) Verify Document Uploaded and Complete Enrollment
+    ...
+    ...    15) Logout Member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Integration Settings
+    Update Document Centre Enabled
+    Navigate To    BASICS    Personal Customization
+    Change Dependent Verification For Medical Benefit Only    td:dependentverificationchanges
+    Save Configuration
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical HSA    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical HSA Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Life Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Plans    Enable
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    td:spouse    lastName
+    Perform Begin Enrollment in Member Role
+    Select Dependent In Add Dependents Page    Spouse
+    Select Market Plan For New Member Role    Preferred Care Blue PPO Plan 1
+    Additional Insurance Information In Member Role    no
+    Save Benefit Enrollment In New Member    Preferred Care Blue PPO Plan 1
+    Document    Upload    Dependent    Marriage_Certificate.doc    Marriage Certificate    Marriage certificate
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Integration Settings
+    Update Integration Settings    Document Center Access Page    No
+    Update Integration Settings    Document Center Enabled?    No
+    Save Configuration
+    Logout Vista Admin

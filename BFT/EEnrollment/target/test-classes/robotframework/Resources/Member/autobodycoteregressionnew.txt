@@ -1,0 +1,31 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the Auto Bodycote Regression group
+Resource          ../Common.txt
+
+*** Keywords ***
+member initial login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Change Initial Member Password    td:memberpassword
+    Select Secret Questions And Save    td:secretquestionscount
+    Announcements Page    yes
+    Agreements Page    td:agreementpage
+
+Add HSA Without Agreements
+    [Arguments]    ${ContributionAmount}    @{ContributionType}
+    [Documentation]    Author : Nagarjuna Thallam.
+    ...
+    ...    Purpose : This Keyword is used to Add HSA Plan to the Member without HSA Agreements in old and new member roles.
+    ...
+    ...    <Arguments>
+    ...
+    ...    ${ContributionAmount} --> Contribution Amount to add for all Contrbutiontion Types \ Ex:-100
+    ...
+    ...    @{ContributionType} --> \ It is for Contribution types and User can add more contributions by Comma.
+    ...    Ex:- Initial,HSA,Ongoing.
+    : FOR    ${ContType}    IN    @{ContributionType}
+    \    Run Keyword If    '${ContType}'=='Initial'    Hsa Initial Contribution    ${ContributionAmount}    ELSE IF    '${ContType}'=='HSA'
+    \    ...    Hsa Abstract Contribution    ${ContributionAmount}    ELSE IF    '${ContType}'=='Schedule'    Hsa Schedule Contribution
+    \    ...    ${ContributionAmount}    ELSE    Hsa Ongoing Contribution    ${ContributionAmount}
+    Hsa Complete Contribution

@@ -1,0 +1,86 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefit
+    Select Plan    BlueCross BlueShield - Oklahoma Medical & Pharmacy (SILVER) 2016
+    Select Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental Benefit
+    [Arguments]    ${coveragelevel}
+    Select Coverage Level    ${coveragelevel}
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In HSA Plan
+    Select Plan    H.S.A. Plan (Door Group) 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Coverage Level    Employee Only
+    BuiltIn.Sleep    3
+    Next
+    Next
+    BuiltIn.Sleep    3
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Vision Benefit
+    Select Coverage Level    Employee Only
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In AD&D Life Benefit
+    Select Coverage Amount    $15,000.00
+    Add New Beneficiary To Employee And Navigate To Next Page    Spouse    Primary    100%    lastname
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Supplemental Life Benefit
+    Select Plan    Optional Life w/ADD 2016
+    Select Coverage Amount    $25,000.00
+    Next
+    Select Plan    Spouse Life 2016
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Select Coverage Amount    $10,000.00
+    Next
+    Select Plan    Child Life (Ameristar) 2016
+    Add Dependent To Employee    Child    lastname
+    Next
+    Select Coverage Amount    $2,000.00
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Long Term & Short Term Disability Benefit
+    Select Coverage Amount    $500.00 per week
+    Next
+    Select Coverage Amount    $5,000.00 per month
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Flexible Spending Account Plan
+    Select Plan    Medical FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA Participation    HSA Participation    Yes
+    Next
+    Set Deduction Periods    2
+    Select Plan    Dependent Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Next
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Health FSA
+    Select Plan    2016 Medical FSA
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA Participation    HSA Participation    Yes
+    Next
+    Set Deduction Periods    2
+    Select Plan    Dependent Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Next
+    Set Deduction Periods    2
+    Save And Go To Benefit Enrollment Page

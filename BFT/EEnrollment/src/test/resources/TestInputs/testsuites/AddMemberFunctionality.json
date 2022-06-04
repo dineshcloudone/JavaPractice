@@ -1,0 +1,171 @@
+{
+  "addmemberfunctionality": {
+    "bfqatestautomationgroup": {
+      "vista": {
+        "mandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",          
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "mandatory1": {
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "mandatorywithdental": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Dental"
+        },
+        "hradminmandatoryemployeeactions": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTESTSSN",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        },
+        "createmedicalplan": {
+          "plantype": "Medical",
+          "producttype": "HMO"
+        },
+        "memberloginchangepassword": {
+          "newpassword": "Test@1234",
+          "newconfirmpassword": "Test@1234"
+        },
+        "selectquestionanswer": {
+          "secretquestion1": "index=5",
+          "secretanswer1": "Autotest",
+          "secretquestion2": "index=6",
+          "secretanswer2": "Test",
+          "secretquestion3": "index=7",
+          "secretanswer3": "AutoTest123"
+        },
+        "emergencycontact": {
+          "relationship": "child",
+          "fullname": "RNDAutoTest",
+          "email": "testmail@benefitfocus.com",
+          "state": "AA",
+          "country": "USA"
+        }
+      }
+    },
+    "underarmour": {
+      "vista": {
+        "uamandatory": {
+          "ssn": "RND1111",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "maritalstatus": "Single",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "Medical"
+        }
+      }
+    },
+    "addmemberinmedicalplushsa": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "Medical plus HSA"
+    },
+	"addmemberindental": {
+      "ssn": "RND4466",
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "yes",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "categories": "Dental"
+    }
+  }
+}

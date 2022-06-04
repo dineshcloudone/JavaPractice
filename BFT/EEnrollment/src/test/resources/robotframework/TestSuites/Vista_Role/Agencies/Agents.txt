@@ -1,0 +1,84 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Agency functionality
+Test Setup        getResource
+Force Tags        searchagency
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Edit Agent Details
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Name : *Edit Agent Details*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Agencies >> Agents'
+    ...
+    ...    3) Perform Agent Search
+    ...
+    ...    4) Update Agent Details from Edit Button
+    ...
+    ...    5) Logout Vista Admin
+    ...
+    ...    6) Login as Agent
+    ...
+    ...    7) Verify Login Successful
+    ...
+    ...    8) Logout Vista
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Navigate to    AGENCIES    Agents
+    Perform Agent Search    Automation    Agent Administrator
+    Update Agent Details Password From Edit Button    td:passwordvalues
+    Logout Vista Admin
+    Login to Enrollment with Valid Credentials    td:agentloginid    HMVagentloginpassword
+    Update Agent Login Password    td:agentupdatepassword
+    Verify Message    Home
+    Logout Vista Admin
+
+2.Add New Agent To Group
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Name : *Add New Agent To Group*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Agencies >> Agents'
+    ...
+    ...    3) Perform Agency Search
+    ...
+    ...    4) Create New Agent
+    ...
+    ...    5) Perform Group Search
+    ...
+    ...    6) Navigate to Users >> Agents
+    ...
+    ...    7) Assign Agent To Group
+    ...
+    ...    8) Logout Vista
+    ...
+    ...    9) Login as Agent
+    ...
+    ...    10) Update Initial Password
+    ...
+    ...    11) Verify and Logout Agent
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Navigate to    AGENCIES    Agency Search
+    Perform Agency Search And Verify    Qcoe New Test Agency
+    Create New Agent    td:agentvalues    outAgentLastName
+    Navigate To    GROUPS    Group Search
+    Perform Group Search    td:groupsearch
+    Navigate To    USERS    Agents
+    Assign Agent To Group    HMVoutAgentLastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVagentloginid    HMVagentPassword
+    Update Agent Login Password    td:agentupdatepassword
+    Verify Message    Home
+    Logout Vista Admin

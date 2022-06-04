@@ -1,0 +1,29 @@
+{
+  "1": {
+    "resource": "BFQATestAutomationGroup"
+  },
+  "2": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    }
+  },
+  "3": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "scheduledmessagedetails": {
+      "sendmessagevalue": "js:Employees by SSN",
+      "strssntext": "17896",
+      "strsubjecttext": "Hr Admin Automation",
+      "followingemail": "js:Work Email",
+      "strdeliverydatetextbox": "currentdate:d:+1"
+    }
+  },
+  "default": {
+    "resource": "BFQATestAutomationGroup"
+  }
+}

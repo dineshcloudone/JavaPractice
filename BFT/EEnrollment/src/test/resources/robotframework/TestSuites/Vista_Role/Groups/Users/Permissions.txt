@@ -1,0 +1,84 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for permissions related tests like transactional permissions
+Test Setup        getResource
+Resource          ../../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify Transactional Permissions set to Unlimited
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Verify Transactional Permissions set to Unlimited*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search existing group (QCoE Test Automation Group-B)
+    ...
+    ...    3) Navigate to USERS > Administrators & Contacts > Account Options > Edit Account > Transaction Permissions: Set all as Yes > Save
+    ...
+    ...    4) Logout Vista admin
+    ...
+    ...    5) Login as HR admin
+    ...
+    ...    6) Navigate to HR menu "Employees"
+    ...
+    ...    7) Verify that "Add a new employee" button exists
+    ...
+    ...    8) Logout HR Login
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Users    Administrators & Contacts
+    Update All Transactional permissions of HR admin to Yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Message    Add a new employee
+    Logout HR Admin
+
+2.Verify Transactional Permissions set to View Only
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Verify Transactional Permissions set to Unlimited*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search existing group (QCoE Test Automation Group-B)
+    ...
+    ...    3) Navigate to USERS > Administrators & Contacts > Account Options > Edit Account > Transaction Permissions: Set all as No> Save
+    ...
+    ...    4) Logout Vista admin
+    ...
+    ...    5) Login as HR admin
+    ...
+    ...    6) Navigate to HR menu "Employees"
+    ...
+    ...    7) Verify that "Add a new employee" button does not exists
+    ...
+    ...    8) Logout HR Login
+    ...
+    ...    9) Login as Vista
+    ...
+    ...    10) Reset All Transaction Permissions to Yes and Save
+    ...
+    ...    11) Logout Vista admin
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Users    Administrators & Contacts
+    Update All Transactional permissions of HR admin to No
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Verify Message Not Exist    Add a new employee
+    Logout HR Admin
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Users    Administrators & Contacts
+    Update All Transactional permissions of HR admin to Yes
+    Logout Vista Admin

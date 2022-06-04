@@ -1,0 +1,294 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1. Enroll in Life benefit with more than Guarantee Issue Amount
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Enroll in Life benefit with more than Guarantee Issue Amount
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group'
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Enter Necessary details in Add New Member page, Click on Save Button
+    ...
+    ...    5) Login using above created member
+    ...
+    ...    6) Change password and navigate to 'Get Started' Page
+    ...
+    ...    7) Click Get Started button and enroll into the Life Benefit.
+    ...
+    ...    8) Verify Life Enrollment Success message
+    ...
+    ...    9) Logout Member role.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    $50,000.00
+    HSA Complete Contribution
+    Verify Message    Life
+    Save Benefit Enrollment In New Member    Life
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+
+2. Enroll in LTD and STD benefits
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Enroll in LTD and STD benefits
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group'
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    5) Login using above created member
+    ...
+    ...    6) Change password and navigate to 'Get Started' Page
+    ...
+    ...    7) Click Get Started button and enroll into the LTD and STD Benefits.
+    ...
+    ...    8) Verify Enrollment Success message
+    ...
+    ...    9) Logout Member role.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    Long Term Disability
+    Select Market Plan For New Member Role    Short Term Disability
+    Save Benefit Enrollment In New Member    Long Term Disability
+    Verify Message    Long Term Disability
+    Verify Message    Short Term Disability
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+
+3. Verify Cart Summary
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Verify Cart Summary
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group SY'
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    5) Login using above created member
+    ...
+    ...    6) Change password and navigate to 'Get Started' Page
+    ...
+    ...    7) Click Get Started button and enroll into the LTD Benefit.
+    ...
+    ...    8) Verify Cart summary data in the drop down.
+    ...
+    ...    9) Enroll into STD benefit and save.
+    ...
+    ...    10) Verify Cart summary data displayed on the right side of the page.
+    ...
+    ...    11) Logout Member role.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Verify Summary Cart Data    Cart Summary
+    Select Market Plan For New Member Role    Long Term Disability
+    Verify Summary Cart Data    Cart Summary
+    Verify Summary Cart Data    $6,000.00
+    Select Market Plan For New Member Role    Short Term Disability
+    Verify Summary Cart Data    $8,000.00
+    Verify Message    Cart Summary
+    Logout New Member Role
+
+4. Health Statement Pending approval message for Life benefits
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Health Statement Pending approval message for Life benefits
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group ViaQuest_Sunitha
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    5) Login using above created member
+    ...
+    ...    6) Change password and navigate to 'Get Started' Page
+    ...
+    ...    7) Click Get Started button
+    ...
+    ...    8) Enroll into Employee Supplemental Life plan with coverage amount greater than GI amount
+    ...
+    ...    9) Enroll into Spouse Supplemental Life Plan with coverage amount less than GI amount
+    ...
+    ...    10) Enroll into Child Supplemental Life Plan with coverage amount less than GI amount
+    ...
+    ...    11) In the benefits summary page, verify that Evidence of Insurability needed message is displayed only for Employee plan and not for dependents benefits.
+    ...
+    ...    12) Logout member role.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    HSA Complete Contribution
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    $110,000.00
+    HSA Complete Contribution
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:beneficiaryspouse    Outlastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Add Dependent To Member    td:spouse    spouselastname
+    Select Life Coverage Plan    $10,000.00
+    Select Spouse Information    Yes, this dependent meets the above requirements.
+    Add Dependent To Member    td:child    childlastname
+    Select Life Coverage Plan    $5,000.00
+    verifyHealthStatementPendingApprovalMessages
+    Save Benefit Enrollment In New Member    Life
+    Logout New Member Role
+
+5. Verify a member can't modify current benefits without a change reason
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : Verify a member can't modify current benefits without a change reason
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE BF QA Test Automation Group'
+    ...
+    ...    3) Update Edit offer details to select 'Change Reason Permissions' profile as 'Atrium Living Centers Change Reason'
+    ...
+    ...    4) Navigate to Users >> Add Member page
+    ...
+    ...    5) Enter Neccessary details in Add New Member page, Click on Save Button
+    ...
+    ...    6) Login using above created member
+    ...
+    ...    7) Change password and navigate to 'Get Started' Page
+    ...
+    ...    8) Click Get Started button and enroll into the LTD and STD Benefits.
+    ...
+    ...    9) Navigate to "Life Change" from home page.
+    ...
+    ...    10) Select "I do not have any life or family change events" option and click next.
+    ...
+    ...    11) Click next on dependents page
+    ...
+    ...    12) Only Benefits that can be changed WITHOUT a life event should be editable
+    ...
+    ...    13) Verify Benefits listed under the 'The Life change you entered doesn't affect these benefits' link can't be edited.
+    ...
+    ...    14) Logout member role
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Benefits    Offers
+    Edit Offer In Vista Role    Current    Life Plan 2016
+    updateEditOfferDetails    Change Reason Permissions    Atrium Living Centers Change Reason
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvistaforlifechange    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    HSA Complete Contribution
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    Long Term Disability
+    Select Market Plan For New Member Role    Short Term Disability
+    Save Benefit Enrollment In New Member    Long Term Disability
+    Complete Enrollemnt In New Member Role
+    Navigate To New Member Menu    LifeChange
+    Editing Benefits With No Change Reason    Long-Term Disability    Life
+    Logout New Member Role
+
+6. Verify Summary Cart displays multiple pay frequencies
+    [Documentation]    Author : Sunitha Y
+    ...
+    ...    Test Case Name : *Verify Summary Cart displays multiple pay frequencies*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch *EENCREL* and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for 'QCOE Rex HealthCare'
+    ...
+    ...    3) Navigate to Users >> Add Member page
+    ...
+    ...    4) Add new member with Calendar set as "Bi-Weekly" and Payfrequency as "Monthly", Click on Save Button
+    ...
+    ...    5) Login using above created member
+    ...
+    ...    6) Change password and navigate to 'Get Started' Page
+    ...
+    ...    7) Click Get Started button and enroll into the HSA and Medical Benefits.
+    ...
+    ...    8) Verify Cart summary data to see multiple frequencies are displayed in the Summary Cart.
+    ...
+    ...    9) Save and complete enrollment.
+    ...
+    ...    10) Logout Member role.
+    [Tags]    QCOE    NCREL    donotrun
+    Login as vista admin with valid credentials
+    Perform Group Search    td:testautomationgroup
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:addmemberinvista    lastname
+    Comment    BuiltIn.Sleep    2s
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Perform Get Started In New Member Role
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    HSA Plan
+    Select Market Plan For New Member Role    2016 Medical
+    HSA Complete Contribution
+    Verify Summary Cart Data    Monthly Total
+    Verify Summary Cart Data    Bi-Weekly Total
+    Save Benefit Enrollment In New Member    HSA Plan
+    Complete Enrollemnt In New Member Role
+    Comment    BuiltIn.Sleep    2s
+    Logout New Member Role

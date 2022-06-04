@@ -1,0 +1,33 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+Enroll in Medical 2016 Benefit
+    [Arguments]    ${medical_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    Select Plan    Platinum 2016
+    Select Coverage Level    Associate Only
+    Select Summary Of Benefits And Coverage Review Certificaiton
+    Comment    Enter Effective Date    d:currentdate
+    Enter New Effective Date    ${medical_benefit_enrollment_date}    test
+    select plan    No, I am not a tobacco user.
+    BuiltIn.Sleep    3s
+    Select Coverage Level    Employee Only
+    Select Tobacco Affidavit
+    Enter New Effective Date    ${medical_benefit_enrollment_date}    test
+    Save benefit in snapshot page
+
+Enroll in Voluntary Life 2016
+    [Arguments]    ${medical_benefit_enrollment_date}    ${Coverage_Amount}
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Voluntary Life 2016
+    Select Coverage Amount    ${Coverage_Amount}
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Comment    next
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

@@ -1,0 +1,60 @@
+{
+  "texashealthresourcestestcases": {
+    "Texashealthresources": {
+      "vista": {
+        "texashealthresourcesmandatory": {
+          "ssn": "RND4433",
+					"firstname": "Auto",
+					"lastname": "RNDTestMandatory",
+					"birthdate": "currentdate:y:-28",
+					"gender": "Male",
+					"address1": "Test address",
+					"city": "Test City",
+					"state": "SC",
+					"zipcode": "12345",
+					"earnings": "10000",
+					"earningsfrequency": "per month",
+					"country": "USA",
+					"createlogin": "Create a login account for this person",
+					"memberid": "RNDBFAuto",
+					"password": "bfEnrol0",
+					"confirmpassword": "bfEnrol0",
+					"hiredate": "currentdate:d:-5",
+					"categories": "ACC - Arlington Cancer Center#ADDCON#FT - Full Time#001 - Texas Health Dallas#C - Contract Medical Director#A - Active#N#ADMV - ADMINISTRATIVE#No#1#1 - Less Than $25,000#No"
+			},
+		
+        "validvistacredentials": {
+        "username": "bftpuchala",
+        "password": "bfEnrol1"
+        },
+        "adddependent": {
+        "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+         "changespouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+        
+      }
+    }
+    
+    }
+  }
+}

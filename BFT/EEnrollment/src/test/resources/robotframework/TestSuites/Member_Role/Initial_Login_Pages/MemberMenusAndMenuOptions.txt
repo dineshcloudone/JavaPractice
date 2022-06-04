@@ -1,0 +1,62 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for menu and menu options
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Hide or Show the Left Side Column appearing on the Home Page
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Hide or Show the Left Side Column appearing on the Home Page*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as member (SUNITHAY6440/bfEnrol1)
+    ...
+    ...    2) Click on show/Hide toggle button and verify that side menu panel is hidden
+    ...
+    ...    3) Click on Show/Hide toggle button and verify that side menu panel is displayed
+    ...
+    ...    4) Click on My Documents Link
+    ...
+    ...    5) Logout member
+    [Tags]    QCOE
+    Login To Enrollment With Valid Credentials    td:memberusername    td:memberpassword
+    Announcements Page    td:annoucementpage
+    Verify Toggle Menu Hide Or Show
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+2.Verify Language Prefernces
+    [Documentation]    Author : *Sunitha Y*
+    ...
+    ...    Test Case Title: *Verify Language Preferences*
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Launch eeshrel and login as member (SUNITHAY6440/bfEnrol1)
+    ...
+    ...    2) Navigate to Language Prefrerences
+    ...
+    ...    3) Select "Spanish" as prefered language
+    ...
+    ...    4) Verify language is changed to Spanish
+    ...
+    ...    5) Reset Language preference back to English
+    ...
+    ...    6) Logout member
+    [Tags]    QCOE
+    Login To Enrollment With Valid Credentials    SUNITHAY6440    bfEnrol1
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    languagePreferences
+    BuiltIn.Sleep    3s
+    Choose Preferred Language    Spanish
+    BuiltIn.Sleep    6s
+    Verify Message    Página Principal
+    BuiltIn.Sleep    3s
+    Click    //span[text()='Preferencias de idioma']    Language Preferences
+    Choose Preferred Language    English
+    BuiltIn.Sleep    3s
+    Logout New Member Role

@@ -1,0 +1,256 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "bf qa test automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation1",
+      "password": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+     "automationgroup1": "bf qa test automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation1",
+      "password": "bfEnrol1"
+    }    
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "bf qa test automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation1",
+      "password": "bfEnrol1"
+    
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "bf qa test automation group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation1",
+      "password": "bfEnrol1"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA Race Group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "raceadmin",
+      "password": "bfEnrol1"
+    }
+  },
+  "6": {
+    "resource": "QCOE Test Automation1",
+    "validhrcredentialsforgroup": {
+      "username": "qcoeautomation1",
+      "password": "Password2"
+    },
+    "payrollformattingoptions": {
+      "reportType": "Excel",
+      "delimiter": "Comma",
+      "removeDoubleQuotes": "yes",
+      "includeFilter": "yes",
+      "sortBy": "Last Name, First Name",
+      "startDate": "effectivedate",
+      "endDate": "currentdate",
+      "showDependends": "yes",
+      "benefitType": "Dental",
+      "attributesToInclude": "Plan Type",
+      "benefitDates": "Participation Period,current",
+      "schedulingOptions": "No",
+      "scheduleName": "Test",
+      "scheduleStartDate": "currentdate:d:1",
+      "scheduleEndDate": "currentdate:M:1",
+      "notificationemail": "yes",
+      "scheduleFrequency": "Daily",
+      "schedulereqfre": "5"
+    }
+  },
+  "7": {
+    "resource": "QCOE Test Automation1",
+    "validhrcredentialsforgroup": {
+      "username": "qcoeautomation1",
+      "password": "Password2"
+    },
+    "payrollformattingoptions": {
+      "reportType": "Excel",
+      "delimiter": "Comma",
+      "removeDoubleQuotes": "yes",
+      "includeFilter": "yes",
+      "sortBy": "Last Name, First Name",
+      "effectiveDate": "currentdate:d:1",
+      "showCategories": "yes",
+      "schedulingOptions": "No",
+      "scheduleName": "Test",
+      "scheduleStartDate": "currentdate:d:1",
+      "scheduleEndDate": "currentdate:M:1",
+      "notificationemail": "yes",
+      "scheduleFrequency": "Daily",
+      "schedulereqfre": "5"
+    }
+  },
+  "8": {
+    "resource": "QCOE Test Automation1",
+    "validhrcredentialsforgroup": {
+      "username": "qcoeautomation1",
+      "password": "Password2"
+    },
+    "payrollformattingoptions": {
+      "reportType": "Excel",
+      "delimiter": "Comma",
+      "removeDoubleQuotes": "yes",
+      "includeFilter": "yes",
+      "sortBy": "Last Name, First Name",
+      "startDate": "effectivedate",
+      "endDate": "currentdate",
+      "showCategories": "yes",
+      "benefitType": "Dental",
+      "attributesToInclude": "Plan Type",
+      "benefitDates": "Participation Period,current",
+      "schedulingOptions": "No",
+      "scheduleName": "Test",
+      "scheduleStartDate": "currentdate:d:1",
+      "scheduleEndDate": "currentdate:M:1",
+      "notificationemail": "yes",
+      "scheduleFrequency": "Daily",
+      "schedulereqfre": "5"
+    }
+  },
+  "9": {
+    "resource": "QCOE Test Automation1",
+    "validhrcredentialsforgroup": {
+      "username": "qcoeautomation1",
+      "password": "Password2"
+    },
+    "transactionhistoryformattingoptions": {
+      "reportType": "Excel",
+      "delimiter": "Comma",
+      "removeDoubleQuotes": "yes",
+      "includeFilter": "yes",
+      "sortBy": "Last Name, First Name",
+      "startDate": "effectivedate",
+      "endDate": "currentdate",
+      "schedulingOptions": "No",
+      "scheduleName": "Test",
+      "scheduleStartDate": "currentdate:d:1",
+      "scheduleEndDate": "currentdate:M:1",
+      "notificationemail": "yes",
+      "scheduleFrequency": "Daily",
+      "schedulereqfre": "5"
+    }
+  },
+  "10": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup5": "BF QA Test Automation OE Group18"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfqcoeadmin18",
+      "password": "bfEnrol1"
+    },
+    "addemployeewithmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "11": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup5": "BF QA Test Automation OE Group18"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfqcoeadmin18",
+      "password": "bfEnrol1"
+    },
+    "addemployeewithmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

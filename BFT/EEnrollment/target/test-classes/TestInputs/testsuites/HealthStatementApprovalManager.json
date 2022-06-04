@@ -1,0 +1,17 @@
+{
+  "1": {
+    "resource": "TestAutomationGroupHealthStatement"
+  },
+  "2": {
+    "resource": "TestAutomationGroupHealthStatement"
+  },
+  "3": {
+    "resource": "TestAutomationGroupHealthStatement"
+  },
+  "4": {
+    "resource": "TestAutomationGroupHealthStatement"
+  },
+  "default": {
+    "resource": "BFQATestAutomationGroup"
+  }
+}

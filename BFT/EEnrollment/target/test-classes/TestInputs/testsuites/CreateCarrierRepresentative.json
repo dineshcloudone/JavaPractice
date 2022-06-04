@@ -1,0 +1,36 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "carrierrepresentative": {
+      "lastname": "RNDAuto"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "carrierreplogincredentials": {
+      "username": "HMVcarrierreploginid",
+      "password": "bfEnrol0"
+    },
+    "carrierrepupdatepassword": {
+      "newpassword": "bfEnrol1",
+      "confirmpassword": "bfEnrol1"
+    },
+    "newcarrierrepresentative": {
+      "firstname": "Auto",
+      "lastname": "RNDAuto",
+      "emailaddress": "test@test.com",
+      "employeeid": "RND",
+      "managerfirstname": "Auto",
+      "managerlastname": "RNDManager",
+      "manageremailaddress": "testmanager@test.com",
+      "carrierreploginid": "RNDBFCarAuto",
+      "carrierreppassword": "bfEnrol0",
+      "carrierrepconfirmpassword": "bfEnrol0",
+      "carriername": "24HourFlex",
+      "carrierrole": "Membership"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

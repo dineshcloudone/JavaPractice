@@ -1,0 +1,77 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In HealthCare Benefit
+    Select Plan    Aetna High Deductible PPO (Consumer Focus) 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    Aetna Dental Full PPO 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    EyeMed Vision 2016
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    Health Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Select HSA participation    HSA Participation    Yes
+    Next
+    Select Plan    Aetna Health Savings Account (HDPPO) 2016
+    Next
+    Sleep    2
+    Next
+    Sleep    5
+    Next
+    Select Coverage Level    LifeStyles
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In FSA
+    Select Plan    Dependent Day Care FSA 2016
+    Set Contribution Amount For Flex Benefit    200
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Add Cobra Policy
+    Manage Cobra And Add Policy    COBRA MEDICAL Offer
+    Select Qualifying Event    new event    Death of employee,d:currentdate
+    Select Plan    Medical 2015
+    Persons Covered    click on    nex button
+    Enter Effective Date    d:currentdate
+    Save Cobra Policy    save
+
+Enroll In Life Benefit
+    Select Coverage Amount    $240,000.00
+    Next
+    Next
+    Select Coverage Amount    $240,000.00
+    Next
+    Select Plan    Spouse Life 2016
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Select Coverage Amount    $10,000.00
+    Next
+    Select Plan    Child Life 2016
+    Add Dependent To Employee    Child    lastname
+    Sleep    3
+    Next
+    Select Coverage Amount    $5,000.00
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Flex AD&D Benefit
+    Select Coverage Amount    $100,000.00
+    Next
+    Select Coverage Amount    $100,000.00
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Tobacco Benefit
+    Select Plan    One Tobacco User 2016
+    Next
+    Agree Terms And Conditions
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Medical

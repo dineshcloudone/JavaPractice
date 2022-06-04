@@ -1,0 +1,122 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Doc Center - Add A Document
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Doc Center - Add A Document*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (BASICS/Integration Settings)
+    ...
+    ...    4) Update Document Centre Enabled
+    ...
+    ...    5) Navigate To (Users/Add Member)
+    ...
+    ...    6) Add Member In Vista
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment With Valid Credentials
+    ...
+    ...    9) Navigate To MYDOCUMENTS
+    ...
+    ...    10) Document Upload
+    ...
+    ...    11) Verify Document
+    ...
+    ...    12) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Integration Settings
+    Update Integration Settings    Document Center Enabled?    Yes
+    Update Integration Settings    Document Center Access Page    Yes
+    Update Integration Settings    Dependent Verification Document Types    -ALL-
+	Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Navigate To New Member Menu    MYDOCUMENTS
+    Document    Upload    none    Test.doc    Test    Other Document
+    Logout New Member Role
+	Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Integration Settings
+    Update Integration Settings    Document Center Enabled?    No
+    Save Configuration
+    Logout Vista Admin
+
+2.Doc Center - Delete A Document
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Doc Center - Delete A Document*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (BASICS/Integration Settings)
+    ...
+    ...    4) Update Document Centre Enabled
+    ...
+    ...    5) Navigate To
+    ...
+    ...    6) Add Member In Vista
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment With Valid Credentials
+    ...
+    ...    9) Navigate To MYDOCUMENTS
+    ...
+    ...    10) Document Upload
+    ...
+    ...    11) Document Delete
+    ...
+    ...    12) Verify Document
+    ...
+    ...    13) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Integration Settings
+    Update Integration Settings    Document Center Enabled?    Yes
+    Update Integration Settings    Document Center Access Page    Yes
+    Update Integration Settings    Dependent Verification Document Types    -ALL-
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Navigate To New Member Menu    MYDOCUMENTS
+    Document    Upload    none    Test.doc    Test    Other Document
+    Navigate To New Member Menu    MYDOCUMENTS
+    Document    Delete    none    Test.doc    Test    Other Document
+    Logout New Member Role
+	Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BASICS    Integration Settings
+    Update Integration Settings    Document Center Enabled?    No
+    Save Configuration
+    Logout Vista Admin

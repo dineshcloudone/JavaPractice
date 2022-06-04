@@ -1,0 +1,96 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search and Sort Carrier functionality
+Test Setup        getResource
+Force Tags        SearchandSortCarrier
+Resource          ../../../../Resources/Common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Search Carrier Representatives using Last Name
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Search Carrier Representatives using Last Name*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> Carrier Representatives'
+    ...
+    ...    3) Select 'Last Name',Values as 'automation'
+    ...
+    ...    4) Click on Search Button
+    ...
+    ...    5) Verify Search Results using Login ID.
+    ...
+    ...    6) Logout as Vista Admin
+    [Tags]    smoke
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Representatives
+    BuiltIn.Sleep    5s
+    Perform Carrier Representative Search    Last Name:automation    All    All
+    BuiltIn.Sleep    5s
+    Verify Carrier Representative Results    carrier_membership
+    Logout Vista Admin
+
+2.Search Carrier Representatives using Last Name with Role as Membership for BFI Carrier
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Search Carrier Representatives using Last Name with Role as Membership for BFI Carrier*
+    ...
+    ...    Test Steps
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> Carrier Representatives'
+    ...
+    ...    3) Select 'Last Name',Values as 'automation'
+    ...
+    ...    4) Select Role as 'Membership' and carrier as 'BFI'
+    ...
+    ...    5) Click on Search Button
+    ...
+    ...    6) Verify Search Results using Login ID.
+    ...
+    ...    7) Logout as Vista Admin
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Representatives
+    BuiltIn.Sleep    5s
+    Perform Carrier Representative Search    Last Name:automation    Membership    BFI
+    BuiltIn.Sleep    5s
+    Verify Carrier Representative Results    carrier_membership
+    Logout Vista Admin
+
+3.Search for Carrier Representatives and sort using Login ID
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Name : *Search Carrier Representatives using Last Name with Role as Membership for BFI Carrier*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as Vistaadmin(bfautomation/Password1)
+    ...
+    ...    2) Navigate to 'Carriers >> Carrier Representatives'
+    ...
+    ...    3) Select 'Login ID',Values as 'carrier%'
+    ...
+    ...    4) Select Role as 'Membership' and carrier as 'BFI'
+    ...
+    ...    5) Click on Search Button
+    ...
+    ...    6) Select 'Login ID' from Sort By.
+    ...
+    ...    7) Click on Search Button
+    ...
+    ...    8) Verify Search Results using Login ID.
+    ...
+    ...    7) Logout as Vista Admin
+    Login as vista admin with valid credentials
+    Navigate To    CARRIERS    Carrier Representatives
+    BuiltIn.Sleep    5s
+    Perform Carrier Representative Search    Login ID:carrier%    Membership    BFI
+    Perform Carrier Representative Sort    Login ID    All
+    BuiltIn.Sleep    5s
+    Verify Carrier Representative Results    carrier_membership
+    Logout Vista Admin

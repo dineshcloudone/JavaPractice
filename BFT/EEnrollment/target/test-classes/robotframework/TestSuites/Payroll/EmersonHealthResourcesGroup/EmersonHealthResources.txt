@@ -1,0 +1,986 @@
+*** Settings ***
+Suite Setup
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Initial Enrollment (Before HR Approval)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in applicable benefits
+    ...
+    ...    LogOut from HR Admin Role with out HR approvals
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc1
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc1
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc1
+
+2.Initial enrollment (after approval)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Initial Enrollment (After HR Approval)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in applicable benefits
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc2
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc2
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc2
+
+3.Initial refusal
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Initial Refusal
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Refuse all applicable benefits
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc3
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc3
+    Navigate To HR Menu    Benefitdetails
+    Comment    Refuse member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Dental 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc3
+
+4.Accept after initial refusal
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Accept after initial refusal
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Refuse all applicable benefits
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Re-enroll member in the above refused benefits
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc4
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc4
+    Navigate To HR Menu    Benefitdetails
+    Comment    Refuse member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Medical 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Current Plan    Medical
+    Comment    Re-enroll member in above refused benefits (Could be One or More)
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc4
+
+5.Cancel benefits (before approval)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Cancel Benefits (Before Approval)l
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in all applicable benefits
+    ...
+    ...    Cancel benefits in which already enroled
+    ...
+    ...    LogOut from HR Admin Role with out HR approvals
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc5
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc5
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Dental 2016
+    Enroll Dental Benefit
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    Dental 2016 - Pending Approval
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc5
+
+6.Cancel benefits (after approval)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Cancel Benefits (AfterApproval)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in all applicable benefits
+    ...
+    ...    Cancel benefits in which already enroled
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc6
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc6
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Dental 2016
+    Enroll Dental Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    Dental 2016
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc6
+
+7.Enroll after cancellation
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : ENroll after cancellation
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in all applicable benefits
+    ...
+    ...    Cancel benefits in which already enroled
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Re-enroll member in cancelled benefits
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc7
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc7
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Dental 2016
+    Enroll Dental Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Navigate To HR Menu    Benefitdetails
+    Comment    Cancel any of the enrolled benefit of the member from HR admin Role
+    Cancel Benefit In Hr Role    Dental 2016
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Dental 2016
+    Edit Current Plan    Dental
+    Comment    Re-enroll member for the cancelled benefit
+    Enroll Dental Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc7
+
+8.Cancellations because of terminations
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Cancellation because of terminations
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in all applicable benefits
+    ...
+    ...    Terminate employee from HR Admin Role
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc8
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc8
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Comment    Terminate Employee from HR Admin Role
+    Perform Employee Termination    d:currentdate    Voluntary
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc8
+
+9.Cancellations because of retirement
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Cancellation because of retirement
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in all applicable benefits
+    ...
+    ...    Change the employee status as retired
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc9
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc9
+    Comment    Change the Employee status as Retired
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Perform Employee Retirement
+    Verify Message    Retired
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc9
+
+10.Category Change
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Category Change
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Category values
+    ...
+    ...    Change the Category values from HR Admin Role
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc10
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    EHRlastnametc10
+
+11.Benefit Plan Change
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Benefit Plan Change
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their benefit plans
+    ...
+    ...    Change the member benefit from existing benefit to new benefit
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc11
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc11
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Comment    Change the Employee Benefit from the existing benefit from HR Admin Role
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical 2016
+    Enroll HMO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc11
+
+12.Effective Date Change
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Effective Date Change
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change the Effective Date for the selected benefit
+    ...
+    ...    Change the effective date for the selected benefit from HR Admin Role
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc12
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc12
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Comment    Chnage the Effective date for existing benefit
+    Start Current Benefit    Medical 2016
+    Enroll HMO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc12
+
+13.Increase Coverage Level
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Increase Coverage Level
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Level
+    ...
+    ...    Change the Coverage Level for the selected benefit from HR Admin Role [ Need to Increase the Coverage Level]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc13
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Dental 2016
+    Enroll Dental Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc13
+
+14.Decrease Coverage Level
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Decrease Coverage Level
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Level
+    ...
+    ...    Change the Coverage Level for the selected benefit from HR Admin Role [ Need to Decrease the Coverage Level]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc14
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Dental 2016
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc14
+
+15.Increase Coverage Amount For Life Benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Increase Coverage Amount For Life benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Amount
+    ...
+    ...    Change the Coverage Amount for the selected benefit from HR Admin Role [ Need to Increase the Coverage Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory2    EHRlastnametc15
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc15
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Voluntary Life and AD&D 2015
+    Enroll Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc15
+
+16.Decrease Coverage Amount For Life benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Decrease Coverage Amount For Life benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Coverage Amount
+    ...
+    ...    Change the Coverage Amount for the selected benefit from HR Admin Role [ Need to Decrease the Coverage Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory2    EHRlastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Voluntary Life and AD&D 2015
+    Enroll Life Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc16
+
+17.Increase Contribution Amount For Flex Benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Increase Contribution Amount For Flex benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Contribution Amount
+    ...
+    ...    Change the Contribution Amount for the selected benefit from HR Admin Role [ Need to Increase the Contribution Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Flexible Spending Accounts 2016
+    Enroll FSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc17
+
+18.Decrease Contribution Amount For Flex Benefit
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Decrease Contribution Amount For Flex benefit
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Contribution Amount
+    ...
+    ...    Change the Contribution Amount for the selected benefit from HR Admin Role [ Need to Decrease the Contribution Amount]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Flexible Spending Accounts 2016
+    Enroll FSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc18
+
+19.Add flex when already enrolled in HSA
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc19
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc19
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in FSA
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc19
+
+20.Cancel flex when already enrolled in flex
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc20
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc20
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in Medical/HSA
+    Start Current Benefit    Flexible Spending Accounts 2016
+    Enroll FSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc20
+
+21.Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in FSA
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Enroll member in Medical/HSA if applicable
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc21
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc21
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in FSA
+    Start Current Benefit    Flexible Spending Accounts 2016
+    Enroll FSA Plan
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc21
+
+22.Cancel HDHP/HSA when already enrolled in flex (if group supports HSA)
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Add HDHP/HSA when already enrolled in flex (if group supports HSA)
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Add Member in the Group from Vista Role
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the above created employee
+    ...
+    ...    Enroll member in FSA
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Enroll member in Medical/HSA if applicable
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    Cancel HSA benefit
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc22
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc22
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in Medical/HSA
+    Start Current Benefit    Medical 2016
+    Enroll PPO Medical Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc22
+
+23.Change in EE Cost
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc23
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    EHRlastnametc23
+
+24.Salary Increase
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Salary Inrease
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Salary
+    ...
+    ...    Change the Salary for the selected member from HR Admin Role [ Need to Increase the Salary]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc24
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    EHRlastnametc24
+
+25.Salary Decrease
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Salary Derease
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their Salary
+    ...
+    ...    Change the Salary for the selected member from HR Admin Role [ Need to Decrease the Salary]
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc25
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    EHRlastnametc25
+
+29.Add Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc29
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc29
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Dental 2016
+    Enroll Dental Benefit
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc29
+
+30.Remove Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc30
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc30
+    Navigate To HR Menu    Benefitdetails
+    Navigate To Current Enrollment
+    Start Current Benefit    Dental 2016
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc30
+
+31.Change dependent personnel information
+    [Documentation]    Author : Prasad Pasupuleti
+    ...
+    ...    Test Case TItle : Change dependant personnel information
+    ...
+    ...    Test Steps :
+    ...
+    ...    Log into Vista Role and Search for required Group
+    ...
+    ...    Open Group In HR Role
+    ...
+    ...    Search for the existing member who are eligible to change their dependent personnel information
+    ...
+    ...    Change the dependent personnel information
+    ...
+    ...    Approve Tasks From HR Admin Role
+    ...
+    ...    LogOut from HR Admin Role
+    Login as vista admin with valid credentials
+    Perform Group Search    Emerson Health System Inc
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:emersonhealthresourcesmandatory    EHRlastnametc31
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVEHRlastnametc31
+    Navigate To HR Menu    Benefitdetails
+    Comment    Navigate To Current Enrollment
+    Start Current Benefit    Dental 2016
+    Select Coverage Level    Employee + Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Comment    CHange Dependent details
+    Navigate To Employee Home Page
+    Approve From HR Admin
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    EHRlastnametc31

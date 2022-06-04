@@ -1,0 +1,49 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefit
+    Select Plan    2016 Choice 1000
+    Select Coverage Level    Employee Only
+    Next
+    Select Plan    2016 Low Rx
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental Benefit
+    [Arguments]    ${plan}
+    Select Plan    ${plan}
+    Select Coverage Level    Employee Only
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Life Benefit
+    Select Coverage Amount    $50,000.00
+    Next
+    Next
+    Select Plan    2016 Additional Life Insurance
+    Next
+    Select Coverage Amount    $360,000.00
+    Next
+    Next
+    Select Plan    2016 Spouse Life Insurance
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    BuiltIn.Sleep    5s
+    Select Coverage Amount    $20,000.00
+    Next
+    Select Plan    2016 Child Life Insurance
+    Add Dependent To Employee    Child    lastname
+    Next
+    BuiltIn.Sleep    5s
+    Select Coverage Amount    $10,000.00
+    Next
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Health FSA Benefit
+    [Arguments]    ${contributionamount}
+    Select Plan    2016 Health Care Spending Account
+    Set Contribution Amount For Flex Benefit    ${contributionamount}
+    Next
+    Enter Deduction Periods Remaining In The Year    2
+    Save And Go To Benefit Enrollment Page

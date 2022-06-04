@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="TestOne">
+    <classes>
+        <class name="testngTutorials.BeforeAndAfterClass">
+            <methods>
+            <include name="firstGroupMethodOne"/>
+            <include name="firstGroupMethodTwo"/>
+            </methods>
+        </class>           
+    </classes>
+  </test>
+  <test name="TesTwo">
+    <classes>
+        <class name="testngTutorials.BeforeAndAfterClass">
+            <methods>
+            <include name="secondGroupMethodOne"/>
+            <include name="secondGroupMethodTwo"/>
+            </methods>
+        </class>           
+    </classes>
+  </test>
+</suite>

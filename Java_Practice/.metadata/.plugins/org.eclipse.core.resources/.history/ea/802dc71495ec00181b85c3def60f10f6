@@ -1,0 +1,260 @@
+package stringpractice;
+
+import java.lang.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.TreeSet;
+
+public class StringFAQS {
+	
+	void reverseStringEx(String s)
+	{		
+		char[] ch=new char[s.length()];
+		char[] ch2=new char[s.length()];
+		
+		ch=s.toCharArray();
+		
+		/*for(int i=0;i<s.length();i++)
+		{
+			ch[i]=s.charAt(i);
+		}*/
+		
+		for(int i=s.length()-1,j=0;i>=0;i--,j++)
+		{
+			System.out.print(ch[i]);
+			ch2[j]=ch[i];			
+		}
+		
+		System.out.println();
+		System.out.println("Reversed String: "+new String(ch2));
+		
+		//System.out.println("Using reverse funtion :"+new StringBuilder(s).reverse());
+	}
+
+	void verifyPalindrome(String s)
+	{
+		char[] ch=new char[s.length()];		
+		
+		for(int i=s.length()-1,j=0;i>=0;i--,j++)
+		{
+			ch[j]=s.charAt(i);			
+		}		
+		
+		System.out.println("Palindrom:"+ new String(ch).equals(s));
+	}
+	
+	void toggle(String s)
+	{
+		String[] words=s.split(" ");		
+		String toggle="";
+		for(String word : words)
+		{
+			String first=word.substring(0,1).toUpperCase();
+			String rem=word.substring(1,word.length());
+			toggle+=first+rem+" ";
+		}
+		System.out.println("After completion of toggle :"+toggle);
+				
+	}
+	
+	void sortWords()
+	{
+		String s="java collections string constructor";		
+		
+		String[] sA=s.split(" ");
+		
+		String temp=null;
+		
+		for(int i=0;i<sA.length;++i)
+		{
+			for(int j=i+1;j<sA.length;++j) {
+				
+				int a=sA[i].length();
+				int b=sA[j].length();
+				
+				if(a>b) {
+					temp=sA[i];
+					sA[i]=sA[j];
+					sA[j]=temp;
+				}
+			}
+		}
+		
+		for(String fString:sA) {
+			System.out.println(" "+fString);
+		}
+		
+	}
+	
+	void sortArray() {
+		
+		int[] iArray= {4,1,7,4,3,9,7};
+		int temp;
+		for (int i = 0; i < iArray.length; ++i) {
+			for (int j = i+1; j < iArray.length; ++j) {
+				if (iArray[i] > iArray[j]) {
+
+					temp = iArray[i];
+					iArray[i] = iArray[j];
+					iArray[j] = temp;
+				}
+			}
+		}
+		
+		for (int k : iArray) {
+			System.out.print(" " + k);
+		}
+	}
+	
+	void binarySearch() {
+		
+		int[] array= {2,3,4,5,6,7,8,9};
+		
+		int searchnumber=12;
+		
+		int lowerbound=0;
+		int upperbound=array.length-1;		
+		
+		boolean temp=false;
+		
+		while(lowerbound<=upperbound) {
+			
+			int mid=(lowerbound+upperbound);
+			mid=mid/2;
+			
+			if(searchnumber ==array[mid]) {
+				temp=true;
+			}
+			if(searchnumber<array[mid]) {
+				upperbound=mid-1;
+			}else {
+				lowerbound=mid+1;
+			}
+		}
+		
+		if(temp) {
+			System.out.println("search element found :" +searchnumber);
+		}else {
+			System.out.println("search element not found 	");
+		}		
+		
+	}
+	
+	void countCharOccurance() {
+		
+		String str="Dinesh Dine";
+		int MAX_CHAR=256;
+		
+		
+		int count[] = new int[MAX_CHAR];		 
+        int len = str.length();
+        
+               
+        // Initialize count array index
+        for (int i = 0; i < len; i++)
+            count[str.charAt(i)]++;
+        
+          
+        char[] char2=str.toCharArray();
+        List<Character> l=new ArrayList<Character>();
+        
+        for(char c:char2) {
+        	
+        	if(!(l.contains(c)))
+        		l.add(c);        	        		
+        }        
+        
+        
+        l.forEach(x->System.out.println("each char occurance :"+x+" - "+count[x.charValue()]));
+        
+        // Create an array of given String size
+        /*char ch[] = new char[str.length()];
+        for (int i = 0; i < len; i++) {
+            ch[i] = str.charAt(i);
+            int find = 0;
+            for (int j = 0; j <= i; j++) {
+ 
+                // If any matches found
+                if (str.charAt(i) == ch[j]) 
+                    find++;                
+            }
+ 
+            if (find == 1) 
+                System.out.println("Number of Occurrence of " +
+                 str.charAt(i) + " is:" + count[str.charAt(i)]);            
+        }*/
+		
+	}
+	
+	void nullStringInIf() {
+		
+		String s1="Dinesh";
+		String s2=null;
+		
+		if(s2==null) {
+			System.out.println("In if condition");
+		}
+	}
+	
+	void countChar() {
+		
+		String s="dinesh:dinesh:dineshidi";
+		
+		String[] sarray=s.split("i",0);
+		
+		int length=sarray.length;
+		
+		System.out.println("no of i's : "+ length);
+		
+		//System.out.println("String length :"+ "D inesh".length());
+	}
+	
+	void countWord(String s) {
+		
+		String sentence="welcomewelcomewelcomewelcome";
+		String name="come";
+		
+		char[] ch1=sentence.toCharArray();
+		char[] ch2=name.toCharArray();
+		int Wordcount=0;
+		int loopcount=0;
+		boolean bool=true;
+		
+		for(int i=0;i<ch1.length;i++) {
+			for(int j=0;j<ch2.length;j++) {
+				
+				if(ch1[i]==ch2[j]) {
+					loopcount++;
+					if(loopcount==ch1.length) {
+						
+					}
+					continue;
+						
+				}
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		// TODO Auto-generated method stub
+		StringFAQS faq=new StringFAQS();
+				
+		//faq.reverseStringEx("This is Dinesh");
+		
+		//faq.verifyPalindrome("madam");
+		//faq.toggle("this is dinesh");
+		
+		//faq.sortWords();
+		//faq.sortArray();
+		//faq.binarySearch();
+		//faq.countCharOccurance();
+		
+		//faq.nullStringInIf();
+		faq.countChar();
+	}
+	
+	
+
+}

@@ -1,0 +1,36 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+Enroll in Medical Benefit
+    [Arguments]    ${medical_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    2016 UHC $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${medical_benefit_enrollment_date}    test
+    Select Plan    2016 Health Care FSA
+    Set Contribution Amount For Flex Benefit    80
+    Enter New Effective Date    ${medical_benefit_enrollment_date}    test
+    Select Plan    2016 Dependent Care FSA
+    Set Contribution Amount For Flex Benefit    80
+    Enter New Effective Date    ${medical_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+
+Enroll In Life Insurance benefit
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Life Insurance
+    Select Coverage Amount    $75,000.00
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate    test
+    Next
+    Select Plan    2016 Spouse Term Life
+    Add Dependent To Employee    Spouse    lstSpouse
+    Next
+    Select Coverage Amount    $50,000.00
+    Enter New Effective Date    d:currentdate    test
+    Select Coverage Amount    $5,000.00
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

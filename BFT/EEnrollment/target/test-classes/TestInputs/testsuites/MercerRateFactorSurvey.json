@@ -1,0 +1,306 @@
+{
+  "1": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "2": {
+    "resource": "autoslkamericanew",
+    "hrcredentials": {
+      "username": "hradminrfs",
+      "password": "bfEnrol1"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "3": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New",
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "4": {
+    "resource": "autoslkamericanew",
+    "rfs": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "AA",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "employerid": "RND",
+      "categories": "3ER,N - No,E - benefit eligible"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "5": {
+    "resource": "autoslkamericanew",
+    "rfs": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "CT",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "employerid": "RND",
+      "categories": "3ER,N - No,E - benefit eligible"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "6": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "7": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "8": {
+    "resource": "abhow",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"   
+    },
+    "rfs": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "employerid": "RND",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "N - Pre (64 or Younger),Benefited Exempt - Benefited Exempt,001 - Corporate/Home Office,Casual - Casual,AGP - Amber Grove Place,No,Hourly - Hourly,Non-Union - Non-Union"
+    },
+    "memberlogin":{
+    "memberpassword": "Test12345",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+    },
+    "rfsgroup": "RFS_Abhow"
+  },
+  "9": {
+    "resource": "autoslkamericanew",
+    "hrcredentials": {
+      "username": "hradminrfs",
+      "password": "bfEnrol1"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "10": {
+    "resource": "autoslkamericanew",
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "11": {
+    "resource": "autoslkamericanew",
+    "hrcredentials": {
+      "username": "hradminrfs",
+      "password": "bfEnrol1"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "12": {
+    "resource": "autoslkamericanew",
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "13": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "14": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "15": {
+    "resource": "autoslkamericanew",
+    "spouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse"
+    },
+    "rfsgroup": "Auto SLK America New"
+  },
+  "16": {
+    "resource": "autoslkamericanew",
+    "rfsaa": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "AA",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "employerid": "RND",
+      "categories": "3ER,N - No,E - benefit eligible"
+    },
+    "rfsgroup": "Auto SLK America New",
+    "spouseae": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Female",
+      "relationship": "Spouse",
+      "address": "TestAddress",
+      "city": "TestCity",
+      "state": "AE",
+      "country": "USA",
+      "zip": "12345"
+    }
+  },
+  "17": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "18": {
+    "resource": "autoslkamericanew",
+    "rfsgroup": "Auto SLK America New"
+  },
+  "19": {
+    "resource": "abhow",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "rfs": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "employerid": "RND",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "categories": "N - Pre (64 or Younger),Benefited Exempt - Benefited Exempt,001 - Corporate/Home Office,Full Time Benefited - Full Time Benefited,AGP - Amber Grove Place,No,Hourly - Hourly,Non-Union - Non-Union"
+    },
+    "memberpassword": "Test12345",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "rfsgroup": "RFS_Abhow"
+  },
+  "20": {
+    "resource": "autoslkamericanew",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "rfs": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+    },
+    "memberpassword": "Test12345",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "rfsgroup": "Cosentry_RFS"
+  },
+  "default": {
+    "resource": "autoslkamericanew"
+  }
+}

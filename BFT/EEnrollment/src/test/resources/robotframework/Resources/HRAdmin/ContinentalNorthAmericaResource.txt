@@ -1,0 +1,86 @@
+*** Settings ***
+Resource          ../../common.txt
+
+*** Keywords ***
+EnrollMedicalBenefitOfCNAGroup
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical, HSA, FSA
+    BuiltIn.Sleep    3s    wait time
+    Select Plan    $2,500 CDHP+ - Not A Tobacco User 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Enter Effective Date    d:currentdate
+    Next
+    Select Plan    Flexible Spending Account 2016
+    Set Contribution Amount For Flex Benefit    120
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+CancelMedicalBenefitOfCNAGroup
+    BuiltIn.Sleep    2s    wait time
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical, HSA, FSA
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+EnrollBasicLifeBenefitOfCNAGroup
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Basic Life and AD&D (Automotive)
+    Next
+    Comment    Enter Salary Details For Basic Life Benefit    $50,000.00    per year
+    Select Coverage Amount    \ \ (1.5 times \ salary up to $500,000.00)
+    Add Beneficiary To Member    Spouse    lnSpouse
+    Next
+    Enter Effective Date    d:currentdate
+    Next
+    Next
+    Next
+    Comment    Next
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+
+ChangeFlexContributionForCNAGroup
+    [Arguments]    ${fsacontribution}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical, HSA, FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    current
+    Edit Benefit Details    Health FSA    Contribution Amount
+    Set Contribution Amount For Flex Benefit    ${fsacontribution}
+    Next
+    Save Benefit In Snapshot Page
+
+cancelFSA
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical, HSA, FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    current
+    Edit Benefit Details    Health FSA    Health FSA
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+
+cancelHSA
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical, HSA, FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    current
+    Edit Benefit Details    Health FSA    Health FSA
+    Enter Effective Date    d:currentdate
+    Next
+    Save Benefit In Snapshot Page
+
+Enroll FSA When Already Enrolled in HSA
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical, HSA, FSA
+    Comment    Edit Due To Change Reason    current
+    Comment    Reason For Benefit Change    current
+    Edit Benefit Details    Health FSA    Health FSA
+    Select Plan    Flexible Spending Account 2016
+    Next
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+
+NSEnroll HSA When Already Enrolled in FSA

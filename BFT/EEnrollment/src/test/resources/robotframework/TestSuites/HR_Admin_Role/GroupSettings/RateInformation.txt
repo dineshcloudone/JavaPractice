@@ -1,0 +1,52 @@
+*** Settings ***
+Test Setup        getResource
+Force Tags        rateinformation
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.View Rate Information
+    [Documentation]    Author : *Abhijith Desai*
+    ...
+    ...    Test Case Title: *This test verifies Admin is taken to Plan Rates for each benefit page when clicked on Rate Information tab*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfhoso/bfEnrol1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to "Basics >> Group Customization"
+    ...
+    ...    4) Change resons to Yes for 'Display Rate Information in HR Role Group Settings area' and \ click on save button
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    7) Now click on 'Group Settings' side menu
+    ...
+    ...    8) Now click on 'Rate Information' side menu tab
+    ...
+    ...    9) Verify Admin is navigated to Plan Rates for each benefit page
+    ...
+    ...    10) Logout from application
+    [Tags]    QCOE
+    #PreRequisites
+    Login To Enrollment As Vista Admin    td:myvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    TestAutomationGroup1
+    Navigate To    Basics    Group Customization
+    Group Customization Configuration    Display Rate Information in HR Role Group Settings area    Yes    yes
+    Logout Vista Admin
+    BuiltIn.Sleep    2s
+    #Steps
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Capture Page Screenshot
+    BuiltIn.Sleep    1s
+    Navigate To HR Menu    GroupSettings
+    BuiltIn.Sleep    1s
+    Navigate To HR Menu    RateInformation
+    BuiltIn.Sleep    1s
+    Verify Message    Plan Rates
+    Logout HR Admin

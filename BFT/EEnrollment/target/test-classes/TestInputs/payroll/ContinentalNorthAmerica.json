@@ -1,0 +1,164 @@
+{
+    "1": {
+      "resource": "ContinentalNorthAmericaResource"
+        
+    },
+"2": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "3": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "4": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "5": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "6": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "7": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "8": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "9": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "10": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "11": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "12": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "13": {
+      "resource": "ContinentalNorthAmericaResource",
+      "spouse": {
+          "ssn": "RND7733",
+          "firstname": "AutoDep",
+          "lastname": "RNDDepSpouse",
+          "birthdate": "d:currentdate:y:-23",
+          "address1":"testing",
+          "city":"testing",
+          "zipcode":"40017",
+          "state":"CA",
+          "phone":"(876) 567-5787",
+          "country":"USA",
+          "gender": "Female",
+          "relationship": "Spouse"
+        },
+        "child": {
+          "ssn": "RND7744",
+          "firstname": "AutoMandatory",
+          "lastname": "RNDDepChild",
+          "birthdate": "d:currentdate:y:-10",
+          "gender": "Male",
+          "relationship": "Child"
+        }
+      	  
+    },
+    "14": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "15": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "16": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "17": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "18": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "19": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "20": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "21": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "22": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "23": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "24": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "25": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "26": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "27": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "28": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "29": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "30": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "31": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "32": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "33": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "34": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    },
+    "35": {
+      "resource": "ContinentalNorthAmericaResource"
+      	  
+    }
+}

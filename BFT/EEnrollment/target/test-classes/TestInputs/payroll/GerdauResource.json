@@ -1,0 +1,58 @@
+{
+  "gerdaulatestcases": {
+    "Gerdau": {
+      "vista": {
+        "gerdaumandatory": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "maritalstatus": "Single",
+          "address1": "Test address",
+          "address2": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "homePhone": "123-456-7890",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDBFAuto",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "earnings":"5000",
+          "earningsfrequency":"per month",
+          "payfrequency":"Bi-Weekly",
+          "hoursPerWeek":"40",
+          "employerid":"RND91741",
+          "categories":"Yes - 1200 or More Hours#N - No#1 - Early Retirement#GSN - Gerdau Special Steel North America#3 - Regular#1A - Hourly Full Time#no#N/A#0001 - kylie.allen@gerdau.com#0001 - KYLIE#0001 - ALLEN#USGY - US22 Monroe Steel Mill#N/A#S1 - Semi-Monthly#N/A#Not Eligible#0-9#0 - Withdrawn#QU5 - Monroe Steel Mill Union#AK - Alaska"
+        },
+        "validvistacredentials": {
+          "username": "bftpuchala",
+          "password": "bfEnrol1"
+        },
+        "adddependent": {
+          "spouse": {
+            "ssn": "RND7733",
+            "firstname": "AutoDep",
+            "lastname": "RNDDepSpouse",
+            "birthdate": "d:currentdate:y:-23",
+            "gender": "Female",
+            "relationship": "Spouse"
+          },
+          "child": {
+            "ssn": "RND7744",
+            "firstname": "AutoMandatory",
+            "lastname": "RNDDepChild",
+            "birthdate": "d:currentdate:y:-10",
+            "gender": "Male",
+            "relationship": "Child"
+          }
+
+        }
+      }
+
+    }
+  }
+}

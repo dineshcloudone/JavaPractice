@@ -1,0 +1,143 @@
+{
+  "1": {
+    "resource": "QCOE_Dependent_Beneficiary_Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "testautomationhr_5",
+      "password": "passWord123"
+    },
+    "groupsearch": "QCOE_Dependent_Beneficiary_Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "hiredate": "currentdate"
+    }
+  },
+  "2": {
+    "resource": "QCOE_Dependent_Beneficiary_Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "testautomationhr_5",
+      "password": "passWord123"
+    },
+    "groupsearch": "QCOE_Dependent_Beneficiary_Group",
+    "dependentverificationchanges": {
+      "medical": "Medical",
+      "communication": "Blue Cross and Blue Shield of Kansas City",
+      "userrole": "HR Admin"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "hiredate": "currentdate"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "3": {
+    "resource": "QCOE_Dependent_Beneficiary_Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "testautomationhr_5",
+      "password": "passWord123"
+    },
+    "groupsearch": "QCOE_Dependent_Beneficiary_Group",
+    "dependentverificationchanges": {
+      "medical": "Medical",
+      "communication": "Blue Cross and Blue Shield of Kansas City",
+      "userrole": "HR Admin"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "hiredate": "currentdate"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "relationship": "Spouse",
+      "gender": "Female",
+      "birthdate": "d:currentdate:y:-23"
+    }
+  },
+  "4": {
+    "resource": "QCOE_Dependent_Beneficiary_Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "testautomationhr_5",
+      "password": "passWord123"
+    },
+    "groupsearch": "QCOE_Dependent_Beneficiary_Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "hiredate": "currentdate"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "default": {
+    "resource": "QCOE_Dependent_Beneficiary_Group"
+  }
+}

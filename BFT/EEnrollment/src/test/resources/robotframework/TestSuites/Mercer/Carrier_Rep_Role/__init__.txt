@@ -1,0 +1,3 @@
+*** Settings ***
+Documentation     *Test Directory consists of all the automated test scenarios for Carrier Representive(Membership/underwriter) role*
+Force Tags        carrierrep

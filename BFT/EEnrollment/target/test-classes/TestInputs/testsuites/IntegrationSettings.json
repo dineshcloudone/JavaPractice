@@ -1,0 +1,53 @@
+{
+  "1": {
+    "resource": "QCOE Common UAB Health Group",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "memberpassword": "passWord123",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes",
+    "groupsearch": "QCOE Common UAB Health Group",
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFQCOEAuto",
+      "password": "passWord1234",
+      "confirmpassword": "passWord1234",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "calenderset": "Monthly",
+      "payfrequency": "Monthly",
+      "employerid": "12345"
+    },
+    "dependentverificationchanges": {
+      "medical": "Medical",
+      "communication": "Blue Cross and Blue Shield of Kansas City",
+      "userrole": "HR Admin"
+    },
+    "spouse": {
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "relationship": "Spouse",
+      "ssn": "RND7733",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female"
+    }
+  },
+  "default": {
+    "resource": "QCOE Common Diamond Foods Group"
+  }
+}

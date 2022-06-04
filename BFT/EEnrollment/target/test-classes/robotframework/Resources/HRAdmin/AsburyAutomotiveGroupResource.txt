@@ -1,0 +1,68 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+EnrollMedicalBenefitInAAGgroup
+    [Arguments]    ${coverage level}
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    Medical 2016
+    Select Plan    Asbury Base HSA Plan 2016
+    Select Coverage Level    ${coverage level}
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Health Savings Account 2016
+    Enter New Effective Date    d:currentdate    test
+    Next
+    BuiltIn.Sleep    3s    wait time
+    Save Benefit In Snapshot Page
+
+CancelHSAForNewMember
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Health Savings Account (HSA)    Health Savings Account (HSA)
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+
+NA_ADDHSAForNewMember
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Health Savings Account (HSA)    Health Savings Account (HSA)
+    Select Plan    Health Savings Account 2016
+    Enter Effective Date    d:currentdate
+    Comment    Next
+    BuiltIn.Sleep    2s    wait time
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve All Benefits After Employee Edit
+
+NA_ADDFSAForNewMember
+    [Arguments]    ${effecitve date}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Health FSA    Health FSA
+    Select Plan    Flexible Spending Account 2016
+    Enter Contribution Amount For FSA Plan    280
+    Enter Effective Date    ${effecitve date}
+    Next
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Approve All Benefits After Employee Edit
+
+NA_CancelFSAForNewMember
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    Medical 2016
+    Edit Benefit Details    Health FSA    Health FSA
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Comment    Approve All Benefits After Employee Edit
+
+Enroll in Dental Benefit
+    Navigate To HR Menu    Overview
+    Start Current Benefit    Dental Insurance 2016
+    Select Plan    Dental Basic 2016
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Approve From HR Admin

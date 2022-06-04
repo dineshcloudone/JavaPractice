@@ -1,0 +1,16 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "myvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "Testhrautomation1",
+      "password": "bfEnrol1"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

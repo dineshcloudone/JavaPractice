@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keywordspec generated="20160725 11:18:56" format="HTML" type="library" name="RTAFLibrary">
+<version>1.0-SNAPSHOT</version>
+<scope>global</scope>
+<namedargs>yes</namedargs>
+<doc>RTAFLibrary is a ... library for the Robot Framework.&lt;br&gt;
+ &lt;br&gt;
+ &lt;b&gt;Insert library introduction here.&lt;/b&gt;</doc>
+<kw name="Capture Page Screenshot">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ 
+ Take a screenshot with current timestamp of the current page and embed it
+ into the log.&lt;br&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Check Content For Row Identified By Rownum">
+<arguments>
+<arg>columnNames</arg>
+<arg>expectedValues</arg>
+<arg>tableName</arg>
+<arg>rowNumValue</arg>
+</arguments>
+<doc>This keyword can be used to check for proper content inside a specific
+ row in a database table. For this it is possible to give a
+ comma-separated list of column names in the first parameter and a
+ pipe-separated list of values in the second parameter. Then the name of
+ the table and the rownum to check must be passed to this keyword. The
+ corresponding values are then read from that row in the given table and
+ compared to the expected values. If all values match the teststep will
+ pass, otherwise it will fail.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt;
+ | Check Content for Row Identified by Rownum | Name,EMail | John Doe|john.doe@x-files | MySampleTable | 4 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Check Content For Row Identified By Where Clause">
+<arguments>
+<arg>columnNames</arg>
+<arg>expectedValues</arg>
+<arg>tableName</arg>
+<arg>whereClause</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ This keyword can be used to check for proper content inside a specific
+ row in a database table. For this it is possible to give a
+ comma-separated list of column names in the first parameter and a
+ pipe-separated list of values in the second parameter. Then the name of
+ the table and a statement used in the where-clause to identify a concrete
+ row. The corresponding values are then read from the row identified this
+ way and compared to the expected values. If all values match the teststep
+ will pass, otherwise it will fail.
+ 
+ If the where-clause will select more or less than exactly one row the
+ test will fail.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt; 
+ | Check Content for Row Identified by WhereClause | Name,EMail | John Doe|john.doe@x-files | MySampleTable | Postings=14 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Check Primary Key Columns For Table">
+<arguments>
+<arg>tableName</arg>
+<arg>columnList</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Checks that the primary key columns of a given table match the columns
+ given as a comma-separated list. Note that the given list must be ordered
+ by the name of the columns. Upper and lower case for the columns as such
+ is ignored by comparing the values after converting both to lower case.
+ 
+ NOTE: Some database expect the table names to be written all in upper
+ case letters to be found.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt;
+ | Check Primary Key Columns For Table | MySampleTable | Id,Name |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Clear Enter">
+<arguments>
+<arg>locator</arg>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ clearEnter keyword or method used to perform clear the field and enter
+ operation if the object/element is present
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | locator - By class | value to enter | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Click">
+<arguments>
+<arg>locator</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Click keyword or method used to perform click operation if the
+ object/element is present
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | locator - By class | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Close Alert And Get Its Text">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Close the alert window and get the text on the alert box *</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Close Browser">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Keyword used to close the browser window</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Close Latest Window">
+<arguments>
+<arg>value</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'closeLatestWindow' keyword used to close the latest window
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | value - any string which is uniquely available on the newly opened window |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Connect To Database">
+<arguments>
+<arg>driverClassName</arg>
+<arg>connectionString</arg>
+<arg>dbUser</arg>
+<arg>dbPassword</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Establish the connection to the database. This is mandatory before any of
+ the other keywords can be used and should be ideally done during the
+ suite setup phase. To avoid problems ensure to close the connection again
+ using the disconnect-keyword.
+ 
+ It must be ensured that the JAR-file containing the given driver can be
+ found from the CLASSPATH when starting robot. Furthermore it must be
+ noted that the connection string is database-specific and must be valid
+ of course.
+ 
+ &lt;pre&gt;
+ Example: 
+ | Connect To Database | com.mysql.jdbc.Driver | jdbc:mysql://my.host.name/myinstance | UserName | ThePassword |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Disconnect From Database">
+<arguments>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Releases the existing connection to the database. In addition this
+ keyword will log any SQLWarnings that might have been occurred on the
+ connection.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt; 
+ | Disconnect from Database |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Enter">
+<arguments>
+<arg>locator</arg>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Enter keyword or method used to perform enter operation if the
+ object/element is present
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | locator - By class | value to enter | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Execute SQL">
+<arguments>
+<arg>sqlString</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Executes the given SQL without any further modifications. The given SQL
+ must be valid for the database that is used. The main purpose of this
+ keyword is building some contents in the database used for later testing.
+ 
+ NOTE: Use this method with care as you might cause damage to your
+ database, especially when using this in a productive environment.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt; 
+ | Execute SQL | CREATE TABLE MyTable (Num INTEGER) |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Execute SQL From File">
+<arguments>
+<arg>fileName</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Executes the SQL statements contained in the given file without any
+ further modifications. The given SQL must be valid for the database that
+ is used. Any lines prefixed with "REM" or "#" are ignored. This keyword
+ can for example be used to setup database tables from some SQL install
+ script.
+ 
+ Single SQL statements in the file can be spread over multiple lines, but
+ must be terminated with a semicolon ";". A new statement must always
+ start in a new line and not in the same line where the previous statement
+ was terminated by a ";".
+ 
+ In case there is a problem in executing any of the SQL statements from
+ the file the execution is terminated and the operation is rolled back.
+ 
+ NOTE: Use this method with care as you might cause damage to your
+ database, especially when using this in a productive environment.
+ 
+ &lt;pre&gt;
+ Example: 
+ | Execute SQL from File | myFile.sql |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Execute SQL From File Ignore Errors">
+<arguments>
+<arg>fileName</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Executes the SQL statements contained in the given file without any
+ further modifications. The given SQL must be valid for the database that
+ is used. Any lines prefixed with "REM" or "#" are ignored. This keyword
+ can for example be used to setup database tables from some SQL install
+ script.
+ 
+ Single SQL statements in the file can be spread over multiple lines, but
+ must be terminated with a semicolon ";". A new statement must always
+ start in a new line and not in the same line where the previous statement
+ was terminated by a ";".
+ 
+ Any errors that might happen during execution of SQL statements are
+ logged to the Robot Log-file, but otherwise ignored.
+ 
+ NOTE: Use this method with care as you might cause damage to your
+ database, especially when using this in a productive environment.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt;
+ | Execute SQL from File | myFile.sql |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Generate Random Number">
+<arguments>
+<arg>value</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Keyword or method 'generateRandomNumber' used to generate random number
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | value - input value to generate the random number |
+ &lt;b&gt;Examples : &lt;/b&gt;
+ | RND - Randomly generated 5 digit number |
+ | RND:6 - Randomly generated number, with specified no. of digits |
+ | RNDadmin - Randomly generated 5 digit number is appended at the end of specified text 'admin' |
+ | RND:3:admin Randomly generated number, with specified no. of digits is appended at the end of specified text |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Current Web Driver">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ return the current webdriver object</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Date">
+<arguments>
+<arg>value</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Keyword or method 'getDate' used to generate specific date and specific
+ format
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | value - input value to generate the required date |
+ &lt;b&gt;Examples : &lt;/b&gt;
+ | d:currentdate Current Date d:currentdate:M:3 Current date + 3months |
+ | d:currentdate:M:-3 Current date - 3 months |
+ | d:effectivedate:d:3 1st date of currentmonth + 3 days |
+ | d:monthend:y:3 Current month end date + 3 years |
+ | d:monthend:d:3:format:EEE, MMM d, ''yy Current month end date + 3 days in specified format |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Hash Map Data From File">
+<arguments>
+<arg>value</arg>
+</arguments>
+<doc>Method to get Test Data from File dynamically
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Example :&lt;/b&gt;
+ | sleep 5000 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Hash Map Value Using Key">
+<arguments>
+<arg>strKey</arg>
+</arguments>
+<doc>Method to get data from HashMap using key
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Example :&lt;/b&gt;
+ | lastname of member |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Primary Key Columns For Table">
+<arguments>
+<arg>tableName</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Returns a comma-separated list of the primary keys defined for the given
+ table. The list if ordered by the name of the columns.
+ 
+ NOTE: Some database expect the table names to be written all in upper
+ case letters to be found.
+ 
+ &lt;pre&gt;
+ Example: 
+ | ${KEYS}= | Get Primary Key Columns For Table | MySampleTable |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Test Data">
+<arguments>
+<arg>strJsonKey</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ Keyword or method 'getTestData' used to get the specific json object
+ values
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | strJsonKey - json tag in json testdata file |
+ &lt;b&gt;Example :&lt;/b&gt;
+ | like --&gt; validvistacredentials / mandatory / automationgroup1 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Value">
+<arguments>
+<arg>value</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Keyword or method 'getValue' used get the values from run time hashmap
+ variables
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | value - input value to generate the random number |
+ &lt;b&gt;Examples : &lt;/b&gt;
+ | HMV&lt;Variable name&gt; eg: HMVlastname Retrieves the value for the variable stored already in runtime HashMap hMap |
+ | td:&lt;jsonKey&gt; eg: td:automationgroup1 Retrieves the value for the jsonKey available in json file - only jsonKey without child tags |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Is Alert Present">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'isAlertPresent' keyword to verify alert is present</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Is Displayed">
+<arguments>
+<arg>locator</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'isDisplayed' keyword or method used to verify object/element is
+ displayed or not
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | locator - By class | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Is Element Present">
+<arguments>
+<arg>locator</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'isElementPresent' Overloaded keyword to verify object/element is present
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | locator - By class |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Jsclick">
+<arguments>
+<arg>locator</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ jsclick keyword or method used to perform click operation using
+ javascript.
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | locator - By class | fieldName - name / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Launch Browser">
+<arguments>
+<arg>*configs</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Keyword 'launcherBrowser' used to open required browser based on robot
+ test input parameters
+ &lt;p/&gt;
+ [] String array input being passed from Robot-tests environment variables
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters :&lt;/b&gt;
+ | *configs |
+ |@{EESHREL / @{EESHDEV} / @{EESHPATCH} |
+ | Application name - eEnrollment | Application URL - http://eeshrel/go/bfi | browserType - FF / firefox / IE / chrome / safari |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Mouse Over">
+<arguments>
+<arg>locator</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'mouseOver' keyword or method used to perform mouseover action on the
+ element
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | locator - By class | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Read JSON">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Keyword or method 'ReadJSON' used to read the json test data files for
+ the current execution and application</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Read Single Value From Table">
+<arguments>
+<arg>tableName</arg>
+<arg>columnName</arg>
+<arg>whereClause</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ Reads a single value from the given table and column based on the
+ where-clause passed to the test. If the where-clause identifies more or
+ less than exactly one row in that table this will result in an error for
+ this teststep. Otherwise the selected value will be returned.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt;
+ | ${VALUE}= | Read single Value from Table | MySampleTable | EMail | Name='John Doe' |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Reload Application">
+<arguments>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Reload the browser with the application</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Select">
+<arguments>
+<arg>locator</arg>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Select keyword or method used to perform click operation if the
+ object/element is present
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | locator - By class | value to select | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Select Frame">
+<arguments>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Method to select a frame by it's name / index / id
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | value - is string parameter |
+ | value - index=1 |
+ | value - //frame[@id='test'] |
+ | value - css=frameset#fs1 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Select Latest Window">
+<arguments>
+<arg>value</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'selectLatestWindow' keyword used to select latest window opened
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | value - any string which is uniquely available on the newly opened window |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Sleep">
+<arguments>
+<arg>n</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Method to sleep for specified amount of time in MilliSeconds
+ &lt;pre&gt;
+ &lt;b&gt;Example :&lt;/b&gt;
+ | sleep 5000 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Verify">
+<arguments>
+<arg>locator</arg>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'verify' keyword or method used to verify a specific values is present in
+ a partcular locator
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | locator - By class | value to verify | fieldName / description of the object for reporting |
+
+ &lt;b&gt;Example : &lt;/b&gt;
+ | //div[@id='test'] | 20,000 | fieldName / description of the object for reporting |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Verify Message">
+<arguments>
+<arg>strMessage</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ 'verifyMessage' keyword to verify text message is available on the page
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Parameters : &lt;/b&gt;
+ | strMessage - any string which is uniquely available on the page |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Verify Number Of Rows Matching Where">
+<arguments>
+<arg>tableName</arg>
+<arg>where</arg>
+<arg>rowNumValue</arg>
+</arguments>
+<doc>Author : Arun Kasarla
+ 
+ This keyword checks that a given table contains a given amount of rows
+ matching a given WHERE clause.
+ 
+ For the example this means that the table "MySampleTable" must contain
+ exactly 2 rows matching the given WHERE, otherwise the teststep will
+ fail.
+ 
+ &lt;pre&gt;
+ &lt;b&gt;Example:&lt;/b&gt; 
+ | Verify Number Of Rows Matching Where | MySampleTable | email=x@y.net | 2 |
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Verify Table Data">
+<arguments>
+<arg>field</arg>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Method to perform a verify operation on particular cell in table
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Example : &lt;/b&gt;
+ | Table/ section in form of rows | value to verify in the table | fieldName / description for reporting |
+
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Verify Table Row Exists">
+<arguments>
+<arg>field</arg>
+<arg>columnName</arg>
+<arg>value</arg>
+<arg>fieldName</arg>
+</arguments>
+<doc>Author: Phani Srikar Ch
+ &lt;p/&gt;
+ Method to verify that whether a table cell exists with given value / not
+ &lt;p/&gt;
+ &lt;pre&gt;
+ &lt;b&gt;Example : &lt;/b&gt;	 *
+ | Table locator | any column Name | value to verify in the table | fieldName / description for reporting|
+ &lt;/pre&gt;</doc>
+<tags>
+</tags>
+</kw>
+</keywordspec>

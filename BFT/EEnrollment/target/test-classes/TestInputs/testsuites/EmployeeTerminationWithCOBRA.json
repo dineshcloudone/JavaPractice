@@ -1,0 +1,93 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "SAMPLE QCOE AutomationTest Group123",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminauto1",
+      "password": "Automation12"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "automationgroup": "SAMPLE QCOE AutomationTest Group123",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfhradminauto1",
+      "password": "Automation12"
+    },
+    "hradminmandatory": {
+      "ssn": "RND5511",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate"
+    },
+    "memberinitiallogin": {
+      "language": "English",
+      "password": "Test12345",
+      "confirmpassword": "Test12345",
+      "secretquestionscount": "3",
+      "annoucementpage": "yes",
+      "agreementpage": "no"
+    },
+    "spouse": {
+      "ssn": "RND7733",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepSpouse",
+      "birthdate": "d:currentdate:y:-23",
+      "gender": "Female",
+      "relationship": "Spouse"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

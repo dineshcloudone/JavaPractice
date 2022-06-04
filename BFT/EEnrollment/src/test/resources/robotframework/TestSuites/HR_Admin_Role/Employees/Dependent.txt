@@ -1,0 +1,255 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Dependent
+Test Setup        getResource
+Force Tags        QCOE
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Dependency Rules
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Dependency Rules*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group
+    ...
+    ...    3) Add HSA and FSA plans
+    ...
+    ...    4) Set Dependency Rule to Plans if Parent Selected
+    ...
+    ...    5) Logout from Vista Admin
+    ...
+    ...    6) Login as HR Admin
+    ...
+    ...    7) Add Member to Group
+    ...
+    ...    8) Enroll Member to Benefits
+    ...
+    ...    9) Check Dependency Rule Applies
+    ...
+    ...    10) Logout from application
+    [Setup]
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Medical Life    Diasble
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Life    Diasble
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA FSA    Enable
+    Navigate To    Benefits    Offers
+    Set Dependency Rule For Plans    HSA FSA    Health Savings Account (HSA)    Refused/Cancelled    FSA    Display this benefit element
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Select Plan    HSA
+    Enter Effective Date    d:currentdate
+    Capture Page Screenshot
+    Logout HR Admin
+    [Teardown]
+
+2.Dependent Verification No Task
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Dependent Verification No Task*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to Basics Tab
+    ...
+    ...    4) Go to Personal Customization
+    ...
+    ...    5) Search "Verification"
+    ...
+    ...    6) Change to Yes and Check Confirm the Configuration is set to Pend Verification
+    ...
+    ...    7) Select MEDICAL benefit only for All dependents
+    ...
+    ...    8) Logout from Vista Admin
+    ...
+    ...    9) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    10) Add Member to Group
+    ...
+    ...    11) Enroll Member to Benefits
+    ...
+    ...    12) Add Dependent
+    ...
+    ...    13) Enrol Dependent to Benefit other than Medical
+    ...
+    ...    14) No Dependent Benefits listed
+    ...
+    ...    15) Logout from Application
+    [Setup]
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Medical Life    Enable
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Life    Diasble
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA FSA    Disable
+    Navigate To    Basics    Personal Customization
+    Change Dependent Verification For Medical Benefit Only    td:dependentverificationchanges
+    Save Configuration
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Verify Message    Not Verified
+    Logout HR Admin
+    [Teardown]
+
+3.Dependent Verification
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Dependent Verification*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Search for group (TestAutomationGroup1)
+    ...
+    ...    3) Navigate to Basics Tab
+    ...
+    ...    4) Go to Personal Customization
+    ...
+    ...    5) Search "Verification"
+    ...
+    ...    6) Change to Yes and Check Confirm the Configuration is set to Pend Verification
+    ...
+    ...    7) Select MEDICAL benefit only for All dependents
+    ...
+    ...    8) Logout from Vista Admin
+    ...
+    ...    9) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    10) Add Member to Group
+    ...
+    ...    11) Enroll Member to Benefits
+    ...
+    ...    12) Add Dependent
+    ...
+    ...    13) Enrol Dependent to Medical Benefit Only
+    ...
+    ...    14) Dependent Benefits listed
+    ...
+    ...    15) Logout from Application
+    [Setup]
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Medical Life    Enable
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Life    Diasble
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA FSA    Disable
+    Navigate To    Basics    Personal Customization
+    Change Dependent Verification For Medical Benefit Only    td:dependentverificationchanges
+    Save Configuration
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Navigate To HR Menu    Dependents
+    Edit Benefits To Enroll Dependent After Adding
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Capture Page Screenshot
+    Verify Message    Employee and Spouse
+    Logout HR Admin
+    [Teardown]
+
+4.Dependent Census Report
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Dependent Census Report*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login as HR Admin (testhrautomation1/bfEnrol1)
+    ...
+    ...    2) Add Member to Group
+    ...
+    ...    3) Enroll Member to Benefits
+    ...
+    ...    4) Add Dependent
+    ...
+    ...    5) Enrol Dependent to Benefits
+    ...
+    ...    6) Navigate to Data & Reporting
+    ...
+    ...    7) Census Reports
+    ...
+    ...    8) Generate Report for Dependent
+    ...
+    ...    9) Dependent RelationShip Mentioned Correctly
+    ...
+    ...    10) Logout from Application
+    [Setup]
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Medical Life    Enable
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    Life    Diasble
+    Navigate To    Benefits    Offer Enablement
+    Vista Offer Enablement    HSA FSA    Disable
+    Logout Vista Admin
+    Login To Enrollment As HR Admin    validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Select Coverage Level    Employee Only
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    Spouse    lastname
+    Navigate To HR Menu    Dependents
+    Edit Benefits To Enroll Dependent After Adding
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Enter Effective Date    d:currentdate
+    Save Benefit Enrollment
+    Navigate To HR Menu    DATAANDREPORTING
+    Verify Dependent Relation Ship In Reports
+    Verify Message    Dependent Relationships: Spouse
+    Logout HR Admin
+    [Teardown]

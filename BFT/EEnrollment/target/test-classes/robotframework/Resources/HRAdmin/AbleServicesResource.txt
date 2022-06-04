@@ -1,0 +1,98 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll Medical Benefit with Dependent as per Rehire Scenarios
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance
+    Select Tobacco And Health Survey Answer    Question 1: Have you (and your Spouse, if named) used tobacco in the last 12-months?    No    Question 2: Please select one of the following regarding only YOUR tobacco usage and your enrollment in the Medical/Rx program    I answered NO to Question 1.
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    d:currentdate:M:-3    test
+    Enter New Effective Date    d:currentdate:M:-3    test
+    Select Plan    2016 HSA
+    Enter Effective Date    d:currentdate:M:-3
+    Next
+    BuiltIn.Sleep    3s
+    AgreeTermsAndConditions MultipleTimes
+    BuiltIn.Sleep    3s
+    AgreeTermsAndConditions MultipleTimes
+    BuiltIn.Sleep    3s
+    AgreeTermsAndConditions MultipleTimes
+    Provide Date Explantion In Hr Role    test
+    Save Benefit In Snapshot Page
+
+Enroll In Medical Benefits for Adjusted servicedate scenario's
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    2016 Medical Insurance
+    Select Tobacco And Health Survey Answer    Question 1: Have you (and your Spouse, if named) used tobacco in the last 12-months?    No    Question 2: Please select one of the following regarding only YOUR tobacco usage and your enrollment in the Medical/Rx program    I answered NO to Question 1.
+    Select Coverage Level    Employee Only
+    BuiltIn.Sleep    3s
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    d:currentdate    test
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 HSA
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter Effective Date    d:currentdate
+    BuiltIn.Sleep    3s
+    Next
+    AgreeTermsAndConditions MultipleTimes
+    BuiltIn.Sleep    3s
+    AgreeTermsAndConditions MultipleTimes
+    BuiltIn.Sleep    3s
+    AgreeTermsAndConditions MultipleTimes
+    Provide Date Explantion In Hr Role    Test
+    Save Benefit Enrollment
+
+Enroll in Medical Benefit
+    [Arguments]    ${enrollment_date}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance
+    Select Tobacco Survey Answer    No
+    Select Coverage Level    Employee Only
+    BuiltIn.Sleep    3s
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${enrollment_date}    test
+    Enter New Effective Date    ${enrollment_date}    test
+    Select Plan    2016 HSA
+    Enter New Effective Date    ${enrollment_date}    test
+    Next
+    BuiltIn.Sleep    3s
+    Comment    Next
+    Agree Terms And Conditions
+    BuiltIn.Sleep    3s
+    Agree Terms And Conditions
+    BuiltIn.Sleep    3s
+    Agree Terms And Conditions
+    Date Explanation In HR Role    test
+    Save Benefit In Snapshot Page
+
+Re-Enroll into Medical benefit
+    [Arguments]    ${enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance
+    Edit Benefit Details    Medical    Medical
+    Select Coverage Level    Employee Only
+    BuiltIn.Sleep    3s
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${enrollment_date}    test
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    ${enrollment_date}    test
+    Select Plan    2016 HSA
+    Comment    Enter Effective Date    d:currentdate:M:-3
+    Enter New Effective Date    ${enrollment_date}    test
+    Next
+    BuiltIn.Sleep    3s
+    Comment    Next
+    Agree Terms And Conditions
+    BuiltIn.Sleep    3s
+    Agree Terms And Conditions
+    BuiltIn.Sleep    3s
+    Agree Terms And Conditions
+    Provide Date Explantion In Hr Role    test
+    Save Benefit In Snapshot Page

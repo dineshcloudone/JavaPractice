@@ -1,0 +1,267 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Authorization Page On Login
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Authorization Page On Login*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Navigate To Global and Private Labels
+    ...
+    ...    3) Select Mercer MarketPlace Diamond Foods
+    ...
+    ...    4) Edit Branding Configuration
+    ...
+    ...    5) Show All Under Member Role
+    ...
+    ...    6) Enable Employee Authorization -- Enabled
+    ...
+    ...    7) Logout from Vista Admin
+    ...
+    ...    8) Login as Member (testqcoe_9/passWord1234)
+    ...
+    ...    9) Change Initial Member Password
+    ...
+    ...    10) Select Secret Questions
+    ...
+    ...    11) Accept Agreements Page
+    ...
+    ...    12) Verify and Logout Member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Navigate To    GLOBAL    Private Labels
+    Change Branding Configurations In Vista Role
+    Navigate To    GROUPS    Group Search
+    Perform Group Search    td:groupsearch
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Verify Message    Home
+    Logout New Member Role
+
+2.Terms and Conditions - Do Not Agree - Error Returned
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Terms and Conditions - Do Not Agree - Error Returned*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Navigate To Carriers and View Carrier List
+    ...
+    ...    3) Select bcbsfl from List
+    ...
+    ...    4) Navigate to Language & Agreements and Employee Agreements
+    ...
+    ...    5) Populate Employee Agreement Text & Please Note Text
+    ...
+    ...    6) Perform Group Search
+    ...
+    ...    7) Navigate to Benefits and Offers
+    ...
+    ...    8) Edit Offer Details
+    ...
+    ...    9) Employee Agreements = 'Ask for acknowledgement'
+    ...
+    ...    10) Save and Logout Vista Admin
+    ...
+    ...    11) Login as Member (testqcoe_9/passWord1234)
+    ...
+    ...    12) Navigate to Benefits
+    ...
+    ...    13) Change/Edit Benefits Details and Save
+    ...
+    ...    14) DisAgree Agreements
+    ...
+    ...    15) Verify and Logout Member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Navigate To    CARRIERS    View Carrier List
+    Click BCBSFL Carrier Link
+    Navigate To    LANGUAGEANDAGREEMENTS    Employee Agreements
+    Edit Employee Agreements for Medical In Vista Role
+    Save Configuration
+    Navigate To    GROUPS    Group Search
+    Perform Group Search    td:groupsearch
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    Medical Offer
+    Change Employee Agreements In Vista Role
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Choose Preferred Language    English
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Agreements Page    yes
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Preferred Care Blue PPO Plan 1
+    Verify Employee Agreements In Member Role    Disagree
+    Verify Message    In order to proceed, you must agree to the statements below, even if you are declining coverage. Please change your selection or click the Logout button if you do not wish to save your election and see your administrator for additional details.
+    Logout New Member Role
+
+3.Terms and Conditions - Agree
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Terms and Conditions - Do Not Agree - Error Returned*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Navigate To Carriers and View Carrier List
+    ...
+    ...    3) Select bcbsfl from List
+    ...
+    ...    4) Navigate to Language & Agreements and Employee Agreements
+    ...
+    ...    5) Populate Employee Agreement Text & Please Note Text
+    ...
+    ...    6) Perform Group Search
+    ...
+    ...    7) Navigate to Benefits and Offers
+    ...
+    ...    8) Edit Offer Details
+    ...
+    ...    9) Employee Agreements = 'Ask for acknowledgement'
+    ...
+    ...    10) Save and Logout Vista Admin
+    ...
+    ...    11) Login as Member (testqcoe_9/passWord1234)
+    ...
+    ...    12) Navigate to Benefits
+    ...
+    ...    13) Change/Edit Benefits Details and Save
+    ...
+    ...    14) Agree Agreements
+    ...
+    ...    15) Verify and Logout Member
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Verify Message    Reset Session
+    Navigate To    CARRIERS    View Carrier List
+    Click BCBSFL Carrier Link
+    Navigate To    LANGUAGEANDAGREEMENTS    Employee Agreements
+    Edit Employee Agreementsfor Medical In Vista Role
+    Save Configuration
+    Navigate To    GROUPS    Group Search
+    Perform Group Search    td:groupsearch
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    Medical Offer
+    Change Employee Agreements In Vista Role
+    Save Configuration
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Choose Preferred Language    English
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Agreements Page    yes
+    Perform Get Started In New Member Role
+    Add Dependent To Member    none    none
+    Medicare Information In Member Role    no
+    Perform Begin Enrollment in Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Preferred Care Blue PPO Plan 1
+    Verify Employee Agreements In Member Role    Agree
+    Verify Message    Preferred Care Blue PPO Plan 1
+    Save Benefit Enrollment In New Member    Preferred Care Blue PPO Plan 1
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+
+4. Verify Terminated Employee can not login
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Verify Terminated Employee can not Login*
+    ...
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as HR Admin(bhradminautomation/bfEnrol2)
+    ...
+    ...    2) Navigate to HR Menu "Employees"
+    ...
+    ...    3) Add new employee
+    ...
+    ...    4) Search newly added employee
+    ...
+    ...    5) Click on Manage employee -> Terminate Employee
+    ...
+    ...    6) Select Yes for " Do you wish to disable the employee's login?" configuration
+    ...
+    ...    7) Terminate employee with termination date and termination reason
+    ...
+    ...    8) Logout HR admin
+    ...
+    ...    9)Login as Member and verify that member can not be logged in .
+    [Tags]    QCOE
+    Login To Enrollment As HR Admin    td:validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    Perform Employee Termination    d:monthend:M:-1    td:terminate
+    Logout HR Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    BuiltIn.Sleep    3s
+    Verify Message Not Exist    Change your password
+    Verify Message    We didn't recognize your username and password
+
+5.Verify Terminated Employee can login
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: * Verify Terminated Employee can Login*
+    ...
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as HR Admin(bhradminautomation/bfEnrol2)
+    ...
+    ...    2) Navigate to HR Menu "Employees"
+    ...
+    ...    3) Add new employee
+    ...
+    ...    4) Search newly added employee
+    ...
+    ...    5) Click on Manage employee -> Terminate Employee
+    ...
+    ...    6) Select No for " Do you wish to disable the employee's login?" configuration
+    ...
+    ...    7) Terminate employee with termination date and termination reason
+    ...
+    ...    8) Logout HR admin
+    ...
+    ...    9) Login as Member and verify that member can be logged in successfully.
+    [Tags]    QCOE
+    Login To Enrollment As HR Admin    td:validhrcredentialsforgroup
+    Verify Message    Home
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Employees
+    Perform Active Employee Search    HMVlastname
+    Perform Employee Termination    d:monthend:M:-1    td:terminate
+    Logout HR Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    BuiltIn.Sleep    3s
+    Verify Message    Change your password
+    Logout Member

@@ -1,0 +1,115 @@
+{
+  "1": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Test Automation Group",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    }
+  },
+  "2": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Test Automation Group",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    },
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "changeaccountsecuritypasswords": {
+      "securityNewPassword": "bfEnrol1",
+      "securityConfirmPassword": "bfEnrol1"
+    }
+  },
+  "3": {
+    "resource": "bfqaautomationvistaadmin",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Automation Vista Admin",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    },
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "changeaccountsecuritypasswords": {
+      "securityNewPassword": "bfEnrol1",
+      "securityConfirmPassword": "bfEnrol1"
+    }
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminsystemdsiabled",
+      "password": "bfEnrol0"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA OE Test Automation Group",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    },
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    }
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminqcoe",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QA test Automation group Vista"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

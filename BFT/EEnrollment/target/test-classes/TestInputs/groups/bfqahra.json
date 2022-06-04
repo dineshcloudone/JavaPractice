@@ -1,0 +1,72 @@
+{    
+    "validhrcredentialsforgroup": {
+      "username": "hrahradmin",
+      "password": "bfEnrol1"
+    },
+     "validvistacredentials": {
+        "username": "bfautomation",
+        "password": "Password1"
+      },
+    "addemployeeinhra": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "123 Main Street Schenectady",
+      "city": "Schenectady",
+      "state": "NY",
+      "zipcode": "12345-0001",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "FT - Full-Time"
+    }
+    "addemployeewithmedicalplushra": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDAutoTest",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "currentdate",
+          "categories": "FT2"
+   },
+   "addemployeewithmedicalplushraoffcycle": {
+          "ssn": "RND4433",
+          "firstname": "Auto",
+          "lastname": "RNDTestMandatory",
+          "birthdate": "currentdate:y:-28",
+          "gender": "Male",
+          "address1": "Test address",
+          "city": "Test City",
+          "state": "SC",
+          "zipcode": "12345",
+          "country": "USA",
+          "createlogin": "Create a login account for this person",
+          "memberid": "RNDAutoTest",
+          "password": "bfEnrol0",
+          "confirmpassword": "bfEnrol0",
+          "hiredate": "d:currentdate:y:-1",
+          "categories": "FT2"
+   },
+   "child": {
+      "ssn": "RND7732",
+      "firstname": "AutoDep",
+      "lastname": "RNDDepChild",
+      "birthdate": "d:currentdate",
+      "gender": "Female",
+      "relationship": "Child"
+    }
+}

@@ -1,0 +1,254 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for New Employee functionality
+Test Setup        getResource
+Force Tags        newemployee
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Login as HR Admin and add a new employee
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Case Title: *Login as HR Admin and add a new employee*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Add New Employee with Category as "Medical"
+    ...
+    ...    3. Verify New Employee is eligible for the correct Offers via Benefit Eligibility
+    ...
+    ...    4. Verify New Employee is eligible for the correct Plans via Benefit Eligibility
+    ...
+    ...    5. Logout
+    [Tags]    testing
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Navigate To HR Menu    BenefitEligibility
+    Verify Benefit Eligibility    Medical
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee Only
+    Save Benefit    d:currentdate
+    Verify Message    Benefits Snapshot
+    Logout HR Admin
+
+2.Login as HR Admin and add a new employee and add Spouse as dependent and Apply Coverage
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Case Title: *Login as HR Admin and add a new employee and add Spouse as dependent and Apply Coverage*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to enrollment as a HRAdmin
+    ...
+    ...    2. Add a member
+    ...
+    ...    3. Add a spouse dependent
+    ...
+    ...    4. Enroll the member in Medical Offer with employee and spouse coverage
+    ...
+    ...    5. Apply Coverage level to dependent.
+    ...
+    ...    6. Logout of HR admin
+    [Tags]    smoke
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:spouse    spouselastname
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee and Spouse
+    Apply Coverage To Dependent
+    Save Benefit    d:currentdate
+    Verify Message    Benefits Snapshot
+    Logout HR Admin
+
+3.Verify Child exceeding maximum allowed age
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Verify Child exceeding maximum allowed age*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Login to eEnrollment application as HR Admin (hradminautomation1/bfEnrol1)
+    ...
+    ...    2) Navigate to Employees,Click on 'Add a new Employee' button
+    ...
+    ...    3) Enter necessary details, Click on 'Save' button
+    ...
+    ...    4) Select medical plan,click on Next button
+    ...
+    ...    5) Select 'Employee and Children' as coverage Level,Click on 'Next' button
+    ...
+    ...    6) Enter necessary dependent information, Click on Save Button.
+    ...
+    ...    7) Click on Next button from persons covered page
+    ...
+    ...    8) Click on 'Next' button from Pre tax basis page.
+    ...
+    ...    9) Click on 'Next' button from 'Effective Date' page
+    ...
+    ...    10) Observe thta following error message is displayed : " will exceed the maximum allowed age for the child relationship, which is 18 years"
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedical    memberid
+    Select Plan    Medical 2016
+    Select Coverage Level    Employee and Child
+    Persons Covered    add dependent    td:childexceedingmaximumallowedage
+    Select Premium Deduction    yes
+    Enter Effective Date    d:currentdate
+    Verify Message    exceed the maximum allowed age for the child relationship, which is 18 years
+    Logout HR Admin
+
+4.Verify Hide Dependent.
+    [Documentation]    Author : *Sekhar T*
+    ...
+    ...    Test Case Title: *Verify Hide Dependent.*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to enrollment as a HRAdmin
+    ...
+    ...    2. Add a new employee
+    ...
+    ...    3. Add a spouse dependent
+    ...
+    ...    4. Hide dependent using switch on/off option
+    ...
+    ...    5. Enroll employee in Medical Offer with employee and spouse coverage
+    ...
+    ...    6. Click on next button
+    ...
+    ...    7. Verify error message : 'The coverage level selected requires at least 1 dependent(s).'
+    ...
+    ...    8. Logout as HR Admin.
+    [Tags]
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:spouse    spouselastname
+    Hide Dependent In Hr Role
+    Select benefit and select plan and coverage level as HR admin    Medical 2016    Medical 2016    Employee and Spouse
+    Verify Message    The coverage level selected requires at least 1 dependent(s).
+    Logout HR Admin
+
+5.Login as HR Admin and add a new employee and add dependant
+    [Documentation]    Author : *Sekhar T*
+    ...
+    ...    Test Case Title: *Login as HR Admin and add a new employee and add dependant*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to enrollment as a HRAdmin
+    ...
+    ...    2. Add a member
+    ...
+    ...    3. Add a spouse dependent
+    ...
+    ...    4. Logout of HR Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:spouse    spouselastname
+    Logout HR Admin
+
+6. Edit Dependent Demographic Info
+    [Documentation]    Author : *Sekhar Tirumala*
+    ...
+    ...    Test Case Title: *Edit Dependent Demographic Info*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to enrollment as a HRAdmin
+    ...
+    ...    2. Add a member
+    ...
+    ...    3. Add a spouse dependent
+    ...
+    ...    4. Edit Dependent Details in *Dependent Demographic page*.
+    ...
+    ...    5. Logout of HR Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:mandatory    lastname
+    Navigate To HR Menu    Dependents
+    Add Dependent To Employee    td:spouse    spouselastname
+    Edit Dependent Details    Spouse    spouselastname
+    Logout HR Admin
+
+7.No Wait Period
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Verify Hide Dependent.*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to Vista Admin
+    ...
+    ...    2. Create and Enable New Offer
+    ...
+    ...    3. Edit "Backdating Effective Date" for Offer
+    ...
+    ...    4. Logout Vista Admin
+    ...
+    ...    5. Login as HR admin
+    ...
+    ...    6. Add Employee In HR Admin
+    ...
+    ...    7. Verify Message " Reason for"
+    ...
+    ...    8. Logout as HR Admin
+    ...
+    ...    9. Login to Vista Admin
+    ...
+    ...    10. Delete Vista Offer
+    ...
+    ...    11. Logout as HR Admin.
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Configure Edit Offer Details Page    Backdating Effective Date    Require user to provide reason if more than x days    no
+    Configure Edit Offer Details Page    "x" days    90    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Verify Message    Reason for
+    Logout HR Admin
+
+8.Verify Wait Period
+    [Documentation]    Author : *Manikanta Yallabandi*
+    ...
+    ...    Test Case Title: *Verify Wait Period*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to enrollment as a Vist aAdmin
+    ...
+    ...    2. Edit offer in Vista role and set wait period
+    ...
+    ...    3. Login to enrollment as HR admin
+    ...
+    ...    4.Add Employee with hire date as current date
+    ...
+    ...    5.Observe reason should not ask while enrolling to benefits
+    ...
+    ...    6.Logout of enrollment
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    Medical 2016
+    Configure Edit Offer Details Page    Backdating Effective Date    Require user to provide reason if more than x days    No
+    Configure Edit Offer Details Page    "x" days    90    yes
+    Logout Vista Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:hradminmandatory    lastname
+    Verify Message    Decline Coverage
+    Logout HR Admin

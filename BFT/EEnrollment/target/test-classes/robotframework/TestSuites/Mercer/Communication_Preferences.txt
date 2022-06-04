@@ -1,0 +1,463 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../Resources/common.txt
+
+*** Test Cases ***
+1.Verify that Communication preferences defined in the carrier are displayed for the members in the group pertaining to this sponsor carrier.
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Communication preferences defined in the carrier are displayed for the members in the group pertaining to this sponsor carrier*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the carrier's prefered communication in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Select the Carrier's Preferred Communication Channels    Email    No
+    Update Carrier Basics    Select the Carrier's Preferred Communication Channels    Text Message    No
+    Update Carrier Basics    Select the Carrier's Preferred Communication Channels    Phone    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Verify Communication Preferences In Memberrole    Email
+    Verify Communication Preferences In Memberrole    Text
+    Verify Communication Preferences In Memberrole    Phone
+    Logout New Member Role
+
+2.Verify that Communication opt out custom text defined in carrier is displayed for the members in the group.
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that Communication opt out custom text defined in carrier is displayed for the members in the group*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the Communication opt out custom tex in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Communication Opt Out Custom Text    I prefer not to be contacted    No
+    Update Carrier Basics    Allow Communication Opt Out?    check    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Verify Communication Preferences In Memberrole    I prefer not to be contacted
+    Logout New Member Role
+
+3.Verify When "Consent to receive communications from your carrier" field is defined as Not captured under the carrier
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify When "Consent to receive communications from your carrier" field is defined as Not captured under the carrier*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the Consent to receive communications from your carrier" field is defined as Not captured under the carrier in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Consent to receive communications from your carrier    Not captured    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Verify Communication Preferences In Memberrole    I consent to receiving this information via the communication method chosen.
+    Logout New Member Role
+
+4.Verify When "Consent to receive communications from your carrier" field is defined as Capture Employee Consent under the carrier
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify When "Consent to receive communications from your carrier" field is defined as Capture Employee Consent under the carrier*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the Consent to receive communications from your carrier" field is defined as Capture Employee Consent under the carrier in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Consent to receive communications from your carrier    Capture Employee Consent    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Verify Communication Preferences In Memberrole    I consent to receiving this information via the communication method chosen.
+    Logout New Member Role
+
+5. Verify No error message is displayed to member when communication preference is not selected as its defined as Optional under the carrier.
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify No error message is displayed to member when communication preference is not selected as its defined as Optional under the carrier*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the carrier's prefered communication as Optional in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Carrier Communication Preference selection in Member Role    Optional    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Add Personal Information In Member Role    td:personalinformation
+    Logout New Member Role
+
+6.Verify Error message When "Carrier Communication Preference selection in Member Role" field is defined as Required.
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify Error message When "Carrier Communication Preference selection in Member Role" field is defined as Required*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the carrier's prefered communication preference as required in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Carrier Communication Preference selection in Member Role    Required    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Add Personal Information In Member Role    td:personalinformation
+    Verify Message    Please select a preferred carrier contact method
+    Logout New Member Role
+
+7.Verify that consent check box is disabled when member chooses communication opt text option
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that consent check box is disabled when member chooses communication opt text option*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the consent check box is disabled communication in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Allow Communication Opt Out?    check    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Add Personal Information In Member Role    td:personalinformation
+    Navigate To New Member Menu    PROFILE
+    Verify Communication Preferences In Memberrole    I prefer not to be contacted
+    Logout New Member Role
+
+8.Verify that error message is displayed when user selects communication channel option without selecting value from dropdown.
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that error message is displayed when user selects communication channel option without selecting value from dropdown*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the carrier's prefered communication preference as not captured in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Consent to receive communications from your carrier    Not captured    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Add Personal Information In Member Role    td:personalinformation
+    verify message    You have selected to receive carrier notifications via Email. Please select a preferred Email option.
+    Logout New Member Role
+
+9.Verify that error message is displayed when user does not select consent checkbox
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify that error message is displayed when user does not select consent checkbox*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.search for the carrier to change the required configuration
+    ...
+    ...    3.change the Consent to receive communications from your carrier as capture employee consent in carrier basics page.
+    ...
+    ...    4.serach for the group and add member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Navigate To    Carriers    Carrier Search
+    Perform Carrier Search    United Healthcare
+    Navigate To    Basics    Carrier Basics
+    Update Carrier Basics    Consent to receive communications from your carrier    Capture Employee Consent    yes
+    Navigate To    Groups    Group Search
+    Perform Group Search    Vistronix_communication
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Add Personal Information In Member Role    td:personalinformation
+    verify message    You must indicate your consent before saving this selection
+    Logout New Member Role
+
+10.Verify When "Allow member to edit Personal Information" is set as No Fields
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify When "Allow member to edit Personal Information" is set as No Fields*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.Search for the group and navigate to the Personal customization
+    ...
+    ...    3.change the Allow member to edit Personal Information as No fields.
+    ...
+    ...    4.Add a member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Perform Group Search    Vistronix_communication
+    Navigate To    Basics    Personal Customization
+    Update Carrier Basics    Allow Member to edit Personal Information    No Fields    yes
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Verify Carrier Communication Visibility In Member Role    Home Phone
+    Verify Carrier Communication Visibility In Member Role    Work Phone
+    Verify Carrier Communication Visibility In Member Role    Personal Email
+    Logout New Member Role
+
+11.Verify When "Allow member to edit Personal Information" is set as All Fields
+    [Documentation]    Author: *Nagarjuna Thallam*
+    ...
+    ...    Test Case Title: *Verify When "Allow member to edit Personal Information" is set as All Fields*
+    ...
+    ...    1.Login to Vista role.
+    ...
+    ...    2.Search for the group and navigate to the Personal customization
+    ...
+    ...    3.change the Allow member to edit Personal Information as All fields.
+    ...
+    ...    4.Add a member in the group.
+    ...
+    ...    5.logout from the vista role
+    ...
+    ...    6.login with member credentials.
+    ...
+    ...    7.complete member initial login process.
+    ...
+    ...    8.Navigate to member profile page.
+    ...
+    ...    9.verify the configured filed is dispalyed
+    ...
+    ...    10.logout from the new member role
+    Login as vista admin with valid credentials
+    Perform Group Search    Vistronix_communication
+    Navigate To    Basics    Personal Customization
+    Update Carrier Basics    Allow Member to edit Personal Information    All Fields    yes
+    Navigate to    Users    Add Member
+    Add Member In Vista    td:newmember    OutlastName
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In New Member Role
+    Navigate To New Member Menu    PROFILE
+    Verify Carrier Communication Visibility In Member Role    Home Phone
+    Verify Carrier Communication Visibility In Member Role    Work Phone
+    Verify Carrier Communication Visibility In Member Role    Personal Email
+    Logout New Member Role

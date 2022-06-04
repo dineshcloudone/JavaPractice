@@ -1,0 +1,13 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the Priorty HR Admin group
+Resource          ../common.txt
+
+*** Keywords ***
+Member Initial Login
+    [Documentation]    Purpose : member initial login
+    ...
+    ...    Usage : User defined keyword to initial member login process
+    Choose Preferred Language    td:language
+    Change Initial Member Password    td:password
+    Select Secret Questions And Save    td:secretquestionscount
+    Announcements Page    td:annoucementpage

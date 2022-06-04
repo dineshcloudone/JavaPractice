@@ -1,0 +1,9 @@
+*** Settings ***
+Resource          ../Common.txt
+
+*** Keywords ***
+member initial login
+    Change Initial Member Password    td:memberpassword
+    Select Secret Questions And Save    td:secretquestions
+    Announcements Page    td:anouncements
+    Agreements Page    td:Agreements

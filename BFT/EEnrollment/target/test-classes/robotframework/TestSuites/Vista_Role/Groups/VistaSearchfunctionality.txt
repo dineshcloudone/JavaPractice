@@ -1,0 +1,66 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Search for Vista Search functionality
+Test Setup        getResource
+Force Tags        vistasearch
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Login as Vista User and search for a Sponsor
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Title : Login as vista user and perform a group / sponsor search
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a Vista Use
+    ...
+    ...    2. Search for Sponsor "BF QA Test Automation Group" and verify
+    ...
+    ...    3. Logout
+    [Tags]    smoke
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Logout Vista Admin
+
+2.Invalid member Search
+    [Documentation]    Author : *CH Phani Srikar*
+    ...
+    ...    Test Title : Preform invalid member search
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Test Login to eEnrollment as a Vista User
+    ...
+    ...    2. Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    3. Search with Invalid member data and verify
+    ...
+    ...    4. Logout
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Perform Quick Member Search    xyz
+    Verify Member Search Results    Name    xyz    false
+    Logout Vista Admin
+
+3.Verify the functionality of editing the basic information section of the group
+    [Documentation]    Login to eEnrollment as a Vista User
+    ...
+    ...    Search for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    Update the Basic Information
+    ...
+    ...    Save and verify the changed information in Basic Information
+    ...
+    ...    Logout
+    ...
+    ...
+    ...    Test case No : 133
+    Login as vista admin with valid credentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    Identification
+    UpdateIdentificationConfiguration    Phone Number    843-123-4567TEST    yes
+    Navigate To    BASICS    Identification
+    UpdateIdentificationConfiguration    SITUS State    MA    yes
+    Logout Vista Admin

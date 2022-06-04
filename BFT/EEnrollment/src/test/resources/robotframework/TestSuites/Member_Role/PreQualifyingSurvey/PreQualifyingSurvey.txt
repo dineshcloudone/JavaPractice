@@ -1,0 +1,126 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for Announcements
+Test Setup        getResource
+Force Tags        FSAbenefits
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Prequalifying Survey
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Prequalifying Survey*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (Benefits/Offers)
+    ...
+    ...    4) Create Pre Qualifying Survey For Plan In Vista Role
+    ...
+    ...    5) Navigate To (Users/Add Member)
+    ...
+    ...    6) Add Member In Vista (td:mandatory/lastname)
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord1234)
+    ...
+    ...    9) Begin Enrollment
+    ...
+    ...    10) Pre Qualifying Tobacco Survey In Member Role
+    ...
+    ...    11) Complete Enrollment
+    ...
+    ...    12) Verify The University of Kansas Hospital New Hire Tobacco Use Declaration
+    ...
+    ...    13) Complete Enrollemnt In New Member Role
+    ...
+    ...    14) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Offer    Enable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    HSA    Disable
+    Navigate To    Benefits    Offers
+    Create Pre Qualifying Survey For Plan In Vista Role    Current    Medical Offer    Medical    td:prequalifyinglogic    td:prequalifyingsurvey
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    none    none
+    Perform Begin Enrollment in Member Role
+    Pre Qualifying Tobacco Survey In Member Role
+    Add Dependent To Member    none    none
+    Select Market Plan For New Member Role    Medical Plan
+    Capture Page Screenshot
+    Verify Message    The University of Kansas Hospital New Hire Tobacco Use Declaration
+    Save Benefit Enrollment In New Member    Medical Plan
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role
+
+2.Pre-Qualifying Survey (HSA)
+    [Documentation]    Author : *Varun Reddy Proddutoori*
+    ...
+    ...    Test Case Title: *Pre-Qualifying Survey (HSA)*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as vista admin (bfautomation/Password1)
+    ...
+    ...    2) Perform Group Search
+    ...
+    ...    3) Navigate To (Benefits/Offers)
+    ...
+    ...    4) Create Pre Qualifying Survey For Plan In Vista Role
+    ...
+    ...    5) Navigate To (Users/Add Member)
+    ...
+    ...    6) Add Member In Vista (td:mandatory/lastname)
+    ...
+    ...    7) Logout Vista Admin
+    ...
+    ...    8) Login To Enrollment With Valid Credentials (HMVmemberloginid/passWord1234)
+    ...
+    ...    9) Begin Enrollment
+    ...
+    ...    10) Pre Qualifying Tobacco Survey In Member Role
+    ...
+    ...    11) Verify The University of Kansas Hospital New Hire Tobacco Use Declaration
+    ...
+    ...    12) Complete Enrollemnt In New Member Role
+    ...
+    ...    13) Logout New Member Role
+    [Tags]    QCOE
+    Login To Enrollment As Vista Admin    td:validvistacredentials
+    Verify Message    Reset Session
+    Perform Group Search    td:groupsearch
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    Medical Offer    Disable
+    Navigate To    BENEFITS    Offer Enablement
+    Vista Offer Enablement    HSA    Enable
+    Navigate To    Benefits    Offers
+    Create Pre Qualifying Survey For Plan In Vista Role    Current    HSA    HSA    td:prequalifyinglogic    td:prequalifyingsurvey
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    passWord1234
+    Change Initial Member Password    passWord123
+    Select Secret Questions And Save    3
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment in Member Role
+    Pre Qualifying Tobacco Survey In Member Role
+    Select Market Plan For New Member Role    HSA
+    Capture Page Screenshot
+    Verify Message    The University of Kansas Hospital New Hire Tobacco Use Declaration
+    Save Benefit Enrollment In New Member    HSA
+    Complete Enrollemnt In New Member Role
+    Logout New Member Role

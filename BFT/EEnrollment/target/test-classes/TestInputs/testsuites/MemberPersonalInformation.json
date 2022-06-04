@@ -1,0 +1,73 @@
+{
+  "1": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "b1hradminautomation",
+      "password": "bfEnrol2"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE Test Automation Group-B1"
+    },
+	
+	"mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "Medical"
+    }
+  },
+  "2": {
+    "resource": "BFQATestAutomationGroup",
+    "validmembercredentials": {
+      "username": "SUNITHAY6440",
+      "password": "bfEnrol1"
+    },
+    "personalinformation": {
+      "update": "yes",
+      "firstname": "SunithaTest",
+      "lastname": "RNDAutomation",
+      "address1": "321 Main Street",
+      "zipcode": "54321",
+      "effectivedate": "d:currentdate"
+    }
+  },
+  "3": {
+    "resource": "BFQATestAutomationGroup",
+    "validhrcredentialsforgroup": {
+      "username": "b1hradminautomation",
+      "password": "bfEnrol2"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "QCOE Test Automation Group-B1"
+    },
+	
+	"personalinformation": {
+      "address2": "Test Address 2",
+	  "effectivedate": "d:currentdate"
+    }
+  },
+  "default": {
+    "resource": "bfqaautomationvistaadmin"
+  }
+}

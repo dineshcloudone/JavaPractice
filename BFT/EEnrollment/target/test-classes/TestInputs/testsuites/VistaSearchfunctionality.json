@@ -1,0 +1,50 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Automation Vista Admin",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Automation Vista Admin",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group",
+      "automationgroup2": "BF QA Automation Vista Admin",
+      "automationgroup3": "BF QA Test Automation OE Group",
+      "automationgroup4": "Prequalifying Survey Automation Group"
+    }
+  },
+  "4": {
+    "resource": "robot training group",
+    "groupsearch": {
+      "automationgroup1": "BF QA Test Automation Group"
+    }
+  },
+  "default": {
+    "resource": "eEnrollmentCommon"
+  }
+}

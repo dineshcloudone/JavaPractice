@@ -1,0 +1,413 @@
+*** Settings ***
+Suite Setup
+Suite Teardown
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+Resource          ../../../Resources/HRAdmin/PayrollResources/AlvarezAndMarsalResource.txt
+
+*** Test Cases ***
+1.Initial Enrollment
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc1
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Gold 2016
+    Comment    Print Hash Map Values
+    BuiltIn.Sleep    2s    waittime
+    Close HR Admin
+    Logout Vista Admin
+
+2.Initial Enrollment(After Approval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc2
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc2
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Verify Message    Gold 2016
+    Comment    Navigate To HR Menu    benefitdetails
+    Comment    Print Hash Map Values
+    BuiltIn.Sleep    2s    waittime
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc2
+
+3.Refuse All Eligible Benefits
+    Comment    FLow is not as expected
+    Comment    Need to add verificaitons for refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    2016 Vision
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Dental
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Voluntary Life
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Commuter Plans
+    BuiltIn.Sleep    2s    wait time
+    Comment    Refuse Current Selected Benefit In HR Role    2016 Hyatt Legal
+    Approve From HR Admin
+    Comment    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+4.Accept Benefit After Refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc4
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc4
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    2016 Vision
+    BuiltIn.Sleep    2s    wait time
+    Navigate To HR Menu    overview
+    Comment    Navigate To Current Enrollment
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Vision
+    Edit Current Plan    Vision
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before closing HR-Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc4
+
+5.Cancel Benefit Before Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    Cancelled
+    Close HR Admin
+    Logout Vista Admin
+
+6.Cancel Benefit After Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+
+7.Enroll Benefit After Cancellation
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Medical
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Verify Message    Cancelled
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical
+    Edit Benefit Details    Medical    Medical
+    Select Plan    Gold 2016
+    Select Coverage Level    Employee Only
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+8.Terminate the Employee
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Gold 2016
+    Perform Employee Termination    d:currentdate    No
+    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+9.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastname
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastname
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Verify Message    Gold 2016
+    Perform Employee Retirement
+    Navigate To HR Menu    overview
+    Verify Message    Retired
+    BuiltIn.Sleep    2s    wait time before closing the HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+10.ChangeCategory
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc10
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc10
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Verify Message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc10
+
+11.Change Plan
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc11
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc11
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc11
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc12
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc12
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc13
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc13
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    Spouse
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    verify message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc14
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc14
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical
+    select plan    Gold 2016
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Healthcare 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Dependent Care 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc14
+
+17.Increase Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc17
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc17
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc17
+
+18.Decrease Flex Contribution
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc18
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc18
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc18
+
+20.Cancel Flex when already enrolled in Flex
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc20
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc20
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Verify Message    Gold 2016
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc20
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnametc24
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnametc24
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Verify Message    Gold 2016
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc24
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnametc25
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnametc25
+    Enroll Medical benefit in Alvarez and Marsal Group
+    Approve From HR Admin
+    Verify Message    Gold 2016
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue	    lastnameaamtc25
+
+29.Add Dependent to Benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc29
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc29
+
+30.Remove Dependent from Benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc30
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc30
+
+31.Change Dependent Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    1888913123
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:aammandatory    lastnameaamtc31
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVlastnameaamtc31
+    Navigate To HR Menu    dependents
+    Add Dependent To Employee    td:spouse    lnSpouse
+    Verify Dependent For Benefits    Spouse
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical
+    select plan    Gold 2016
+    Select Coverage Level    Employee and Spouse
+    Apply Coverage To Dependent
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Healthcare 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Select Plan    FSA Dependent Care 2016
+    Set Contribution Amount For Flex Benefit    150
+    Enter Effective Date    d:currentdate
+    Save Benefit In Snapshot Page
+    Approve From HR Admin
+    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+    appendHashMapValue    lastnameaamtc31

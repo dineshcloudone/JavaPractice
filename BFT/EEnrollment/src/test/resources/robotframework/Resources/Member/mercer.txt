@@ -1,0 +1,5 @@
+*** Settings ***
+Documentation     This Resource contains keywords which are belongs to the Mercer Carrier
+Resource          ../common.txt
+
+*** Keywords ***

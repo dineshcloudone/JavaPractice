@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;generics.GenericIntro.java&apos; to &apos;GenericClass.java&apos;&#x0D;&#x0A;- Original project: &apos;JavaPractice&apos;&#x0D;&#x0A;- Original element: &apos;generics.GenericIntro.java&apos;&#x0D;&#x0A;- Renamed element: &apos;generics.GenericClass.java&apos;" description="Rename compilation unit &apos;GenericIntro.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;generics{GenericIntro.java" name="GenericClass.java" references="false" stamp="1521980867759" version="1.0"/>
+</session>

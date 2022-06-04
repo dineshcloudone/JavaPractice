@@ -1,0 +1,429 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "4": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "5": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "6": {
+    "resource": "priorityhradmingroup"
+  },
+  "7": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "8": {
+    "resource": "bfqatestautomationgroup"
+  },
+  "9": {
+    "resource": "priorityhradmingroup",
+    "validhrcredentialsforgroup": {
+        "username": "raceadmin",
+        "password": "bfEnrol1"
+      },
+    "lifeevent": {
+      "reason": "Birth",
+      "birthdate": "currentdate:d:-10",
+      "notifieddate": "currentdate:d:-10",
+      "effectivedate": "currentdate:d:-10"
+    }
+  },
+  "10": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "11": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "12": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    }
+  },
+  "13": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    }
+  },
+  "14": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA test Automation group"
+    },
+    "vistacreatenewadministratoraccountdetails": {
+      "firstname": "Auto",
+      "lastname": "RNDTest",
+      "loginid": "RNDAutomation",
+      "password": "bfEnrol0",
+      "workemail": "AutoTest@bf.com",
+      "passwordconfirmation": "bfEnrol0"
+    },
+    "changeaccountsecuritypasswords": {
+      "securityNewPassword": "bfEnrol1",
+      "securityConfirmPassword": "bfEnrol1"
+    }
+  },
+  "15": {
+    "resource": "bfqatestautomationgroup",
+    "groupsearch": {
+      "automationgroup1": "BF QA Race Group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "raceadmin",
+      "password": "bfEnrol1"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "race": "Asian",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate:d:-15",
+      "categories": "Medical"
+    }
+  },
+  "16": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA Race Group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "raceadmin",
+      "password": "bfEnrol1"
+    }
+  },
+  "17": {
+    "resource": "bfqatestautomationgroup",
+    "myvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "Testhrautomation1",
+      "password": "bfEnrol1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "hiredate": "currentdate",
+      "payfrequency": "Annually"
+    }
+  },
+  "18": {
+    "resource": "bfqatestautomationgroup",
+    "myvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "Testhrautomation1",
+      "password": "bfEnrol1"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "hiredate": "currentdate",
+      "payfrequency": "Annually"
+    }
+  },
+  "19": {
+    "resource": "BF QCOE Test Group Automation_3",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "testautomationhr_3",
+      "password": "passWord123"
+    },
+    "mandatory": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDMand",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "hiredate": "currentdate",
+      "hoursworkedperweek": "40",
+      "categories": "All Active Eligible Owners,Dodge City Kenworth"
+    }
+  },
+  "20": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QA Test Automation OE Group18"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "bfqcoeadmin18",
+      "password": "bfEnrol1"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate:d:-15",
+      "categories": "A"
+    }
+  },
+  "21": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    },
+    "groupsearch": {
+      "automationgroup": "BF QCOE test Automation group"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate:d:-15",
+      "categories": "A"
+    }
+  },
+  "22": {
+    "resource": "bfqatestautomationgroup",
+    "addemployeewithoutmandatoryfieldsdata": {}
+  },
+  "23": {
+    "resource": "bfqatestautomationgroup",
+    "addemployeewithalphanumericssn": {
+      "ssn": "RNDTest",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "A"
+    },
+    "addemployeewithexceedssn": {
+      "ssn": "RND123654987",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "A"
+    }
+  },
+  "24": {
+    "resource": "bfqatestautomationgroup",
+    "addemployeewithexceedhomephone": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "homephone": "RND123456789",
+      "categories": "A"
+    },
+    "addemployeewithexceedcellphone": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "cellphone": "RND123456789",
+      "categories": "A"
+    }
+  },
+  "25": {
+    "resource": "bfqatestautomationgroup",
+    "addemployeewithalphabetszip": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "abcde",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "A"
+    }
+  },
+  "26": {
+    "resource": "bfqatestautomationgroup",
+    "addemployeewithwrongstate": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "address2": "Test address",
+      "city": "Test City",
+      "state": "AS",
+      "zipcode": "12345",
+      "country": "AUS",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "categories": "A"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

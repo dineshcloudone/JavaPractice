@@ -1,0 +1,77 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Dental Benefit with Employee Only Coverage
+    [Arguments]    ${coveragelevel}
+    Select Coverage Level    ${coveragelevel}
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental Benefit with Employee + Child(ren) Coverage Level
+    [Arguments]    ${coveragelevel}    ${relationtype}
+    Select Coverage Level    ${coveragelevel}
+    Add Dependent To Employee    ${relationtype}    lastname
+    Next
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Vision Benefit with Employee Only Coverage
+    [Arguments]    ${coveragelevel}
+    Select Coverage Level    ${coveragelevel}
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Medical Benefit with Employee Only Coverage Level
+    Select Plan    HDHP Plus 2016
+    Select Coverage Level    Employee Only
+    : FOR    ${index}    IN RANGE    2
+    \    Enter New Effective Date    d:currentdate    Test
+    Next
+    Select Plan    Limited Purpose Flexible Spending Account 2016
+    Enter Contribution Amount For FSA Plan    400
+    : FOR    ${index}    IN RANGE    2
+    \    Enter New Effective Date    d:currentdate    Test
+    Select Plan    Limeade Wellness 2016
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Life Insurance Benefit
+    [Arguments]    ${coverageamount}    ${beneficiarytype}
+    Next
+    Select Coverage Amount    ${coverageamount}
+    Add New Beneficiary To Employee And Navigate To Next Page    ${beneficiarytype}    Primary    100%    lastname
+    Enter New Effective Date    d:currentdate    Test
+    Next
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In DC FSA Benefit
+    [Arguments]    ${contributionamount}
+    Select Plan    Dependent Daycare FSA 2016
+    Enter Contribution Amount For FSA Plan    ${contributionamount}
+    Enter New Effective Date    d:currentdate    Test
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Vision Benefit with Employee + Child(ren) Coverage Level
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lastname
+    Add Another Dependent To Employee    Child    lastname
+    Add Another Dependent To Employee    Child    lastname
+    Next
+    Select Tobacco Survey Answer    Tobacco Free
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental Benefit with Employee + Family Coverage Level(Domestic Partner)
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    spouse    lastname
+    Next
+    Select Tobacco Survey Answer    Tobacco Free
+    Save And Go To Benefit Enrollment Page
+
+Enroll In Dental Benefit with Employee + Family Coverage Level (Spouse)
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Select Tobacco Survey Answer    Tobacco Free
+    Save And Go To Benefit Enrollment Page

@@ -1,0 +1,157 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios for menu and menu options
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Variables ***
+
+*** Test Cases ***
+1.Verify that the SSN is Masked
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Verify that the SSN is Masked*
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1. Login to Enrollment application as Vista admin (bfautomation/Password1)
+    ...
+    ...    2. Perform group Search (QCOE Test Automation Group-B1)
+    ...
+    ...    3. Navigate to Basics -> User Access
+    ...
+    ...    4. Update User configuration "System Access" to "Access Allowed for All Users"
+    ...
+    ...    5. Update User configuration " Member: SSN Masking on Front End Screens" to "Partial Mask"
+    ...
+    ...    6. Add a new member
+    ...
+    ...    7. Logout Vista admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) \ Login to Enrollment application as a member ( Using credentials created from Vista login)
+    ...
+    ...    2) Complete member initial login steps ( Language selection, password change etc)
+    ...
+    ...    3) Click on Profile link
+    ...
+    ...    4) Click 'Personal Information'
+    ...
+    ...    5) \ Verify that SSN has a partial mask ( * is displayed for few digits)
+    ...
+    ...    6) Log out member
+    [Tags]    QCOE
+    #Pre-Requisite:
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    System Access    Access allowed for all users    yes
+    Navigate To    BASICS    User Access
+    Update User configuration for Group in vista    Member: SSN Masking on Front End Screens    Partial Mask    yes
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    #Test Steps
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Perform Get Started In Member Role
+    Verify SSN In Partial Mask
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+2.Verify Personal Information Can Be Updated For A Member
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Verify Personal Information Can Be updated For A Member*
+    ...
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (SUNITHAY6440/bfEnrol1)
+    ...
+    ...    2) Naviage to Profile menu
+    ...
+    ...    3) Update member personal information (address1 filed) and verify that existing addressis replaced with new address
+    ...
+    ...    4) Navigate back to profile and click on personal information and verify address1 filed is replaced with new address
+    ...
+    ...    5) Logout member
+    [Tags]    QCOE
+    Login To Enrollment With Valid Credentials    td:username    td:password
+    Announcements Page    td:annoucementpage
+    BuiltIn.Sleep    6s
+    Navigate To New Member Menu    Profile
+    BuiltIn.Sleep    3s
+    Update Personal Info After Enrollement In Member Role In New UI    td:personalinformation
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Profile
+    BuiltIn.Sleep    3s
+    Verify Message    HMVaddress1
+    BuiltIn.Sleep    3s
+    Logout New Member Role
+
+3. Verify Personal Information Can Be Added For A Member
+    [Documentation]    Author : *Bhavan Mettu*
+    ...
+    ...    Test Case Title: *Verify Personal Information Can Be Added For A Member*
+    ...
+    ...    Pre-requisite:
+    ...
+    ...    1) Login as Vista Admin
+    ...
+    ...    2) Perform Group Search "QCOE Test Automation Group-B1"
+    ...
+    ...    3) Add a new member from Vista login
+    ...
+    ...    4) Logout Vista Admin
+    ...
+    ...    Test Steps:
+    ...
+    ...    1) Login to Enrollment application as member (using credentials created from vista)
+    ...
+    ...    2) Complete member initial login (Language selction, Password Change etc.,)
+    ...
+    ...    3) Run through member profile pages ( personal information, emergency contacts, etc.,)
+    ...
+    ...    Note: Make sure that, address 2 field is empty.
+    ...
+    ...    4) Begin Enrollment and select life coverage plan ( Employee + Sp+ 1 Ch/$1,000)
+    ...
+    ...    5) Add Spouse as Beneficiary with 100% allocation
+    ...
+    ...    6) Save benefit and complete enrollment
+    ...
+    ...    7) Navigate to Home page and Click on profile
+    ...
+    ...    8) Update member personal information (address2 filed) and verify that information is updated
+    ...
+    ...    9) Navigate back to profile and click on personal information and verify address2 filed is updated properly
+    ...
+    ...    10) Logout Member
+    [Tags]    QCOE
+    #Pre-requisite:
+    Login To Enrollment As Vista Admin    validvistacredentials
+    Perform Group Search    td:automationgroup1
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    #Test Steps:
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    member initial login
+    Run Member Profile Pages In New UI
+    Perform Begin Enrollment In Member Role
+    Select Life Coverage Plan    Employee + Sp + 1 Ch / $1,000.00
+    Add Beneficiary To Member    td:spouse    lastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Save Benefit Enrollment In New Member    Supp Life 2016
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Profile
+    BuiltIn.Sleep    3s
+    Update Personal Info After Enrollement In Member Role In New UI    td:personalinfo
+    BuiltIn.Sleep    3s
+    Navigate To New Member Menu    Profile
+    BuiltIn.Sleep    3s
+    Verify Message    HMVaddress2
+    BuiltIn.Sleep    3s
+    Logout New Member Role

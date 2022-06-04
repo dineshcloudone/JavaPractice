@@ -1,0 +1,83 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "groupsearch": {
+      "automationgroup1": "BF QA OE Test Automation Group"
+    },
+    "validhrcredentialsforgroup": {
+      "username": "hradminautomation",
+      "password": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "groupsearch": {
+        "automationgroup1": "OE Test Group"
+      }
+    },
+    "validhrcredentialsforgroup": {
+      "username": "oeadmin",
+      "password": "bfEnrol1"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate"
+    }
+  },
+  "3": {
+    "resource": "bfqatestautomationgroup",
+    "vista": {
+      "groupsearch": {
+        "automationgroup1": "OE Test Group"
+      }
+    },
+    "validhrcredentialsforgroup": {
+      "username": "oeadmin",
+      "password": "bfEnrol1"
+    },
+    "hradminmandatory": {
+      "ssn": "RND4411",
+      "firstname": "Auto",
+      "lastname": "RNDTestallfields",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "earnings": "60000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Annually",
+      "hiredate": "currentdate"
+    }
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "1": {
+    "resource": "autobodycoteregressionnew",
+    "hsagroup":"Auto_bodycote_Regression_New",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "hsa": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "categories": "3411306440 - Client ID,011290 - LONDONKOL Kolsterizing,ADE - ADE,F - Full-Time,0101 - London (Kolsterising),BFS - Bodycote Union Weekly,R - Regular,A - Active"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "agreementpage": "yes",
+    "medicalplan":"2016 Cigna $800 Deductible Plan",
+    "hsaplan":"HSA Plan"
+  },
+  "2": {
+    "resource": "autoprovocitynew",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "hidebeneficiaries": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "maritalstatus": "RND",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "employerid": "RND",
+      "categories": "RET"
+    },
+    "beneficiaryspouse": {
+      "ssn": "RND4433",
+      "firstname": "AutoDep",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "relationship": "Spouse"
+    },
+    "beneficiarychild": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-12",
+      "relationship": "Child"
+    },
+    "language":"English",
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "3": {
+    "resource": "autoprovocitynew",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "hsa": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "categories": "3411306440 - Client ID,011290 - LONDONKOL Kolsterizing,ADE - ADE,F - Full-Time,0101 - London (Kolsterising),BFS - Bodycote Union Weekly,R - Regular,A - Active"
+    },
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "agreementpage": "yes"
+  },
+  "4": {
+    "resource": "autoprovocitynew",
+    "validvistacredentials": {
+      "username": "bfautomation",
+      "password": "Password1"
+    },
+    "hidebeneficiaries": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "maritalstatus": "RND",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Bi-Weekly",
+      "calenderset": "BIWEEKLY",
+      "employerid": "RND",
+      "categories": "RET"
+    },
+    "beneficiaryspouse": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "relationship": "Spouse"
+    },
+    "beneficiarychild": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-12",
+      "relationship": "Child"
+    },
+    "language":"English",
+    "memberpassword": "Test12345",
+    "secretquestionscount": "3",
+    "annoucementpage": "yes",
+    "agreementpage": "yes"
+  },
+  "default": {
+    "resource": "autoprovocitynew"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "1": {
+    "resource": "bfqatestautomationgroup",
+  },
+   "2": {
+    "resource": "bfqatestautomationgroup",
+  },
+   "3": {
+    "resource": "bfqatestautomationgroup",
+  },
+  "default": {
+    "resource": "bfqatestautomationgroup",
+  }
+}

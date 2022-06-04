@@ -1,0 +1,268 @@
+{
+  "1": {
+    "resource": "autocarousel",
+    "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "2": {
+    "resource": "autocarousel",
+     "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "3": {
+    "resource": "autocarousel",
+     "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "4": {
+    "resource": "autocarousel",
+     "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "5":{
+    "resource": "autocarousel",
+     "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "6": {
+    "resource": "autocarousel",
+     "validcarrierrep": {
+      "username": "automationrep",
+      "password": "bfEnrol1"
+    }
+  },
+  "7": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel"
+  },
+  "8": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel"
+  },
+  "9": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel",
+    "withoutmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT2,NT - Non-Tobacco"
+    },
+    "language":"English",
+    "memberpassword": "bfEnrol1",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "Agreements": "yes",
+    "dentalplan":"2016 UnitedHealthcare Standard Dental",
+    "visionplan":"2016 UnitedHealthcare Standard Vision"
+  },
+  "10": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel",
+    "withmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+    },
+    "language":"English",
+    "memberpassword": "bfEnrol1",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "Agreements": "yes",
+    "medicalplan":"2016 UnitedHealthcare $800 Deductible Plan"
+  },
+  "11": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel",
+    "withmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+    },
+    "language":"English",
+    "memberpassword": "bfEnrol1",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "Agreements": "yes",
+    "medicalplan":"2016 UnitedHealthcare $800 Deductible Plan"
+  },
+  "12": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel",
+    "withoutmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT2,NT - Non-Tobacco"
+    },
+    "language":"English",
+    "memberpassword": "bfEnrol1",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "Agreements": "yes",
+    "dentalplan":"2016 UnitedHealthcare Standard Dental",
+    "visionplan":"2016 UnitedHealthcare Standard Vision"
+  },
+  "13": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel",
+    "withmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT - Full-Time,NT - Non-Tobacco"
+    },
+    "language":"English",
+    "memberpassword": "bfEnrol1",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "Agreements": "yes",
+    "medicalplan":"2016 UnitedHealthcare $800 Deductible Plan"
+  },
+  "14": {
+    "resource": "autocarousel",
+    "carouselgroup":"Auto_Carousel",
+    "withoutmedical": {
+      "ssn": "RND4433",
+      "firstname": "Auto",
+      "lastname": "RNDTestMandatory",
+      "birthdate": "currentdate:y:-28",
+      "gender": "Male",
+      "address1": "Test address",
+      "city": "Test City",
+      "state": "SC",
+      "zipcode": "12345",
+      "country": "USA",
+      "homePhone": "1234567890",
+      "homeEmail": "nobody@benefitfocus.com",
+      "createlogin": "Create a login account for this person",
+      "memberid": "RNDBFAuto",
+      "password": "bfEnrol0",
+      "confirmpassword": "bfEnrol0",
+      "hiredate": "currentdate",
+      "earnings": "50000",
+      "earningsfrequency": "per year",
+      "payfrequency": "Semi-Monthly",
+      "calenderset": "SEMIMONTHLY",
+      "employerid": "RND",
+      "categories": "Help Desk Services - Location 4,FT2,NT - Non-Tobacco"
+    },
+    "language":"English",
+    "memberpassword": "bfEnrol1",
+    "secretquestions": "3",
+    "annoucementpage": "yes",
+    "Agreements": "yes",
+    "dentalplan":"2016 UnitedHealthcare Standard Dental",
+    "visionplan":"2016 UnitedHealthcare Standard Vision"
+  },
+  "default": {
+    "resource": "mercer"
+  }
+}

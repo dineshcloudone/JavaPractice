@@ -1,0 +1,56 @@
+*** Settings ***
+Resource          ../common.txt
+
+*** Keywords ***
+Enroll In Medical Benefit
+    [Arguments]    ${effectivedate}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Tobacco And Health Survey Answer    I authorize Tribune Publishing to reduce my gross pay each pay period by the amount of the benefit deductions that I elect during enrollment. My authorization is also applicable to retroactive deductions when needed. In the event of a deduction change during the year, Tribune Publishing is authorized to deduct the new amount from my pay. I further authorize Tribune Publishing to deduct any outstanding balances due for benefits, if due at time of termination or upon my return to work from an unpaid leave of absence.    No    Has anyone to be insured used tobacco in the last 12 months?    No
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${effectivedate}    test
+    Select Plan    2016 Health Care FSA
+    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    test
+    Enter Flexible Spending Deduction Periods    1
+    Select Plan    2016 Dependent Care FSA
+    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    test
+    BuiltIn.Sleep    3s
+    Enter Flexible Spending Deduction Periods    1
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+
+Enroll In Medical Benefit With effective date
+    [Arguments]    ${effectivedate}
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    Select Plan    2016 BCBS $350 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Enter New Effective Date    ${effectivedate}    Test
+    Select Plan    2016 Health Care FSA
+    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    Test
+    Enter Flexible Spending Deduction Periods    1
+    Select Plan    2016 Dependent Care FSA
+    Enter Contribution Amount For FSA Plan    280
+    Enter New Effective Date    ${effectivedate}    Test
+    BuiltIn.Sleep    3s
+    Enter Flexible Spending Deduction Periods    1
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+
+Enroll In Dental and Vision Benefit
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Dental and Vision Insurance
+    Comment    Select Tobacco And Health Survey Answer    I authorize Tribune Publishing to reduce my gross pay each pay period by the amount of the benefit deductions that I elect during enrollment. My authorization is also applicable to retroactive deductions when needed. In the event of a deduction change during the year, Tribune Publishing is authorized to deduct the new amount from my pay. I further authorize Tribune Publishing to deduct any outstanding balances due for benefits, if due at time of termination or upon my return to work from an unpaid leave of absence.    No    Has anyone to be insured used tobacco in the last 12 months?    No
+    Select Plan    2016 Delta Dental Standard Dental
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    Decline coverage for this person
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page

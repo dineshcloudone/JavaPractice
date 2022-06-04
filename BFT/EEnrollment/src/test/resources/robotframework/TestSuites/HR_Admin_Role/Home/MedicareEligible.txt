@@ -1,0 +1,37 @@
+*** Settings ***
+Documentation     Test Suite consists of all the automated test scenarios forCOBRA Manager functionality
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.FindMedicareEligible
+    [Documentation]    Author : *Dilip K*
+    ...
+    ...    Test Case Title: *Find Medicare Eligible*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1) Launch eeshrel and login as hradmin (priorityhradmin/bfEnrol1)
+    ...
+    ...    2) Navigate to Employees tab
+    ...
+    ...    3) Click on Add a new Employee button
+    ...
+    ...    4) Enter necessary details of an employee with date of birth greater than 70 years(sine we have medicare eligible option enabled on basis of age)
+    ...
+    ...    5) click on save button
+    ...
+    ...    6) Now navigate to Home tab
+    ...
+    ...    7) Click on Medicare Eligible perosn link from Additonal tools panel
+    ...
+    ...    8) Search for above created employee.
+    ...
+    ...    9) Logout from Hr Admin
+    Login as HR admin
+    Navigate To HR Menu    Employees
+    Add Employee In HR Admin    td:addemployeewithmedicareeligible    medicareeligiblelastname
+    Navigate To HR Menu    Home
+    Navigate To HR Menu    FindMedicareEligible
+    Verify Employee Search Results    HMVmedicareeligiblelastname
+    Logout HR Admin

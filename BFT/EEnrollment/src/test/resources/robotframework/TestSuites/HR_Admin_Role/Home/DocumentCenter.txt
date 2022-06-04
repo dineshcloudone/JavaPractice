@@ -1,0 +1,30 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1.Verify that the file type not allowed is not uploaded
+    [Documentation]    Author : *Nagarjuna Behara*
+    ...
+    ...    Test Case Title: *Verify that the file type not allowed is not uploaded in HR Role*
+    ...
+    ...    Test Steps :
+    ...
+    ...    1. Login to eEnrollment as a HRAdmin for Sponsor "BF QA Test Automation Group"
+    ...
+    ...    2. Nagivigate to GroupSetup page in Goup Settings page in HR Admin
+    ...
+    ...    3. Edit the Categories is Basics page in HR Admin
+    ...
+    ...    4. click on create new category
+    ...
+    ...    5. click on Next Button without adding mandatory data
+    ...
+    ...    6. Verify Error warning messsages
+    ...    "Please enter a Category Type Name."
+    ...
+    ...    7. Logout
+    [Tags]    negative
+    Login as HR admin
+    Add Document In Document Center    FileUpload_GChrome:hrintouchjpg.jpg
+    Logout HR Admin

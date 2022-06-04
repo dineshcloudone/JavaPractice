@@ -1,0 +1,407 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+
+*** Test Cases ***
+1.Initial enrollment (before approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc1
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc1
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc1
+
+2.Initial enrollment (after approval )
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc2
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc2
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc2
+
+3.Initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc3
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc3
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Medical, Dental, Vision, and Life 2016
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc3
+
+4.Accpet after initial refusal
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc4
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc4
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Refuse Current Selected Benefit In HR Role    Medical, Dental, Vision, and Life 2016
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical, Dental, Vision, and Life 2016
+    Edit Current Plan    Medical
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc4
+
+5.Cancel benefits (before approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc5
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc5
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical, Dental, Vision, and Life 2016
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc5
+
+6.Cancel benefits (after approval)
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc6
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc6
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical, Dental, Vision, and Life 2016
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc6
+
+7.Enroll after cancellation
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc7
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc7
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Navigate To HR Menu    Benefitdetails
+    Cancel Benefit In Hr Role    Medical, Dental, Vision, and Life 2016
+    Navigate To HR Menu    Benefitdetails
+    Edit Current Benefit    Medical, Dental, Vision, and Life 2016
+    Edit Current Plan    Medical
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc7
+
+8.Cancellations because of terminations
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc8
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc8
+    Navigate To HR Menu    Benefitdetails
+    Comment    Enroll member in applicable benefits (Could be One or More)
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Perform Employee Termination    d:currentdate    Voluntary
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc8
+
+9.Cancellations because of retirement
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc9
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc9
+    Perform Employee Retirement
+    Navigate To Employee Home Page
+    Verify Message    Retired
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc9
+
+10.Category Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc10
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ChickfilAlastnametc10
+
+12.Effective Date Change
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc12
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc12
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc12
+
+13.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc13
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc13
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc13
+
+14.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc14
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc14
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc14
+
+15.Increase Coverage Amount For Life Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc15
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc15
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Life 2016
+    Enroll In Life Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc15
+
+16.Decrease Coverage Amount For Life Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc16
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc16
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Life 2016
+    Enroll In Life Benefit
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc16
+
+17.Increase Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc17
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc17
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending
+    Enroll In FSA Benefit    200
+    Navigate To Employee Home Page
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc17
+
+18.Decrease Contribution Amount For Flex Benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc18
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc18
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    2016 Flexible Spending
+    Enroll In FSA Benefit    200
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc18
+
+23.Change in EE cost
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc23
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ChickfilAlastnametc23
+
+24.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc24
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ChickfilAlastnametc24
+
+25.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc25
+    Sleep    5
+    Logout Vista Admin
+    appendHashMapValue    ChickfilAlastnametc25
+
+29.Add Dependent to benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc29
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc29
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Enroll In Medical Benefit    Employee Only
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc29
+
+30.Remove Dependent from benefit
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc30
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc30
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc30
+
+31.Change dependent personnel information
+    Login as vista admin with valid credentials
+    Perform Group Search    Chick-fil-A
+    Navigate To    Users    Add Member
+    Comment    Pass JSON tag to create member in Vista role. It depends on group configuration
+    Add Member In Vista    td:chickfilamandatory    ChickfilAlastnametc31
+    Open Group In HR Role
+    Comment    HMVlastname contains member last name returned by 'Add Member In Vista' keyword
+    Perform Simple Employee Search    HMVChickfilAlastnametc31
+    Navigate To HR Menu    Benefitdetails
+    Start Current Benefit    Medical, Dental, Vision, and Life 2016
+    Select Coverage Level    Employee and Family
+    Add Dependent To Employee    Spouse    lastname
+    Next
+    Next
+    Save And Go To Benefit Enrollment Page
+    Comment    CHange Dependent details
+    Navigate To HR Menu    Dependents
+    Edit Dependent Details    Spouse    lastname
+    Navigate To Employee Home Page
+    Sleep    5
+    Close HR Admin
+    appendHashMapValue    ChickfilAlastnametc31

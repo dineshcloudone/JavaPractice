@@ -1,0 +1,357 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/Common.txt
+
+*** Test Cases ***
+1. Verify videos in Learning Center work if enabled for group
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Verify Videos in Learning Center work if enabled for Group*
+    ...
+    ...    1) Launch eeshrel (bfautomation/Password1)
+    ...
+    ...    2)Update in Group Customisation 'Learning Center' as 'E nabled'
+    ...
+    ...    3)Add member
+    ...
+    ...    4)Logout Vista Role
+    ...
+    ...    5)Login as member
+    ...
+    ...    6) Click on "Learning Center" link from Home page.
+    ...
+    ...    7) Click on videos in "video glossary" page
+    ...
+    ...    8) Verify the Video is opened in new window
+    ...
+    ...    9) Logout as member role
+    ...
+    ...    Test Case No : 30 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QCOE Test Automation Group S3
+    Navigate to    Basics    Group Customization
+    Group Customization Configuration    Learning Center/s    Enabled    No    #Learning Center/s
+    Group Customization Configuration    Video Glossary    Enabled    Yes
+    Navigate to    Users    Add Member
+    Add Member in Vista    td:mandatory    lastname
+    BuiltIn.Sleep    5s
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    LearningCenter
+    Click Videos Link In Member Role    Employer Mandate
+    Logout New Member Role
+
+2. Enroll a member for a Carrier group
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Enroll a member for Carrier Group*
+    ...
+    ...    1) Launch eeshrel (bfautomation/Password1)
+    ...
+    ...    2)Add member
+    ...
+    ...    3)Logout Vista Role
+    ...
+    ...    4)Login as member
+    ...
+    ...    5) Perform begin Enrolment
+    ...
+    ...    6) Select plan and save
+    ...
+    ...    7) Verify for Congrats message after completing enrolment
+    ...
+    ...    Test Case No : 2 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    QCOE-Carrier
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:hidebeneficiaries    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    BuiltIn.Sleep    5s
+    Click Get Startedbutton On New UI
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    2016 Basic Life
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:beneficiaryspouse    Outlastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Verify Beneficiary And Save    Spouse
+    Verify Message    Congratulations
+    Logout New Member Role
+
+3. Enroll a member for a Employer group
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Enroll a member for Employerr Group*
+    ...
+    ...    1) Launch eeshrel (bfautomation/Password1)
+    ...
+    ...    2)Add member
+    ...
+    ...    3)Logout Vista Role
+    ...
+    ...    4)Login as member
+    ...
+    ...    5) Perform begin Enrolment
+    ...
+    ...    6) Select plan and save
+    ...
+    ...    7) Verify for Congrats message after completing enrolment
+    ...
+    ...    Test Case No : 3 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QCOE Test Automation Group S3
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    None    None
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    None    None
+    Select Market Plan For New Member Role    Medical 2016
+    Select Premium Deduction    No
+    Save Benefit Enrollment In New Member    Medical 2016
+    Complete Enrollemnt In New Member Role
+    Verify Message    Congratulations
+    Logout New Member Role
+
+4. Required to key Dependent's SSN
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: * Required to key Dependent's SSN*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Configure Personal Customization
+    ...
+    ...    3) Add member
+    ...
+    ...    4) Login as Member and add dependent without SSN
+    ...
+    ...    5) Verify for message "An SSN is required"
+    ...
+    ...    6) Logout as member role
+    ...
+    ...    Test Case No : 73 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QCOE Test Automation Group S3
+    Navigate to    Basics    Personal Customization
+    Personal Customization Configuration    Dependent SSN    Require for all dependents    No
+    Personal Customization Configuration    Require SSN for dependents that are over the age of    5    Yes
+    Navigate to    Users    Add Member
+    Add Member in Vista    td:mandatory    lastname
+    BuiltIn.Sleep    5s
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Navigate To New Member Menu    Dependents
+    Add Dependent to Member    td:Child    childlastname
+    Verify Message    An SSN is required
+    Logout New Member Role
+
+5. Change a member to have a Canadian Postal Code in the address
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: * Change a member to have a Canadian Postal Code in the address*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Configure Personal Customization
+    ...
+    ...    3) Add member
+    ...
+    ...    4) Login as Member and update personal information with Canadian ZIP, country, state
+    ...
+    ...    5) Should accept canadian ZIP
+    ...
+    ...    6) Logout as member role
+    ...
+    ...    Test Case No : 71 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QCOE Test Automation Group S3
+    Navigate to    Basics    Personal Customization
+    Personal Customization Configuration    Allow Member to Edit Personal Information    All    Yes
+    Navigate to    Users    Add Member
+    Add Member in Vista    td:mandatory    lastname
+    BuiltIn.Sleep    5s
+    Logout Vista Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Click Get Startedbutton On New UI
+    Update Personal Information In Member Role In New UI    td:personalinformation
+    BuiltIn.Sleep    5s
+    Logout New Member Role
+
+6. Change Pay Frequency for a member
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Change pay frequency for a member*
+    ...
+    ...    1) Launch eeshrel and login(bfautomation/Password1)
+    ...
+    ...    2) Add a member in Vista page.
+    ...
+    ...    3) Perform begin Enrolment
+    ...
+    ...    4) Select plan and save
+    ...
+    ...    5) Get the plan rate and verify the rates for pay frequency "Annual"
+    ...
+    ...    6) Get the plan rate and verify the rates for pay frequency "Semi-Annual"
+    ...
+    ...    7)Get the plan rate and verify the rates for pay frequency "Quaterly"
+    ...
+    ...    Test Case No : 43 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    BF QCOE Test Automation Group S3
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    Run Member Profile Pages In New UI
+    Add Dependent To Member    None    None
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Add Dependent To Member    None    None
+    Select Market Plan For New Member Role    Medical 2016
+    Select Premium Deduction    No
+    Save Benefit Enrollment In New Member    Medical 2016
+    Complete Enrollemnt In New Member Role
+    Verify Message    Congratulations
+    BuiltIn.Sleep    5s
+    Navigate To New Member Menu    Benefits
+    BuiltIn.Sleep    5s
+    Get And Verify Plan Rate    500    #annualplanrate
+    BuiltIn.Sleep    5s
+    Logout New Member Role
+    Login as HR admin
+    Perform Simple Employee Search    HMVlastname    #HMVlastname
+    Update Employee Pay Frequency    Semi-Annually
+    Logout HR Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol1
+    BuiltIn.Sleep    5s
+    Navigate To New Member Menu    Benefits
+    BuiltIn.Sleep    5s
+    Get And Verify Plan Rate    250    #semi-annualiplanrate
+    BuiltIn.Sleep    5s
+    Logout New Member Role
+    Login as HR admin
+    Perform Simple Employee Search    HMVlastname
+    Update Employee Pay Frequency    Quarterly
+    Logout HR Admin
+    Login To Enrollment with Valid Credentials    HMVmemberloginid    bfEnrol1
+    BuiltIn.Sleep    5s
+    Navigate To New Member Menu    Benefits
+    BuiltIn.Sleep    5s
+    Get And Verify Plan Rate    125    #quaterly-annualplanrate
+    BuiltIn.Sleep    5s
+    Logout New Member Role
+
+8. Retirement benefit - Contribute $
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Change pay frequency for a member*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Add a member in Vista page.
+    ...
+    ...    3) Perform begin Enrolment
+    ...
+    ...    4) Select retirement plan
+    ...
+    ...    5) Enter contribution amount in dollar and save
+    ...
+    ...    6) \ verify the contribution amount reflects in Employee Summary Report and Employee Detail Report
+    ...
+    ...    Test Case No : 55 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    QCOE-UAB-Health-Retire
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    2016 Retirement 403(b)
+    Enable Options From Edit Offer Details In Vista Role    403b    Deferral Type    Allow the user to enter deferrals as flat dollar amounts per paycheck
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    BuiltIn.Sleep    5s
+    Click Get Startedbutton On New UI
+    BuiltIn.Sleep    5s
+    Perform Begin Enrollment In Member Role
+    Select Market Plan For New Member Role    403(b) Retirement Plan 2016
+    Enter Contribution Value For Retirement Plan    180
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:beneficiaryspouse    Outlastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Comment    Add Another Primary Beneficiary    Person    td:beneficiaryspouse    OutbenlastName
+    Save Benefit Enrollment In New Member    403(b) Retirement Plan 2016
+    BuiltIn.Sleep    5s
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    5s
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    Builtin.Sleep    10s
+    Verify PDF Content    403(b) Retirement Plan 2016
+    BuiltIn.Sleep    5s
+    Verify Employee Detail Report In New Member UI    Personal Information    $180.00
+    Logout New Member Role
+
+9. Retirement benefit - Contribute %
+    [Documentation]    Author : *Srilatha A*
+    ...
+    ...    Test Case Title: *Change pay frequency for a member*
+    ...
+    ...    1) Launch eeshrel and login (bfautomation/Password1)
+    ...
+    ...    2) Add a member in Vista page.
+    ...
+    ...    3) Perform begin Enrolment
+    ...
+    ...    4) Select retirement plan
+    ...
+    ...    5) Enter contribution percentage of amount and save
+    ...
+    ...    6) \ verify the contribution amount reflects in Employee Summary Report and Employee Detail Report
+    ...
+    ...    Test Case No : 56 (Regression Test Case Document)
+    [Tags]    QCOE
+    Login as vista admin with valid credentials
+    Perform Group Search    QCOE-UAB-Health-Retire
+    Navigate To    BENEFITS    Offers
+    Edit Offer In Vista Role    Current    2016 Retirement 403(b)
+    Enable Options From Edit Offer Details In Vista Role    403b    Deferral Type    Allow the user to enter deferrals as flat dollar amounts per paycheck
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:mandatory    lastname
+    Logout Vista Admin
+    Login To Enrollment With Valid Credentials    HMVmemberloginid    bfEnrol0
+    Member Initial Login
+    BuiltIn.Sleep    5s
+    Click Get Startedbutton On New UI
+    Begin Medical Enrollment In Current Benefits In Page New UI
+    Select Market Plan For New Member Role    403(b) Retirement Plan 2016
+    Enter Contribution Value For Retirement Plan    50
+    Select Beneficiay Type    Person
+    Add Beneficiary To Member    td:beneficiaryspouse    Outlastname
+    Add Beneficiary Allocations    Spouse    Primary    100
+    Comment    Add Another Primary Beneficiary    Person    td:beneficiaryspouse    OutbenlastName
+    Save Benefit Enrollment In New Member    403(b) Retirement Plan 2016
+    BuiltIn.Sleep    5s
+    Complete Enrollemnt In New Member Role
+    BuiltIn.Sleep    5s
+    Navigate To New Member Menu    EMPLOYEESUMMARYREPORT
+    Builtin.Sleep    10s
+    Verify PDF Content    403(b) Retirement Plan 2016
+    Comment    Verify Employee Summary Report In New Member UI    HMVlastname
+    BuiltIn.Sleep    5s
+    Verify Employee Detail Report In New Member UI    Personal Information    50.0%
+    Logout New Member Role

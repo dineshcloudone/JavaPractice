@@ -1,0 +1,799 @@
+*** Settings ***
+Test Setup        getResource
+Resource          ../../../Resources/common.txt
+Resource          ../../../Resources/HRAdmin/BLRestaurantResource.txt
+Resource          ../../../Resources/HRAdmin/bfqatestautomationgroup.txt
+
+*** Variables ***
+${initial_benefit_enrollment_date}    d:currentdate
+
+*** Test Cases ***
+41.Initial Enrollment(Before Approval)
+    Comment    Basic Life Insurance,domestic life partner
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc41
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory51562
+    Perform Simple Employee Search    HMVblrestaurantlastnametc41
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Close HR Admin
+    Logout Vista Admin
+
+42.Initial Enrollment(After Aprroval)
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc42
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc42
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Close HR Admin
+    Logout Vista Admin
+
+43.Refuse All Eligible Benefits
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc43
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc43
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    2016 Supplemental Medical Insurance
+    BuiltIn.Sleep    2s    wait time
+    Comment    Select Tobacco Survey Answer    No
+    Comment    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Dental and Vision insurance
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Voluntary Life
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Voluntary AD&D
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Permanent Life
+    BuiltIn.Sleep    2s    wait time
+    Refuse Current Selected Benefit In HR Role    2016 Personal Protection
+    Navigate To HR Menu    Overview
+    Approve From HR Admin
+    Comment    BuiltIn.Sleep    3s    wait time
+    Close HR Admin
+    Logout Vista Admin
+
+44.Accept Benefit After Refusal
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc44
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc44
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Comment    Navigate To Current Enrollment
+    Refuse Current Selected Benefit In HR Role    2016 Dental and Vision insurance
+    BuiltIn.Sleep    2s    wait time
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Dental and Vision insurance
+    Edit Benefit Details    Dental    Dental
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Comment    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
+    Comment    appendHashMapValue    lastnameaamtc4
+
+45.Cancel Benefit Before Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc45
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc45
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Medical
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+46.Cancel Benefit After Approval
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc46
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc46
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Medical
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+47.Enroll Benefit After Cancellation
+    comment    unable to enroll benefit after cancelling it    Auto TestMandatory67071
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc47
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc47
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Approve From HR Admin
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Medical
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Medical
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee Only
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Comment    Select Plan    2016 Health Care FSA
+    Comment    Set Contribution Amount For Flex Benefit    80
+    Comment    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Comment    Select Plan    2016 Dependent Care FSA
+    Comment    Set Contribution Amount For Flex Benefit    80
+    Comment    Enter New Effective Date    ${initial_benefit_enrollment_date}    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+48.Terminate the Employee
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc48
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc48
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Perform Employee Termination    d:currentdate:d:1    Voluntary
+    Comment    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+49.Employee Retirement
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc49
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc49
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Perform Employee Retirement
+    Comment    Approve From HR Admin
+    BuiltIn.Sleep    2s    wait time before Hr Admin Close
+    Close HR Admin
+    Logout Vista Admin
+
+52.Add Dependent to Member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc52
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc52
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    Add Another Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+53.Remove Dependent from Member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc53
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc53
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Add Another Dependent To Employee    Child    lstChild
+    Add Another Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Comment    Select Plan    2016 Health Care FSA
+    Comment    Set Contribution Amount For Flex Benefit    80
+    Comment    Enter New Effective Date    d:currentdate    test
+    Comment    Select Plan    2016 Dependent Care FSA
+    Comment    Set Contribution Amount For Flex Benefit    80
+    Comment    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    Cancel Coverage To Dependent
+    Next
+    Comment    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+54.Add and Apply Dependent with an Updated effective date
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc54
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc54
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Comment    Select Plan    2016 Dependent Care FSA
+    Comment    Set Contribution Amount For Flex Benefit    80
+    Comment    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Comment    Navigate To HR Menu    dependents
+    Comment    Add Another Dependent To Employee    Child    lstChild
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    BuiltIn.Sleep    3s    test
+    Add Another Dependent To Employee    Child    lstChild
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+55.Remove and Apply Dependent
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc54
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc54
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Add Another Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Comment    Select Plan    2016 Dependent Care FSA
+    Comment    Set Contribution Amount For Flex Benefit    80
+    Comment    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Comment    Navigate To HR Menu    dependents
+    Comment    Add Another Dependent To Employee    Child    lstChild
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    BuiltIn.Sleep    3s
+    Cancel Coverage To Dependent
+    Next
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+56.Change Category to make beneift eligible to non-eligible
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc56
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory42837
+    Perform Simple Employee Search    HMVblrestaurantlastnametc56
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Approve From HR Admin
+    Comment    Change Employee Cateogry    Employment Status    1 - Full-Time
+    Comment    Change Employee Cateogry    OFFICE    CNHK - CN-Hong Kong Office
+    comment    ---------------------------------
+    Navigate To HR Menu    Overview
+    Change Employee Cateogry    Status    PTN - PT, 30 hrs/wk, not benefit eligible, other states
+    Comment    Change Employee Cateogry    Status    PTN - PT, \ 30 hrs/wk, not benefit eligible, other states
+    Comment    Change Employee Cateogry    OFFICE    SBU 60F Business Consulting - Global Business Serv
+    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+57.Change Category from Non Benefit Eligible to Benefit Eligible
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc57
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc57
+    Navigate To HR Menu    Overview
+    Change Employee Cateogry    Status    HAO - Full-time hourly employees in all other states
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Approve From HR Admin
+    Comment    Change Employee Cateogry    Employment Status    1 - Full-Time
+    Comment    Change Employee Cateogry    OFFICE    CNHK - CN-Hong Kong Office
+    comment    ---------------------------------
+    Comment    Change Employee Cateogry    Status    PTN - PT, \ 30 hrs/wk, not benefit eligible, other states
+    Comment    Change Employee Cateogry    OFFICE    SBU 60F Business Consulting - Global Business Serv
+    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+58.Change Category Value that enables for Multiple Benefits
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc57
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc57
+    Navigate To HR Menu    Overview
+    Change Employee Cateogry    Status    S - Full-time salaried employees
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Comment    Approve From HR Admin
+    Comment    Change Employee Cateogry    Employment Status    1 - Full-Time
+    Comment    Change Employee Cateogry    OFFICE    CNHK - CN-Hong Kong Office
+    comment    ---------------------------------
+    Comment    Change Employee Cateogry    Status    PTN - PT, \ 30 hrs/wk, not benefit eligible, other states
+    Comment    Change Employee Cateogry    OFFICE    SBU 60F Business Consulting - Global Business Serv
+    Navigate To HR Menu    Overview
+    Comment    Approve From HR Admin
+    BuiltIn.Sleep    3s    sleep time before closing HR admin
+    Close HR Admin
+    Logout Vista Admin
+
+59.Update Effective date of Enrolled Benefit
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc59
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc59
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Effective Date
+    Enter New Effective Date    d:currentdate:d:1    test
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+60.Change the Benefit Plan for Enrolled member
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc60
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc60
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Plan
+    Select Plan    2016 United Healthcare $1,500 Deductible with HSA
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 HSA
+    Enter New Effective Date    d:currentdate    test
+    Next
+    Agree Terms And Conditions Multiple Times
+    Agree Terms And Conditions Multiple Times
+    Agree Terms And Conditions Multiple Times
+    Provide Date Explantion In Hr Role    test
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+61.Increase Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc61
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc61
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Coverage Level
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    BuiltIn.Sleep    3s
+    Close HR Admin
+    Logout Vista Admin
+
+62.Decrease Coverage Level
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc62
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc62
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Coverage Level
+    BuiltIn.Sleep    3s
+    Select Coverage Level    Employee Only
+    Enter New Effective Date    d:currentdate    test
+    Comment    Next
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+63.Increase Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc63
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc63
+    Enroll In Life Insurance benefit
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Voluntary Life
+    Edit Benefit Details    Employee Paid Term Life    Coverage Amount
+    Select Coverage Amount    $100,000.00
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+64.Decrease Coverage Amount
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc64
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc64
+    Enroll In Life Insurance benefit
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Life Insurance
+    Edit Benefit Details    Employee Paid Term Life    Coverage Amount
+    Select Coverage Amount    $50,000.00
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+65.Change in Employee Enrollment Cost
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc65
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc65
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    benefitdetails
+    Edit Current Benefit    2016 Medical Insurance and Spending Accounts
+    Edit Benefit Details    Medical    Persons Covered
+    Add Another Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+68.Salary Increase
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc68
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc68
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Update Employee Salary    53100    per year
+    Navigate To HR Menu    Overview
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Comment    Approve From HR Admin
+    Comment    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+69.Salary Decrease
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc69
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Comment    Perform Simple Employee Search    Auto TestMandatory67153
+    Perform Simple Employee Search    HMVblrestaurantlastnametc69
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Navigate To HR Menu    Overview
+    Update Employee Salary    49000    per year
+    Navigate To HR Menu    Overview
+    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Comment    Approve From HR Admin
+    Comment    BuiltIn.Sleep    5s    sleep time before closing HR Admin
+    Close HR Admin
+    Logout Vista Admin
+
+71.Change Dependent Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc52
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc52
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Child(ren)
+    Add Dependent To Employee    Child    lstChild
+    Next
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    dependents
+    BuiltIn.Sleep    3s
+    Edit Dependent Details    Child    lastname
+    Navigate To HR Menu    Overview
+    Close HR Admin
+    Logout Vista Admin
+
+72.Change Subscriber Personal Information
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc72
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc72
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Update Employee Personel Profile    td:blrestaurantmemberupdate    HMVblrestaurantlastnametc72
+    Close HR Admin
+    Logout Vista Admin
+
+79-86.HSA Test Cases are not applicable for this Group
+
+90.Enroll in medical benefit with Spouse Coverage Level of same Sex
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc52
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc52
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Next
+    BuiltIn.Sleep    3s    waittime
+    Select Tobacco Survey Answer    No
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+91.Change spouse sex to same as subscriber
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc91
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc91
+    Comment    Perform Simple Employee Search    Auto TestMandatory20246
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Medical Insurance and Spending Accounts
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Plan    2016 United Healthcare $800 Deductible Plan
+    Select Coverage Level    Employee and Spouse
+    Add Dependent To Employee    Spouse    lstSpouse
+    Next
+    BuiltIn.Sleep    3s    waittime
+    Select Tobacco Survey Answer    No
+    Select Medicare Answer    No, neither the employee nor any covered dependent is enrolled in Medicare.
+    Select Additional Insurance Answer    No, neither the employee nor any dependent has had health insurance.
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Navigate To HR Menu    Overview
+    BuiltIn.Sleep    3s
+    Update Employee Personel Profile    td:blrestaurantmemberupdate    HMVblrestaurantlastnametc91
+    Close HR Admin
+    Logout Vista Admin
+
+92.Increase advanced salary
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc92
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc92
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Update Employee Personel Profile    td:blrestaurantmemberupdate    HMVblrestaurantlastnametc92
+    Close HR Admin
+    Logout Vista Admin
+
+93.Decrease advanced salary
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Comment    Perform Group Search    Texas Health Resources
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc93
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc93
+    Enroll in Medical Benefit    ${initial_benefit_enrollment_date}
+    Update Employee Personel Profile    td:blrestaurantmemberupdate    HMVblrestaurantlastnametc93
+    Close HR Admin
+    Logout Vista Admin
+
+101.Enroll a member in a coverage level greater than guanrateed amount but do not approve
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc101
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc101
+    Comment    Perform Simple Employee Search    Auto TestMandatory10525
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Voluntary Life
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Coverage Amount    $110,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ Statement of Health and submit it to CIGNA
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Spouse Term Life
+    Add Dependent To Employee    Spouse    lstsSpouse
+    Next
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ Statement of Health and submit it to CIGNA
+    Select Survey Questions Answer    Has anyone to be insured used tobacco in the last 12 months?    No
+    Next
+    Enter New Effective Date    d:currentdate    test
+    Select Coverage Amount    Decline coverage for this employee
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Close HR Admin
+    Logout Vista Admin
+
+102.Enroll a member in a coverage level greater than the guaranteed issue amount but the amount over the GI is not approved. The GI amount is approved.
+    Login as vista admin with valid credentials
+    Perform Advanced Group Search    Sponsor OID    6141645693
+    Navigate To    Users    Add Member
+    Add Member In Vista    td:blrestaurantmandatory    blrestaurantlastnametc102
+    Open Group In HR Role
+    Navigate To HR Menu    Employees
+    Perform Simple Employee Search    HMVblrestaurantlastnametc102
+    Comment    Perform Simple Employee Search    Auto TestMandatory10525
+    Navigate To HR Menu    benefitdetails
+    Start Current Benefit    2016 Voluntary Life
+    BuiltIn.Sleep    3s    wait time
+    Select Tobacco Survey Answer    No
+    Select Coverage Amount    $110,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ Statement of Health and submit it to CIGNA
+    Add New Beneficiary To Employee    Spouse    Primary    100    lstSpouse
+    Enter New Effective Date    d:currentdate    test
+    Select Plan    2016 Spouse Term Life
+    Add Dependent To Employee    Spouse    lstsSpouse
+    Next
+    Select Coverage Amount    $60,000.00- This amount is more than the guaranteed issue. The employee must complete \ a \ Statement of Health and submit it to CIGNA
+    Select Survey Questions Answer    Has anyone to be insured used tobacco in the last 12 months?    No
+    Next
+    Enter New Effective Date    d:currentdate    test
+    Select Coverage Amount    Decline coverage for this employee
+    Enter New Effective Date    d:currentdate    test
+    Save Benefit In Snapshot Page
+    Comment    Approve From HR Admin
+    Close HR Admin
+    Logout Vista Admin
