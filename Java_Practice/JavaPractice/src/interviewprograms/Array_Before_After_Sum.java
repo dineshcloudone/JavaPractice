@@ -21,15 +21,12 @@ package interviewprograms;
 //    subarrays are : {1, 4} and {5}
 
 public class Array_Before_After_Sum {
-
 	
-	//import java.io.*;
-	
+	//import java.io.*;	
 
 		public static void main (String[] args) {
 	  
-	    int[] arr={2,3,4,1,4,5,5};   
-	    
+	    int[] arr={2,3,4,1,4,5,5};   	    
 	    
 	    int before;
 	    int after;

@@ -14,9 +14,9 @@ public class RegularExp2 {
 		
 		//System.out.println("String cointains only alphabets :"+re.stringContainsOnlyAphabets("dinesh"));
 
-		System.out.println("String cointains Integers :" + re.removeWhiteSpaces("this is dinesh"));
+		//System.out.println("String removing white spaces :" + re.removeWhiteSpaces("this is dinesh"));
 		
-		//re.readMobileNoFile();
+		re.readMobileNoFile();
 	}
 }
 
